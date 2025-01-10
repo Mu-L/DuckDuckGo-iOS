@@ -54,12 +54,29 @@ class ConfigurationDebugViewController: UITableViewController {
         case surrogates
         case trackerDataSet
         case privacyConfiguration
+        case remoteMessagingConfig
         case resetEtags = "Reset ETags"
 
         var showDetail: Bool {
             return self != .resetEtags
         }
 
+    }
+
+    private func fetchAssets() {
+        AppConfigurationFetch().start(isDebug: true) { [weak tableView] result in
+            switch result {
+            case .assetsUpdated(let protectionsUpdated):
+                if protectionsUpdated {
+                    ContentBlocking.shared.contentBlockingManager.scheduleCompilation()
+                }
+                DispatchQueue.main.async {
+                    tableView?.reloadData()
+                }
+            case .noData:
+                break
+            }
+        }
     }
 
     @UserDefaultsWrapper(key: .lastConfigurationRefreshDate, defaultValue: .distantPast)
@@ -96,11 +113,9 @@ class ConfigurationDebugViewController: UITableViewController {
         return titles[section]
     }
 
-    // swiftlint:disable cyclomatic_complexity
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         switch Sections(rawValue: indexPath.section) {
-
         case .refreshInformation:
             switch RefreshInformationRows(rawValue: indexPath.row) {
             case .lastRefreshDate:
@@ -132,7 +147,7 @@ class ConfigurationDebugViewController: UITableViewController {
             let row = ETagRows.allCases[indexPath.row]
             cell.textLabel?.text = row.rawValue
 
-            if let etag = etagStorage.etag(for: row.rawValue) {
+            if let etag = etagStorage.loadEtag(for: row.rawValue) {
                 cell.detailTextLabel?.text = etag
             } else {
                 cell.detailTextLabel?.text = row.showDetail ? "None" : nil
@@ -143,7 +158,6 @@ class ConfigurationDebugViewController: UITableViewController {
 
         return cell
     }
-    // swiftlint:enable cyclomatic_complexity
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Sections(rawValue: section) {
@@ -165,14 +179,7 @@ class ConfigurationDebugViewController: UITableViewController {
                 let location = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: ContentBlockerStoreConstants.groupName)
                 UIPasteboard.general.string = location?.path ?? ""
             case .forceRefresh:
-                AppConfigurationFetch().start { [weak tableView] newData in
-                    if newData {
-                        DispatchQueue.main.async {
-                            tableView?.reloadData()
-                        }
-                        ContentBlockerRulesManager.shared.recompile()
-                    }
-                }
+                fetchAssets()
             default: break
             }
         case .etags:

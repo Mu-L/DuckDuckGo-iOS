@@ -15,12 +15,13 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
+//
 
 import UIKit
 import Core
 
 class OnboardingDefaultBroswerViewController: OnboardingContentViewController {
-    
+
     override var header: String {
         return UserText.onboardingDefaultBrowserTitle
     }
@@ -33,15 +34,13 @@ class OnboardingDefaultBroswerViewController: OnboardingContentViewController {
         return UserText.onboardingSkip
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        HomeMessageStorage().homeDefaultBrowserMessageDateDismissed = Date()
-    }
-    
     override func onContinuePressed(navigationHandler: @escaping () -> Void) {
+        Pixel.fire(pixel: .onboardingIntroChooseBrowserCTAPressed, includedParameters: [.appVersion, .atb])
+
         if let url = URL(string: UIApplication.openSettingsURLString) {
             UIApplication.shared.open(url)
         }
         super.onContinuePressed(navigationHandler: navigationHandler)
     }
+
 }

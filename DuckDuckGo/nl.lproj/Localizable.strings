@@ -1,14 +1,41 @@
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"%@ " = "%@ ";
+
 /* Buton label for Edit action */
 "action.generic.edit" = "Bewerken";
+
+/* Button label for a generic show action */
+"action.generic.show" = "Tonen";
 
 /* Button label for Undo action */
 "action.generic.undo" = "Ongedaan maken";
 
+/* Button label for managing favorites */
+"action.manage.favorites" = "Beheren";
+
+/* Button label for OK action */
+"action.ok" = "OK";
+
+/* Title for text zoom menu item.  %d%% is replaced with percent, e.g. 56% so do not change that please. */
+"action.text-zoom-menu-item" = "In-/uitzoomen (%d%%)";
+
+/* Text zoom menu item */
+"action.text-zoom-sheet-menu-item" = "Zoomniveau";
+
+/* Title for text zoom sheet view.  %d%% is replaced with percent, e.g. 56% so do not change that please. */
+"action.text-zoom-sheet-title" = "Tekstgrootte (%d%%)";
+
 /* Add action - button shown in alert */
 "action.title.add" = "Toevoegen";
 
-/* Confirmation of Bookmark action in add to bookmark alert */
-"action.title.bookmark" = "Toevoegen als bladwijzer";
+/* Autofill Logins menu item opening the login list */
+"action.title.autofill.logins" = "Wachtwoorden";
+
+/* Confirmation of Add to Bookmarks action in Add All Open Tabs to Bookmarks alert */
+"action.title.bookmark" = "Toevoegen aan bladwijzers";
 
 /* Button: Open bookmarks list */
 "action.title.bookmarks" = "Bladwijzers";
@@ -22,8 +49,14 @@
 /* Floating message indicating URL has been copied */
 "action.title.copy.message" = "URL gekopieerd";
 
+/* Delete action - button shown in alert */
+"action.title.delete" = "Verwijderen";
+
 /* Disable protection action */
 "action.title.disable.protection" = "Privacybescherming uitschakelen";
+
+/* Downloads menu item opening the downlods list */
+"action.title.downloads" = "Downloads";
 
 /* Edit Bookmark action */
 "action.title.edit.bookmark" = "Bladwijzer bewerken";
@@ -74,10 +107,10 @@
 "action.title.save" = "Opslaan";
 
 /* Add to Bookmarks action */
-"action.title.save.bookmark" = "Bladwijzer toevoegen aan deze pagina";
+"action.title.save.bookmark" = "Bladwijzer toevoegen";
 
 /* Add to Favorites action */
-"action.title.save.favorite" = "Deze pagina markeren als favoriet";
+"action.title.save.favorite" = "Favoriet toevoegen";
 
 /* Settings action */
 "action.title.settings" = "Instellingen";
@@ -85,8 +118,77 @@
 /* Share action */
 "action.title.share" = "Delen";
 
+/* Settings label for bottom position for the address bar */
+"address.bar.bottom" = "Onderkant";
+
+/* Settings label for top position for the address bar */
+"address.bar.top" = "Boven";
+
+/* No comment provided by engineer. */
+"addWidget.button" = "Widget toevoegen";
+
+/* No comment provided by engineer. */
+"addWidget.description" = "Krijg snel toegang tot privézoekopdrachten en de sites die je leuk vindt.";
+
+/* No comment provided by engineer. */
+"addWidget.settings.firstParagraph" = "Druk lang op het startscherm om de schudmodus te gebruiken.";
+
+/* Replacement string is a plus button icon. */
+"addWidget.settings.secondParagraph.%@" = "Tik op de plus %@-knop.";
+
+/* No comment provided by engineer. */
+"addWidget.settings.title" = "Zoek en selecteer DuckDuckGo. Kies vervolgens een widget.";
+
+/* No comment provided by engineer. */
+"addWidget.title" = "Eén tik naar uw favoriete sites.";
+
 /* No comment provided by engineer. */
 "alert.message.bookmarkAll" = "Bestaande bladwijzers worden niet gedupliceerd.";
+
+/* Description for alert shown when sync error occurs because of bad bookmarks data */
+"alert.sync-bookmarks-bad-data-error-description" = "Sommige bladwijzers hebben de verkeerde indeling of zijn te lang en werden niet gesynchroniseerd.";
+
+/* Description for alert shown when sync bookmarks paused for too many items */
+"alert.sync-bookmarks-paused-description" = "Je hebt het maximumaantal bladwijzers bereikt. Verwijder enkele bladwijzers om de synchronisatie te hervatten.";
+
+/* Title for alert shown when sync bookmarks paused for too many items */
+"alert.sync-bookmarks-paused-title" = "Synchronisatie van bladwijzers is gepauzeerd";
+
+/* Description for alert shown when sync error occurs because of bad credentials data */
+"alert.sync-credentials-bad-data-error-description" = "Sommige wachtwoorden hebben de verkeerde indeling of zijn te lang en werden niet gesynchroniseerd.";
+
+/* Description for alert shown when sync credentials paused for too many items */
+"alert.sync-credentials-paused-description" = "Je hebt het maximumaantal wachtwoorden bereikt. Verwijder enkele wachtwoorden om de synchronisatie te hervatten.";
+
+/* Title for alert shown when sync credentials paused for too many items */
+"alert.sync-credentials-paused-title" = "Synchronisatie van wachtwoorden is gepauzeerd";
+
+/* Title for sync error alert */
+"alert.sync-error" = "Synchronisatie- en back-upfout";
+
+/* Sync error alert action button title, takes the user to the sync settings page. */
+"alert.sync-error-action" = "Synchronisatie-instellingen";
+
+/* Description for alert shown when user logged off from sync */
+"alert.sync-invalid-login-error-description" = "Synchronisatie is onderbroken. Als je dit apparaat wilt blijven synchroniseren, maak dan opnieuw verbinding met een ander apparaat of met je herstelcode.";
+
+/* Learn more button in alert */
+"alert.sync-paused-alert-learn-more-button" = "Meer informatie";
+
+/* Confirmation button in alert */
+"alert.sync-paused-alert-ok-button" = "OK";
+
+/* Title for alert shown when sync paused for an error */
+"alert.sync-paused-title" = "Synchronisatie is gepauzeerd";
+
+/* Description for alert shown when sync error occurs because of too many requests */
+"alert.sync-too-many-requests-error-description" = "'Synchronisatie en back-up' is tijdelijk niet beschikbaar.";
+
+/* Title of the warning message that tells the user that there was an error with the sync feature. */
+"alert.sync.warning.sync-error" = "Synchronisatiefout";
+
+/* Title of the warning message */
+"alert.sync.warning.sync-paused" = "Synchronisatie en back-up is gepauzeerd";
 
 /* Question from confirmation dialog */
 "alert.title.bookmarkAll" = "Alle tabbladen toevoegen als bladwijzer?";
@@ -102,6 +204,30 @@
 
 /* Save Favorite action */
 "alert.title.save.favorite" = "Favoriet opslaan";
+
+/* Description for unable to create recovery pdf error */
+"alert.unable-to-create-recovery-pdf-description" = "Het PDF-bestand voor herstel kan niet worden gemaakt.";
+
+/* Description for unable to delete data error */
+"alert.unable-to-delete-data-description" = "Kan gegevens niet verwijderen op de server.";
+
+/* Description for unable to merge two accounts error */
+"alert.unable-to-merge-two-accounts-description" = "Schakel 'Synchronisatie en back-up' uit op één apparaat en tik op 'Synchroniseren met een ander apparaat' op het andere apparaat om de apparaten te koppelen.";
+
+/* Description for unable to remove device error */
+"alert.unable-to-remove-device-description" = "Het apparaat kan niet worden verwijderd uit 'Synchronisatie en back-up'.";
+
+/* Description for unable to sync to server error */
+"alert.unable-to-sync-to-server-description" = "Er kan geen verbinding worden gemaakt met de server.";
+
+/* Description for unable to sync with another device error */
+"alert.unable-to-sync-with-other-device-description" = "Er kan niet worden gesynchroniseerd met een ander apparaat.";
+
+/* Description for unable to turn sync off error */
+"alert.unable-to-turn-sync-off-description" = "'Synchronisatie en back-up' kan niet worden uitgeschakeld.";
+
+/* Description for unable to update device name error */
+"alert.unable-to-update-device-name-description" = "De naam van het apparaat kan niet worden bijgewerkt.";
 
 /* Shown on authentication screen */
 "app.authentication.unlock" = "DuckDuckGo ontgrendelen.";
@@ -130,11 +256,468 @@
 /* No comment provided by engineer. */
 "autoclear.on" = "Aan";
 
+/* Subtitle for search history items */
+"autocomplete.history.search.duckduckgo" = "Zoek in DuckDuckGo";
+
+/* The message text shown in suggestions */
+"autocomplete.history.warning.message" = "Zoekopdrachtsuggesties bevatten nu ook je recent bezochte sites. Je kunt suggesties uitschakelen in de instellingen of ze op elk gewenst moment wissen met de 🔥 Fire Button.";
+
+/* Title for message show in suggestions */
+"autocomplete.history.warning.title" = "Dezelfde privacy.\nBetere zoeksuggesties!";
+
+/* Switch to tab hint */
+"autocomplete.switch.to.tab" = "Overschakelen naar tabblad";
+
+/* Autoconsent for Cookie Management Setting state */
+"autoconsent.disabled" = "Uitgeschakeld";
+
+/* Autoconsent for Cookie Management Setting state */
+"autoconsent.enabled" = "Ingeschakeld";
+
+/* No comment provided by engineer. */
+"autoconsent.info.header" = "Wanneer DuckDuckGo pop-ups voor cookietoestemming op bezochte websites detecteert, kunnen we proberen automatisch je cookievoorkeuren in te stellen om het aantal cookies tot een minimum te beperken en je privacy te maximaliseren. De pop-ups worden vervolgens gesloten. Sommige sites bieden geen optie om cookievoorkeuren te beheren, zodat we pop-ups zoals deze alleen kunnen verbergen.";
+
+/* Do not translate - stringsdict entry */
+"autofill.delete.all.passwords.completion" = "autofill.delete.all.passwords.completion";
+
+/* Do not translate - stringsdict entry */
+"autofill.delete.all.passwords.confirmation.body" = "autofill.delete.all.passwords.confirmation.body";
+
+/* Do not translate - stringsdict entry */
+"autofill.delete.all.passwords.confirmation.title" = "autofill.delete.all.passwords.confirmation.title";
+
+/* Do not translate - stringsdict entry */
+"autofill.delete.all.passwords.sync.confirmation.body" = "autofill.delete.all.passwords.sync.confirmation.body";
+
+/* Open Settings action for disabling autofill in Settings */
+"autofill.disable.prompt.action.open-settings" = "Open Instellingen";
+
+/* Message for informing user that they can disable autofill in Settings */
+"autofill.disable.prompt.message" = "Je kunt het opslaan van wachtwoorden op elk gewenst moment uitschakelen.";
+
+/* Text link to email protection website */
+"autofill.enable.email.protection" = "E-mailbeveiliging inschakelen";
+
+/* Accessibility title for a Hide Password button replacing displayed password with ***** */
+"autofill.hide-password" = "Wachtwoord verbergen";
+
+/* Button label to get link to download the desktop browser */
+"autofill.import.passwords.get-browser-button" = "Download de desktopbrowser";
+
+/* Step 1 for instructions to import passwords */
+"autofill.import.passwords.instructions.step1" = "Open DuckDuckGo op Mac of Windows";
+
+/* Step 2 for instructions to import passwords. This reads as 'Go to Settings > Passwords' */
+"autofill.import.passwords.instructions.step2" = "Ga naar '%1$@' > '%2$@'";
+
+/* second parameter for autofill.import.passwords.instructions.step2 */
+"autofill.import.passwords.instructions.step2.passwords" = "Wachtwoorden";
+
+/* first parameter for autofill.import.passwords.instructions.step2 */
+"autofill.import.passwords.instructions.step2.settings" = "Instellingen";
+
+/* Step 3 for instructions to import passwords. This reads as 'Select Import Passwords and follow the steps' */
+"autofill.import.passwords.instructions.step3" = "Selecteer '%@' en volg de stappen om gegevens te importeren";
+
+/* Parameter for autofill.import.passwords.instructions.step3 */
+"autofill.import.passwords.instructions.step3.import" = "Wachtwoorden importeren";
+
+/* Step 4 for instructions to import passwords: Once imported on your computer you can set up sync on this iPhone|iPad|device */
+"autofill.import.passwords.instructions.step4" = "Na het importeren op uw computer, kunt u synchronisatie instellen op deze '%@'";
+
+/* Title for section with instructions to import passwords */
+"autofill.import.passwords.instructions.title" = "Importeren vanuit de desktopbrowser:";
+
+/* Subtitle for screen to import passwords */
+"autofill.import.passwords.subtitle" = "Importeer wachtwoorden in de desktopversie van de DuckDuckGo-browser en synchroniseer ze vervolgens tussen apparaten.";
+
+/* Button label to sync passwords with desktop browser */
+"autofill.import.passwords.sync-button" = "Synchroniseren met de desktop";
+
+/* Title for screen to import passwords */
+"autofill.import.passwords.title" = "Wachtwoorden importeren";
+
+/* Disable action for alert when asking the user if they want to keep using autofill */
+"autofill.keep-enabled.alert.disable" = "Uitschakelen";
+
+/* A link that takes the user to the DuckDuckGo help pages explaining password managers */
+"autofill.learn.more.link.title" = "Meer informatie";
+
+/* Button displayed after saving/updating an autofill login that takes the user to the saved login */
+"autofill.login-save-action-button.toast" = "Weergeven";
+
+/* Message displayed after saving an autofill login */
+"autofill.login-saved.toast" = "Wachtwoord opgeslagen";
+
+/* Message displayed after updating an autofill login */
+"autofill.login-updated.toast" = "Wachtwoord bijgewerkt";
+
+/* Menu item text for copying autofill login details */
+"autofill.logins.copy-prompt" = "%@ kopiëren";
+
+/* Title for toast when copying address */
+"autofill.logins.copy-toast.address-copied" = "Adres gekopieerd";
+
+/* Title for toast when copying notes */
+"autofill.logins.copy-toast.notes-copied" = "Opmerkingen gekopieerd";
+
+/* Title for toast when copying password */
+"autofill.logins.copy-toast.password-copied" = "Wachtwoord gekopieerd";
+
+/* Title for toast when copying username */
+"autofill.logins.copy-toast.username-copied" = "Gebruikersnaam gekopieerd";
+
+/* Title of button in prompt requiring authentication before all passwords are deleted */
+"autofill.logins.delete.all.authentication.prompt.button" = "Nu verifiëren";
+
+/* Title of prompt requiring authentication before all passwords are deleted */
+"autofill.logins.delete.all.authentication.prompt.title" = "Verifiëren om alle wachtwoorden te verwijderen";
+
+/* Reason for authentication when deleting all logins */
+"autofill.logins.delete.all.authentication.reason" = "Verifieer om te bevestigen dat je alle wachtwoorden wilt verwijderen";
+
+/* Address label for login details on autofill */
+"autofill.logins.details.address" = "URL van de website";
+
+/* Title for autofill login details */
+"autofill.logins.details.default-title" = "Wachtwoord";
+
+/* Delete button when deleting an autofill login */
+"autofill.logins.details.delete" = "Wachtwoord verwijderen";
+
+/* Autofill alert button confirming delete autofill login */
+"autofill.logins.details.delete-confirmation.button" = "Wachtwoord verwijderen";
+
+/* Title when editing autofill login details */
+"autofill.logins.details.edit-title" = "Wachtwoord bewerken";
+
+/* Placeholder for password field on autofill login details */
+"autofill.logins.details.edit.password-placeholder" = "Wachtwoord";
+
+/* Placeholder for title field on autofill login details */
+"autofill.logins.details.edit.title-placeholder" = "Titel";
+
+/* Placeholder for url field on autofill login details */
+"autofill.logins.details.edit.url-placeholder" = "voorbeeld.com";
+
+/* Placeholder for userbane field on autofill login details */
+"autofill.logins.details.edit.username-placeholder" = "gebruikersnaam@voorbeeld.com";
+
+/* Message displaying when the login was last updated */
+"autofill.logins.details.last-updated" = "Laatst bijgewerkt op %@";
+
+/* Login name label for login details on autofill */
+"autofill.logins.details.login-name" = "Titel";
+
+/* Title when adding new autofill login */
+"autofill.logins.details.new-title" = "Wachtwoord toevoegen";
+
+/* Notes label for login details on autofill */
+"autofill.logins.details.notes" = "Opmerkingen";
+
+/* Menu item title for option to open website from selected url */
+"autofill.logins.details.open-website-prompt.title" = "Website openen";
+
+/* Password label for login details on autofill */
+"autofill.logins.details.password" = "Wachtwoord";
+
+/* Action text for alert when attempting to save a duplicate login */
+"autofill.logins.details.save-duplicate-alert.action" = "OK";
+
+/* Message for alert when attempting to save a duplicate login */
+"autofill.logins.details.save-duplicate-alert.message" = "Je hebt al een wachtwoord opgeslagen voor deze gebruikersnaam en website.";
+
+/* Title for alert when attempting to save a duplicate login */
+"autofill.logins.details.save-duplicate-alert.title" = "Wachtwoord dupliceren";
+
+/* Username label for login details on autofill */
+"autofill.logins.details.username" = "Gebruikersnaam";
+
+/* Title for button to Import Passwords when autofill has no items */
+"autofill.logins.empty-view.button.title" = "Wachtwoorden importeren";
+
+/* Subtitle for view displayed when no autofill passwords have been saved */
+"autofill.logins.empty-view.subtitle.first.paragraph" = "Je kunt opgeslagen wachtwoorden uit een andere browser importeren in DuckDuckGo.";
+
+/* Title for view displayed when autofill has no items */
+"autofill.logins.empty-view.title" = "Nog geen wachtwoorden opgeslagen";
+
+/* Cancel button for auth when opening login list */
+"autofill.logins.list.auth.cancel" = "Annuleren";
+
+/* Reason for auth when opening login list */
+"autofill.logins.list.auth.reason" = "Ontgrendel het apparaat om toegang te krijgen tot wachtwoorden";
+
+/* Title for close navigation button */
+"autofill.logins.list.close-title" = "Sluiten";
+
+/* Title for button to delete all saved autofill passwords */
+"autofill.logins.list.delete.all" = "Alles verwijderen";
+
+/* Title for a toggle that enables autofill */
+"autofill.logins.list.enable" = "Wachtwoorden opslaan en automatisch invullen";
+
+/* Footer label displayed below table section with option to enable autofill */
+"autofill.logins.list.enable.footer" = "Wachtwoorden worden veilig opgeslagen op je apparaat.";
+
+/* Toast message when a login item is deleted */
+"autofill.logins.list.login-deleted-message" = "Wachtwoord voor %@ verwijderd";
+
+/* Toast message when a login item without a title is deleted */
+"autofill.logins.list.login-deleted-message-no-title" = "Wachtwoord verwijderd";
+
+/* Title for a button that allows a user to reset their list of never saved sites */
+"autofill.logins.list.never.saved" = "Uitgesloten sites opnieuw instellen";
+
+/* Cancel button for resetting list of never saved sites */
+"autofill.logins.list.never.saved.reset.action.cancel" = "Annuleren";
+
+/* Confirm button to reset list of never saved sites */
+"autofill.logins.list.never.saved.reset.action.confirm" = "Uitgesloten sites opnieuw instellen";
+
+/* Alert title */
+"autofill.logins.list.never.saved.reset.action.title" = "Als je uitgesloten sites opnieuw instelt, zie je de volgende keer dat je bij een van deze sites inlogt een melding om je wachtwoord op te slaan.";
+
+/* Placeholder for search field on autofill login listing */
+"autofill.logins.list.search-placeholder" = "Wachtwoorden zoeken";
+
+/* Subtext under Autofill Settings briefly explaining security to alleviate user concerns. */
+"autofill.logins.list.settings.footer.fallback" = "Wachtwoorden worden versleuteld. Niemand anders kan ze zien, zelfs wij niet.";
+
+/* Subtext under Autofill Settings briefly explaining security to alleviate user concerns. Has a URL link by clicking Learn More. */
+"autofill.logins.list.settings.footer.markdown" = "Wachtwoorden worden versleuteld. Niemand anders dan jij kunt ze zien, zelfs wij niet. [Meer informatie](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/sync-and-backup/password-manager-security/)";
+
+/* Section title for group of suggested saved logins */
+"autofill.logins.list.suggested" = "Aanbevolen";
+
+/* Title for screen listing autofill logins */
+"autofill.logins.list.title" = "Wachtwoorden";
+
+/* Title for view displayed when autofill is locked on devices where a passcode has not been set */
+"autofill.logins.no-auth.subtitle" = "Er is een toegangscode vereist om je wachtwoorden te beschermen.";
+
+/* Title for view displayed when autofill is locked on devices where a passcode has not been set */
+"autofill.logins.no-auth.title" = "Beveilig je apparaat om wachtwoorden op te slaan";
+
+/* Cancel button for auth during login prompt */
+"autofill.logins.prompt.auth.cancel" = "Annuleren";
+
+/* Reason for auth during login prompt */
+"autofill.logins.prompt.auth.reason" = "Ontgrendel het apparaat om het opgeslagen wachtwoord te gebruiken";
+
+/* Title for section of autofill logins that are an exact match to the current website */
+"autofill.logins.prompt.exact.match.title" = "Van deze website";
+
+/* Button title for autofill login prompt if more options are available */
+"autofill.logins.prompt.more-options" = "Meer opties";
+
+/* Title for section of autofill logins that are an approximate match to the current website */
+"autofill.logins.prompt.partial.match.title" = "Van %@";
+
+/* Title of button for autofill login prompt to use a saved password for a website */
+"autofill.logins.prompt.password.button.title" = "Wachtwoord voor %@";
+
+/* Title for autofill login prompt */
+"autofill.logins.prompt.title" = "Een opgeslagen wachtwoord gebruiken?";
+
+/* Subtitle displayed when there are no results on Autofill search, example : No Result (Title) for Duck (Subtitle) */
+"autofill.logins.search.no-results.subtitle" = "voor '%@'";
+
+/* Title displayed when there are no results on Autofill search */
+"autofill.logins.search.no-results.title" = "Geen resultaten";
+
+/* Do not translate - stringsdict entry */
+"autofill.number.of.passwords" = "autofill.number.of.passwords";
+
+/* Description of autofill onboarding prompt's secure storage feature
+   Description of autofill onboarding prompt's secure storage feature with a string describing the available biometry + passcode as a parameter */
+"autofill.onboarding.key-features.secure-storage.description" = "Wachtwoorden worden versleuteld, opgeslagen op het apparaat en vergrendeld met %@.";
+
+/* Parameter for the description of autofill onboarding prompt's secure storage feature describing Face ID biometry + passcode */
+"autofill.onboarding.key-features.secure-storage.description.parameter.face-id" = "Face-ID of wachtwoordcode";
+
+/* Parameter for the description of autofill onboarding prompt's secure storage feature describing passcode only if no biometry are available */
+"autofill.onboarding.key-features.secure-storage.description.parameter.passcode" = "toegangscode";
+
+/* Parameter for the description of autofill onboarding prompt's secure storage feature describing Touch ID biometry + passcode */
+"autofill.onboarding.key-features.secure-storage.description.parameter.touch-id" = "Touch-ID of wachtwoordcode";
+
+/* Title of autofill onboarding prompt's secure storage feature */
+"autofill.onboarding.key-features.secure-storage.title" = "Veilige opslag";
+
+/* Description of autofill onboarding prompt's sign-in feature */
+"autofill.onboarding.key-features.sign-ins.description" = "Je hoeft geen inloggegevens te onthouden.";
+
+/* Title of autofill onboarding prompt's sign-in feature */
+"autofill.onboarding.key-features.sign-ins.title" = "Naadloze aanmeldingen";
+
+/* Description of autofill onboarding prompt's sync feature */
+"autofill.onboarding.key-features.sync.description" = "End-to-end versleuteld en eenvoudig in te stellen als je er klaar voor bent.";
+
+/* Title of autofill onboarding prompt's sync feature */
+"autofill.onboarding.key-features.sync.title" = "Synchroniseren tussen apparaten";
+
+/* Title of autofill onboarding prompt's features list */
+"autofill.onboarding.key-features.title" = "Belangrijkste kenmerken";
+
+/* Subtitle for prompt to use suggested strong password for creating a login */
+"autofill.password-generation-prompt.subtitle" = "Wachtwoorden worden veilig opgeslagen op je apparaat.";
+
+/* Title for prompt to use suggested strong password for creating a login */
+"autofill.password-generation-prompt.title" = "Een sterk wachtwoord van DuckDuckGo gebruiken?";
+
+/* Button title choosing to use the suggested generated password for creating a login */
+"autofill.password-generation-prompt.use-generated-password.cta" = "Sterk wachtwoord gebruiken";
+
+/* Button title choosing to use own password for creating a login */
+"autofill.password-generation-prompt.use-own-password.cta" = "Zelf wachtwoord aanmaken";
+
+/* Text for the confirmation message displayed when a user tries activate a Private Email Address */
+"autofill.private.email.mesage.activate.confirm.content" = "E-mails die naar %@ worden gestuurd, worden opnieuw doorgestuurd naar je inbox.";
+
+/* Title for the confirmation message  displayed when a user tries activate a Private Email Address */
+"autofill.private.email.mesage.activate.confirm.title" = "Privé-Duck Address opnieuw activeren?";
+
+/* Mesasage displayed when a private email address is active */
+"autofill.private.email.mesage.active" = "Actief";
+
+/* Text for the confirmation message displayed when a user tries deactivate a Private Email Address */
+"autofill.private.email.mesage.deactivate.confirm.content" = "E-mails die naar %@ worden gestuurd, worden niet meer doorgestuurd naar je inbox.";
+
+/* Title for the confirmation message displayed when a user tries deactivate a Private Email Address */
+"autofill.private.email.mesage.deactivate.confirm.title" = "Privé-Duck Address deactiveren?";
+
+/* Mesasage displayed when a user tries to manage a private email address but the service is not available, returns an error or network is down */
+"autofill.private.email.mesage.error" = "Beheren van dit adres is tijdelijk niet beschikbaar";
+
+/* Mesasage displayed when a private email address is inactive */
+"autofill.private.email.mesage.inactive" = "Gedeactiveerd";
+
+/* Button text for the alert dialog telling the user an updated username is no longer a private email address */
+"autofill.removed.duck.address.button" = "Ik snap het";
+
+/* Content for the alert dialog telling the user an updated username is no longer a private email address */
+"autofill.removed.duck.address.content" = "Je kunt dit Duck Address nog steeds beheren via e-mails die je ervan ontvangt in je persoonlijke inbox.";
+
+/* Title for the alert dialog telling the user an updated username is no longer a private email address */
+"autofill.removed.duck.address.title" = "De persoonlijke gebruikersnaam voor het Duck Address is verwijderd";
+
+/* CTA displayed on modal asking if the user never wants to be prompted to save a login for this website agin */
+"autofill.save-login.never-prompt.CTA" = "Nooit vragen voor deze site";
+
+/* Title displayed on modal asking for the user to save the login for the first time */
+"autofill.save-login.new-user.title" = "Dit wachtwoord opslaan?";
+
+/* CTA displayed on modal asking if the user wants to dismiss the save login action for now */
+"autofill.save-login.no-thanks.CTA" = "Nee, bedankt";
+
+/* Message displayed on modal asking for the user to save the login for the first time */
+"autofill.save-login.security.message" = "Sla je wachtwoord veilig op je apparaat op met DuckDuckGo wachtwoorden en automatisch invullen.";
+
+/* Title displayed on modal asking for the user to save the login */
+"autofill.save-login.title" = "Wachtwoord opslaan?";
+
+/* Confirm CTA displayed on modal asking for the user to save the password */
+"autofill.save-password.save.CTA" = "Wachtwoord opslaan";
+
+/* Title for the button to report that autofill is not working on a site in autofill settings */
+"autofill.settings.report.not.working.button.title" = "Meld een probleem met automatisch invullen";
+
+/* Button title for the confirmation prompt when reporting autofill is not working for a website */
+"autofill.settings.report.not.working.confirmation.button" = "Verzend Rapport";
+
+/* Message for the confirmation prompt when reporting autofill is not working for a website */
+"autofill.settings.report.not.working.confirmation.message" = "Rapporten die worden verzonden naar DuckDuckGo zijn anoniem en bevatten geen gebruikersnaam, wachtwoord of andere persoonlijk identificeerbare informatie.\n\nHet rapport bevat alleen de URL van de website en de status van sommige instellingen voor automatisch invullen.";
+
+/* Title for the confirmation prompt when reporting autofill is not working for a website */
+"autofill.settings.report.not.working.confirmation.title" = "Rapporteren dat automatisch invullen niet werkt op %@?";
+
+/* Message shown to user when they submit a report that autofill is not working for a website */
+"autofill.settings.report.not.working.sent.confirmation" = "Bedankt! Jouw rapport helpt ons DuckDuckGo beter te maken voor iedereen.";
+
+/* Subtitle for the row to report that autofill is not working on a site in autofill settings */
+"autofill.settings.report.not.working.subtitle" = "Anoniem melden dat automatisch invullen niet werkt op deze site. Wachtwoorden worden nooit gedeeld.";
+
+/* Title for the row to report that autofill is not working on a site in autofill settings */
+"autofill.settings.report.not.working.title" = "Automatisch invullen werkt niet?";
+
+/* Accessibility title for a Show Password button displaying actial password instead of ***** */
+"autofill.show-password" = "Wachtwoord weergeven";
+
+/* Message displayed to the user when they are logged out of Email protection. */
+"autofill.signin.to.manage" = "%@ om je Duck-adressen op dit apparaat te beheren.";
+
+/* Message displayed on modal asking for the user to update the password */
+"autofill.update-password.message" = "DuckDuckGo werkt dit opgeslagen wachtwoord op je apparaat bij.";
+
+/* Confirm CTA displayed on modal asking for the user to update the password */
+"autofill.update-password.save.CTA" = "Wachtwoord bijwerken";
+
+/* Title displayed on modal asking for the user to update the password */
+"autofill.update-password.title" = "Wachtwoord bijwerken voor\n%@?";
+
+/* Confirm CTA displayed on modal asking for the user to update the login */
+"autofill.update-username.save.CTA" = "Gebruikersnaam bijwerken";
+
+/* Title displayed on modal asking for the user to update the username */
+"autofill.update-usernamr.title" = "Gebruikersnaam bijwerken?";
+
+/* Add bookmark screen title */
+"bookmark.addBookmark.title" = "Bladwijzer toevoegen";
+
+/* Add favorite screen title */
+"bookmark.addFavorite.title" = "Favoriet toevoegen";
+
+/* Add folder screen title */
+"bookmark.addFolder.title" = "Map toevoegen";
+
+/* Add bookmark folder button text */
+"bookmark.addFolderButton" = "Map toevoegen";
+
 /* Placeholder in the add bookmark form */
 "bookmark.address.placeholder" = "www.voorbeeld.com";
 
+/* Delete bookmark alert message */
+"bookmark.delete.alert.message" = "Hiermee wordt je bladwijzer voor \"%@\" verwijderd";
+
+/* Delete bookmark alert title */
+"bookmark.delete.alert.title" = "Verwijderen?";
+
+/* The message shown after a bookmark has been deleted */
+"bookmark.deleted.toast" = "Bladwijzer verwijderd";
+
+/* Delete bookmark folder alert delete button */
+"bookmark.deleteFolderAlert.deleteButton" = "Verwijderen";
+
+/* Do not translate - stringsdict entry */
+"bookmark.deleteFolderAlert.message" = "bookmark.deleteFolderAlert.message";
+
+/* Delete bookmark folder alert title */
+"bookmark.deleteFolderAlert.title" = "%@ verwijderen?";
+
+/* Edit bookmark screen title */
+"bookmark.editBookmark.title" = "Bladwijzer bewerken";
+
+/* Edit favorite screen title */
+"bookmark.editFavorite.title" = "Favoriet bewerken";
+
+/* Edit folder screen title */
+"bookmark.editFolder.title" = "Map bewerken";
+
+/* Header for folder selection for bookmarks */
+"bookmark.folderSelect.title" = "Locatie";
+
+/* More options button text */
+"bookmark.moreButton" = "Meer";
+
+/* Placeholder in the bookmarks search bar */
+"bookmark.searchbar.placeholder" = "Zoeken";
+
 /* Placeholder in the add bookmark form */
 "bookmark.title.placeholder" = "Websitetitel";
+
+/* Top level bookmarks folder title */
+"bookmark.topLevelFolder.title" = "Bladwijzers";
 
 /* Info message after selecting Bookmark All button */
 "bookmarkAll.tabs.failed" = "Nieuwe bladwijzers toegevoegd voor alle tabbladen";
@@ -145,35 +728,185 @@
 /* No comment provided by engineer. */
 "bookmarks.button.hint" = "Bladwijzers";
 
-/* Broken Site Category */
-"brokensite.category.comments" = "Opmerkingen zijn niet geladen";
+/* Failure message when bookmarks failed to export */
+"bookmarks.export.failed.message" = "We kunnen je bladwijzers niet exporteren. Probeer het opnieuw.";
 
-/* Broken Site Category */
-"brokensite.category.content" = "Inhoud ontbreekt";
+/* Confirmation message that bookmarks have been exported to the file system */
+"bookmarks.export.files.success.message" = "Je bladwijzers zijn geëxporteerd.";
 
-/* Broken Site Category */
-"brokensite.category.images" = "Afbeeldingen zijn niet geladen";
+/* Confirmation message that bookmarks have been shared successfully to another app */
+"bookmarks.export.share.success.message" = "Je bladwijzers zijn gedeeld.";
 
-/* Broken Site Category */
-"brokensite.category.links" = "Links of knoppen werken niet";
+/* Title of option to export HTML */
+"bookmarks.exportAction.title" = "HTML-bestand exporteren";
 
-/* Broken Site Category */
-"brokensite.category.login" = "Ik kan niet inloggen";
+/* Failure message when bookmarks failed to import */
+"bookmarks.import.failed.message" = "Sorry, we kunnen dit bestand niet importeren.";
 
-/* Broken Site Category */
-"brokensite.category.other" = "Iets anders";
+/* Confirmation message that bookmarks have been imported */
+"bookmarks.import.success.message" = "Je bladwijzers zijn geïmporteerd.";
 
-/* Broken Site Category */
-"brokensite.category.paywall" = "De site heeft me gevraagd om uit te schakelen";
+/* Title of option to import HTML */
+"bookmarks.importAction.title" = "HTML-bestand importeren";
 
-/* Broken Site Category */
-"brokensite.category.unsupported" = "De browser is niet compatibel";
+/* Import bookmark file button text */
+"bookmarks.importExport.footer.button.title" = "Bladwijzerbestand importeren vanuit een andere browser";
 
-/* Broken Site Category */
-"brokensite.category.videos" = "Video werd niet afgespeeld";
+/* Title of prompt for users where they can choose to import or export an HTML file containing webpage bookmarks */
+"bookmarks.importExport.title" = "Importeer een HTML-bestand met bladwijzers uit een andere browser of exporteer je bestaande bladwijzers.";
 
-/* Broken Site Section Title */
-"brokensite.sectionTitle" = "BESCHRIJF WAT ER IS GEBEURD";
+/* Button to open report form */
+"broken.site.report.menu.title" = "Een probleem melden met deze site";
+
+/* Acknowledge button */
+"broken.site.report.missing.description.alert.button" = "Ik snap het";
+
+/* It appears as an alert after user tries to send a report without submitting any details */
+"broken.site.report.missing.description.alert.description" = "Beschrijf het probleem dat je op deze site hebt ondervonden zodat we beter begrijpen hoe we het kunnen oplossen.";
+
+/* It appears as an alert after user tries to send a report without submitting any details */
+"broken.site.report.missing.description.alert.title" = "Omschrijving vereist";
+
+/* Message that appears after submitting report */
+"broken.site.report.success.toast" = "Jouw melding helpt DuckDuckGo beter te maken voor iedereen!";
+
+/* Button to answer question 'Did turning off protections resolve the issue on this site?' */
+"broken.site.report.toggle.alert.no.button" = "Nee";
+
+/* An alert that appears after user turns off the privacy protection */
+"broken.site.report.toggle.alert.title" = "Is het probleem op deze site opgelost door de Privacy Beveiligingen uit te schakelen?";
+
+/* Button to answer question 'Did turning off protections resolve the issue on this site?' */
+"broken.site.report.toggle.alert.yes.button" = "Ja";
+
+/* Button to continue the onboarding process */
+"contextual.onboarding.addToDock.buttons.skip" = "Overslaan";
+
+/* Button on the last screen of the onboarding, it will dismiss the onboarding screen. */
+"contextual.onboarding.addToDock.buttons.startBrowsing" = "Beginnen met browsen";
+
+/* Button of the onboarding dialog. On click it shows a dialog with a tutorial video about how to add the DDG browser icon to the device dock. */
+"contextual.onboarding.addToDock.buttons.tutorial" = "Tonen";
+
+/* Message of the last screen of the onboarding that promotes adding the DDG browser icon to the dock. */
+"contextual.onboarding.addToDock.promo.contextual.message" = "Vergeet niet: elke keer als je met mij browset, verliest een enge advertentie haar kracht.\n\nHoud me dus in je Dock voor dagelijks gebruik.";
+
+/* The message of the onboarding dialog popup that promotes adding the DDG browser icon to the dock. */
+"contextual.onboarding.addToDock.promo.intro.message" = "Ik heb alles wat je nodig hebt om dagelijks te browsen.";
+
+/* The title of the onboarding dialog popup that promotes adding the DDG browser icon to the dock. */
+"contextual.onboarding.addToDock.promo.title" = "Voeg me toe aan je dock!";
+
+/* The message of the onboarding dialog popup that explains how to add the DDG browser icon to the dock. */
+"contextual.onboarding.addToDock.tutorial.message" = "Zoek het DuckDuckGo-pictogram op je startscherm. Houd het ingedrukt en sleep het naar zijn plaats. Dat is alles!";
+
+/* The title of the onboarding dialog popup that explains how to add the DDG browser icon to the dock. */
+"contextual.onboarding.addToDock.tutorial.title" = "Voeg me eenvoudig toe aan je Dock.";
+
+/* First parameter is a count of additional trackers, second and third are names of the tracker networks (strings) */
+"contextual.onboarding.browsing.multiple.trackers" = "contextual.onboarding.browsing.multiple.trackers";
+
+/* Parameter is domain name (string) */
+"contextual.onboarding.browsing.one.tracker" = "*%1$@* probeerde je hier te volgen. Ik heb dit geblokkeerd!\n\n☝️ Tik op het schild voor meer informatie.";
+
+/* Button on the last screen of the onboarding, it will dismiss the onboarding screen. */
+"contextual.onboarding.final-screen.button" = "High five!";
+
+/* Message of the last screen of the onboarding to the browser app. */
+"contextual.onboarding.final-screen.message" = "Denk eraan: elke keer als je met mij browset, verliest een enge advertentie zijn vleugels. 👌";
+
+/* Title of the last screen of the onboarding to the browser app */
+"contextual.onboarding.final-screen.title" = "Je kunt het!";
+
+/* After the user performs their first search using the browser, this dialog explains the advantages of using DuckDuckGo */
+"contextual.onboarding.first-search-done.message" = "Dat is DuckDuckGo Search. Privé. Snel. Minder advertenties.";
+
+/* During onboarding steps this button is shown and takes either to the next steps or closes the onboarding. */
+"contextual.onboarding.got-it.button" = "Ik snap het!";
+
+/* Message of the last screen of the onboarding to the browser app. */
+"contextual.onboarding.highlights.final-screen.message" = "Denk eraan: elke keer als je met mij browset, verliest een enge advertentie zijn vleugels.";
+
+/* After the user performs their first search using the browser, this dialog explains the advantages of using DuckDuckGo */
+"contextual.onboarding.highlights.first-search-done.message" = "Dat is DuckDuckGo Search! Privé. Snel. Minder advertenties.";
+
+/* Message of a popover on the browser that invites the user to try a search explaining that their searches are private */
+"contextual.onboarding.highlights.try-a-search.message" = "Je DuckDuckGo-zoekopdrachten zijn altijd privé.";
+
+/* Browser Search query for baby ducklings */
+"contextual.onboarding.highlights.try-search.surprise-me" = "baby-eendjes";
+
+/* Title of a popover on the new tab page browser that invites the user to try a visiting a website */
+"contextual.onboarding.ntp.try-a-site.title" = "Bezoek eens een site!";
+
+/* Message of a popover on the browser that invites the user to try a search explaining that their searches are anonymous */
+"contextual.onboarding.try-a-search.message" = "Je DuckDuckGo-zoekopdrachten zijn altijd anoniem.";
+
+/* Title of a popover on the browser that invites the user to try a search */
+"contextual.onboarding.try-a-search.title" = "Klaar om te beginnen?\nProbeer een zoekopdracht!";
+
+/* Message of a popover on the browser that invites the user to try visiting a website to explain that we block trackers */
+"contextual.onboarding.try-a-site.message" = "Ik blokkeer trackers zodat ze je niet kunnen bespioneren.";
+
+/* Title of a popover on the browser that invites the user to try a visiting a website */
+"contextual.onboarding.try-a-site.title" = "Probeer nu een site te bezoeken!";
+
+/* Message of a popover on the browser that invites the user to try visiting the browser Fire Button. Please leave the line break */
+"contextual.onboarding.try-fire-button.message" = "Wis je browser-activiteit direct met de Fire Button.\n\nProbeer het maar! 🔥";
+
+/* Browser Search query for how to say duck in english */
+"contextual.onboarding.try-search.option1-English" = "hoe zeg je 'eend' in het Spaans?";
+
+/* Browser Search query for how to say duck in english */
+"contextual.onboarding.try-search.option1international" = "hoe zeg je 'eend' in het Engels?";
+
+/* Search query for the cast of Mighty Ducks */
+"contextual.onboarding.try-search.option2-english" = "cast van Mighty Ducks";
+
+/* Search query for the cast of Avatar */
+"contextual.onboarding.try-search.option2-international" = "cast van avatar";
+
+/* Browser Search query for local weather */
+"contextual.onboarding.try-search.option3" = "lokaal weer";
+
+/* Browser Search query for chocolate chip cookie recipes */
+"contextual.onboarding.try-search.surprise-me-english" = "Recepten voor chocoladekoekjes";
+
+/* Browser Search query for dinner recipes */
+"contextual.onboarding.try-search.surprise-me-international" = "recepten voor het avondeten";
+
+/* Title for a button that triggers an unknown search query for the user. */
+"contextual.onboarding.try-search.surprise-me-title" = "Verras me!";
+
+/* Crash Report always send button title */
+"crash.report.dialog.always.send" = "Crashrapporten altijd verzenden";
+
+/* Crash Report hide details button title */
+"crash.report.dialog.hide.details" = "Verbergen";
+
+/* Crash Report dialog message */
+"crash.report.dialog.message" = "Crashrapporten helpen DuckDuckGo om problemen vast te stellen en onze producten te verbeteren. Ze bevatten geen persoonlijk identificeerbare informatie.";
+
+/* Crash Report never send button title */
+"crash.report.dialog.never.send" = "Nooit verzenden";
+
+/* Crash Report show details button title */
+"crash.report.dialog.show.details" = "Bekijk wat er is verzonden";
+
+/* Crash Report dialog title */
+"crash.report.dialog.title" = "Automatisch crashrapporten verzenden?";
+
+/* Title for a section containing only items from past month */
+"date.range.past-month" = "Afgelopen maand";
+
+/* Title for a section containing only items from past week */
+"date.range.past-week" = "Afgelopen week";
+
+/* Title for a section containing only items from today */
+"date.range.today" = "Vandaag";
+
+/* Title for a section containing only items from yesterday */
+"date.range.yesterday" = "Gisteren";
 
 /* No comment provided by engineer. */
 "dax.hide.button" = "Tips voor altijd verbergen";
@@ -188,7 +921,7 @@
 "dax.hide.title" = "Resterende tips verbergen?";
 
 /* No comment provided by engineer. */
-"dax.onboarding.browsing.after.search" = "Je DuckDuckGo-zoekopdrachten zijn anoniem en ik sla je zoekgeschiedenis nooit op. Nooit. 🙌";
+"dax.onboarding.browsing.after.search" = "Je DuckDuckGo zoekopdrachten zijn anoniem. Altijd. 🙌";
 
 /* No comment provided by engineer. */
 "dax.onboarding.browsing.after.search.cta" = "Opluchting!";
@@ -245,7 +978,16 @@
 "dax.onboarding.home.subsequent" = "Je kunt het!\n\nDenk eraan: elke keer als je met mij browset, verliest een enge advertentie zijn vleugels. 👍";
 
 /* No comment provided by engineer. */
-"dax.onboarding.message" = "Internet kan best eng zijn.\n\nMaak je geen zorgen! Privé zoeken en browsen is eenvoudiger dan je denkt.";
+"Debug" = "Fouten opsporen";
+
+/* Default string used if users device is not iPhone or iPad */
+"device.type.default" = "apparaat";
+
+/* Device type is iPhone */
+"device.type.iphone" = "iPhone";
+
+/* Device type is iPad */
+"device.type.pad" = "iPad";
 
 /* GPC Setting state */
 "donotsell.disabled" = "Uitgeschakeld";
@@ -259,11 +1001,131 @@
 /* No comment provided by engineer. */
 "donotsell.info.headertext" = "Veel trackers worden automatisch geblokkeerd door DuckDuckGo. Met Global Privacy Control (GPC) kun je deelnemende websites ook vragen om je persoonsgegevens niet te verkopen aan of te delen met andere bedrijven.";
 
+/* Alert action for starting a file dowload */
+"downloads.alert.action.save-to-downloads" = "Opslaan in downloads";
+
+/* Cancel download action for downloads */
+"downloads.cancel-download.alert.cancel" = "Annuleren";
+
+/* Message for alert when trying to cancel the file download */
+"downloads.cancel-download.alert.message" = "Weet je zeker dat je deze download wilt annuleren?";
+
+/* Confirm action for alert when trying to cancel the file download */
+"downloads.cancel-download.alert.no" = "Nee";
+
+/* Title for alert when trying to cancel the file download */
+"downloads.cancel-download.alert.title" = "Downloaden annuleren?";
+
+/* Confirm action for for alert when trying to cancel the file download */
+"downloads.cancel-download.alert.yes" = "Ja";
+
+/* Button for deleting all items on downloads list */
+"downloads.downloads-list.delete-all" = "Alles verwijderen";
+
+/* Empty downloads list placholder */
+"downloads.downloads-list.empty" = "Nog geen bestanden gedownload";
+
+/* Label displaying file download progress. Both parameters are formatted data size measurements e.g. 5MB. First parameter is data size currently downloaded. Second parameter is total expected data size of the file. */
+"downloads.downloads-list.row.downloading" = "Downloaden - %1$@ van %2$@";
+
+/* Label displaying file download progress. The parameter is formatted data size measurements currently downloaded e.g. 5MB. */
+"downloads.downloads-list.row.downloadingUnknownTotalSize" = "Downloaden - %@";
+
+/* Downloads list screen title */
+"downloads.downloads-list.title" = "Downloads";
+
+/* Additional alert message shown when there are active downloads when using the fire button */
+"downloads.fire-button.alert.message" = "Hiermee worden ook lopende downloads geannuleerd";
+
+/* Message confirming that all files on the downloads list have been deleted */
+"downloads.message.all-files-deleted" = "Alle bestanden verwijderd";
+
+/* Message confirming that the download process has completed. Parameter is downloaded file's filename */
+"downloads.message.download-complete" = "%@ is gedownload";
+
+/* Message confirming the file was deleted. Parameter is file's filename */
+"downloads.message.download-deleted" = "%@ verwijderd";
+
+/* Message informing that the download has failed due to connection issues */
+"downloads.message.download-failed" = "Downloaden mislukt. Controleer uw internetverbinding.";
+
+/* Message confirming that the download process has started. Parameter is downloaded file's filename */
+"downloads.message.download-started" = "Downloaden gestart voor %@";
+
+/* No comment provided by engineer. */
+"Duck Address" = "Duck Address";
+
+/* Title for message explaining to the user that Duck Player is not available */
+"duck-player.contingency-title" = "Duck Player is niet beschikbaar";
+
+/* Button for the message explaining to the user that Duck Player is not available so the user can learn more */
+"duck-player.video-contingency-cta" = "Meer informatie";
+
+/* Message explaining to the user that Duck Player is not available */
+"duck-player.video-contingency-message" = "Recente wijzigingen in YouTube hebben invloed op de functionaliteit van Duck Player. We werken aan een oplossing voor deze problemen. Bedankt voor je begrip.";
+
+/* No comment provided by engineer. */
+"DuckDuckGo for iOS" = "DuckDuckGo voor iOS";
+
+/* Text displayed when DuckPlayer is always enabled */
+"duckPlayer.alwaysEnabled.label" = "Altijd";
+
+/* Text displayed when DuckPlayer is in 'Ask' mode. */
+"duckPlayer.ask.label" = "Elke keer vragen";
+
+/* Text displayed when DuckPlayer is in off. */
+"duckPlayer.never.label" = "Nooit";
+
+/* Body text for the modal feature explanation */
+"duckplayer.presentation.modal.body" = "Met Duck Player kun je YouTube bekijken in DuckDuckGo, zonder gerichte advertenties. Wat je bekijkt heeft geen invloed op je aanbevelingen.";
+
+/* Button that will dismiss the modal */
+"duckplayer.presentation.modal.dismiss-button" = "Ik snap het!";
+
+/* Two line title (separated by \n) for the feature explanation */
+"duckplayer.presentation.modal.title" = "Te veel advertenties op YouTube? Probeer Duck Player!";
+
+/* Two line title (separated by \n) for the feature explanation */
+"duckplayer.presentation.modal.title.youtube" = "Te veel advertenties op YouTube? Niet met Duck Player!";
+
+/* Footer label in the settings screen for Duck Player */
+"duckplayer.settings.footer" = "DuckDuckGo biedt alle Privacy Essentials die je nodig hebt om jezelf te beschermen terwijl je op internet surft.";
+
+/* Text explaining what Duck Player is in the settings screen. */
+"duckplayer.settings.info-text" = "Met Duck Player kun je YouTube bekijken in DuckDuckGo, zonder gerichte advertenties. Wat je bekijkt heeft geen invloed op je aanbevelingen.";
+
+/* Button that takes the user to learn more about Duck Player. */
+"duckplayer.settings.learn-more" = "Meer informatie";
+
+/* Settings screen cell text for DuckPlayer settings to open in new tab */
+"duckplayer.settings.open-new-tab-label" = "Open Duck Player in een nieuw tabblad";
+
+/* Settings screen cell text for DuckPlayer settings */
+"duckplayer.settings.open-videos-in" = "YouTube-video's openen in Duck Player";
+
+/* Settings screen cell text for DuckPlayer settings */
+"duckplayer.settings.title" = "Duck Player";
+
+/* Email protection service offered by DuckDuckGo */
+"email-protection" = "E-mailbescherming";
+
 /* Cancel option for the email alias alert */
 "email.aliasAlert.decline" = "Annuleren";
 
 /* Option for generating a private email address */
-"email.aliasAlert.generatePrivateAddress" = "Een privéadres genereren";
+"email.aliasAlert.generatePrivateAddress" = "Privé-Duck Address genereren";
+
+/* Option for generating a private email address */
+"email.aliasAlert.prompt.generatePrivateAddress" = "Privé-Duck Address genereren";
+
+/* Subtitle for generating a private email address */
+"email.aliasAlert.prompt.generatePrivateAddress.subtitle" = "E-mailtrackers blokkeren en adres verbergen";
+
+/* Title for the email alias selection prompt */
+"email.aliasAlert.prompt.title" = "E-mailadres selecteren";
+
+/* Subtitle for choosing primary user email address */
+"email.aliasAlert.prompt.useUserAddress.subtitle" = "E-mailtrackers blokkeren";
 
 /* Title for the email alias selection alert */
 "email.aliasAlert.title" = "E-mailtrackers met een Duck-adres blokkeren";
@@ -275,7 +1137,7 @@
 "email.browsingMenu.alert" = "Nieuw adres gekopieerd naar je klembord";
 
 /* Email option title in the browsing menu */
-"email.browsingMenu.useNewDuckAddress" = "Duck-adres aanmaken";
+"email.browsingMenu.useNewDuckAddress" = "Privé-Duck Address genereren";
 
 /* Signed in state for the email feature */
 "email.settings.enabled" = "Ingeschakeld";
@@ -286,92 +1148,86 @@
 /* Signed out state for the email feature */
 "email.settings.off" = "Uit";
 
-/* Cancel option for the email sign out alert */
-"email.signOutAlert.cancel" = "Annuleren";
+/* Subtitle for the email settings cell */
+"email.settings.subtitle" = "Blokkeer e-mailtrackers en verberg je adres";
 
-/* Description for the email sign out alert */
-"email.signOutAlert.description" = "Let op: als je E-mailbescherming van dit apparaat verwijdert, wordt je Duck-adres niet verwijderd.";
+/* Option to continue the Email Protection signup */
+"email.signup-prompt.alert.continue" = "Doorgaan met instellen";
 
-/* Remove option for the email sign out alert */
-"email.signOutAlert.remove" = "Verwijderen";
+/* Option to exit the Email Protection signup */
+"email.signup-prompt.alert.exit" = "Instellen beëindigen";
 
-/* Title for the email sign out alert */
-"email.signOutAlert.title" = "E-mailbescherming verwijderen?";
+/* Title for exiting the Email Protection signup early alert */
+"email.signup-prompt.alert.title" = "Als je nu afsluit, wordt je Duck Address niet opgeslagen!";
 
-/* Error text when failing to join the waitlist */
-"email.waitlist.error-joining" = "Er is een fout opgetreden bij het inschrijven op de wachtlijst. Probeer het later opnieuw.";
+/* Button title choosing not to sign up for email protection and not to be prompted again */
+"email.signup-prompt.do-not-signup-button.cta" = "Niet meer weergeven";
 
-/* Action button text for the email waitlist */
-"email.waitlist.get-started" = "Aan de slag";
+/* Button title choosing to sign up for email protection */
+"email.signup-prompt.signup-button.cta" = "Mijn e-mailadres beschermen";
 
-/* Invite code button text for the email waitlist */
-"email.waitlist.have-invite-code" = "Ik heb een uitnodigingscode";
+/* Subtitle for prompt to sign up for email protection */
+"email.signup-prompt.subtitle" = "Maak een uniek, willekeurig adres dat ook verborgen trackers verwijdert en e-mails doorstuurt naar je inbox.";
 
-/* Header text for the email waitlist */
-"email.waitlist.invited" = "Je bent uitgenodigd!";
-
-/* Action button text for the email waitlist */
-"email.waitlist.join" = "Schrijf je in voor de privéwachtlijst";
-
-/* Header text for the email waitlist */
-"email.waitlist.joined" = "Je staat op de wachtlijst!";
-
-/* First parameter is 'get a notification', second is 'Learn more'. */
-"email.waitlist.joined.no-notification" = "Je uitnodiging wordt hier weergegeven als je aan de beurt bent. Wil je %1$@ wanneer het toekomt? %2$@ over E-mailbescherming.";
-
-/* Notification text for the email waitlist */
-"email.waitlist.joined.no-notification.get-notification" = "krijg een melding";
-
-/* Description text for the email waitlist. Parameter is 'Learn more.' */
-"email.waitlist.joined.notification" = "We sturen je een melding wanneer<br/> E-mailbescherming voor je klaar staat. %@.";
-
-/* Footer text for the email waitlist */
-"email.waitlist.learn-more" = "Meer informatie";
-
-/* Body text for the permission notification for the email waitlist */
-"email.waitlist.notification-permission.body" = "We sturen je een melding wanneer je E-mailbescherming kunt gaan gebruiken.";
-
-/* Title for the permission notification for the email waitlist */
-"email.waitlist.notification-permission.title" = "Wil je dat we je een melding sturen als je aan de beurt bent?";
-
-/* Body text for the email waitlist notification */
-"email.waitlist.notification.body" = "Je hebt je ingeschreven voor de wachtlijst en ons gevraagd je te laten weten wanneer je aan de beurt bent om onze E-mailbescherming te proberen.";
-
-/* Decline option for the permission notification for the email waitlist */
-"email.waitlist.notification.no-thanks" = "Nee, bedankt";
-
-/* Accept option for the permission notification for the email waitlist */
-"email.waitlist.notification.notify-me" = "MELDING STUREN";
-
-/* Title for the email waitlist notification */
-"email.waitlist.notification.title" = "Je hebt een uitnodiging voor E-mailbescherming ontvangen!";
-
-/* Footer text for the email waitlist. Parameter is 'Learn more'. */
-"email.waitlist.privacy-guarantee" = "We bewaren je e-mails niet. %@.";
-
-/* Header text for the email waitlist */
-"email.waitlist.privacy-simplified" = "E-mailprivacy, vereenvoudigd.";
-
-/* Description text for the email waitlist. Parameter is 'Learn more'. */
-"email.waitlist.summary" = "Blokkeer e-mailtrackers en verberg je adres, zonder van e-mailprovider te wisselen. %@.";
+/* Title for prompt to sign up for email protection */
+"email.signup-prompt.title" = "Je e-mailadres verbergen en\n trackers blokkeren";
 
 /* Empty list state placholder */
 "empty.bookmarks" = "Nog geen bladwijzers toegevoegd";
 
-/* Empty list state placholder */
-"empty.favorites" = "Nog geen favorieten toegevoegd";
-
 /* Empty search placeholder on bookmarks search */
 "empty.search" = "Geen overeenkomsten gevonden";
+
+/* Button title to Sign In */
+"error.email-protection-sign-in.action" = "Aanmelden";
+
+/* Alert message */
+"error.email-protection-sign-in.body" = "Sorry, meld je opnieuw aan om de functies voor e-mailbeveiliging in deze browser weer in te schakelen.";
+
+/* Alert title */
+"error.email-protection-sign-in.title" = "Fout in Email Protection";
+
+/* Button title to open device settings */
+"error.insufficient-disk-space.action" = "Open Instellingen";
+
+/* Alert message */
+"error.insufficient-disk-space.body" = "Het lijkt erop dat je apparaat geen opslagruimte meer heeft. Maak ruimte vrij om door te gaan.";
+
+/* Alert title */
+"error.insufficient-disk-space.title" = "Niet genoeg opslagruimte";
+
+/* Button title that is shutting down the app */
+"error.preemptive-crash.action" = "App sluiten";
+
+/* Alert message */
+"error.preemptive-crash.body" = "Het lijkt erop dat er een probleem is met de app en dat deze moet worden gesloten. Open de app opnieuw om door te gaan.";
+
+/* Alert title */
+"error.preemptive-crash.title" = "Probleem met app gedetecteerd";
+
+/* Generic error message on a dialog for when the cause is not known. */
+"error.unknown.try.again" = "Er is een onbekende fout opgetreden";
 
 /* No comment provided by engineer. */
 "favorite" = "Favoriet";
 
 /* No comment provided by engineer. */
-"favorite.menu.delete" = "Verwijderen";
+"favorite.menu.edit" = "Bewerken";
 
 /* No comment provided by engineer. */
-"favorite.menu.edit" = "Bewerken";
+"favorite.menu.remove" = "Verwijderen";
+
+/* Display Mode for favorites */
+"favorites.settings.all-devices" = "Alle favorieten op apparaat";
+
+/* Footer of the favorites settings table */
+"favorites.settings.footer" = "Kies welke favorieten je op een nieuw tabblad wilt weergeven op basis van hun herkomst.";
+
+/* Header of the favorites settings table */
+"favorites.settings.header" = "Weergavevoorkeuren";
+
+/* Display Mode for favorites */
+"favorites.settings.mobile-only" = "Alleen mobiele favorieten";
 
 /* No comment provided by engineer. */
 "feedback.browserFeatures.ads" = "Advertentie- en pop-upblokkering";
@@ -466,6 +1322,39 @@
 /* Confirmation button */
 "feedback.form.submit" = "Verzenden";
 
+/* Title of the feedback form */
+"feedback.form.title" = "Help Privacy Pro te verbeteren";
+
+/* Category for Identity Theft Restoration feedback */
+"feedback.general.category.itr" = "Identity Theft Restoration";
+
+/* Category for Personal Info Removal feedback */
+"feedback.general.category.pir" = "Verwijdering van persoonlijke informatie";
+
+/* Category for subscription and payments feedback */
+"feedback.general.category.ppro" = "Abonnementen en betalingen";
+
+/* Prompt to select a category for general feedback */
+"feedback.general.category.select" = "SELECTEER EEN CATEGORIE";
+
+/* Category for VPN feedback */
+"feedback.general.category.vpn" = "VPN";
+
+/* Category for access code issues */
+"feedback.itr.category.access-code" = "Probleem met toegangscode";
+
+/* Category for issues contacting an advisor */
+"feedback.itr.category.cant-contact-advisor" = "Kan geen contact opnemen met de adviseur";
+
+/* Prompt to select a category for Identity Theft Restoration feedback */
+"feedback.itr.category.select" = "SELECTEER EEN CATEGORIE";
+
+/* Category for other Identity Theft Restoration issues */
+"feedback.itr.category.something-else" = "Iets anders";
+
+/* Category for unhelpful advisor calls */
+"feedback.itr.category.unhelpful" = "Telefoontje naar adviseur hielp niet";
+
 /* No comment provided by engineer. */
 "feedback.negative.form.genericPlaceholder" = "Wees zo specifiek mogelijk";
 
@@ -505,6 +1394,24 @@
 /* No comment provided by engineer. */
 "feedback.performance.slowLoading" = "Webpagina's of zoekresultaten worden langzaam geladen";
 
+/* Category for when scan finds incorrect records */
+"feedback.pir.category.not-me" = "De scan vond gegevens die niet van mij zijn";
+
+/* Category for when scan doesn't find info on a specific site */
+"feedback.pir.category.nothing-on-site" = "De scan heeft mijn gegevens niet gevonden op een specifieke site";
+
+/* Category for other Personal Info Removal issues */
+"feedback.pir.category.other" = "Iets anders";
+
+/* Category for when the removal process is stuck */
+"feedback.pir.category.removal-stuck" = "Het verwijderingsproces is vastgelopen";
+
+/* Category for when the scan is stuck */
+"feedback.pir.category.scan-stuck" = "De scan naar gegevens is vastgelopen";
+
+/* Prompt to select a category for Personal Info Removal feedback */
+"feedback.pir.category.select" = "SELECTEER EEN CATEGORIE";
+
 /* Header above input field */
 "feedback.positive.form.header" = "Details delen";
 
@@ -522,6 +1429,15 @@
 
 /* Button encouraging uses to share details aboout their feedback */
 "feedback.positive.submit" = "Details delen";
+
+/* Category for other Privacy Pro issues */
+"feedback.ppro.category.other" = "Iets anders";
+
+/* Category for one-time password issues */
+"feedback.ppro.category.otp" = "Probleem met eenmalig wachtwoord";
+
+/* Prompt to select a category for Privacy Pro feedback */
+"feedback.ppro.category.select" = "SELECTEER EEN CATEGORIE";
 
 /* No comment provided by engineer. */
 "feedback.start.footer" = "Jouw anonieme feedback is belangrijk voor ons.";
@@ -568,17 +1484,20 @@
 /* No comment provided by engineer. */
 "fireButtonAnimation.waterSwirl.name" = "Draaikolk";
 
-/* No comment provided by engineer. */
-"home.message.buttonText" = "Instellen als standaardbrowser";
+/* Description text above the Share Link button */
+"get.browser.on-your-desktop-go-to" = "Ga op je computer naar:";
 
-/* No comment provided by engineer. */
-"home.message.header" = "Stel DuckDuckGo in als standaardbrowser.";
+/* Title for the Share Download Link button */
+"get.browser.share-link" = "Downloadlink delen";
 
-/* No comment provided by engineer. */
-"home.message.subheader" = "Open links altijd met een gerust hart.";
+/* Message displayed in the share action when sharing via email */
+"get.browser.share-link.message" = "Zoek privé en blokkeer trackers met de DuckDuckGo-desktopbrowser. Bezoek deze link op je computer en download de browser vandaag nog.";
 
-/* No comment provided by engineer. */
-"home.message.topText" = "NIEUW VOOR IOS 14";
+/* Title displayed in the share action */
+"get.browser.share-link.title" = "DuckDuckGo-browser downloaden voor Mac of Windows";
+
+/* Title for the get desktop browser feature */
+"get.browser.title" = "DuckDuckGo downloaden voor Mac of Windows";
 
 /* No comment provided by engineer. */
 "home.row.onboarding.header" = "Voeg DuckDuckGo toe aan je beginscherm!";
@@ -594,6 +1513,21 @@
 
 /* Home tab title */
 "homeTab.title" = "Home";
+
+/* No comment provided by engineer. */
+"ID: %@ | %@ | %@" = "ID: %1$@ | %2$@ | %3$@";
+
+/* OK title for invite screen alert dismissal button */
+"invite.alert.ok.button" = "OK";
+
+/* Continue button on an invite dialog */
+"invite.dialog.continue.button" = "Continue";
+
+/* Get Started button on an invite dialog */
+"invite.dialog.get.started.button" = "Get Started";
+
+/* Message to show after user enters an unrecognized invite code */
+"invite.dialog.unrecognized.code.message" = "We didn’t recognize this Invite Code.";
 
 /* No comment provided by engineer. */
 "keyCommandAddBookmark" = "Bladwijzer toevoegen";
@@ -655,17 +1589,407 @@
 /* No comment provided by engineer. */
 "keyCommandShowAllTabs" = "Alle tabbladen weergeven";
 
-/* Please preserve newline character */
-"launchscreenWelcomeMessage" = "Welkom bij\nDuckDuckGo!";
+/* Summary text for the macOS browser waitlist */
+"mac-browser.waitlist.summary" = "DuckDuckGo voor Mac heeft de snelheid die je nodig hebt en de browsefuncties die je verwacht, en zit boordevol met onze allerbeste privacy essentials.";
+
+/* Title for the macOS waitlist notification */
+"mac-waitlist.available.notification.title" = "DuckDuckGo voor Mac staat klaar!";
+
+/* Title for the copy action */
+"mac-waitlist.copy" = "Kopiëren";
+
+/* Description text above the Share Link button */
+"mac-waitlist.join-waitlist-screen.on-your-computer-go-to" = "Ga op je Windows-computer naar:";
+
+/* Description text above the Share Link button */
+"mac-waitlist.join-waitlist-screen.on-your-mac-go-to" = "Ga op je Mac naar:";
+
+/* Title for the Share Link button */
+"mac-waitlist.join-waitlist-screen.share-link" = "Link delen";
+
+/* Title for the Join Waitlist screen */
+"mac-waitlist.join-waitlist-screen.try-duckduckgo-for-mac" = "Download DuckDuckGo voor Mac!";
+
+/* Title for the macOS waitlist button redirecting to Windows waitlist */
+"mac-waitlist.join-waitlist-screen.windows-waitlist" = "Op zoek naar de versie voor Windows?";
+
+/* Title for the settings subtitle */
+"mac-waitlist.settings.browse-privately" = "Browse privé met onze app voor Mac";
+
+/* Message used when sharing to iMessage */
+"mac-waitlist.share-sheet.message" = "Klaar om privé te browsen op de Mac?\n\nBezoek deze URL op je Mac om DuckDuckGo te downloaden:\nhttps://duckduckgo.com/mac";
+
+/* Title for the share sheet entry */
+"mac-waitlist.share-sheet.title" = "DuckDuckGo voor Mac";
+
+/* Title for the Mac Waitlist feature */
+"mac-waitlist.title" = "DuckDuckGo-app voor Mac";
 
 /* No comment provided by engineer. */
 "menu.button.hint" = "Optiemenu";
 
+/* Title for back button in navigation bar */
+"navbar.back-button.title" = "Terug";
+
+/* Title for next button in navigation bar to progress forward */
+"navbar.next-button.title" = "Volgende";
+
+/* Finish editing bookmarks button */
+"navigation.title.done" = "Klaar";
+
 /* Edit button */
 "navigation.title.edit" = "Bewerken";
 
+/* String indicating NetP is snoozing when viewed from the settings screen */
+"netP.cell.snoozing" = "Sluimeren";
+
+/* Title for the DuckDuckGo VPN feature */
+"netP.title" = "DuckDuckGo VPN";
+
+/* Button title for tooltip about adding VPN widget */
+"network.protection.addwidget.tip.action" = "Widget toevoegen";
+
+/* Message for tooltip about adding VPN widget */
+"network.protection.addwidget.tip.message" = "Schakel de VPN rechtstreeks vanaf het startscherm in en uit.";
+
+/* Title for tooltip about adding VPN widget */
+"network.protection.addwidget.tip.title" = "VPN-widget toevoegen";
+
+/* The body of the notification when Privacy Pro subscription expired */
+"network.protection.entitlement.expired.notification.body" = "De VPN-verbinding is verbroken omdat het abonnement is verlopen. Abonneer je op Privacy Pro om opnieuw verbinding te maken met DuckDuckGo VPN.";
+
+/* The body of the notification shown when VPN fails to reconnect */
+"network.protection.failure.notification.body" = "DuckDuckGo VPN kon geen verbinding maken. Probeer het later opnieuw.";
+
+/* Title for the VPN FAQ screen. */
+"network.protection.faq.title" = "DuckDuckGo VPN FAQ";
+
+/* Message for tooltip about geoswitching */
+"network.protection.geoswitching.tip.message" = "Je kunt je VPN-locatie aanpassen door verbinding te maken met een van onze servers wereldwijd.";
+
+/* Title for tooltip about geoswitching */
+"network.protection.geoswitching.tip.title" = "Wijzig je locatie";
+
+/* The body of the notification shown when VPN connection is interrupted */
+"network.protection.interrupted.notification.body" = "DuckDuckGo VPN werd onderbroken. Er wordt geprobeerd opnieuw verbinding te maken ...";
+
+/* Message for the network protection invite dialog */
+"network.protection.invite.dialog.message" = "Voer je uitnodigingscode in om te beginnen.";
+
+/* Title for the network protection invite screen */
+"network.protection.invite.dialog.title" = "Je bent uitgenodigd om DuckDuckGo VPN uit te proberen";
+
+/* Prompt for the network protection invite code text field */
+"network.protection.invite.field.prompt" = "Uitnodigingscode";
+
+/* Message for the network protection invite success view */
+"network.protection.invite.success.message" = "Verberg je locatie voor websites en verberg je online activiteiten voor internetproviders en anderen in je netwerk.";
+
+/* Title for the network protection invite success view */
+"network.protection.invite.success.title" = "Gelukt! Je bent binnen.";
+
+/* The title of the notifications shown from VPN */
+"network.protection.notification.title" = "DuckDuckGo";
+
+/* Title text for an iOS quick action that opens VPN settings */
+"network.protection.quick-action.open-vpn" = "VPN openen";
+
+/* Button title for tooltip about VPN snooze mode */
+"network.protection.snooze.tip.action" = "Meer informatie";
+
+/* Message for tooltip about VPN snooze mode */
+"network.protection.snooze.tip.message" = "Je kunt sites of apps gebruiken die VPN-verkeer blokkeren door de VPN-verbinding in sluimerstand te zetten.";
+
+/* Title for tooltip about VPN snooze mode */
+"network.protection.snooze.tip.title" = "VPN-conflicten vermijden";
+
+/* The body of the notification when the VPN is snoozed, with a duration string as parameter (e.g, 30 minutes) */
+"network.protection.snoozed.notification.body" = "VPN in sluimerstand voor %@";
+
+/* The label for when NetP VPN is connected plus the length of time connected as a formatter HH:MM:SS string */
+"network.protection.status.connected.format" = "Verbonden · %@";
+
+/* The label for the NetP VPN when connecting */
+"network.protection.status.connecting" = "Er wordt verbinding gemaakt ...";
+
+/* The label for the NetP VPN when disconnected */
+"network.protection.status.disconnected" = "Niet verbonden";
+
+/* The label for the NetP VPN when disconnecting */
+"network.protection.status.disconnecting" = "De verbinding wordt verbroken ...";
+
+/* Message label text for the status view when VPN is disconnected */
+"network.protection.status.header.message.off" = "Maak verbinding om het internetverkeer van al je\napparaten te beveiligen.";
+
+/* Message label text for the status view when VPN is disconnected */
+"network.protection.status.header.message.on" = "Al het internetverkeer van apparaten wordt beveiligd\nvia de VPN.";
+
+/* Header title label text for the status view when VPN is disconnected */
+"network.protection.status.header.title.off" = "DuckDuckGo VPN is uitgeschakeld";
+
+/* Header title label text for the status view when VPN is connected */
+"network.protection.status.header.title.on" = "DuckDuckGo VPN is ingeschakeld";
+
+/* Header title label text for the status view when VPN is snoozing */
+"network.protection.status.header.title.snoozed" = "DuckDuckGo VPN is gepauzeerd";
+
+/* The status view 'Share Feedback' button which is shown inline on the status view after the temporary free use footer text */
+"network.protection.status.menu.share.feedback" = "Feedback delen";
+
+/* The label for the NetP VPN when paused */
+"network.protection.status.paused" = "Gepauzeerd";
+
+/* The label for when NetP VPN is snoozing plus the length of time remaining formatted as '0:00' */
+"network.protection.status.snoozing.format" = "Sluimeren, %@ resterend";
+
+/* Snooze button title shown in NetworkProtection's status view. */
+"network.protection.status.view.action.snooze" = "20 minuten sluimeren";
+
+/* Wake Up button title shown in NetworkProtection's status view. */
+"network.protection.status.view.action.wake-up" = "Inschakelen";
+
+/* Connection details label shown in NetworkProtection's status view. */
+"network.protection.status.view.connection.details" = "Verbindingsdetails";
+
+/* Custom DNS label shown in NetworkProtection's status view. */
+"network.protection.status.view.custom.dns" = "DNS-server";
+
+/* Generic connection failed error message shown in NetworkProtection's status view. */
+"network.protection.status.view.error.connection.failed.message" = "Probeer het later opnieuw.";
+
+/* Generic connection failed error title shown in NetworkProtection's status view. */
+"network.protection.status.view.error.connection.failed.title" = "Kan geen verbinding maken.";
+
+/* IP Address label shown in NetworkProtection's status view. */
+"network.protection.status.view.ip.address" = "IP-adres";
+
+/* Location label shown in NetworkProtection's status view. */
+"network.protection.status.view.location" = "Locatie";
+
+/* Label shown on the title of the settings section in NetworkProtection's status view. */
+"network.protection.status.view.settings.section.title" = "Beheren";
+
+/* Title label text for the status view when netP is disconnected */
+"network.protection.status.view.title" = "VPN";
+
+/* The body of the notification shown when VPN reconnects successfully */
+"network.protection.success.notification.body" = "DuckDuckGo VPN is ingeschakeld. Je locatie en online-activiteiten zijn beschermd.";
+
+/* The body of the notification shown when VPN connects successfully with the city + state/country as formatted parameter */
+"network.protection.success.notification.subtitle.including.serverLocation" = "Apparaatverkeer routeren via %@.";
+
+/* The body of the notification shown when VPN connects successfully with the city + state/country as formatted parameter */
+"network.protection.success.notification.subtitle.snooze.ended.including.serverLocation" = "De VPN-sluimerstand is beëindigd. Apparaatverkeer wordt gerouteerd via %@.";
+
+/* Title for the button to link to the iOS app settings and enable notifications app-wide. */
+"network.protection.turn.on.notifications.button.title" = "Meldingen inschakelen";
+
+/* Footer text under the button to link to the iOS app settings and enable notifications app-wide. */
+"network.protection.turn.on.notifications.section.footer" = "Ontvang meldingen van DuckDuckGo als je verbinding wegvalt of de VPN-status verandert.";
+
+/* Title of the About section in the VPN status screen */
+"network.protection.vpn.about" = "Over";
+
+/* Section header for the toggle for VPN notifications. */
+"network.protection.vpn.alerts.section.header" = "Meldingen";
+
+/* List section footer for the toggle for VPN alerts. */
+"network.protection.vpn.alerts.toggle.section.footer" = "Ontvang een melding als je verbinding wegvalt of de VPN-status verandert.";
+
+/* Title for the toggle for VPN notifications. */
+"network.protection.vpn.alerts.toggle.title" = "VPN-meldingen";
+
+/* Title for the data volume section in the VPN status screen */
+"network.protection.vpn.data-volume" = "Datavolume";
+
+/* Footer text for the Exclude Local Networks setting item. */
+"network.protection.vpn.exclude.local.networks.setting.footer" = "Laat lokaal verkeer de VPN omzeilen en maak verbinding met apparaten in je lokale netwerk, zoals een printer.";
+
+/* Header text for the Exclude Local Networks setting item. */
+"network.protection.vpn.exclude.local.networks.setting.header" = "Algemeen";
+
+/* Title for the Exclude Local Networks setting item. */
+"network.protection.vpn.exclude.local.networks.setting.title" = "Lokale netwerken uitsluiten";
+
+/* Title for the VPN Location screen's All Countries section. */
+"network.protection.vpn.location.all.countries.section.title" = "Alle landen";
+
+/* Description of the location type in the VPN status screen */
+"network.protection.vpn.location.connected" = "Verbonden locatie";
+
+/* Subtitle of countries item when there are multiple cities, example : */
+"network.protection.vpn.location.country.item.formatted.cities.count" = "%d steden";
+
+/* Description of the location type in the VPN status screen */
+"network.protection.vpn.location.nearest" = "(Dichtstbijzijnde)";
+
+/* Footer describing the VPN Location screen's Recommended section which just has Nearest Available. */
+"network.protection.vpn.location.recommended.section.footer" = "Maak automatisch verbinding met de dichtstbijzijnde server die we kunnen vinden.";
+
+/* Title for the VPN Location screen's Recommended section. */
+"network.protection.vpn.location.recommended.section.title" = "Aanbevolen";
+
+/* Description of the location type in the VPN status screen */
+"network.protection.vpn.location.selected" = "Geselecteerde locatie";
+
+/* Subtitle for the preferred location item that formats a city and country. E.g Chicago, United States */
+"network.protection.vpn.location.subtitle.formatted.city.and.country" = "%1$@, %2$@";
+
+/* Title for the VPN Location screen. */
+"network.protection.vpn.location.title" = "VPN-locatie";
+
+/* Title for the VPN Notifications management screen. */
+"network.protection.vpn.notifications.title" = "VPN-meldingen";
+
+/* Label for the Preferred Location VPN Settings item when the nearest available location is selected. */
+"network.protection.vpn.preferred.location.nearest" = "Dichtstbijzijnde locatie";
+
+/* Title for the Preferred Location VPN Settings item. */
+"network.protection.vpn.preferred.location.title" = "Voorkeurslocatie";
+
+/* Footer text for the DNS server setting item. */
+"network.protection.vpn.secure.dns.setting.footer" = "DuckDuckGo routeert DNS-zoekopdrachten via onze DNS-servers zodat je internetprovider niet kan zien welke websites je bezoekt.";
+
+/* Title for the FAQ row in the VPN status screen. */
+"network.protection.vpn.settings.faq" = "Veelgestelde vragen en ondersteuning";
+
+/* Title for the feedback row in the VPN status screen. */
+"network.protection.vpn.settings.share-feedback" = "VPN-feedback delen";
+
+/* Title for the VPN Settings screen. */
+"network.protection.vpn.settings.title" = "VPN-instellingen";
+
+/* Information message about New Tab Page redesign */
+"new.tab.page.intro.message.body" = "Pas je favorieten en go-to-functies aan. Herschik dingen of verberg ze om de tabbladpagina overzichtelijk te maken.";
+
+/* Title of information message about New Tab Page redesign */
+"new.tab.page.intro.message.title" = "Je nieuwe tabbladpagina is... Nieuw!";
+
+/* Name of favorites section setting */
+"new.tab.page.settings.section.name.favorites" = "Favorieten";
+
+/* Name of shortcuts section setting */
+"new.tab.page.settings.section.name.shortcuts" = "Sneltoetsen";
+
+/* Footer of the group allowing for setting up new tab page sections */
+"new.tab.page.settings.sections.description" = "Secties op het nieuwe tabblad weergeven, verbergen en opnieuw ordenen";
+
+/* Header title of the group allowing for setting up new tab page sections */
+"new.tab.page.settings.sections.header.title" = "SECTIES";
+
+/* Header title of the shortcuts in New Tab Page preferences. */
+"new.tab.page.settings.shortcuts.header.title" = "Sneltoetsen";
+
+/* Title of New Tab Page preferences page. */
+"new.tab.page.settings.title" = "Nieuwe tabbladpagina aanpassen";
+
+/* Shortcut title leading to AI Chat */
+"new.tab.page.shortcut.ai.chat" = "AI-chat";
+
+/* Shortcut title leading to Bookmarks */
+"new.tab.page.shortcut.bookmarks" = "Bladwijzers";
+
+/* Shortcut title leading to Downloads */
+"new.tab.page.shortcut.downloads" = "Downloads";
+
+/* Shortcut title leading to Passwords */
+"new.tab.page.shortcut.passwords" = "Wachtwoorden";
+
+/* Shortcut title leading to app settings */
+"new.tab.page.shortcut.settings" = "Instellingen";
+
+/* Text shown on the favorites info tooltip */
+"new.tab.page.tooltip.body" = "Open op een willekeurige site het menu ••• en selecteer **Favoriet toevoegen** om deze toe te voegen aan je nieuwe tabbladpagina.";
+
 /* Do not translate - stringsdict entry */
 "number.of.tabs" = "number.of.tabs";
+
+/* Text displayed on notification appearing in the address bar when the browser  dismissed the cookie popup automatically rejecting it */
+"omnibar.notification.cookies-managed" = "Beheerde cookies";
+
+/* Text displayed on notification appearing in the address bar when the browser  hides a cookie popup */
+"omnibar.notification.popup-hidden" = "Pop-up verborgen";
+
+/* Button on the Add to Dock tutorial screen of the onboarding, it will proceed to the next step of the onboarding. */
+"onboarding.addToDock.buttons.gotIt" = "Ik snap het";
+
+/* Button to change the default browser */
+"onboarding.browsers.cta" = "Kies je browser";
+
+/* Message to highlight how the browser allows you to block cookie pop-ups */
+"onboarding.browsers.features.cookiePopups.title" = "Blokkeer cookiepop-ups";
+
+/* Message to highlight browser capability of blocking creepy ads */
+"onboarding.browsers.features.creepyAds.title" = "Blokkeer enge advertenties";
+
+/* Message to highlight browser capability of swiftly erase browsing data */
+"onboarding.browsers.features.eraseBrowsingData.title" = "Wis browsegegevens in een handomdraai";
+
+/* Message to highlight browser capability of private searches */
+"onboarding.browsers.features.privateSearch.title" = "Standaard privé zoeken";
+
+/* Message to highlight browser capability ofblocking 3rd party trackers */
+"onboarding.browsers.features.trackerBlocker.title" = "Blokkeer trackers van derden";
+
+/* The title of the dialog to show the privacy features that DuckDuckGo offers */
+"onboarding.browsers.title" = "Privacybescherming geactiveerd!";
+
+/* The message of the option to set the address bar to the bottom. */
+"onboarding.highlights.addressBarPosition.bottom.message" = "Gemakkelijk te bereiken";
+
+/* The title of the option to set the address bar to the bottom. */
+"onboarding.highlights.addressBarPosition.bottom.title" = "Onderkant";
+
+/* The title of the CTA to progress to the next onboarding screen. */
+"onboarding.highlights.addressBarPosition.cta" = "Volgende";
+
+/* Indicates what address bar option (Top/Bottom) is the default one. E.g. Top (Default) */
+"onboarding.highlights.addressBarPosition.default" = "(standaard)";
+
+/* The title of the onboarding dialog popup to select the preferred address bar position. */
+"onboarding.highlights.addressBarPosition.title" = "Waar moet ik je adresbalk plaatsen?";
+
+/* The message of the option to set the address bar to the top. */
+"onboarding.highlights.addressBarPosition.top.message" = "Gemakkelijk te zien";
+
+/* The title of the option to set the address bar to the top. */
+"onboarding.highlights.addressBarPosition.top.title" = "Boven";
+
+/* The title of the CTA to progress to the next onboarding screen. */
+"onboarding.highlights.appIconSelection.cta" = "Volgende";
+
+/* The subheader of the onboarding dialog popup to select the preferred App icon. */
+"onboarding.highlights.appIconSelection.message" = "Kies het app-pictogram:";
+
+/* The title of the onboarding dialog popup to select the preferred App icon. */
+"onboarding.highlights.appIconSelection.title" = "Welke kleur staat mij het beste?";
+
+/* Message to highlight how the browser allows you to block cookie pop-ups */
+"onboarding.highlights.browsers.features.cookiePopups.title" = "Blokkeer cookieverzoeken en pop-ups";
+
+/* Message to highlight browser capability of blocking creepy ads */
+"onboarding.highlights.browsers.features.creepyAds.title" = "Blokkeer gerichte advertenties";
+
+/* Message to highlight browser capability of swiftly erase browsing data */
+"onboarding.highlights.browsers.features.eraseBrowsingData.title" = "Wis browsegegevens snel";
+
+/* Message to highlight browser capability ofblocking 3rd party trackers */
+"onboarding.highlights.browsers.features.trackerBlocker.title" = "Blokkeer trackers van derden";
+
+/* The title of the dialog to show the privacy features that DuckDuckGo offers */
+"onboarding.highlights.browsers.title" = "Bescherming geactiveerd!";
+
+/* The title of the fire button CTA to skip erasing the data. */
+"onboarding.highlights.fireDialog.cta.skip" = "Overslaan";
+
+/* The title of the onboarding dialog popup */
+"onboarding.highlights.intro.title" = "Hoi.\n\nKlaar voor een snellere browser die je beschermt?";
+
+/* Button to continue the onboarding process */
+"onboarding.intro.cta" = "Laten we het doen!";
+
+/* The title of the onboarding dialog popup */
+"onboarding.intro.title" = "Hoi.\n\nKlaar voor een beter internet met meer privacy?";
 
 /* No comment provided by engineer. */
 "onboarding.widgets.continueButton" = "Widget toevoegen";
@@ -700,17 +2024,109 @@
 /* ’Link’ is link on a website */
 "open.externally.failed" = "De app die nodig is om die link te openen, is niet gevonden";
 
+/* Activate button */
+"pm.activate" = "Opnieuw activeren";
+
+/* Cancel button */
+"pm.cancel" = "Annuleren";
+
+/* Deactivate button */
+"pm.deactivate" = "Deactiveren";
+
+/* Label for the email form in the Privacy Pro feedback form */
+"ppro.feedback-form.email.label" = "E-mailadres (optioneel)";
+
+/* Placeholder for the email form in the Privacy Pro feedback form */
+"ppro.feedback-form.email.placeholder" = "name@email.com";
+
+/* Placeholder for the General Feedback step in the Privacy Pro feedback form */
+"ppro.feedback-form.general-feedback.placeholder" = "Deel je feedback met ons …";
+
+/* Title for the General Feedback step in the Privacy Pro feedback form */
+"ppro.feedback-form.general-feedback.title" = "Algemene feedback";
+
+/* Title for the ITR category in the Privacy Pro feedback form */
+"ppro.feedback-form.report-itr-problem.title" = "Identity Theft Restoration";
+
+/* Title for the PIR category in the Privacy Pro feedback form */
+"ppro.feedback-form.report-pir-problem.title" = "Personal Information Removal";
+
+/* Title for the Subscriptions and Payments category in the Privacy Pro feedback form */
+"ppro.feedback-form.report-ppro-problem.title" = "Abonnementen en betalingen";
+
+/* Placeholder for the Report a Problem step in the Privacy Pro feedback form */
+"ppro.feedback-form.report-problem.placeholder" = "Vertel ons wat er aan de hand is …";
+
+/* Title for the Report a Problem step in the Privacy Pro feedback form */
+"ppro.feedback-form.report-problem.title" = "Een probleem melden";
+
+/* Title for the VPN category in the Privacy Pro feedback form */
+"ppro.feedback-form.report-vpn-problem.title" = "VPN";
+
+/* Placeholder for the Feature Request step in the Privacy Pro feedback form */
+"ppro.feedback-form.request-feature.placeholder" = "Welke functie wil je zien?";
+
+/* Title for the Feature Request step in the Privacy Pro feedback form */
+"ppro.feedback-form.request-feature.title" = "Functieverzoek";
+
+/* Title for the category selection section in the Privacy Pro feedback form */
+"ppro.feedback-form.select-category.title" = "SELECTEER EEN CATEGORIE";
+
+/* Text for the body of the PPro feedback form */
+"ppro.feedback-form.text-1" = "Heb je een probleem gevonden dat niet in ons [helpcentrum](duck://) wordt besproken? We willen er zeker meer over weten.\n\nGeef een e-mailadres op als je wilt dat we contact met je opnemen over dit probleem (het is mogelijk dat we niet op alle problemen kunnen reageren):";
+
+/* Text for the body of the PPro feedback form */
+"ppro.feedback-form.text-2" = "Naast de gegevens die je hierboven invult, sturen we ook geanonimiseerde informatie mee met je feedback:";
+
+/* Bullet text for the body of the PPro feedback form */
+"ppro.feedback-form.text-3" = "• Of sommige browserfuncties actief zijn";
+
+/* Bullet text for the body of the PPro feedback form */
+"ppro.feedback-form.text-4" = "• Samengevoegde app-diagnostiek (bijv. foutcodes)";
+
+/* Text for the body of the PPro feedback form */
+"ppro.feedback-form.text-5" = "Door op 'Verzenden' te tikken, geef je akkoord dat DuckDuckGo de verzonden informatie mag gebruiken om de app te verbeteren.";
+
+/* Title for the text box in the Privacy Pro feedback form */
+"ppro.feedback-form.text-box.title" = "Feedback";
+
+/* Title for the Privacy Pro feedback form */
+"ppro.feedback-form.title" = "Verstuur feedback";
+
+/* Button title for sync bookmarks limits exceeded warning to go to manage bookmarks */
+"prefrences.sync.bookmarks-limit-exceeded-action" = "Bladwijzers beheren";
+
+/* Description for sync bookmarks limits exceeded warning */
+"prefrences.sync.bookmarks-limit-exceeded-description" = "Je hebt het maximumaantal bladwijzers bereikt. Verwijder er een paar om de synchronisatie te hervatten.";
+
+/* Button title for sync credentials limits exceeded warning to go to manage passwords */
+"prefrences.sync.credentials-limit-exceeded-action" = "Wachtwoorden beheren …";
+
+/* Description for sync credentials limits exceeded warning */
+"prefrences.sync.credentials-limit-exceeded-description" = "Je hebt het maximumaantal wachtwoorden bereikt. Verwijder er een paar om de synchronisatie te hervatten.";
+
+/* Description invalid credentials error when syncing.
+   Description of incorrectly formatted data error when syncing.
+   Description of too many requests error when syncing. */
+"prefrences.sync.invalid-login-description" = "Er is een fout opgetreden bij het synchroniseren. Probeer synchronisatie op dit apparaat uit te schakelen en maak dan opnieuw verbinding met een ander apparaat of met je herstelcode.";
+
+/* Title for sync limits exceeded warning */
+"prefrences.sync.limit-exceeded-title" = "Synchronisatie onderbroken";
+
 /* No comment provided by engineer. */
 "preserveLogins.domain.list.footer" = "Websites gebruiken cookies om te zorgen dat je ingelogd blijft. Als je een site brandveilig maakt, worden de cookies niet gewist en blijf je ingelogd, zelfs nadat je de vuurknop hebt gebruikt. Trackers van derden worden ook op brandveilige websites geblokkeerd.";
 
-/* Section header above Fireproffed websites list */
-"preserveLogins.domain.list.title" = "Websites";
+/* Section header above Fireproofed websites list */
+"preserveLogins.domain.list.title" = "Brandveilige websites";
 
-/* Paramter is a string - domain name */
-"preserveLogins.fireproof.message" = "Wil je %@ brandveilig maken?";
+/* Alert message explaining to users that the benefit of fireproofing a site is that they will be kept signed in */
+"preserveLogins.fireproof.message" = "Als je deze site brandveilig maakt, blijf je ook na het gebruiken van de vuurknop ingelogd.";
+
+/* Parameter is a string - domain name. Alert title prompting user to fireproof a site so they can stay signed in */
+"preserveLogins.fireproof.title" = "%@ brandveilig maken om ingelogd te blijven?";
 
 /* Confirm fireproofing action */
-"preserveLogins.menu.confirm" = "Website brandveilig maken";
+"preserveLogins.menu.confirm" = "Brandveilig";
 
 /* Parameter is a website URL. Messege confirms that given website has been fireproofed. */
 "preserveLogins.menu.confirm.message" = "%@ is nu brandveilig";
@@ -733,173 +2149,17 @@
 /* Confirmation button in alert */
 "preserveLogins.remove.all.ok" = "OK";
 
-/* Ask to Fireproof Sites */
-"preserveLogins.switch.title" = "Vragen om websites brandveilig te maken";
-
-/* Part of certificate info */
-"privacy.protection.encryption.algorithm" = "Algoritme";
-
-/* Certificate Key size info - number (integer) of bits */
-"privacy.protection.encryption.bits" = "%d bits";
-
 /* No comment provided by engineer. */
-"privacy.protection.encryption.cert.error" = "Fout bij het ophalen van certificaat";
+"Privacy Protections" = "Privacybescherming";
 
-/* Part of certificate info */
-"privacy.protection.encryption.common.name" = "Algemene naam";
+/* Privacy Icon accessibility title */
+"privacy.icon.dax" = "Logo DuckDuckGo";
 
-/* Part of certificate info */
-"privacy.protection.encryption.effective.size" = "Effectieve grootte";
+/* Privacy Icon accessibility hint */
+"privacy.icon.hint" = "Tik om het scherm Privacy Dashboard te openen";
 
-/* Part of certificate info */
-"privacy.protection.encryption.email" = "E-mail";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.encrypted.heading" = "Gecodeerde verbinding";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.forced.heading" = "Geforceerde versleuteling";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.forced.message" = "We hebben deze site gedwongen om een versleutelde verbinding te gebruiken, om het afluisteren te voorkomen van persoonlijke gegevens die je verstuurt.";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.header" = "Een versleutelde verbinding voorkomt het afluisteren van persoonlijke gegevens die je naar een website verstuurt.";
-
-/* Part of certificate info */
-"privacy.protection.encryption.id" = "Identificatie van de onderwerpsleutel";
-
-/* Part of certificate info */
-"privacy.protection.encryption.issuer" = "Uitgever";
-
-/* Part of certificate info */
-"privacy.protection.encryption.key" = "Openbare sleutel";
-
-/* Part of certificate info */
-"privacy.protection.encryption.key.size" = "Sleutelgrootte";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.mixed.heading" = "Gemengde versleuteling";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.mixed.message" = "Deze site heeft een gemengde versleuteling omdat een gedeelte van de content wordt aangeboden via niet-versleutelde verbindingen.";
-
-/* Info that certificate is not permanent */
-"privacy.protection.encryption.no" = "Nee";
-
-/* Part of certificate info - Permanent in this context means that certificate is stored on the device (so it’s not temporary one). */
-"privacy.protection.encryption.permanent" = "Permanent";
-
-/* Public Key of a certficate */
-"privacy.protection.encryption.public.key" = "Openbare sleutel";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.standard.message" = "Een versleutelde verbinding voorkomt het afluisteren van persoonlijke gegevens die je naar een website verstuurt.";
-
-/* Header of a section that provides infomration about certificate issuer */
-"privacy.protection.encryption.subject.name" = "Onderwerpnaam";
-
-/* Part of certificate info */
-"privacy.protection.encryption.summary" = "Overzicht";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.unencrypted" = "Wees voorzichtig bij het invoeren van persoonlijke informatie op deze site.";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.unencrypted.heading" = "Niet-gecodeerde verbinding";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.unknown" = "Onbekend";
-
-/* Part of certificate info */
-"privacy.protection.encryption.usage" = "Gebruik";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.decrypt" = "Ontsleutelen";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.derive" = "Afleiden";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.encrypt" = "Versleutelen";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.sign" = "Tekenen";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.unwrap" = "Uitpakken";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.verify" = "Verifiëren";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.wrap" = "Inpakken";
-
-/* Confirmation that certificate is permanent */
-"privacy.protection.encryption.yes" = "Ja";
-
-/* No comment provided by engineer. */
-"privacy.protection.main.disabled" = "BESCHERMING VAN DE SITE UITGESCHAKELD";
-
-/* $1 and $2 are grades - letters. Example: Enhanced from D to B */
-"privacy.protection.main.enhanced" = "VERBETERD VAN $1 NAAR $2";
-
-/* No comment provided by engineer. */
-"privacy.protection.main.grade" = "PRIVACYKLASSE";
-
-/* Major trackers blocked */
-"privacy.protection.major.trackers.blocked" = "privacy.protection.major.trackers.blocked";
-
-/* Major trackers found */
-"privacy.protection.major.trackers.found" = "privacy.protection.major.trackers.found";
-
-/* First parameter (%@) is a number (percent), %% is a percent sign, second %@ is a date */
-"privacy.protection.network.leaderboard" = "Er zijn trackernetwerken gevonden op %1$@%% van de websites die je sinds %2$@ hebt bezocht.";
-
-/* No comment provided by engineer. */
-"privacy.protection.network.leaderboard.gathering" = "We verzamelen nog steeds gegevens om te laten zien\nhoeveel trackers we hebben geblokkeerd.";
-
-/* ToS;DR is an organization */
-"privacy.protection.practices.footer.info" = "Privacypraktijken van ToS;DR.";
-
-/* No comment provided by engineer. */
-"privacy.protection.practices.header.info" = "Privacypraktijken geven aan in hoeverre de persoonsgegevens die u deelt met een website beschermd zijn.";
-
-/* No comment provided by engineer. */
-"privacy.protection.practices.reviewed.info" = "Deze website stuurt je een melding voordat je gegevens worden overdragen in het geval van een fusie of overname";
-
-/* No comment provided by engineer. */
-"privacy.protection.practices.unknown.info" = "De privacypraktijken van deze website zijn niet gecontroleerd.";
-
-/* Replacement string is a single letter: A/B/C/D */
-"privacy.protection.site.grade" = "Privacyklasse %@";
-
-/* No comment provided by engineer. */
-"privacy.protection.site.hint" = "Druk hierop om het scherm Privacybescherming te openen";
-
-/* No comment provided by engineer. */
-"privacy.protection.top.offenders.info" = "Deze statistieken worden alleen op je apparaat opgeslagen en worden nergens naartoe gestuurd. Nooit.";
-
-/* No comment provided by engineer. */
-"privacy.protection.tos.good" = "Goede privacypraktijken";
-
-/* No comment provided by engineer. */
-"privacy.protection.tos.mixed" = "Gemengde privacypraktijken";
-
-/* No comment provided by engineer. */
-"privacy.protection.tos.poor" = "Slechte privacypraktijken";
-
-/* No comment provided by engineer. */
-"privacy.protection.tos.unknown" = "Onbekende privacypraktijken";
-
-/* No comment provided by engineer. */
-"privacy.protection.tracker.networks.info" = "Trackernetwerken voegen je webgeschiedenis samen tot een gegevensprofiel over jou. Grote trackernetwerken zijn schadelijker omdat ze je verder op het internet kunnen volgen en zich op je kunnen richten.";
-
-/* Do not translate - stringsdict entry */
-"privacy.protection.trackers.blocked" = "privacy.protection.trackers.blocked";
-
-/* Do not translate - stringsdict entry */
-"privacy.protection.trackers.found" = "privacy.protection.trackers.found";
+/* Privacy Icon accessibility title */
+"privacy.icon.shield" = "Privacy-pictogram";
 
 /* Deny action */
 "prompt.custom.url.scheme.dontopen" = "Annuleren";
@@ -914,9 +2174,6 @@
 "prompt.custom.url.scheme.title" = "Openen in een andere app?";
 
 /* No comment provided by engineer. */
-"report.brokensite.header" = "Als je een anoniem rapport voor een defecte site indient, kunnen we deze problemen oplossen en de app verbeteren.";
-
-/* No comment provided by engineer. */
 "search.hint.duckduckgo" = "Zoek of voer een adres in";
 
 /* No comment provided by engineer. */
@@ -925,8 +2182,289 @@
 /* No comment provided by engineer. */
 "section.title.favorites" = "Favorieten";
 
-/* No comment provided by engineer. */
-"settings.about.text" = "Bij DuckDuckGo zetten we de nieuwe standaard voor vertrouwen online.\n\nDe DuckDuckGo Privacy Browser biedt alle essentiële facetten van privacy die je nodig hebt om jezelf te beschermen tijdens het zoeken en browsen op het internet, zoals het blokkeren van trackers, slimmere versleuteling en privézoekopdrachten.\n\nHet internet zou namelijk helemaal niet zo griezelig moeten zijn en de privacy die je online verdient, moet net zo eenvoudig zijn als het sluiten van de gordijnen.";
+/* Name of the option the user can chose to give general browser feedback */
+"send.browser.feedback.general-feedback" = "Algemene feedback";
+
+/* Name of the option the user can chose to give browser feedback about a problem they enountered */
+"send.browser.feedback.report-problem" = "Een probleem melden";
+
+/* Name of the option the user can chose to give browser feedback about a feature they would like */
+"send.browser.feedback.request-feature" = "Een functie aanvragen";
+
+/* Title of the picker where the user can chose the category of the feedback they want ot send. */
+"send.browser.feedback.select-category" = "SELECTEER EEN CATEGORIE";
+
+/* Settings cell for About DDG */
+"settings.about.ddg" = "Over DuckDuckGo";
+
+/* Settings section title for About DuckDuckGo */
+"settings.about.section" = "Over";
+
+/* about page */
+"settings.about.text" = "DuckDuckGo is het onafhankelijke internetprivacybedrijf, opgericht in 2008, voor iedereen die het beu is om online gevolgd te worden en daar een eenvoudige oplossing voor wil. Wij zijn het bewijs dat je privacy op internet écht beschermd kan worden zonder compromissen.\n\nDe DuckDuckGo-browser wordt geleverd met de functies die je van een webbrowser verwacht, zoals bladwijzers, tabbladen, wachtwoorden en meer, plus meer dan [een dozijn krachtige tools om je privacy te beschermen](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/privacy/web-tracking-protections/) die niet standaard worden aangeboden in de meeste populaire browsers. Deze unieke, uitgebreide privacybescherming helpt je online activiteiten te beschermen – of je nu zoekt, surft of mailt.\n\nJe hoeft niets te weten over de technische details of ingewikkelde instellingen om te profiteren van onze privacybescherming. Je hoeft alleen maar DuckDuckGo op al je apparaten te installeren en geniet dan standaard van privacy.\n\nMaar als je *een kijkje onder de motorkap* wilt, vind je meer informatie over de privacybescherming van DuckDuckGo op onze [hulppagina's](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/).";
+
+/* Settings screen accessibility section title */
+"settings.accessibility" = "Toegankelijkheid";
+
+/* Settings screen cell text for adding the app to the dock */
+"settings.add.to.dock" = "App toevoegen aan je dock";
+
+/* Settings screen cell text for add widget to the home screen */
+"settings.add.widget" = "Widget toevoegen aan startscherm";
+
+/* Name of the settings subsection related to the address bar
+   Settings screen cell text for addess bar position */
+"settings.address.bar" = "Adresbalk";
+
+/* Settings screen cell title for toggling full URL visibility in address bar */
+"settings.address.full.url" = "Volledig siteadres weergeven";
+
+/* Label describing a feature which is turned on always */
+"settings.always.on" = "Altijd aan";
+
+/* Settings screen appearance section title */
+"settings.appearance" = "Uiterlijk";
+
+/* Settings screen cell for opening links in associated apps */
+"settings.associated.apps" = "Links openen in bijbehorende apps";
+
+/* Description for associated apps description */
+"settings.associated.apps.description" = "Uitschakelen om te voorkomen dat links automatisch geopend worden in andere geïnstalleerde apps.";
+
+/* Settings screen cell for autocomplete */
+"settings.autocomplete" = "Zoeksuggesties";
+
+/* Settings label for enabling or disabling recently visited sites */
+"settings.autocomplete.recentlyvisited" = "Onlangs bezochte websites";
+
+/* Settings label for enabling or disabling recently visited sites */
+"settings.autocomplete.recentlyvisited.subtitle" = "Toon onlangs bezochte websites in zoeksuggesties. Onlangs bezochte websites zijn privé, worden alleen op je apparaat opgeslagen en kunnen worden gewist met de Fire Button.";
+
+/* Subtitle for Search Suggestions setting */
+"settings.autocomplete.subtitle" = "Toon suggesties voor zoekopdrachten terwijl je typt, inclusief je bladwijzers. Alle zoekopdrachten zijn privé.";
+
+/* Settings screen cell text for Application Lock */
+"settings.autolock" = "App-vergrendeling";
+
+/* Section footer Autolock description */
+"settings.autolock.description" = "Als Touch ID, Face ID of een systeemwachtwoord is ingeschakeld, word je gevraagd om de app te ontgrendelen als je deze opent.";
+
+/* Settings cell for Browser Feedback */
+"settings.browser.feedback" = "Browserfeedback";
+
+/* Settings screen cell text for Automatically Clearing Data */
+"settings.clear.data" = "Gegevens automatisch wissen";
+
+/* The name of Settings category in Privacy Features related to configuration of the privacy feature related to cookie pop-ups */
+"settings.cookie.pop-up-protection.protection" = "Bescherming tegen cookiepop-ups";
+
+/* Explanation in Settings how the cookie pop up protection feature works */
+"settings.cookie.pop.up.protection.explanation" = "DuckDuckGo zal proberen de meest privacyvriendelijke instellingen te selecteren en deze pop-ups voor je verbergen.\n[Meer informatie](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/privacy/web-tracking-protections/#cookie-pop-up-management)";
+
+/* Settings screen cell text for Cookie popups */
+"settings.cookie.popups" = "Cookiepop-ups beheren";
+
+/* Settings title for the customize section */
+"settings.customize" = "Aanpassen";
+
+/* The name of a settings subsection related to the data clearing */
+"settings.data.clearing" = "Gegevens wissen";
+
+/* Settings screen cell text for setting the app as default browser
+   The name of Settings category in Privacy Features related to configuration of the default browser */
+"settings.default.browser" = "Standaardbrowser";
+
+/* Label of a button disabling email protection */
+"settings.disable.email.protection.autofill" = "Automatisch invullen van Email Protection uitschakelen";
+
+/* Settings cell to link users to other products by DuckDuckGo */
+"settings.duckduckgo.on.other.platforms" = "DuckDuckGo op andere platforms";
+
+/* Explanation in Settings how the email protection feature works */
+"settings.email.protection.explanation" = "Blokkeer e-mailtrackers en verberg je adres, zonder van e-mailprovider te wisselen.\n[Meer informatie](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/email-protection/wat-is-duckduckgo-email-protection/)";
+
+/* Alert presented to user after clicking on 'Sign out' in Email Protection Settings */
+"settings.email.protection.signing.out.alert" = "Als je je afmeldt bij je Email Protection-account, wordt het automatisch invullen van het Duck Address in deze browser uitgeschakeld. Je kunt deze adressen nog steeds gebruiken en doorgestuurde e-mails blijven ontvangen.";
+
+/* Settings cell for Email Protection */
+"settings.emailProtection.description" = "Blokkeer e-mailtrackers en verberg je adres";
+
+/* Label of a button enabling the email protection feature */
+"settings.enable.email.protection" = "E-mailbeveiliging inschakelen";
+
+/* Settings screen cell text for enabling voice search */
+"settings.enable.voice.search" = "Zoeken via spraak inschakelen";
+
+/* Settings cell for Feedback */
+"settings.feedback" = "Feedback delen";
+
+/* Settings screen cell text for fire button animation */
+"settings.firebutton" = "Animatie vuurknop";
+
+/* Settings screen cell text for Fireproof Sites */
+"settings.fireproof.sites" = "Brandveilige websites";
+
+/* The name of the settings subsection containing general settings */
+"settings.general" = "Algemeen";
+
+/* Settings screen cell text for GPC */
+"settings.gpc" = "Global Privacy Control (GPC)";
+
+/* Settings screen cell text for app icon selection */
+"settings.icon" = "App-pictogram";
+
+/* Settings screen cell for Keyboard */
+"settings.keyboard" = "Toetsenbord";
+
+/* Switch button label. */
+"settings.let.duckduckgo.manage.cookie.consent.popups" = "Laat DuckDuckGo pop-ups voor cookietoestemming beheren";
+
+/* Settings screen cell text for passwords */
+"settings.logins" = "Wachtwoorden";
+
+/* The name of the settings section containing main settings */
+"settings.main.settings" = "Hoofdinstellingen";
+
+/* Label of a button managing email protection account */
+"settings.manage.account" = "Account beheren";
+
+/* Settings title for the 'More' section */
+"settings.more" = "Meer over DuckDuckGo";
+
+/* Button navigating to other settings related to search */
+"settings.more.search.settings" = "Meer zoekinstellingen";
+
+/* Subtitle of the 'More Search Settings' button */
+"settings.more.search.settings.explanation" = "Taal, regio en meer aanpassen";
+
+/* The name of a settings category listing next steps */
+"settings.next.steps" = "Volgende stappen";
+
+/* Label describing a feature which is turned off */
+"settings.off" = "Uit";
+
+/* Label describing a feature which is turned on */
+"settings.on" = "Aan";
+
+/* Product name for the subscription bundle */
+"settings.ppro" = "Privacy Pro";
+
+/* Title for Link in the Footer of Privacy Pro section */
+"settings.ppro.footer" = "Privacybeleid en gebruiksvoorwaarden";
+
+/* Settings screen cell for long press previews */
+"settings.previews" = "Voorbeeldweergave bij lang indrukken";
+
+/* Settings title for the privacy section */
+"settings.privacy" = "Privacy";
+
+/* The name of Settings category in Privacy Features related to configuration of the search */
+"settings.private.search" = "Privé-zoekopdracht";
+
+/* Explanation in Settings how the private search feature works */
+"settings.private.search.explanation" = "DuckDuckGo Private Search is je standaardzoekmachine, zodat je op het web kunt zoeken zonder gevolgd te worden.";
+
+/* Header of settings related to search */
+"settings.search.settings" = "Zoekinstellingen";
+
+/* Settings cell for Send Crash Reports */
+"settings.send.crash.reports" = "Crashrapporten verzenden";
+
+/* Explanation of Send Crash Reports settings option */
+"settings.send.crash.reports.description" = "Verzend automatisch crashrapporten naar DuckDuckGo.";
+
+/* Settings screen cell text for setting address bar position */
+"settings.set.your.address.bar.position" = "Positie van adresbalk instellen";
+
+/* Privacy pro description subtitle in settings when the is activating */
+"settings.subscription.activating" = "Bezig met activeren";
+
+/* Subscription activation pending description */
+"settings.subscription.activation.pending.description" = "Dit duurt langer dan normaal, kom later nog eens terug.";
+
+/* Data Broker protection cell subtitle for privacy pro */
+"settings.subscription.DBP.subtitle" = "Verwijder je gegevens van sites die ze verkopen";
+
+/* Data Broker protection cell title for privacy pro */
+"settings.subscription.DBP.title" = "Personal Information Removal";
+
+/* I have a Subscription button text for privacy pro */
+"settings.subscription.existing.subscription" = "Ik heb een abonnement";
+
+/* Subscription expired description */
+"settings.subscription.expired.comment" = "Abonneer je opnieuw om Privacy Pro te blijven gebruiken";
+
+/* Subscription expired tittle message */
+"settings.subscription.expired.title" = "Je Privacy Pro-abonnement is verlopen";
+
+/* Identity theft restoration cell subtitle for privacy pro */
+"settings.subscription.ITR.subtitle" = "Als je identiteit wordt gestolen, helpen we je deze te herstellen";
+
+/* Identity theft restoration cell title for privacy pro */
+"settings.subscription.ITR.title" = "Identity Theft Restoration";
+
+/* Get Privacy Pro button text for privacy pro */
+"settings.subscription.learn.more" = "Privacy Pro kopen";
+
+/* Subscription Settings button text for privacy pro */
+"settings.subscription.manage" = "Abonnementinstellingen";
+
+/* Privacy Pro description subtitle in settings */
+"settings.subscription.row.description" = "Inclusief onze VPN en Identity Theft Restoration.";
+
+/* Call to action title for Privacy Pro settings */
+"settings.subscription.subscribe" = "Bescherm je verbinding en identiteit met Privacy Pro";
+
+/* Privacy pro description subtitle in settings */
+"settings.subscription.us.description" = "Inclusief onze VPN, Personal Information Removal en Identity Theft Restoration.";
+
+/* VPN cell title for privacy pro */
+"settings.subscription.VPN.title" = "VPN";
+
+/* Label of a button navigating to the Support page */
+"settings.support" = "Support";
+
+/* Settings screen cell text for sync and backup */
+"settings.sync" = "Synchronisatie en back-up";
+
+/* Settings screen cell text for text size */
+"settings.text.size" = "Standaard tekstgrootte";
+
+/* Settings screen cell text for theme */
+"settings.theme" = "Thema";
+
+/* Title for the Settings View */
+"settings.title" = "Instellingen";
+
+/* Settings screen cell text for Unprotected Sites */
+"settings.unprotected.sites" = "Onbeschermde sites";
+
+/* Settings cell for Version */
+"settings.version" = "Versie";
+
+/* Settings screen cell for voice search */
+"settings.voice.search" = "Private spraakzoekopdracht";
+
+/* The name of Settings category in Privacy Features related to configuration of the web tracking protection feature */
+"settings.web.tracking.protection" = "Bescherming tegen webtracking";
+
+/* Explanation in Settings how the web tracking protection feature works */
+"settings.web.tracking.protection.explanation" = "DuckDuckGo blokkeert automatisch verborgen trackers terwijl je op het web surft.\n[Meer informatie](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/privacy/web-tracking-protections/)";
+
+/* Description on a report broken site page. */
+"site.not.working.description" = "Selecteer de optie die het beste je probleem beschrijft.";
+
+/* Dismiss button */
+"site.not.working.dismiss" = "Negeren";
+
+/* Button that triggers flow to report broken site */
+"site.not.working.report.broken.site" = "Defecte website melden";
+
+/* Prompt asking user to send report to us if we suspect site may be broken */
+"site.not.working.subtitle" = "Hiermee kunnen we de browser verbeteren.";
+
+/* Prompt asking user to send report to us if we suspect site may be broken */
+"site.not.working.title" = "Werkt de site niet? Laat het DuckDuckGo weten.";
 
 /* Report a Broken Site screen confirmation button */
 "siteFeedback.buttonText" = "Rapport versturen";
@@ -946,6 +2484,291 @@
 /* No comment provided by engineer. */
 "siteFeedback.urlPlaceholder" = "Welke website is defect?";
 
+/* Subscription Activation Info */
+"subscription.activate..header.description" = "Krijg toegang tot je Privacy Pro-abonnement op dit apparaat via je Apple-ID of e-mailadres.";
+
+/* Button for adding email address to subscription */
+"subscription.activate.add.email.button" = "E-mailadres toevoegen";
+
+/* Apple ID option for activation */
+"subscription.activate.appleid" = "Apple-ID";
+
+/* Button text for restoring purchase via Apple ID */
+"subscription.activate.appleid.button" = "Aankoop herstellen";
+
+/* Description for Apple ID activation */
+"subscription.activate.appleid.description" = "Herstel je aankoop om je abonnement op dit apparaat te activeren.";
+
+/* Subscription Activation Info */
+"subscription.activate.description" = "Je abonnement is automatisch beschikbaar in DuckDuckGo op elk apparaat dat is aangemeld bij je Apple-ID.";
+
+/* Button for editing email address added to subscription */
+"subscription.activate.edit.email.button" = "E-mailadres bewerken";
+
+/* View Title for editing your email account */
+"subscription.activate.edit.email.title" = "E-mailadres bewerken";
+
+/* Email option for activation */
+"subscription.activate.email" = "E-mail";
+
+/* Restore button title for Email */
+"subscription.activate.email.button" = "E-mailadres invoeren";
+
+/* Description for Email activation */
+"subscription.activate.email.description" = "Gebruik je e-mailadres om je abonnement op dit apparaat te activeren.";
+
+/* Activate subscription title */
+"subscription.activate.email.title" = "Abonnement activeren";
+
+/* Button title for cancelling email deletion */
+"subscription.activate.manage.email.cancel" = "Annuleren";
+
+/* Button title for confirming email deletion */
+"subscription.activate.manage.email.OK" = "OK";
+
+/* Restore button title for AppleID */
+"subscription.activate.restore.apple" = "Aankoop herstellen";
+
+/* Subscription Activation Title */
+"subscription.activate.title" = "Activeer je abonnement op dit apparaat";
+
+/* Resend activation instructions button */
+"subscription.add.device.resend.instructions" = "Instructies opnieuw verzenden";
+
+/* Add email to an existing subscription */
+"subscription.add.email" = "Voeg een e-mailadres toe om je abonnement op je andere apparaten te activeren. We zullen dit adres alleen gebruiken om je abonnement te verifiëren.";
+
+/* View title for adding email to subscription */
+"subscription.add.email.title" = "E-mailadres toevoegen";
+
+/* Subscription availability message on Apple devices */
+"subscription.available.apple" = "Privacy Pro is beschikbaar op elk apparaat dat is aangemeld bij dezelfde Apple-ID.";
+
+/* Text for the manage billing page */
+"subscription.billing.google.text" = "Je abonnement is aangeschaft via de Google Play Store. Om je abonnement te verlengen, open je de abonnementsinstellingen van de Google Play Store op een apparaat dat is aangemeld bij hetzelfde Google-account waarmee je het abonnement hebt gekocht.";
+
+/* Title for the manage billing page */
+"subscription.billing.google.title" = "Abonnementsformules";
+
+/* Subscription Removal confirmation message */
+"subscription.cancel.message" = "Je abonnement is van dit apparaat verwijderd.";
+
+/* Change plan or cancel title */
+"subscription.change.plan" = "Plan bijwerken of annuleren";
+
+/* Navigation Button for closing subscription view */
+"subscription.close" = "Sluiten";
+
+/* Title for Confirm messages */
+"subscription.confirm.title" = "Weet je het zeker?";
+
+/* Header for section for activating subscription on other devices */
+"subscription.devices.header" = "Activeren op andere apparaten";
+
+/* Footer for section for activating subscription on other devices when email was not yet added */
+"subscription.devices.no.email.footer" = "Voeg een optioneel e-mailadres toe aan je abonnement om toegang te krijgen tot Privacy Pro op andere apparaten. **[Meer informatie](https://duckduckgo.com/duckduckgo-help-pages/privacy-pro/adding-email/)**";
+
+/* Footer for section for activating subscription on other devices when email is added */
+"subscription.devices.with.email.footer" = "Gebruik deze e-mail om je abonnement te activeren in 'Instellingen' > 'Privacy Pro' in de DuckDuckGo-app op je andere apparaten. **[Meer informatie](https://duckduckgo.com/duckduckgo-help-pages/privacy-pro/adding-email/)**";
+
+/* Alert content for not found subscription */
+"subscription.email.inactive.alert.message" = "Je abonnement dat aan dit e-mailadres is gekoppeld, is niet langer actief.";
+
+/* Alert title for not found subscription */
+"subscription.email.inactive.alert.title" = "Abonnement niet gevonden";
+
+/* Alert content for not found subscription */
+"subscription.expired.alert.message" = "Je abonnement dat aan deze Apple-ID is gekoppeld, is niet langer actief.";
+
+/* FAQ Button */
+"subscription.faq" = "Veelgestelde vragen en ondersteuning";
+
+/* FAQ Description */
+"subscription.faq.description" = "Krijg antwoorden op veelgestelde vragen of neem contact op met de klantenservice van Privacy Pro via onze helppagina's.";
+
+/* Send Feedback Button */
+"subscription.feedback" = "Verstuur feedback";
+
+/* Cancel action for the existing subscription dialog */
+"subscription.found.cancel" = "Annuleren";
+
+/* Restore action for the existing subscription dialog */
+"subscription.found.restore" = "Herstellen";
+
+/* Message for the existing subscription dialog */
+"subscription.found.text" = "We hebben een abonnement gevonden dat aan deze Apple-ID is gekoppeld.";
+
+/* Title for the existing subscription dialog */
+"subscription.found.title" = "Abonnement gevonden";
+
+/* Help and support Section header */
+"subscription.help" = "Hulp en ondersteuning";
+
+/* Manage Plan header */
+"subscription.manage.plan" = "Abonnement beheren";
+
+/* Header for the subscription section */
+"subscription.manage.title" = "Abonnement";
+
+/* Alert content for not found subscription */
+"subscription.notFound.alert.message" = "Er is geen abonnement gekoppeld aan deze Apple-ID.";
+
+/* Alert title for not found subscription */
+"subscription.notFound.alert.title" = "Abonnement niet gevonden";
+
+/* View plans button text */
+"subscription.notFound.view.plans" = "Abonnementen bekijken";
+
+/* Hero Text for Personal information removal */
+"subscription.pir.hero" = "Activeer Privacy Pro op je desktop om Personal Information Removal in te stellen.";
+
+/* Description on how to use Personal information removal in desktop. The first placeholder references a location in the Desktop application. <i.e: Settings > Privacy Pro>, and the second, the menu entry. i.e. <I have a Subscription> */
+"subscription.pir.heroText" = "Ga in de DuckDuckGo-browser voor desktop naar '%1$@' en klik op '%2$@' om te beginnen.";
+
+/* Settings references a menu in the Desktop app, Privacy Pro, references our product name */
+"subscription.pir.heroTextLocation" = "'Instellingen' > 'Privacy Pro'";
+
+/* Menu item for enabling Personal Information Removal on Desktop */
+"subscription.pir.heroTextMenyEntry" = "Ik heb een abonnement";
+
+/* Text for the 'macOS' button */
+"subscription.pir.macos" = "Mac";
+
+/* Text for the 'Windows' button */
+"subscription.pir.windows" = "Windows";
+
+/* Progress view title when completing the purchase */
+"subscription.progress.view.completing.purchase" = "Je aankoop wordt afgerond ...";
+
+/* Progress view title when starting the purchase */
+"subscription.progress.view.purchasing.subscription" = "Je aankoop wordt gedaan ...";
+
+/* Progress view title when restoring past subscription purchase */
+"subscription.progress.view.restoring.subscription" = "Je abonnement wordt hersteld ...";
+
+/* Remove from this device button */
+"subscription.remove.from.device.button" = "Verwijderen van dit apparaat";
+
+/* Remove from device confirmation dialog text */
+"subscription.remove.from.device.text" = "Je hebt niet langer toegang tot je Privacy Pro-abonnement op dit apparaat. Je abonnement wordt niet opgezegd en het blijft actief op je andere apparaten.";
+
+/* Remove from device confirmation dialog title */
+"subscription.remove.from.device.title" = "Verwijderen van dit apparaat?";
+
+/* Remove subscription button text */
+"subscription.remove.subscription" = "Abonnement verwijderen";
+
+/* Remove subscription cancel button text */
+"subscription.remove.subscription.cancel" = "Annuleren";
+
+/* Button text for general error message */
+"subscription.restore.backend.error.button" = "Terug naar Instellingen";
+
+/* Alert for general error message */
+"subscription.restore.backend.error.message" = "Er zijn problemen met de verbinding. Probeer het later opnieuw.";
+
+/* Alert for general error title */
+"subscription.restore.backend.error.title" = "Er is iets misgegaan";
+
+/* Alert for general error message */
+"subscription.restore.general.error.message" = "De App Store kan je aankoop niet verwerken. Probeer het later opnieuw.";
+
+/* Alert for general error title */
+"subscription.restore.general.error.title" = "Er is iets misgegaan";
+
+/* Alert button text for restored purchase alert */
+"subscription.restore.success.alert.button" = "OK";
+
+/* Alert message for restored purchase */
+"subscription.restore.success.alert.message" = "Je aankopen zijn hersteld.";
+
+/* Alert title for restored purchase */
+"subscription.restore.success.alert.title" = "Je bent helemaal klaar.";
+
+/* Subtitle in header when subscribed */
+"subscription.subscribed" = "Geabonneerd";
+
+/* Subscription Expired Data. This reads as 'Your subscription expired on (date)' */
+"subscription.subscription.expired.caption" = "Je abonnement is verlopen op % @";
+
+/* Monthly subscription expiration info where parameter is expiration date. This reads as 'Your monthly subscription expires on (date)' */
+"subscription.subscription.expiring.monthly.caption" = "Je maandabonnement verloopt op %@.";
+
+/* Unknown period subscription expiration info where parameter is expiration date. This reads as 'Your subscription expires on (date)' */
+"subscription.subscription.expiring.unknown.caption" = "Je abonnement verloopt op %@.";
+
+/* Annual subscription expiration info where parameter is expiration date. This reads as 'Your annual subscription expires on (date)' */
+"subscription.subscription.expiring.yearly.caption" = "Je jaarabonnement verloopt op %@.";
+
+/* Monthly subscription renewal info where parameter is renewal date. This reads as 'Your monthly subscription renews on (date)' */
+"subscription.subscription.renewing.monthly.caption" = "Je maandabonnement wordt verlengd op %@.";
+
+/* Unknown period subscription renewal info where parameter is renewal date. This reads as 'Your subscription renews on (date)' */
+"subscription.subscription.renewing.unknown.caption" = "Je abonnement wordt verlengd op %@.";
+
+/* Annual subscription renewal info where parameter is renewal date. This reads as 'Your annual subscription renews on (date)' */
+"subscription.subscription.renewing.yearly.caption" = "Je jaarlijkse abonnement wordt verlengd op %@.";
+
+/* Navigation bar Title for subscriptions */
+"subscription.title" = "Privacy Pro";
+
+/* Message confirming that recovery code was copied to clipboard */
+"sync.code.copied" = "Herstelcode gekopieerd naar klembord";
+
+/* Caption for a button to delete Sync server data */
+"sync.delete.all.confirm.action" = "Servergegevens verwijderen";
+
+/* Message for the dialog to confirm deleting Sync server data */
+"sync.delete.all.confirm.message" = "De verbinding met alle apparaten wordt verbroken en je gesynchroniseerde gegevens worden van de server verwijderd.";
+
+/* Title of the dialog to confirm deleting Sync server data */
+"sync.delete.all.confirm.title" = "Wil je de servergegevens verwijderen?";
+
+/* Message for the Sync Promotion banner when user has bookmarks that can be synced */
+"sync.promo.bookmarks.message" = "Geen account nodig. End-to-end versleuteling betekent dat niemand anders dan jij je bladwijzers kan zien, zelfs wij niet.";
+
+/* Title for the Sync Promotion banner */
+"sync.promo.bookmarks.title" = "Synchroniseer en back-up je bladwijzers";
+
+/* Title for a button in the Sync Promotion banner to set up Sync */
+"sync.promo.confirm.action" = "Synchronisatie instellen";
+
+/* Title for a button in the Sync Promotion banner to dismiss Sync promotion banner */
+"sync.promo.dismiss.action" = "Nee, bedankt";
+
+/* Message for the Sync Promotion banner when user has passwords that can be synced */
+"sync.promo.passwords.message" = "Geen account nodig. Dankzij end-to-end versleuteling kan niemand behalve jij je wachtwoorden zien, zelfs wij niet.";
+
+/* Title for the Sync Promotion banner */
+"sync.promo.passwords.title" = "Synchroniseer en maak een back-up van je wachtwoorden";
+
+/* Caption for a button to remove device from Sync */
+"sync.remove-device.action" = "Verwijderen";
+
+/* No comment provided by engineer. */
+"sync.remove-device.message" = "'%@' heeft geen toegang meer tot je gesynchroniseerde gegevens.";
+
+/* Title of the dialog to remove device from Sync */
+"sync.remove-device.title" = "Apparaat verwijderen?";
+
+/* Caption for a button to remove current device from Sync */
+"sync.turn.off.confirm.action" = "Verwijderen";
+
+/* Message for the dialog to confirm turning off Sync */
+"sync.turn.off.confirm.message" = "Dit apparaat heeft geen toegang meer tot je gesynchroniseerde gegevens.";
+
+/* Title of the dialog to confirm turning off Sync */
+"sync.turn.off.confirm.title" = "Synchronisatie uitschakelen?";
+
+/* Reason for auth when setting up Sync */
+"sync.user.auth.reason" = "Ontgrendel het apparaat om synchronisatie en back-up in te stellen";
+
+/* Data syncing unavailable warning message */
+"sync.warning.data.syncing.disabled" = "Sorry, maar synchroniseren en back-up is momenteel niet beschikbaar. Probeer het later opnieuw.";
+
+/* Data syncing unavailable warning message */
+"sync.warning.data.syncing.disabled.upgrade.required" = "Synchroniseren en back-up is helaas niet langer beschikbaar in deze versie van de app. Werk DuckDuckGo bij naar de nieuwste versie om door te gaan.";
+
 /* Accessibility label on remove button */
 "tab.close.home" = "Starttabblad sluiten";
 
@@ -962,7 +2785,7 @@
 "tab.switcher.accessibility.label" = "Wisselen tussen tabbladen";
 
 /* Description text for the text size adjustment setting */
-"textSize.description" = "Kies de gewenste tekstgrootte. Websites die je in DuckDuckGo bekijkt, worden aan de tekstgrootte aangepast.";
+"textSize.description" = "Vergroot of verklein de tekstgrootte op alle sites.";
 
 /* Replacement string is a current percent value e.g. '120%' */
 "textSize.footer" = "Lettergrootte - %@";
@@ -985,14 +2808,215 @@
 /* Light Theme entry */
 "theme.name.light" = "Licht";
 
+/* No comment provided by engineer. */
+"This list contains messages that have been shown plus at most 1 message that is scheduled for showing. There may be more messages in the config that will be presented, but they haven't been processed yet." = "Deze lijst bevat berichten die getoond zijn plus maximaal 1 bericht dat gepland staat om getoond te worden. Mogelijk bevat de configuratie meer berichten die nog worden getoond, maar deze zijn nog niet verwerkt.";
+
 /* Confirmation of an action - populated with a domain name */
 "toast.protection.disabled" = "Privacybescherming uitgeschakeld voor %@";
 
 /* Confirmation of an action - populated with a domain name */
+"toast.protection.disabled.and.toggle.report.sent" = "Privacybescherming uitgeschakeld voor %@ en rapport verzonden.";
+
+/* Confirmation of an action - populated with a domain name */
 "toast.protection.enabled" = "Privacybescherming ingeschakeld voor %@";
 
-/* No comment provided by engineer. */
-"unknown.error.occurred" = "Er is een onbekende fout opgetreden.";
+/* Autocomplete selected suggestion into the Address Bar button accessibility label */
+"voiceover.action.suggestion.autocomplete" = "Suggestie automatisch aanvullen";
+
+/* Voice-over title for a Bookmark suggestion. Noun */
+"voiceover.suggestion.type.bookmark" = "Bladwijzer";
+
+/* Search for suggestion action accessibility title */
+"voiceover.suggestion.type.search" = "Zoeken op DuckDuckGo";
+
+/* Open suggested website action accessibility title */
+"voiceover.suggestion.type.website" = "Website openen";
+
+/* No microphone permission alert action button to open the settings app */
+"voiceSearch.alert.no-permission.action.settings" = "Instellingen";
+
+/* Message for alert warning the user about missing microphone permission */
+"voiceSearch.alert.no-permission.message" = "Sta microfoontoegang toe in de iOS-systeeminstellingen zodat DuckDuckGo spraakfuncties kan gebruiken.";
+
+/* OK button alert warning the user about missing microphone permission */
+"voiceSearch.alert.no-permission.ok" = "OK";
+
+/* Title for alert warning the user about missing microphone permission */
+"voiceSearch.alert.no-permission.title" = "Toegang tot microfoon vereist";
+
+/* Cancel button for voice search */
+"voiceSearch.cancel" = "Annuleren";
+
+/* Voice-search footer note with on-device privacy warning */
+"voiceSearch.footer.note" = "Voeg de optie 'Private spraakopdracht' toe aan de adresbalk. Audio wordt niet opgeslagen en met niemand gedeeld, ook niet met DuckDuckGo.";
+
+/* Voice-search footer note with on-device privacy warning */
+"voiceSearch.footer.note.old" = "Audio wordt op het apparaat verwerkt. Het wordt niet opgeslagen of met iemand gedeeld, ook niet met DuckDuckGo.";
+
+/* Cancel action for the alert when the subscription expires */
+"vpn.access-revoked.alert.action.cancel" = "Negeren";
+
+/* Primary action for the alert when the subscription expires */
+"vpn.access-revoked.alert.action.subscribe" = "Abonneer";
+
+/* Alert message for the alert when the Privacy Pro subscription expiress */
+"vpn.access-revoked.alert.message" = "Abonneer je op Privacy Pro om opnieuw verbinding te maken met DuckDuckGo VPN.";
+
+/* Alert title for the alert when the Privacy Pro subscription expires */
+"vpn.access-revoked.alert.title" = "De verbinding met de VPN is verbroken omdat het abonnement is beëindigd";
+
+/* Title for the VPN widget onboarding screen */
+"vpn.addWidget.settings.title" = "Zoek en selecteer DuckDuckGo. Veeg vervolgens naar VPN en selecteer Widget toevoegen.";
+
+/* Title for the Cancel button of the VPN feedback form */
+"vpn.feedback-form.button.cancel" = "Annuleren";
+
+/* Title for the Done button of the VPN feedback form */
+"vpn.feedback-form.button.done" = "Klaar";
+
+/* Title for the Submit button of the VPN feedback form */
+"vpn.feedback-form.button.submit" = "Verzenden";
+
+/* Title for the Submitting state of the VPN feedback form */
+"vpn.feedback-form.button.submitting" = "Bezig met verzenden …";
+
+/* Title for the browser crash/freeze category of the VPN feedback form */
+"vpn.feedback-form.category.browser-crash-or-freeze" = "De VPN zorgt ervoor dat de browser crasht of vastloopt";
+
+/* Title for the 'VPN fails to connect' category of the VPN feedback form */
+"vpn.feedback-form.category.fails-to-connect" = "De VPN kan geen verbinding maken";
+
+/* Title for the 'VPN feature request' category of the VPN feedback form */
+"vpn.feedback-form.category.feature-request" = "VPN-functieverzoek";
+
+/* Title for the category 'VPN causes issues with other apps or websites' category of the VPN feedback form */
+"vpn.feedback-form.category.issues-with-apps" = "De VPN veroorzaakt problemen met andere apps of websites";
+
+/* Title for the local device connectivity category of the VPN feedback form */
+"vpn.feedback-form.category.local-device-connectivity" = "De VPN laat me geen verbinding maken met een lokaal apparaat";
+
+/* Title for the 'other VPN feedback' category of the VPN feedback form */
+"vpn.feedback-form.category.other" = "Andere feedback over het VPN";
+
+/* Title for the category selection state of the VPN feedback form */
+"vpn.feedback-form.category.select-category" = "SELECTEER EEN CATEGORIE";
+
+/* Title for the 'VPN is too slow' category of the VPN feedback form */
+"vpn.feedback-form.category.too-slow" = "De VPN-verbinding is te traag";
+
+/* Title for the 'unable to install' category of the VPN feedback form */
+"vpn.feedback-form.category.unable-to-install" = "Ik kan de VPN niet installeren";
+
+/* Title for the feedback sent view description of the VPN feedback form */
+"vpn.feedback-form.sending-confirmation.description" = "Je feedback helpt ons de VPN-functie van DuckDuckGo te verbeteren.";
+
+/* Title for the feedback sending error text of the VPN feedback form */
+"vpn.feedback-form.sending-confirmation.error" = "We kunnen je feedback op dit moment niet verzenden. Probeer het opnieuw.";
+
+/* Title for the feedback sent view title of the VPN feedback form */
+"vpn.feedback-form.sending-confirmation.title" = "Bedankt!";
+
+/* Toast message when the VPN feedback form is submitted successfully */
+"vpn.feedback-form.submitted.message" = "Dank je wel! Feedback verzonden.";
+
+/* Text for the body of the VPN feedback form */
+"vpn.feedback-form.text-1" = "Beschrijf wat er gebeurt, wat je verwachtte dat er zou gebeuren en de stappen die tot het probleem hebben geleid.";
+
+/* Text for the body of the VPN feedback form */
+"vpn.feedback-form.text-2" = "Naast de gegevens die in dit formulier zijn ingevoerd, bevat je foutrapport:";
+
+/* Bullet text for the body of the VPN feedback form */
+"vpn.feedback-form.text-3" = "• Of er specifieke functies in DuckDuckGo zijn ingeschakeld";
+
+/* Bullet text for the body of the VPN feedback form */
+"vpn.feedback-form.text-4" = "• Verzamelde diagnostische gegevens voor de DuckDuckGo-app";
+
+/* Text for the body of the VPN feedback form */
+"vpn.feedback-form.text-5" = "Door op 'Verzenden' te tikken, geef ik DuckDuckGo toestemming om de informatie in dit rapport te gebruiken om de functies van de app te verbeteren.";
+
+/* Title for each screen of the VPN feedback form */
+"vpn.feedback-form.title" = "Help de VPN-functie van DuckDuckGo te verbeteren";
+
+/* VPN settings screen cell text for adding the VPN widget to the home screen */
+"vpn.settings.add.widget" = "VPN-widget toevoegen aan startscherm";
+
+/* Disclaimer for the DNS Server section on the DNS Server screen */
+"vpn.settings.dns.section-disclaimer" = "Het gebruik van een aangepaste DNS-server kan de surfsnelheid beïnvloeden en je activiteiten blootstellen aan derden als de server niet veilig of betrouwbaar is.";
+
+/* Header text for the DNS section on the VPN Settings screen */
+"vpn.settings.dns.section-header" = "DNS";
+
+/* Title for the Apply button on the DNS Server setting screen */
+"vpn.settings.dns.server.apply.button.title" = "Toepassen";
+
+/* Default value for the DNS Server row on the VPN Settings screen */
+"vpn.settings.dns.server.default.value" = "DuckDuckGo";
+
+/* Title for the IPv4 Address setting */
+"vpn.settings.dns.server.ipv4.title" = "IPv4-adres";
+
+/* Custom option for the DNS Server setting */
+"vpn.settings.dns.server.option.custom" = "Pas Aan";
+
+/* Recommended option for the DNS Server setting */
+"vpn.settings.dns.server.option.default" = "DuckDuckGo (aanbevolen)";
+
+/* Title for the DNS Server setting screen */
+"vpn.settings.dns.server.screen.title" = "DNS-server";
+
+/* Title for the DNS Server row on the VPN Settings screen */
+"vpn.settings.dns.server.title" = "DNS-server";
+
+/* Title for the button to enable push notifications in system settings */
+"waitlist.allow-notifications" = "Meldingen toestaan";
+
+/* Body text for the waitlist notification */
+"waitlist.available.notification.body" = "Open je uitnodiging";
+
+/* Title for the copy action */
+"waitlist.copy" = "Kopiëren";
+
+/* Label text for the invite code */
+"waitlist.invite-code" = "Uitnodigingscode";
+
+/* Step title on the invite screen */
+"waitlist.invite-screen.step.title" = "Stap %d";
+
+/* Title for the invite code screen */
+"waitlist.invite-screen.youre-invited" = "Je bent uitgenodigd!";
+
+/* Title for the Join Waitlist screen */
+"waitlist.join-waitlist-screen.join" = "Schrijf je in voor de privéwachtlijst";
+
+/* Temporary status text for the Join Waitlist screen */
+"waitlist.join-waitlist-screen.joining" = "Deelnemen aan wachtlijst ...";
+
+/* Title for the Share Link button */
+"waitlist.join-waitlist-screen.share-link" = "Link delen";
+
+/* Notification text for the waitlist */
+"waitlist.joined.no-notification.get-notification" = "MELDING STUREN";
+
+/* Title for the alert to confirm enabling notifications */
+"waitlist.joined.no-notification.get-notification-confirmation-title" = "Een melding krijgen als je aan de beurt bent?";
+
+/* Cancel button in the alert to confirm enabling notifications */
+"waitlist.joined.no-notification.no-thanks" = "Nee, bedankt";
+
+/* Text used for the Notifications Disabled state */
+"waitlist.notification.disabled" = "We kunnen je informeren wanneer je aan de beurt bent, maar meldingen zijn momenteel uitgeschakeld voor DuckDuckGo.";
+
+/* Privacy disclaimer for the Waitlist feature */
+"waitlist.privacy-disclaimer" = "Je hoeft geen persoonsgegevens te delen om op de wachtlijst te komen. Je stelt je plaats veilig met een tijdstempel die alleen op jouw apparaat bestaat. Zo kunnen we je informeren wanneer je aan de beurt bent.";
+
+/* Title for the queue screen */
+"waitlist.queue-screen.on-the-list" = "Je staat op de lijst!";
+
+/* Title for the settings subtitle */
+"waitlist.settings.download-available" = "Download beschikbaar";
+
+/* Title for the share sheet entry */
+"waitlist.share-sheet.title" = "Je bent uitgenodigd!";
 
 /* Confirmation message */
 "web.url.remove.favorite.done" = "Favoriet verwijderd";
@@ -1014,4 +3038,28 @@
 
 /* OK button for JavaScript alerts */
 "webJSAlert.OK.button" = "OK";
+
+/* Alert title explaining the message is shown by a website */
+"webJSAlert.website-message.format" = "Een bericht van %@:";
+
+/* No comment provided by engineer. */
+"Welcome to the Duck Side!" = "Welkom bij de Duck kant!";
+
+/* Title for the Windows waitlist button redirecting to Mac waitlist */
+"windows-waitlist.join-waitlist-screen.mac-waitlist" = "Op zoek naar de versie voor Mac?";
+
+/* Title for the settings subtitle */
+"windows-waitlist.settings.browse-privately" = "Browse privé met onze app voor Windows";
+
+/* Message used when sharing to iMessage */
+"windows-waitlist.share-sheet.message" = "Klaar om privé te browsen in Windows?\n\nBezoek deze URL op je computer om te downloaden:\nhttps://duckduckgo.com/windows";
+
+/* Summary text for the Windows browser waitlist */
+"windows-waitlist.summary" = "DuckDuckGo voor Windows heeft alles wat je nodig hebt om met meer privacy te browsen: privézoekopdrachten, blokkering van trackers, geforceerde versleuteling, blokkering van cookiepop-ups, plus nog meer uitstekende bescherming onderweg.";
+
+/* Title for the Windows Waitlist feature */
+"windows-waitlist.title" = "DuckDuckGo-app voor Windows";
+
+/* Title for the Windows browser download link page */
+"windows-waitlist.waitlist-download-screen.try-duckduckgo-for-windows" = "Download DuckDuckGo voor Windows!";
 

@@ -18,20 +18,37 @@
 //
 
 import XCTest
+
 @testable import Core
+@testable import DuckDuckGo
 
 class NotFoundCachingDownloaderTests: XCTestCase {
 
+    private var downloader: NotFoundCachingDownloader!
+
     override func setUp() {
         super.setUp()
-        UserDefaults.clearStandard()
+        
+        setupUserDefault(with: #file)
+        downloader = NotFoundCachingDownloader(sourcesProvider: DefaultFaviconSourcesProvider())
     }
-    
+
+    override func tearDown() {
+        downloader = nil
+
+        super.tearDown()
+    }
+
+    // If this test fails... ask yourself why have you changed the salt?
+    //  If it was intentional, then please update this test.
+    func testSaltValueHasNotChanged() {
+        XCTAssertEqual("DDGSalt:", FaviconHasher.salt)
+    }
+
     func testWhenURLSavedNotStoredInPlainText() {
-        let downloader = NotFoundCachingDownloader()
         downloader.noFaviconsFound(forDomain: "example.com")
 
-        guard let domains: [String: TimeInterval] = UserDefaults.standard.object(forKey: UserDefaultsWrapper<Any>.Key.notFoundCache.rawValue)
+        guard let domains: [String: TimeInterval] = UserDefaults.app.object(forKey: UserDefaultsWrapper<Any>.Key.notFoundCache.rawValue)
             as? [String: TimeInterval] else {
                 XCTFail("Failed to load not found cache")
                 return
@@ -39,19 +56,18 @@ class NotFoundCachingDownloaderTests: XCTestCase {
         
         XCTAssertEqual(1, domains.count)
         domains.forEach {
-            XCTAssertEqual($0.key, "\(Favicons.Constants.salt)example.com".sha256())
+            XCTAssertEqual($0.key, "\(FaviconHasher.salt)example.com".sha256())
         }
         
     }
         
     func testWhenDomainMarkedAsDomainExpiresThenShouldDownload() {
-        let downloader = NotFoundCachingDownloader()
         downloader.noFaviconsFound(forDomain: "example.com")
         
         let moreThanAWeekFromNow = Date().addingTimeInterval(60 * 60 * 24 * 8)
         XCTAssertTrue(downloader.shouldDownload(URL(string: "https://example.com/path/to/image.png")!, referenceDate: moreThanAWeekFromNow))
         
-        guard let domains: [String: TimeInterval] = UserDefaults.standard.object(forKey: UserDefaultsWrapper<Any>.Key.notFoundCache.rawValue)
+        guard let domains: [String: TimeInterval] = UserDefaults.app.object(forKey: UserDefaultsWrapper<Any>.Key.notFoundCache.rawValue)
             as? [String: TimeInterval] else {
                 XCTFail("Failed to load not found cache")
                 return
@@ -61,13 +77,11 @@ class NotFoundCachingDownloaderTests: XCTestCase {
     }
 
     func testWhenMarkingDomainAsNotFoundThenShouldNotDownload() {
-        let downloader = NotFoundCachingDownloader()
         downloader.noFaviconsFound(forDomain: "example.com")
         XCTAssertFalse(downloader.shouldDownload(URL(string: "https://example.com/path/to/image.png")!))
     }
 
     func testWhenDomainNotMarkedAsNotFoundThenShouldNotDownload() {
-        let downloader = NotFoundCachingDownloader()
         XCTAssertTrue(downloader.shouldDownload(URL(string: "https://example.com/path/to/image.png")!))
     }
 

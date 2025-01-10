@@ -1,25 +1,27 @@
-Tired of being tracked online? We can help. At DuckDuckGo, we believe online privacy should be simple.
+DuckDuckGo is a free browser that provides the most comprehensive online privacy protection in one app. Unlike most popular browsers, it has powerful privacy protections by default, including our search engine that doesn’t track your history and over a dozen other built-in protections. Millions of people use DuckDuckGo as their go-to browser to protect their everyday online activities, from searching to browsing, emailing, and more.
 
-DuckDuckGo Privacy Browser has the speed you need, the browsing features you expect (like tabs & bookmarks), and comes packed with best-in-class privacy essentials:
+FEATURE HIGHLIGHTS
+• Search Privately by Default — DuckDuckGo Private Search comes built-in, so you can easily search the web without being tracked.
 
- • Tap Fire Button, Burn Data — clear all your tabs and browsing data with one tap.
+• Escape Website Trackers Before They Load  — Automatically stop most hidden trackers (3rd-party scripts) from loading, which prevents companies from collecting and using (e.g. sale, ads, etc.) any data from these trackers. Our cutting-edge tracker blocking technology – called 3rd-Party Tracker Loading Protection – goes above and beyond what you get in most popular browsers by default.
 
- • Escape Online Tracking — automatically block hidden third-party trackers we can find lurking on websites you visit, which stops the companies behind those trackers from collecting and selling your data.
+• Automatically Enforce Encryption — force many sites you visit to automatically use an encrypted (HTTPS) connection, which helps shield your data from Wi-Fi snoopers and network onlookers like your Internet provider. 
 
- • Search Privately — our private search engine comes built-in so you can search the Internet without being tracked.
+• Enable Built-in Email Protection — Over 85% of emails sent to Duck Addresses contained trackers that can detect when you’ve opened a message, where you were when you opened it, and what device you were using. Email Protection makes it easy to block most email trackers and hide your existing address when signing up for things online, all without switching email providers.
 
- • Enforce Encryption — force sites to use an encrypted (HTTPS) connection where available, protecting your data from prying eyes, like from unwanted snoopers and Internet service providers.
+• Escape Fingerprinting — help stop companies from creating a unique identifier for you by blocking their attempts to combine specific information about your browser and device settings.
 
- • Decode Privacy — each site you visit gets a Privacy Grade (A-F) so you can see how protected you are at a glance, and you can even dig into the details to see who we caught trying to track you.
+• Block Tracking Cookies — prevent most 3rd-party cookies from tracking you as you browse from site to site.
 
- • Signal Your Privacy Preference With GPC — built into the browser, Global Privacy Control (GPC) intends to help you express your legal opt-out rights automatically. This will tell websites not to sell or share your personal information under future legal frameworks (e.g., CCPA, GDPR) in various states or countries.
+We also have many protections not available on most browsers including protection from link tracking, Google AMP tracking, and more.
 
- • Limit Access — secure your browser with Touch ID or Face ID.
+EVERYDAY PRIVACY CONTROLS
+• Tap Fire Button, Burn Data — Clear your tabs and browsing data with our Fire Button.
 
-Privacy, simplified.
+• Signal Your Privacy Preference with Global Privacy Control (GPC) — built-into our app, GPC intends to help you express your opt-out rights automatically by telling websites not to sell or share your personal information. Whether it can be used to enforce your legal rights (for example, current or future CCPA, GDPR requirements) depends on the laws in your jurisdiction.
 
-About Us: https://duckduckgo.com/about/
-Device Privacy: https://spreadprivacy.com/tag/device-privacy-tips/
-Privacy Newsletter: https://duckduckgo.com/newsletter
+Read more about our free Tracking Protections at https://help.duckduckgo.com/privacy/web-tracking-protections/
+
+You don't need to wait to take back your privacy. Join the millions of people using DuckDuckGo and protect many of your everyday online activities with one app. It's privacy, simplified. 
+
 Privacy Policy: https://duckduckgo.com/privacy/
-Open Source: https://github.com/duckduckgo/iOS

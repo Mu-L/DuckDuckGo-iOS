@@ -1,24 +1,21 @@
-La confidentialité simplifiée.
+D'un seul clic, l'application DuckDuckGo offre la protection la plus complète en matière de confidentialité en ligne. Il suffit d'un téléchargement pour profiter d'un nouveau navigateur qui vous offrira au quotidien une protection fluide lorsque vous effectuerez des recherches et naviguerez sur le Web, et même un accès aux protections contre le suivi lorsque vous recevrez des e-mails. Bon nombre de ces protections ne sont pas proposées par défaut dans la plupart des navigateurs populaires.
 
-Chez DuckDuckGo, nous pensons qu’Internet ne devrait pas être si effrayant, et que protéger vos données personnelles en ligne devrait être aussi simple que de fermer un store. 
+PRINCIPALES FONCTIONNALITÉS 
+• Faire une recherche privée par défaut – la recherche privée DuckDuckGo est intégrée pour vous permettre d'effectuer des recherches sur le Web sans être suivi(e). 
 
-Nous fournissons l’essentiel de la confidentialité dont vous avez besoin pour contrôler vos informations personnelles lorsque vous effectuez une recherche et naviguez sur le Web, quel que soit l’endroit où vous mène Internet :
-• Échapper aux réseaux de pistage publicitaire — Notre fonctionnalité de protection de la vie privée bloquera tous les traqueurs cachés que nous pouvons déceler, exposant ainsi les principaux réseaux publicitaires qui vous pistent au fil du temps, de sorte que vous puissiez savoir qui tente de vous pister.
-• Augmenter la protection par cryptage — Nous forçons les sites à utiliser une connexion cryptée dans la mesure du possible, protégeant ainsi vos données des regards indiscrets (par ex. les fournisseurs de services Internet).
-• Recherche privée — Vous partagez vos informations les plus personnelles, qu’elles soient financières, médicales ou politiques, avec votre moteur de recherche. Ce que vous recherchez ne concerne que vous, c’est pourquoi le moteur de recherche DuckDuckGo ne vous piste jamais.
-• Décoder les politiques de confidentialité — Nous avons établi un partenariat avec Terms of Service Didn't Read pour inclure, le cas échéant, leurs notes et leurs classifications des conditions d’utilisation et des politiques de confidentialité des sites Web. 
+• Échapper aux traqueurs de sites Web avant leur chargement – empêchez automatiquement le chargement de la plupart des traqueurs cachés (scripts tiers), ce qui empêche les entreprises de recueillir et d'utiliser (par ex. vente, publicités, etc.) les données de ces traqueurs. Notre technologie de pointe de blocage des traqueurs, appelée « 3rd-Party Tracker Loading Protection », va bien au-delà de ce que proposent par défaut les navigateurs les plus populaires. 
 
-Lorsque vous effectuez une recherche, naviguez ou visitez un site Web, DuckDuckGo vous indique une note de confidentialité allant de A à F. Cette note vous permet de connaître votre niveau de protection en un coup d'œil, de savoir qui nous avons surpris en train de vous pister et d’apprendre comment nous avons amélioré les mesures de confidentialité du site en question. La note de confidentialité est automatiquement calculée en fonction de la prévalence des réseaux de pistage cachés, de la disponibilité du chiffrement et des pratiques des sites Web en matière de confidentialité.
+• Appliquer automatiquement le cryptage – obligez de nombreux sites que vous visitez à utiliser automatiquement une connexion cryptée (HTTPS), ce qui permet de protéger vos données contre les espions du Wi-Fi et les observateurs du réseau comme votre fournisseur d'accès Internet. 
 
-Notre application fournit des fonctionnalités de navigation standard, telles que les onglets, les signets et la saisie semi-automatique. Outre l’excellente protection de la vie privée décrite ci-dessus, nous avons également inclus des fonctionnalités de confidentialité supplémentaires dans le navigateur lui-même :
-• Bouton Feu — Effacez tous vos onglets et toutes vos données en un clin d’œil.
-• Verrouillage d’application — Sécurisez l'application avec Touch ID ou Face ID.
+• Activer la protection intégrée des e-mails – plus de 85 % des e-mails envoyés à des adresses Duck contenaient des traqueurs capables de détecter quand vous aviez ouvert un message, où vous étiez, quand vous l'aviez ouvert et quel appareil vous utilisiez. La protection des e-mails permet de bloquer facilement la plupart des traqueurs d'e-mails et de masquer votre adresse existante lorsque vous procédez à une inscription en ligne, le tout sans changer de fournisseur de messagerie. 
 
-Trop de gens pensent qu’il est impossible d’avoir une vie privée sur Internet. Nous nous battons pour changer cela, et nous nous sommes donné pour mission de rétablir la confiance en ligne. Installez DuckDuckGo et reprenez le contrôle de votre vie privée !
+Nous proposons également de nombreuses protections qui ne sont pas disponibles sur la plupart des navigateurs, notamment la protection, contre le suivi des liens, suivi de l'empreinte numérique, le suivi Google AMP, etc.
 
-Qui sommes-nous ? : https://duckduckgo.com/about/
-Confidentialité des appareils : https://spreadprivacy.com/tag/device-privacy-tips/
-Plus d’informations sur la confidentialité : https://spreadprivacy.com/tag/privacy-newsletter/
-Notre politique de confidentialité : https://duckduckgo.com/privacy/
+CONTRÔLES QUOTIDIENS DE LA CONFIDENTIALITÉ
+• Appuyez sur le Fire Button, brûlez des données – effacez vos onglets et vos données de navigation avec notre Fire Button.
 
-Code source libre à l’adresse https://github.com/duckduckgo/iOS.
+• Signalez vos préférences en matière de confidentialité avec le Global Privacy Control (GPC) – intégré à notre application, le GPC vous aide à formuler automatiquement vos droits de refus en indiquant aux sites Web de ne pas vendre ou partager vos informations personnelles. Le fait qu'il puisse être utilisé pour faire valoir vos droits légaux (par exemple, CCPA actuel ou futur, conditions du RGPD) dépend des lois de votre juridiction. 
+
+Découvrez-en plus à ce sujet et sur nos protections contre le suivi sur https://help.duckduckgo.com/privacy/web-tracking-protections/ 
+
+Inutile d'attendre pour reprendre le contrôle de votre vie privée. La confidentialité, simplifiée.  

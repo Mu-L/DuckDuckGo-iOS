@@ -18,35 +18,100 @@
 //
 
 import Foundation
+import BrowserServicesKit
+import RemoteMessaging
+import Common
 import Core
+import Bookmarks
+import os.log
 
-class HomePageConfiguration {
+final class HomePageConfiguration: HomePageMessagesConfiguration {
     
-    enum Component: Equatable {
-        case navigationBarSearch(fixed: Bool)
-        case favorites
-        case homeMessage
+    // MARK: - Messages
+    
+    private var homeMessageStorage: HomeMessageStorage
+    private var remoteMessagingClient: RemoteMessagingClient
+    private let privacyProDataReporter: PrivacyProDataReporting
+
+    var homeMessages: [HomeMessage] = []
+
+    init(variantManager: VariantManager? = nil,
+         remoteMessagingClient: RemoteMessagingClient,
+         privacyProDataReporter: PrivacyProDataReporting) {
+        homeMessageStorage = HomeMessageStorage(variantManager: variantManager)
+        self.remoteMessagingClient = remoteMessagingClient
+        self.privacyProDataReporter = privacyProDataReporter
+        homeMessages = buildHomeMessages()
     }
-    
-    func components(bookmarksManager: BookmarksManager = BookmarksManager()) -> [Component] {
-        let fixed = bookmarksManager.favoritesCount == 0
-        return [
-            .navigationBarSearch(fixed: fixed),
-            .homeMessage,
-            .favorites
-        ]
+
+    func refresh() {
+        homeMessages = buildHomeMessages()
     }
-    
-    private let homeMessageStorage = HomeMessageStorage()
-    
-    func homeMessages() -> [HomeMessageModel] {
-        return homeMessageStorage.homeMessagesThatShouldBeShown()
-    }
-    
-    func homeMessageDismissed(_ homeMessage: HomeMessage) {
-        switch homeMessage {
-        case .defaultBrowserPrompt:
-            homeMessageStorage.homeDefaultBrowserMessageDateDismissed = Date()
+
+    private func buildHomeMessages() -> [HomeMessage] {
+        var messages = homeMessageStorage.messagesToBeShown
+
+        if DaxDialogs.shared.isStillOnboarding() {
+            return messages
         }
+
+        guard let remoteMessage = remoteMessageToShow() else {
+            return messages
+        }
+
+        messages.append(remoteMessage)
+        return messages
+    }
+
+    private func remoteMessageToShow() -> HomeMessage? {
+        guard let remoteMessageToPresent = remoteMessagingClient.store.fetchScheduledRemoteMessage() else { return nil }
+        Logger.remoteMessaging.info("Remote message to show: \(remoteMessageToPresent.id)")
+        return .remoteMessage(remoteMessage: remoteMessageToPresent)
+    }
+
+    @MainActor
+    func dismissHomeMessage(_ homeMessage: HomeMessage) async {
+        switch homeMessage {
+        case .remoteMessage(let remoteMessage):
+            Logger.remoteMessaging.info("Home message dismissed: \(remoteMessage.id)")
+            await remoteMessagingClient.store.dismissRemoteMessage(withID: remoteMessage.id)
+
+            if let index = homeMessages.firstIndex(of: homeMessage) {
+                homeMessages.remove(at: index)
+            }
+        default:
+            break
+        }
+    }
+
+    func didAppear(_ homeMessage: HomeMessage) {
+        switch homeMessage {
+        case .remoteMessage(let remoteMessage):
+            Logger.remoteMessaging.info("Remote message shown: \(remoteMessage.id)")
+            if remoteMessage.isMetricsEnabled {
+                Pixel.fire(pixel: .remoteMessageShown,
+                           withAdditionalParameters: additionalParameters(for: remoteMessage.id))
+            }
+
+            if !remoteMessagingClient.store.hasShownRemoteMessage(withID: remoteMessage.id) {
+                Logger.remoteMessaging.info("Remote message shown for first time: \(remoteMessage.id)")
+                if remoteMessage.isMetricsEnabled {
+                    Pixel.fire(pixel: .remoteMessageShownUnique,
+                               withAdditionalParameters: additionalParameters(for: remoteMessage.id))
+                }
+                Task {
+                    await remoteMessagingClient.store.updateRemoteMessage(withID: remoteMessage.id, asShown: true)
+                }
+            }
+
+        default:
+            break
+        }
+
+    }
+
+    private func additionalParameters(for messageID: String) -> [String: String] {
+        privacyProDataReporter.mergeRandomizedParameters(for: .messageID(messageID),
+                                                         with: [PixelParameters.message: "\(messageID)"])
     }
 }

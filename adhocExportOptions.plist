@@ -2,7 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-
+    <key>compileBitcode</key>
+    <false/>
 	<key>teamID</key>
     <string>HKE973VLUW</string>
     <key>method</key>
@@ -11,22 +12,22 @@
     <key>provisioningProfiles</key>
     <dict>
         <key>com.duckduckgo.mobile.ios</key>
-        <string>Ad Hoc - App</string>
+        <string>match AdHoc com.duckduckgo.mobile.ios</string>
 
         <key>com.duckduckgo.mobile.ios.ShareExtension</key>
-        <string>Ad Hoc - Share</string>
-
-        <key>com.duckduckgo.mobile.ios.BookmarksTodayExtension</key>
-        <string>Ad Hoc - Bookmarks</string>
-
-        <key>com.duckduckgo.mobile.ios.QuickActionsTodayExtension</key>
-        <string>Ad Hoc - Quick Actions</string>
+        <string>match AdHoc com.duckduckgo.mobile.ios.ShareExtension</string>
 
         <key>com.duckduckgo.mobile.ios.OpenAction2</key>
-        <string>Ad Hoc - Open Action</string>
+        <string>match AdHoc com.duckduckgo.mobile.ios.OpenAction2</string>
 
         <key>com.duckduckgo.mobile.ios.Widgets</key>
-        <string>Ad Hoc - Widgets</string>
+        <string>match AdHoc com.duckduckgo.mobile.ios.Widgets</string>
+
+        <key>com.duckduckgo.mobile.ios.NetworkExtension</key>
+		<string>match AdHoc com.duckduckgo.mobile.ios.NetworkExtension</string>
+
+        <key>com.duckduckgo.mobile.ios.CredentialExtension</key>
+		<string>match AdHoc com.duckduckgo.mobile.ios.CredentialExtension</string>
     </dict>
 
 </dict>

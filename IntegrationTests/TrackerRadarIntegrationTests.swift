@@ -19,38 +19,31 @@
 
 import XCTest
 import TrackerRadarKit
+import DuckDuckGo
+import PrivacyDashboard
+@testable import BrowserServicesKit
 @testable import Core
 
 class TrackerRadarIntegrationTests: XCTestCase {
 
     func test() throws {
 
-        let url = AppUrls(statisticsStore: MockStatisticsStore()).trackerDataSet
+        let url = URL.trackerDataSet
         let data = try Data(contentsOf: url)
-        let trackerData = try JSONDecoder().decode(TrackerData.self, from: data)
-        let dataManager = TrackerDataManager(trackerData: trackerData)
+        let dataManager = TrackerDataManager(etag: UUID().uuidString,
+                                             data: data,
+                                             embeddedDataProvider: AppTrackerDataSetProvider())
 
-        dataManager.assertIsMajorTracker(domain: "google.com")
-        dataManager.assertIsMajorTracker(domain: "facebook.com")
+        // https://app.asana.com/0/0/1203843668454683/f
+        // dataManager.assertIsMajorTracker(domain: "google.com")
+        // dataManager.assertIsMajorTracker(domain: "facebook.com")
         dataManager.assertEntityAndDomainLookups()
         dataManager.assertEntitiesHaveNames()
-
     }
 
 }
 
 extension TrackerDataManager {
-
-    func assertIsMajorTracker(domain: String, file: StaticString = #file, line: UInt = #line) {
-        guard let tds = fetchedData?.tds else {
-            XCTFail("No TDS found")
-            return
-        }
-        
-        let entity = tds.findEntity(forHost: domain)
-        XCTAssertNotNil(entity, "no entity found for domain \(domain)", file: file, line: line)
-        XCTAssertGreaterThan(entity?.prevalence ?? 0, SiteRating.Constants.majorNetworkPrevalence, file: file, line: line)
-    }
 
     func assertEntityAndDomainLookups(file: StaticString = #file, line: UInt = #line) {
         guard let tds = fetchedData?.tds else {

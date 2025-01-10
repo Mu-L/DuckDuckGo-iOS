@@ -51,11 +51,7 @@ class TabPreviewsSource {
     
     func update(preview: UIImage, forTab tab: Tab) {
         cache[tab.uid] = preview
-        
-        if tabSettings.isGridViewEnabled {
-            store(preview: preview, forTab: tab)
-        }
-
+        store(preview: preview, forTab: tab)
         tab.didUpdatePreview()
     }
     
@@ -76,9 +72,11 @@ class TabPreviewsSource {
         guard let url = previewLocation(for: tab) else { return }
         
         cache[tab.uid] = nil
-        
+
         do {
-            try FileManager.default.removeItem(at: url)
+            if FileManager.default.fileExists(atPath: url.filePath) {
+                try FileManager.default.removeItem(at: url)
+            }
         } catch {
             Pixel.fire(pixel: .cachedTabPreviewRemovalError, error: error)
         }

@@ -54,7 +54,7 @@ class MenuButton: UIView {
     
     private let bookmarksIconView = UIImageView()
 
-    let anim = LOTAnimationView(name: "menu_light")
+    let anim = LottieAnimationView(name: "menu_light")
     let pointerView: UIView = UIView(frame: CGRect(x: 0,
                                                    y: 0,
                                                    width: Constants.pointerViewWidth,
@@ -62,7 +62,7 @@ class MenuButton: UIView {
     
     var hasUnread: Bool = false {
         didSet {
-            anim.animationProgress = hasUnread ? 1.0 : 0.0
+            anim.currentProgress = hasUnread ? 1.0 : 0.0
         }
     }
     
@@ -72,13 +72,13 @@ class MenuButton: UIView {
         addSubview(pointerView)
         addSubview(anim)
         addSubview(bookmarksIconView)
-        
+
         configureAnimationView()
         configureBookmarksView()
         
-        if #available(iOS 13.4, *) {
-            addInteraction(UIPointerInteraction(delegate: self))
-        }
+        addInteraction(UIPointerInteraction(delegate: self))
+
+        decorate()
     }
 
     override func layoutSubviews() {
@@ -92,7 +92,7 @@ class MenuButton: UIView {
     
     private func configureBookmarksView() {
         bookmarksIconView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
-        bookmarksIconView.image = UIImage(named: "Bookmarks")
+        bookmarksIconView.image = UIImage(named: "Book-24")
         
         bookmarksIconView.center = CGPoint(x: bounds.midX, y: bounds.midY)
         
@@ -149,7 +149,7 @@ class MenuButton: UIView {
             if animated {
                 anim.play()
             } else {
-                anim.animationProgress = 1.0
+                anim.currentProgress = 1.0
             }
         case .menuImage:
             bookmarksIconView.isHidden = true
@@ -157,10 +157,10 @@ class MenuButton: UIView {
             if animated {
                 // Work around a bug that caused glitches when rapidly toggling button
                 anim.stop()
-                anim.animationProgress = 1.0
-                anim.play(fromProgress: 1.0, toProgress: 0, withCompletion: nil)
+                anim.currentProgress = 1.0
+                anim.play(fromProgress: 1.0, toProgress: 0, loopMode: nil, completion: nil)
             } else {
-                anim.animationProgress = 0.0
+                anim.currentProgress = 0.0
             }
         case .bookmarksImage:
             bookmarksIconView.isHidden = false
@@ -185,29 +185,37 @@ class MenuButton: UIView {
     }
 }
 
-extension MenuButton: Themable {
+extension MenuButton {
     
-    func decorate(with theme: Theme) {
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
         tintColor = theme.barTintColor
 
-        switch theme.currentImageSet {
-        case .light:
-            anim.setAnimation(named: "menu_light")
+        updateAnimationForCurrentAppearance()
+    }
+
+    private func updateAnimationForCurrentAppearance() {
+        switch traitCollection.userInterfaceStyle {
         case .dark:
-            anim.setAnimation(named: "menu_dark")
-            
-        }
-        
-        if currentState == State.closeImage {
-            anim.animationProgress = 1.0
+            anim.animation = LottieAnimation.named("menu_dark")
+        default:
+            anim.animation = LottieAnimation.named("menu_light")
         }
 
-        addSubview(anim)
-        configureAnimationView()
+        if currentState == State.closeImage {
+            anim.currentProgress = 1.0
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateAnimationForCurrentAppearance()
+        }
     }
 }
 
-@available(iOS 13.4, *)
 extension MenuButton: UIPointerInteractionDelegate {
     
     func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {

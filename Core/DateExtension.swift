@@ -24,4 +24,12 @@ extension Date {
         guard let otherDate = otherDate else { return false }
         return Calendar.current.isDate(self, inSameDayAs: otherDate)
     }
+
+    public func isLessThan48HoursAgo() -> Bool {
+        self > Date().addingTimeInterval(-48 * 60 * 60)
+    }
+
+    public func isLessThan(daysAgo days: Int) -> Bool {
+        self > Date().addingTimeInterval(Double(-days) * 24 * 60 * 60)
+    }
 }

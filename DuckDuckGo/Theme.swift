@@ -19,41 +19,54 @@
 
 import UIKit
 
-enum ThemeName: String {
+enum ThemeName: String, CaseIterable, Identifiable, CustomStringConvertible {
     case systemDefault
     case light
     case dark
+
+    var id: String { self.rawValue }
+    
+    var description: String {
+        return descriptionText
+    }
+
+    var descriptionText: String {
+        switch self {
+        case .systemDefault:
+            return UserText.themeNameDefault
+        case .light:
+            return UserText.themeNameLight
+        case .dark:
+            return UserText.themeNameDark
+        }
+    }
 }
 
 protocol Theme {
     var name: ThemeName { get }
     
-    var currentImageSet: ThemeManager.ImageSet { get }
     var statusBarStyle: UIStatusBarStyle { get }
     var keyboardAppearance: UIKeyboardAppearance { get }
 
     var tabsBarBackgroundColor: UIColor { get }
-    var tabsBarSeparatorColor: UIColor { get } 
+    var tabsBarSeparatorColor: UIColor { get }
     
     var backgroundColor: UIColor { get }
     
+    var mainViewBackgroundColor: UIColor { get }
+    
+    var omniBarBackgroundColor: UIColor { get }
     var barBackgroundColor: UIColor { get }
     var barTintColor: UIColor { get }
     
     var navigationBarTitleColor: UIColor { get }
     var navigationBarTintColor: UIColor { get }
     
-    // Color of the content that is directly placed over blurred background
-    var tintOnBlurColor: UIColor { get }
-    
     var searchBarBackgroundColor: UIColor { get }
-    var centeredSearchBarBackgroundColor: UIColor { get }
     var searchBarTextColor: UIColor { get }
     var searchBarTextPlaceholderColor: UIColor { get }
     var searchBarTextDeemphasisColor: UIColor { get }
-    var searchBarBorderColor: UIColor { get }
-    var searchBarClearTextIconColor: UIColor { get }
-    
+
     var browsingMenuTextColor: UIColor { get }
     var browsingMenuIconsColor: UIColor { get }
     var browsingMenuBackgroundColor: UIColor { get }
@@ -65,11 +78,13 @@ protocol Theme {
     
     var autocompleteSuggestionTextColor: UIColor { get }
     var autocompleteCellAccessoryColor: UIColor { get }
-    
+    var autocompleteCellPlusButtonColor: UIColor { get }
+
     var tableCellBackgroundColor: UIColor { get }
     var tableCellSelectedColor: UIColor { get }
     var tableCellSeparatorColor: UIColor { get }
     var tableCellTextColor: UIColor { get }
+    var tableCellSecondaryTextColor: UIColor { get }
     var tableCellAccessoryTextColor: UIColor { get }
     var tableCellAccessoryColor: UIColor { get }
     var tableCellHighlightedBackgroundColor: UIColor { get }
@@ -98,17 +113,13 @@ protocol Theme {
     var aboutScreenTextColor: UIColor { get }
     var aboutScreenButtonColor: UIColor { get }
 
-    var favoritesPlusTintColor: UIColor { get }
-    var favoritesPlusBackgroundColor: UIColor { get }
     var faviconBackgroundColor: UIColor { get }
     var favoriteTextColor: UIColor { get }
     
     var feedbackPrimaryTextColor: UIColor { get }
     var feedbackSecondaryTextColor: UIColor { get }
     var feedbackSentimentButtonBackgroundColor: UIColor { get }
-    
-    var privacyReportCellBackgroundColor: UIColor { get }
-    
+
     var activityStyle: UIActivityIndicatorView.Style { get }
     
     var destructiveColor: UIColor { get }
@@ -117,12 +128,13 @@ protocol Theme {
     
     var daxDialogBackgroundColor: UIColor { get }
     var daxDialogTextColor: UIColor { get }
-    
-    var homeMessageBackgroundColor: UIColor { get }
-    var homeMessageHeaderTextColor: UIColor { get }
-    var homeMessageSubheaderTextColor: UIColor { get }
-    var homeMessageTopTextColor: UIColor { get }
-    var homeMessageButtonColor: UIColor { get }
-    var homeMessageButtonTextColor: UIColor { get }
-    var homeMessageDismissButtonColor: UIColor { get }
+ 
+    var autofillEmptySearchViewTextColor: UIColor { get }
+    var autofillLockedViewTextColor: UIColor { get }
+
+    var privacyDashboardWebviewBackgroundColor: UIColor { get }
+
+    var onboardingBackgroundColor: UIColor { get }
+    var onboardingHeaderColor: UIColor { get }
+    var onboardingSubheaderColor: UIColor { get }
 }

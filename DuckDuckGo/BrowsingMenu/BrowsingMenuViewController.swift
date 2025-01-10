@@ -19,18 +19,13 @@
 
 import UIKit
 
-protocol BrowsingMenu {
-    
-    func setMenuEntries(_ entries: [BrowsingMenuEntry])
-}
-
 enum BrowsingMenuEntry {
     
-    case regular(name: String, accessibilityLabel: String? = nil, image: UIImage, action: () -> Void)
+    case regular(name: String, accessibilityLabel: String? = nil, image: UIImage, showNotificationDot: Bool = false, action: () -> Void)
     case separator
 }
 
-class BrowsingMenuViewController: UIViewController, BrowsingMenu {
+final class BrowsingMenuViewController: UIViewController {
     
     private enum Contants {
         static let arrowLayerKey = "arrowLayer"
@@ -42,72 +37,75 @@ class BrowsingMenuViewController: UIViewController, BrowsingMenu {
     @IBOutlet weak var horizontalStackView: UIStackView!
     @IBOutlet weak var separator: UIView!
     @IBOutlet weak var separatorHeight: NSLayoutConstraint!
+    @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var arrowView: UIView!
-    
+
     // Height to accomodate all content, can be constrained by parent view.
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
-    
+    @IBOutlet var flexibleWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var topConstraint: NSLayoutConstraint!
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet var rightConstraint: NSLayoutConstraint!
+    @IBOutlet var topConstraintIPad: NSLayoutConstraint!
+    @IBOutlet var bottomConstraintIPad: NSLayoutConstraint!
+
     // Width to accomodate all entries as a single line of text, can be constrained by parent view.
     @IBOutlet weak var preferredWidth: NSLayoutConstraint!
-    
-    // Set to force recalculation
-    public var parentConstraits = [NSLayoutConstraint]() {
-        didSet {
-            recalculatePreferredWidthConstraint()
-            recalculateHeightConstraints()
-        }
-    }
-    
-    weak var background: UIView?
-    private var dismiss: DismissHandler?
-    
+
+    private let animator = BrowsingMenuAnimator()
+
     private var headerButtons: [BrowsingMenuButton] = []
-    private var headerEntries: [BrowsingMenuEntry] = []
-    
-    private var menuEntries: [BrowsingMenuEntry] = []
+    private let headerEntries: [BrowsingMenuEntry]
+    private let menuEntries: [BrowsingMenuEntry]
+    private let appSettings: AppSettings
+
+    class func instantiate(headerEntries: [BrowsingMenuEntry], menuEntries: [BrowsingMenuEntry], appSettings: AppSettings = AppDependencyProvider.shared.appSettings) -> BrowsingMenuViewController {
+        UIStoryboard(name: "BrowsingMenuViewController", bundle: nil).instantiateInitialViewController { coder in
+            BrowsingMenuViewController(headerEntries: headerEntries, menuEntries: menuEntries, appSettings: appSettings, coder: coder)
+        }!
+    }
+
+    init?(headerEntries: [BrowsingMenuEntry], menuEntries: [BrowsingMenuEntry], appSettings: AppSettings, coder: NSCoder) {
+        self.headerEntries = headerEntries
+        self.menuEntries = menuEntries
+        self.appSettings = appSettings
+        super.init(coder: coder)
+        self.transitioningDelegate = self
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configureHeader()
-        configureTableView()
-        
-        applyTheme(ThemeManager.shared.currentTheme)
+
+        decorate()
     }
-    
+
     private func configureHeader() {
-        guard headerButtons.isEmpty else { return }
-        
-        if headerButtons.isEmpty {
-            var previousButton: UIView?
-            for _ in 1...4 {
-                let button = BrowsingMenuButton.loadFromXib()
-                horizontalStackView.addArrangedSubview(button)
-                button.heightAnchor.constraint(equalTo: horizontalStackView.heightAnchor, multiplier: 1.0).isActive = true
-                previousButton?.widthAnchor.constraint(equalTo: button.widthAnchor, multiplier: 1.0).isActive = true
-                
-                headerButtons.append(button)
-                previousButton = button
+        horizontalContainer.isHidden = headerEntries.isEmpty
+        separator.isHidden = headerEntries.isEmpty
+
+        for entry in headerEntries {
+            let button = BrowsingMenuButton.loadFromXib()
+            button.configure(with: entry) { [weak self] completion in
+                self?.dismiss(animated: true, completion: completion)
             }
+
+            horizontalStackView.addArrangedSubview(button)
+            button.heightAnchor.constraint(equalTo: horizontalStackView.heightAnchor, multiplier: 1.0).isActive = true
+            headerButtons.last?.widthAnchor.constraint(equalTo: button.widthAnchor, multiplier: 1.0).isActive = true
+
+            headerButtons.append(button)
         }
-        
+
         separatorHeight.constant = 1.0 / UIScreen.main.scale
     }
-    
-    private func configureTableView() {
-        
-        tableView.register(UINib(nibName: "BrowsingMenuEntryViewCell", bundle: nil),
-                           forCellReuseIdentifier: "BrowsingMenuEntryViewCell")
-        tableView.register(UINib(nibName: "BrowsingMenuSeparatorViewCell", bundle: nil),
-                           forCellReuseIdentifier: "BrowsingMenuSeparatorViewCell")
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-    }
-    
+
     private func configureArrow(with color: UIColor) {
         guard AppWidthObserver.shared.isLargeWidth else {
             arrowView.isHidden = true
@@ -136,145 +134,111 @@ class BrowsingMenuViewController: UIViewController, BrowsingMenu {
     }
     
     private func configureShadow(for theme: Theme) {
-        view.clipsToBounds = false
-        
         horizontalContainer.clipsToBounds = true
         horizontalContainer.layer.cornerRadius = 10
         tableView.layer.cornerRadius = 10
-        
-        Self.applyShadowTo(view: view, for: theme)
+
+        Self.applyShadowTo(view: menuView, for: theme)
     }
-    
+
     class func applyShadowTo(view: UIView, for theme: Theme) {
         view.layer.cornerRadius = 10
         view.layer.shadowOffset = CGSize(width: 0, height: 8)
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowRadius = 20
-        
-        switch theme.currentImageSet {
+
+        switch view.traitCollection.userInterfaceStyle {
         case .dark:
             view.layer.shadowOpacity = 0.5
-        case .light:
+        default:
             view.layer.shadowOpacity = 0.25
         }
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
+        recalculatePreferredWidthConstraint()
+        recalculateHeightConstraints()
+        guideView.map(recalculateMenuConstraints(with:))
+
         if tableView.bounds.height < tableView.contentSize.height + tableView.contentInset.top + tableView.contentInset.bottom {
             tableView.isScrollEnabled = true
         } else {
             tableView.isScrollEnabled = false
         }
     }
-    
-    func attachTo(_ targetView: UIView, onDismiss: @escaping DismissHandler) {
-        assert(background == nil, "\(#file) - view has been already attached")
-        loadViewIfNeeded()
-        
-        dismiss = onDismiss
-        
-        let background = UIView()
-        background.accessibilityIdentifier = "Browsing Menu Background"
-        background.backgroundColor = .clear
-        targetView.addSubview(background)
-        background.frame = targetView.bounds
-        
-        background.translatesAutoresizingMaskIntoConstraints = false
-        background.topAnchor.constraint(equalTo: targetView.topAnchor).isActive = true
-        background.bottomAnchor.constraint(equalTo: targetView.bottomAnchor).isActive = true
-        background.leadingAnchor.constraint(equalTo: targetView.leadingAnchor).isActive = true
-        background.trailingAnchor.constraint(equalTo: targetView.trailingAnchor).isActive = true
-        
-        self.background = background
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
-        background.addGestureRecognizer(tapGesture)
-        
-        targetView.addSubview(view)
+    private weak var guideView: UIView?
+    private var guideViewFrameObserver: NSKeyValueObservation?
+    func bindConstraints(to guideView: UIView?) {
+        self.guideView = guideView
+        self.guideViewFrameObserver = guideView?.observe(\.frame, options: [.initial]) { [weak self] guideView, _ in
+            self?.recalculateMenuConstraints(with: guideView)
+        }
     }
-    
-    @objc func backgroundTapped() {
+
+    @IBAction func backgroundTapped(_ sender: Any) {
         if !DaxDialogs.shared.shouldShowFireButtonPulse {
             ViewHighlighter.hideAll()
         }
-        dismiss?()
+        dismiss(animated: true)
     }
-    
-    func detachFrom(_ targetView: UIView) {
-        background?.removeFromSuperview()
-        background = nil
-        view.removeFromSuperview()
-        
-        dismiss = nil
-    }
-    
+
     func highlightCell(atIndex index: IndexPath) {
         guard let cell = tableView.cellForRow(at: index) as? BrowsingMenuEntryViewCell,
               let window = view.window else {
             return
         }
-        
+
         ViewHighlighter.showIn(window, focussedOnView: cell.entryImage)
     }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.flashScrollIndicatorsIfNeeded()
-        }
-    }
-    
+
     func flashScrollIndicatorsIfNeeded() {
         if tableView.bounds.height < tableView.contentSize.height {
             tableView.flashScrollIndicators()
         }
     }
-    
-    func setHeaderEntries(_ entries: [BrowsingMenuEntry]) {
-        configureHeader()
-        guard entries.count == headerButtons.count else {
-            fatalError("Mismatched number of entries in \(#file):\(#function) expected: \(headerButtons.count) but found \(entries.count)")
-        }
-        
-        for (entry, view) in zip(entries, headerButtons) {
-            guard case .regular(let name, let accessibilityLabel, let image, let action) = entry else {
-                fatalError("Regular entry not found")
-            }
-            
-            view.configure(with: image, label: name, accessibilityLabel: accessibilityLabel) { [weak self] in
-                self?.dismiss?()
-                action()
-            }
-        }
-        
-        headerEntries = entries
+
+    private func recalculateMenuConstraints(with guideView: UIView) {
+        guard let frame = guideView.superview?.convert(guideView.frame, to: guideView.window),
+              let windowBounds = guideView.window?.bounds
+        else { return }
+
+        let isIPad = AppWidthObserver.shared.isLargeWidth
+        let isIPhoneLandscape = traitCollection.containsTraits(in: UITraitCollection(verticalSizeClass: .compact))
+
+        topConstraint.isActive = !isIPad
+        topConstraintIPad.isActive = isIPad
+        bottomConstraint.isActive = !isIPad
+        bottomConstraintIPad.isActive = isIPad
+
+        // Make it go above WebView in Landscape
+        topConstraint.constant = frame.minY + (isIPhoneLandscape ? -10 : 5)
+        // Move menu up in Landscape, as bottom toolbar shrinks
+
+        bottomConstraint.constant = windowBounds.maxY - frame.maxY - (isIPhoneLandscape ? 2 : 10)
+        rightConstraint.constant = isIPad ? 67 : 10
+
+        recalculatePreferredWidthConstraint()
     }
-    
-    func setMenuEntries(_ entries: [BrowsingMenuEntry]) {
-        menuEntries = entries
-    }
-    
+
     private func recalculatePreferredWidthConstraint() {
-        
         let longestEntry = menuEntries.reduce("") { (result, entry) -> String in
-            guard case BrowsingMenuEntry.regular(let name, _, _, _) = entry else { return result }
+            guard case BrowsingMenuEntry.regular(let name, _, _, _, _) = entry else { return result }
             if result.length() < name.length() {
                 return name
             }
             return result
         }
-        
+
         preferredWidth.constant = BrowsingMenuEntryViewCell.preferredWidth(for: longestEntry)
     }
-    
+
     private func recalculateHeightConstraints() {
-        guard isViewLoaded else { return }
-        
+        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         tableView.reloadData()
-        tableView.layoutIfNeeded()
+        tableView.superview?.layoutIfNeeded()
         tableViewHeight.constant = tableView.contentSize.height + tableView.contentInset.bottom + tableView.contentInset.top
     }
 }
@@ -284,16 +248,17 @@ extension BrowsingMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch menuEntries[indexPath.row] {
-        case .regular(_, _, _, let action):
-            dismiss?()
-            action()
+        case .regular(_, _, _, _, let action):
+            dismiss(animated: true) {
+                action()
+            }
         case .separator:
             break
         }
     }
+
 }
 
-// swiftlint:disable line_length
 extension BrowsingMenuViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -305,16 +270,18 @@ extension BrowsingMenuViewController: UITableViewDataSource {
         let theme = ThemeManager.shared.currentTheme
         
         switch menuEntries[indexPath.row] {
-        case .regular(let name, let accessibilityLabel, let image, _):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BrowsingMenuEntryViewCell", for: indexPath) as? BrowsingMenuEntryViewCell else {
-                fatalError()
+        case .regular(let name, let accessibilityLabel, let image, let showNotificationDot, _):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BrowsingMenuEntryViewCell",
+                                                           for: indexPath) as? BrowsingMenuEntryViewCell else {
+                fatalError("Cell should be dequeued")
             }
             
-            cell.configure(image: image, label: name, accessibilityLabel: accessibilityLabel, theme: theme)
+            cell.configure(image: image, label: name, accessibilityLabel: accessibilityLabel, showNotificationDot: showNotificationDot)
             return cell
         case .separator:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BrowsingMenuSeparatorViewCell", for: indexPath) as? BrowsingMenuSeparatorViewCell else {
-                fatalError()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BrowsingMenuSeparatorViewCell",
+                                                           for: indexPath) as? BrowsingMenuSeparatorViewCell else {
+                fatalError("Cell should be dequeued")
             }
             
             cell.separator.backgroundColor = theme.browsingMenuSeparatorColor
@@ -323,11 +290,31 @@ extension BrowsingMenuViewController: UITableViewDataSource {
         }
     }
 }
-// swiftlint:enable line_length
 
-extension BrowsingMenuViewController: Themable {
+extension BrowsingMenuViewController: UIViewControllerTransitioningDelegate {
+
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return nil
+    }
+
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return nil
+    }
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return animator
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return animator
+    }
+
+}
+
+extension BrowsingMenuViewController {
     
-    func decorate(with theme: Theme) {
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
         
         configureShadow(for: theme)
         
@@ -338,14 +325,24 @@ extension BrowsingMenuViewController: Themable {
             headerButton.backgroundColor = theme.browsingMenuBackgroundColor
         }
         
-        configureArrow(with: theme.browsingMenuBackgroundColor)
-        
         horizontalContainer.backgroundColor = theme.browsingMenuBackgroundColor
         tableView.backgroundColor = theme.browsingMenuBackgroundColor
-        view.backgroundColor = theme.browsingMenuBackgroundColor
-        
+        menuView.backgroundColor = theme.browsingMenuBackgroundColor
+
         separator.backgroundColor = theme.browsingMenuSeparatorColor
         
         tableView.reloadData()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        DispatchQueue.main.async { [weak self] in
+            self?.flashScrollIndicatorsIfNeeded()
+        }
+
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            configureArrow(with: ThemeManager.shared.currentTheme.browsingMenuBackgroundColor)
+        }
     }
 }

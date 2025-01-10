@@ -7,6 +7,9 @@
 /* Class = "UIButton"; accessibilityLabel = "Clear Text"; ObjectID = "Dt8-We-5tV"; */
 "Dt8-We-5tV.accessibilityLabel" = "Szöveg törlése";
 
+/* Class = "UIButton"; accessibilityLabel = "Clear Text"; ObjectID = "gb5-wL-4OW"; */
+"gb5-wL-4OW.accessibilityLabel" = "Szöveg törlése";
+
 /* Class = "UIButton"; accessibilityLabel = "Share"; ObjectID = "hor-Jd-3kw"; */
 "hor-Jd-3kw.accessibilityLabel" = "Megosztás";
 
@@ -18,6 +21,9 @@
 
 /* Class = "UIButton"; accessibilityLabel = "Bookmarks"; ObjectID = "ii4-Sq-bD1"; */
 "ii4-Sq-bD1.accessibilityLabel" = "Könyvjelzők";
+
+/* Class = "UIButton"; accessibilityLabel = "Voice Search"; ObjectID = "ita-iD-8ad"; */
+"ita-iD-8ad.accessibilityLabel" = "Beszédhangalapú keresés";
 
 /* Class = "UIButton"; accessibilityLabel = "Browsing Menu"; ObjectID = "nJo-2d-gri"; */
 "nJo-2d-gri.accessibilityLabel" = "Tallózás a menüben";

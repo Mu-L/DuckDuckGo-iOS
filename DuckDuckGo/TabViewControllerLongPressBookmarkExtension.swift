@@ -19,29 +19,41 @@
 
 import Foundation
 import Core
-import os.log
+import Bookmarks
+import WidgetKit
 
 extension TabViewController {
-    func saveAsBookmark(favorite: Bool) {
-        
+    func saveAsBookmark(favorite: Bool, viewModel: MenuBookmarksInteracting) {
         guard let link = link, !isError else {
-            os_log("Invalid bookmark link found on bookmark long press", log: generalLog, type: .debug)
+            assertionFailure()
             return
         }
 
-        let bookmarksManager = BookmarksManager()
-        guard !bookmarksManager.contains(url: link.url) else {
-            ActionMessageView.present(message: UserText.webBookmarkAlreadySaved)
-            return
-        }
+        if favorite && nil == viewModel.favorite(for: link.url) {
+            viewModel.createOrToggleFavorite(title: link.displayTitle, url: link.url)
+            WidgetCenter.shared.reloadAllTimelines()
+            syncService.scheduler.notifyDataChanged()
 
-        if favorite {
-            bookmarksManager.save(favorite: link)
-            ActionMessageView.present(message: UserText.webSaveFavoriteDone)
+            DispatchQueue.main.async {
+                let addressBarBottom = self.appSettings.currentAddressBarPosition.isBottom
+                ActionMessageView.present(message: UserText.webSaveFavoriteDone,
+                                          presentationLocation: .withBottomBar(andAddressBarBottom: addressBarBottom))
+            }
+        } else if nil == viewModel.bookmark(for: link.url) {
+            viewModel.createBookmark(title: link.displayTitle, url: link.url)
+            syncService.scheduler.notifyDataChanged()
+
+            DispatchQueue.main.async {
+                let addressBarBottom = self.appSettings.currentAddressBarPosition.isBottom
+                ActionMessageView.present(message: UserText.webSaveBookmarkDone,
+                                          presentationLocation: .withBottomBar(andAddressBarBottom: addressBarBottom))
+            }
         } else {
-            bookmarksManager.save(bookmark: link)
-            ActionMessageView.present(message: UserText.webSaveBookmarkDone)
+            DispatchQueue.main.async {
+                let addressBarBottom = self.appSettings.currentAddressBarPosition.isBottom
+                ActionMessageView.present(message: UserText.webBookmarkAlreadySaved,
+                                          presentationLocation: .withBottomBar(andAddressBarBottom: addressBarBottom))
+            }
         }
-
     }
 }

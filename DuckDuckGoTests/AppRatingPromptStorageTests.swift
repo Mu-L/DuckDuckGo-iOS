@@ -52,7 +52,8 @@ class AppRatingPromptStorageTests: XCTestCase {
 
     private func reset() {
         let storage = AppRatingPromptCoreDataStorage()
-        storage.context.delete(storage.entity())
+        guard let ratingPromptEntity = storage.ratingPromptEntity() else { return }
+        storage.context.delete(ratingPromptEntity)
         try? storage.context.save()
     }
     

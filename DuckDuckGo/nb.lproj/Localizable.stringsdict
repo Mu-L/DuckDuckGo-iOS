@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bookmark.deleteFolderAlert.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Er du sikker på at du vil slette denne mappen og %d element?</string>
+			<key>other</key>
+			<string>Er du sikker på at du vil slette denne mappen og %d elementer?</string>
+		</dict>
+	</dict>
 	<key>dax.onboarding.browsing.multiple.trackers</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,12 +29,68 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>*%2$@, %3$@* og *én annen* prøvde å spore deg her. &lt;br/&gt;&lt;br/&gt;Jeg har blokkert dem!&lt;br/&gt;&lt;br/&gt; ☝️ Du kan se hvem som prøver å spore deg i adressefeltet når du besøker et nytt nettsted.</string>
+			<string>*%2$@, %3$@* og *1 annen* prøvde å spore deg her.
+
+Jeg har blokkert dem!
+
+☝️ Du kan sjekke adresselinjen for å se hvem som prøver å spore deg når du besøker et nytt nettsted.️</string>
 			<key>other</key>
-			<string>*%2$@, %3$@* og *%1$d andre* prøvde å spore deg her. &lt;br/&gt;&lt;br/&gt;Jeg har blokkert dem!&lt;br/&gt;&lt;br/&gt; ☝️ Du kan se hvem som prøver å spore deg i adressefeltet når du besøker et nytt nettsted.</string>
+			<string>*%2$@, %3$@* og *%d andre* prøvde å spore deg her.
+
+Jeg har blokkert dem!
+
+☝️ Du kan sjekke adresselinjen for å se hvem som prøver å spore deg når du besøker et nytt nettsted.️</string>
+			<key>zero</key>
+			<string>*%2$@ og %3$@* prøvde å spore deg her.
+
+Jeg har blokkert dem!
+
+☝️ Du kan sjekke adresselinjen for å se hvem som prøver å spore deg når du besøker et nytt nettsted.️</string>
 		</dict>
 	</dict>
-	<key>privacy.protection.major.trackers.found</key>
+    <key>contextual.onboarding.browsing.multiple.trackers</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%1#@count@</string>
+        <key>count</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>*%2$@, %3$@* og *1 annen* prøvde å spore deg her. Jeg har blokkert dem!
+
+☝️ Trykk på skjoldet for å få mer informasjon.</string>
+            <key>other</key>
+            <string>*%2$@, %3$@* og *%d andre* prøvde å spore deg her. Jeg har blokkert dem!
+
+☝️ Trykk på skjoldet for å få mer informasjon.</string>
+            <key>zero</key>
+            <string>*%2$@ og %3$@* prøvde å spore deg her. Jeg har blokkert dem!
+
+☝️ Trykk på skjoldet for å få mer informasjon.</string>
+        </dict>
+    </dict>
+	<key>number.of.tabs</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@tabs@</string>
+		<key>tabs</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d privat fane</string>
+			<key>other</key>
+			<string>%d private faner</string>
+			<key>zero</key>
+			<string>Ingen private faner</string>
+		</dict>
+	</dict>
+	<key>privacy.protection.first.party.trackers.loaded</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@networks@</string>
@@ -29,9 +101,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%1$d større sporer funnet</string>
+			<string>%d Tracker Owned by This Site (Loaded)</string>
 			<key>other</key>
-			<string>%1$d større sporere funnet</string>
+			<string>%d Trackers Owned by This Site (Loaded)</string>
 		</dict>
 	</dict>
 	<key>privacy.protection.major.trackers.blocked</key>
@@ -45,12 +117,12 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%1$d større sporer er blokkert</string>
+			<string>%d større sporer blokkert</string>
 			<key>other</key>
-			<string>%1$d større sporere er blokkert</string>
+			<string>%d større sporere blokkert</string>
 		</dict>
 	</dict>
-	<key>privacy.protection.trackers.found</key>
+	<key>privacy.protection.major.trackers.found</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@networks@</string>
@@ -61,9 +133,25 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%% sporing oppdaget</string>
+			<string>%d større sporer funnet</string>
 			<key>other</key>
-			<string>%% sporinger oppdaget</string>
+			<string>%d større sporere funnet</string>
+		</dict>
+	</dict>
+	<key>privacy.protection.other.domains.loaded</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@networks@</string>
+		<key>networks</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d Other Domain Loaded</string>
+			<key>other</key>
+			<string>%d Other Domains Loaded</string>
 		</dict>
 	</dict>
 	<key>privacy.protection.trackers.blocked</key>
@@ -77,25 +165,127 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%1$d sporing blokkert</string>
+			<string>%d Tracker Blocked from Loading</string>
 			<key>other</key>
-			<string>%1$d sporinger blokkert</string>
+			<string>%d Trackers Blocked from Loading</string>
 		</dict>
 	</dict>
-	<key>number.of.tabs</key>
+	<key>privacy.protection.trackers.found</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@tabs@</string>
-		<key>tabs</key>
+		<string>%#@networks@</string>
+		<key>networks</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%1$d privat fane</string>
+			<string>%d sporer funnet</string>
 			<key>other</key>
-			<string>%1$d private faner</string>
+			<string>%d sporere funnet</string>
+		</dict>
+	</dict>
+	<key>autofill.number.of.passwords</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d passord</string>
+			<key>other</key>
+			<string>%1$d passord</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.title</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Er du sikker på at du vil slette %1$d passord?</string>
+			<key>other</key>
+			<string>Er du sikker på at du vil slette %1$d passord?</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Passordet ditt blir slettet fra denne enheten. Sørg for at du fortsatt har tilgang til din %2$#@accounts@.</string>
+			<key>other</key>
+			<string>Passordene dine blir slettet fra denne enheten. Sørg for at du fortsatt har tilgang til dine %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>konto</string>
+			<key>other</key>
+			<string>kontoer</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.sync.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Passordet ditt blir slettet fra alle synkroniserte enheter. Sørg for at du fortsatt har tilgang til din %2$#@accounts@.</string>
+			<key>other</key>
+			<string>Passordene dine blir slettet fra alle synkroniserte enheter. Sørg for at du fortsatt har tilgang til dine %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>konto</string>
+			<key>other</key>
+			<string>kontoer</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.completion</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d passord er slettet</string>
+			<key>other</key>
+			<string>%1$d passord er slettet</string>
 		</dict>
 	</dict>
 </dict>

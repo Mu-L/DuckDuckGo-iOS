@@ -26,13 +26,15 @@ class HomeRowReminderTests: XCTestCase {
     var storage: MockHomeRowReminderStorage!
 
     override func setUp() {
+        super.setUp()
+        
         storage = MockHomeRowReminderStorage()
     }
 
     func testWhenFeatureFirstAccessedThenDateIsStored() {
 
         let feature = HomeRowReminder(storage: storage)
-        _ = feature.showNow(isDefaultBrowserSupported: false)
+        _ = feature.showNow()
         XCTAssertNotNil(storage.firstAccessDate)
 
     }
@@ -43,20 +45,54 @@ class HomeRowReminderTests: XCTestCase {
         let feature = HomeRowReminder(storage: storage)
         feature.setShown()
 
-        XCTAssertFalse(feature.showNow(isDefaultBrowserSupported: false))
+        XCTAssertFalse(feature.showNow())
     }
 
     func testWhenIsNewAndTimeHasElapsedThenShow() {
         setReminderTimeElapsed()
 
         let feature = HomeRowReminder(storage: storage)
-        XCTAssertTrue(feature.showNow(isDefaultBrowserSupported: false))
+        XCTAssertTrue(feature.showNow())
     }
 
     func testWhenIsNewAndTimeNotElapsedThenDontShow() {
         let feature = HomeRowReminder(storage: storage)
-        XCTAssertFalse(feature.showNow(isDefaultBrowserSupported: false))
+        XCTAssertFalse(feature.showNow())
     }
+
+    // MARK: - Add To Dock - Onboarding
+
+    func testWhenAddToDockHasShownInOboardingIntroThenDoNotShowAddToDockReminder() {
+        // GIVEN
+        var variantManager = MockVariantManager()
+        variantManager.isSupportedBlock = { feature in
+            feature == .addToDockIntro
+        }
+        let sut = HomeRowReminder(storage: storage, variantManager: variantManager)
+
+        // WHEN
+        let result = sut.showNow()
+
+        // THEN
+        XCTAssertFalse(result)
+    }
+
+    func testWhenAddToDockHasShownInContextualOboardingThenDoNotShowAddToDockReminder() {
+        // GIVEN
+        var variantManager = MockVariantManager()
+        variantManager.isSupportedBlock = { feature in
+            feature == .addToDockContextual
+        }
+        let sut = HomeRowReminder(storage: storage, variantManager: variantManager)
+
+        // WHEN
+        let result = sut.showNow()
+
+        // THEN
+        XCTAssertFalse(result)
+    }
+
+    // MARK: - Helper functions
 
     private func setReminderTimeElapsed() {
         let threeAndABitDaysAgo = -(60 * 60 * 24 * HomeRowReminder.Constants.reminderTimeInDays * 1.1)
@@ -64,6 +100,8 @@ class HomeRowReminderTests: XCTestCase {
     }
 
 }
+
+// MARK: - Mocks
 
 class MockHomeRowReminderStorage: HomeRowReminderStorage {
 

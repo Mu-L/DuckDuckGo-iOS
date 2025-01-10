@@ -1,0 +1,33 @@
+# onboarding.yaml
+
+appId: com.duckduckgo.mobile.ios
+---
+
+- assertVisible:
+    text: "Let’s Do It!"
+    index: 0
+- tapOn:
+    text: "Let’s Do It!"
+    index: 0
+
+# Browser comparison chart
+# - assertVisible: "Protections activated!"
+- tapOn:
+    text: "Skip"
+
+# Add To Dock Flow
+- runFlow:
+    when:
+        visible: "Add me to your Dock!"
+    commands:
+        - assertVisible: "Show Me How"
+        - tapOn: "Skip"
+
+# Customization Flow
+
+- assertVisible: "Which color looks best on me?"
+- assertVisible: "Next"
+- tapOn: "Next"
+- assertVisible: "Where should I put your address bar?"
+- assertVisible: "Next"
+- tapOn: "Next"

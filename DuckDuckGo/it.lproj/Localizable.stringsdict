@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bookmark.deleteFolderAlert.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Vuoi davvero eliminare questa cartella e %1$d elemento?</string>
+			<key>other</key>
+			<string>Vuoi davvero eliminare questa cartella e %1$d elementi?</string>
+		</dict>
+	</dict>
 	<key>dax.onboarding.browsing.multiple.trackers</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,17 +29,37 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>*%2$@, %3$@* e *1 altro* cercavano di tracciare la tua attività qui.
+			<string>*%2$@, %3$@* e *1 altro* stavano tentando di tracciare la tua attività qui.
 
 Li ho bloccati!
 
-☝️ Controlla la barra degli indirizzi per vedere chi sta cercando di tracciare la tua attività quando visiti un nuovo sito.️</string>
+ ☝ Controlla la barra degli indirizzi per vedere chi sta cercando di tracciare la tua attività quando visiti un nuovo sito.️</string>
 			<key>other</key>
-			<string>*%2$@, %3$@* e *altri %1$d* cercavano di tracciare la tua attività qui.
+			<string>*%2$@, %3$@* e *altri %1$d* stavano tentando di tracciare la tua attività qui.
 
 Li ho bloccati!
 
-☝️ Controlla la barra degli indirizzi per vedere chi sta cercando di tracciare la tua attività quando visiti un nuovo sito.️</string>
+ ☝ Controlla la barra degli indirizzi per vedere chi sta cercando di tracciare la tua attività quando visiti un nuovo sito.️</string>
+		</dict>
+	</dict>
+	<key>contextual.onboarding.browsing.multiple.trackers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1#@count@</string>
+		<key>count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>*%2$@, %3$@* e *1 altro* stavano cercando di tracciare la tua attività qui. Li ho bloccati!
+
+☝️ Tocca lo scudo per maggiori informazioni.</string>
+			<key>other</key>
+			<string>*%2$@, %3$@* e *altri %1$d* stavano cercando di tracciare la tua attività qui. Li ho bloccati!
+
+☝️ Tocca lo scudo per maggiori informazioni.</string>
 		</dict>
 	</dict>
 	<key>privacy.protection.major.trackers.found</key>
@@ -104,6 +140,108 @@ Li ho bloccati!
 			<string>%1$d scheda privata</string>
 			<key>other</key>
 			<string>%1$d schede private</string>
+		</dict>
+	</dict>
+	<key>autofill.number.of.passwords</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d password</string>
+			<key>other</key>
+			<string>%1$d password</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.title</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Eliminare %1$d password?</string>
+			<key>other</key>
+			<string>Eliminare %1$d password?</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Le password verranno eliminate da questo dispositivo. Assicurati di avere ancora la possibilità di accedere al tuo %2$#@accounts@.</string>
+			<key>other</key>
+			<string>Le password verranno eliminate da questo dispositivo. Assicurati di avere ancora la possibilità di accedere ai tuoi %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>account</string>
+			<key>other</key>
+			<string>account</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.sync.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Le password verranno eliminate da tutti i dispositivi sincronizzati. Assicurati di avere ancora la possibilità di accedere al tuo %2$#@accounts@.</string>
+			<key>other</key>
+			<string>Le password verranno eliminate da tutti i dispositivi sincronizzati. Assicurati di avere ancora la possibilità di accedere ai tuoi %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>account</string>
+			<key>other</key>
+			<string>account</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.completion</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d password eliminata</string>
+			<key>other</key>
+			<string>%1$d password eliminate</string>
 		</dict>
 	</dict>
 </dict>

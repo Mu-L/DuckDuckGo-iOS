@@ -7,6 +7,9 @@
 /* Class = "UIButton"; accessibilityLabel = "Clear Text"; ObjectID = "Dt8-We-5tV"; */
 "Dt8-We-5tV.accessibilityLabel" = "Obriši tekst";
 
+/* Class = "UIButton"; accessibilityLabel = "Clear Text"; ObjectID = "gb5-wL-4OW"; */
+"gb5-wL-4OW.accessibilityLabel" = "Obriši tekst";
+
 /* Class = "UIButton"; accessibilityLabel = "Share"; ObjectID = "hor-Jd-3kw"; */
 "hor-Jd-3kw.accessibilityLabel" = "Podijeli";
 
@@ -18,6 +21,9 @@
 
 /* Class = "UIButton"; accessibilityLabel = "Bookmarks"; ObjectID = "ii4-Sq-bD1"; */
 "ii4-Sq-bD1.accessibilityLabel" = "Knjižne oznake";
+
+/* Class = "UIButton"; accessibilityLabel = "Voice Search"; ObjectID = "ita-iD-8ad"; */
+"ita-iD-8ad.accessibilityLabel" = "Glasovno pretraživanje";
 
 /* Class = "UIButton"; accessibilityLabel = "Browsing Menu"; ObjectID = "nJo-2d-gri"; */
 "nJo-2d-gri.accessibilityLabel" = "Izbornik pregledavanja";

@@ -18,9 +18,10 @@
 //
 
 import Foundation
+import BrowserServicesKit
 
 public class HTTPSUpgradeParser {
-    
+
     static func convertExcludedDomainsData(_ data: Data) throws -> [String] {
         do {
             let decoder = JSONDecoder()
@@ -31,7 +32,7 @@ public class HTTPSUpgradeParser {
             throw JsonError.typeMismatch
         }
     }
-    
+
     static func convertBloomFilterSpecification(fromJSONData data: Data) throws -> HTTPSBloomFilterSpecification {
         do {
             let decoder = JSONDecoder()
@@ -42,4 +43,5 @@ public class HTTPSUpgradeParser {
             throw JsonError.typeMismatch
         }
     }
+
 }

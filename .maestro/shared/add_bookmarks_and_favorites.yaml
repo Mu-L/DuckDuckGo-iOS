@@ -1,0 +1,15 @@
+appId: com.duckduckgo.mobile.ios
+---
+
+- tapOn:
+    id: searchEntry
+- inputText: www.duckduckgo.com
+- pressKey: Enter
+- tapOn: Browsing Menu
+- tapOn: Add Favorite
+- tapOn:
+    id: searchEntry
+- inputText: www.spreadprivacy.com
+- pressKey: Enter
+- tapOn: Browsing Menu
+- tapOn: Add Bookmark

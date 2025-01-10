@@ -20,26 +20,31 @@
 import Foundation
 import Core
 
-protocol OmniBarState {
-    
+protocol OmniBarState: CustomStringConvertible {
+
+    var name: String { get }
+
     var hasLargeWidth: Bool { get }
     var showBackButton: Bool { get }
     var showForwardButton: Bool { get }
     var showBookmarksButton: Bool { get }
-    var showShareButton: Bool { get }
-    
+    var showAccessoryButton: Bool { get }
+
     var clearTextOnStart: Bool { get }
     var allowsTrackersAnimation: Bool { get }
     var showSearchLoupe: Bool { get }
     var showCancel: Bool { get }
-    var showSiteRating: Bool { get }
+    var showPrivacyIcon: Bool { get }
     var showBackground: Bool { get }
     var showClear: Bool { get }
     var showRefresh: Bool { get }
     var showMenu: Bool { get }
     var showSettings: Bool { get }
-    var name: String { get }
+    var showVoiceSearch: Bool { get }
+    var showAbort: Bool { get }
+
     var onEditingStoppedState: OmniBarState { get }
+    var onEditingSuspendedState: OmniBarState { get }
     var onEditingStartedState: OmniBarState { get }
     var onTextClearedState: OmniBarState { get }
     var onTextEnteredState: OmniBarState { get }
@@ -47,4 +52,52 @@ protocol OmniBarState {
     var onBrowsingStoppedState: OmniBarState { get }
     var onEnterPhoneState: OmniBarState { get }
     var onEnterPadState: OmniBarState { get }
+    var onReloadState: OmniBarState { get }
+
+    var voiceSearchHelper: VoiceSearchHelperProtocol { get }
+
+    var isLoading: Bool { get }
+
+    func withLoading() -> Self
+    func withoutLoading() -> Self
+
+    func requiresUpdate(transitioningInto other: OmniBarState) -> Bool
+    func isDifferentState(than other: OmniBarState) -> Bool
+}
+
+extension OmniBarState {
+    /// Returns if new state requires UI update
+    func requiresUpdate(transitioningInto other: OmniBarState) -> Bool {
+        name != other.name || isLoading != other.isLoading
+    }
+
+    /// Checks whether the state type is different.
+    /// If `true` it may require transitioning to a different appearance and/or cancelling pending animations.
+    func isDifferentState(than other: OmniBarState) -> Bool {
+        name != other.name
+    }
+
+    var description: String {
+        "\(name)\(isLoading ? " (loading)" : "")"
+    }
+
+    var onEditingSuspendedState: OmniBarState {
+        UniversalOmniBarState.EditingSuspendedState(baseState: onEditingStartedState,
+                                                    voiceSearchHelper: voiceSearchHelper,
+                                                    isLoading: isLoading)
+    }
+}
+
+protocol OmniBarLoadingBearerStateCreating {
+    init(voiceSearchHelper: VoiceSearchHelperProtocol, isLoading: Bool)
+}
+
+extension OmniBarLoadingBearerStateCreating where Self: OmniBarState {
+    func withLoading() -> Self {
+        Self.init(voiceSearchHelper: voiceSearchHelper, isLoading: true)
+    }
+
+    func withoutLoading() -> Self {
+        Self.init(voiceSearchHelper: voiceSearchHelper, isLoading: false)
+    }
 }

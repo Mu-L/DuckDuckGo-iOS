@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "autofill-keychain.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

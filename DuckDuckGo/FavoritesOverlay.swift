@@ -19,10 +19,13 @@
 
 import UIKit
 import Core
+import Bookmarks
+import Persistence
 
 protocol FavoritesOverlayDelegate: AnyObject {
     
-    func favoritesOverlay(_ overlay: FavoritesOverlay, didSelect link: Link)
+    func favoritesOverlay(_ overlay: FavoritesOverlay, didSelect favorite: BookmarkEntity)
+
 }
 
 class FavoritesOverlay: UIViewController {
@@ -30,15 +33,27 @@ class FavoritesOverlay: UIViewController {
     struct Constants {
         static let margin: CGFloat = 28
         static let footerPadding: CGFloat = 50
+        static let toolbarHeight: CGFloat = 52
     }
     
     private let layout = UICollectionViewFlowLayout()
     var collectionView: UICollectionView!
     private var renderer: FavoritesHomeViewSectionRenderer!
-    
-    private var theme: Theme!
+    private let appSettings: AppSettings
     
     weak var delegate: FavoritesOverlayDelegate?
+
+
+    init(viewModel: FavoritesListInteracting, appSettings: AppSettings = AppDependencyProvider.shared.appSettings) {
+        renderer = FavoritesHomeViewSectionRenderer(allowsEditing: false,
+                                                    viewModel: viewModel)
+        self.appSettings = appSettings
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("Not implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,15 +66,23 @@ class FavoritesOverlay: UIViewController {
         collectionView.backgroundColor = .clear
 
         view.addSubview(collectionView)
-        
-        renderer = FavoritesHomeViewSectionRenderer(allowsEditing: false)
+
         renderer.install(into: self)
         
         registerForKeyboardNotifications()
         
-        applyTheme(ThemeManager.shared.currentTheme)
+        decorate()
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if isPad {
+            collectionView.flashScrollIndicators()
+        }
+
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -86,25 +109,31 @@ class FavoritesOverlay: UIViewController {
     }
     
     @objc private func keyboardDidShow(notification: NSNotification) {
-        guard !AppWidthObserver.shared.isLargeWidth else { return }        
+        guard !AppWidthObserver.shared.isLargeWidth else { return }
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let keyboardSize = keyboardFrame.size
-        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height + Constants.margin * 2, right: 0.0)
-        collectionView.contentInset = contentInsets
-        collectionView.scrollIndicatorInsets = contentInsets
+        let bottomInset = appSettings.currentAddressBarPosition == .bottom ? 0 : keyboardSize.height - Constants.toolbarHeight
+        collectionView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: bottomInset, right: 0.0)
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
-        let contentInsets = UIEdgeInsets.zero
-        collectionView.contentInset = contentInsets
-        collectionView.scrollIndicatorInsets = contentInsets
+        collectionView.contentInset = .zero
+        collectionView.scrollIndicatorInsets = .zero
     }
 }
 
 extension FavoritesOverlay: FavoritesHomeViewSectionRendererDelegate {
     
-    func favoritesRenderer(_ renderer: FavoritesHomeViewSectionRenderer, didSelect link: Link) {
-        delegate?.favoritesOverlay(self, didSelect: link)
+    func favoritesRenderer(_ renderer: FavoritesHomeViewSectionRenderer, didSelect favorite: BookmarkEntity) {
+        delegate?.favoritesOverlay(self, didSelect: favorite)
+    }
+    
+    func favoritesRenderer(_ renderer: FavoritesHomeViewSectionRenderer, didRequestEdit favorite: BookmarkEntity) {
+        // currently can't edit favorites from overlay
+    }
+
+    func favoritesRenderer(_ renderer: FavoritesHomeViewSectionRenderer, favoriteDeleted favorite: BookmarkEntity) {
+        // currently can't delete favorites from overlay
     }
     
 }
@@ -130,11 +159,7 @@ extension FavoritesOverlay: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = renderer.collectionView(collectionView, cellForItemAt: indexPath)
-        if let themable = cell as? Themable {
-            themable.decorate(with: theme)
-        }
-        return cell
+        return renderer.collectionView(collectionView, cellForItemAt: indexPath)
     }
 }
 
@@ -154,10 +179,16 @@ extension FavoritesOverlay: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension FavoritesOverlay: Themable {
+extension FavoritesOverlay {
     
-    func decorate(with theme: Theme) {
-        self.theme = theme
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
         view.backgroundColor = AppWidthObserver.shared.isLargeWidth ? .clear : theme.backgroundColor
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        view.backgroundColor = AppWidthObserver.shared.isLargeWidth ? .clear : ThemeManager.shared.currentTheme.backgroundColor
     }
 }

@@ -21,6 +21,8 @@ import XCTest
 @testable import TrackerRadarKit
 @testable import Core
 import Foundation
+import BrowserServicesKit
+import Common
 import os.log
 
 class DomainMatchingReportTests: XCTestCase {
@@ -35,9 +37,16 @@ class DomainMatchingReportTests: XCTestCase {
         let refTests = try JSONDecoder().decode(RefTests.self, from: testJSON)
         let tests = refTests.domainTests.tests
         
-        let resolver = TrackerResolver(tds: trackerData, unprotectedSites: [], tempList: [])
+        let resolver = TrackerResolver(tds: trackerData, unprotectedSites: [], tempList: [], tld: TLD())
 
-        for test in tests {            
+        for test in tests {
+            let skip = test.exceptPlatforms?.contains("ios-browser")
+            if skip == true {
+                print("!!SKIPPING TEST: %s", test.name)
+                continue
+            }
+            print("TEST: %s", test.name)
+            
             let tracker = resolver.trackerFromUrl(test.requestURL,
                                                   pageUrlString: test.siteURL,
                                                   resourceType: test.requestType,
@@ -45,11 +54,11 @@ class DomainMatchingReportTests: XCTestCase {
             
             if test.expectAction == "block" {
                 XCTAssertNotNil(tracker)
-                XCTAssert(tracker?.blocked ?? false)
+                XCTAssert(tracker?.isBlocked ?? false)
             } else if test.expectAction == "ignore" {
-                XCTAssertFalse(tracker?.blocked ?? false)
+                XCTAssertFalse(tracker?.isBlocked ?? false)
             } else {
-                XCTAssert(tracker?.blocked ?? true)
+                XCTAssert(tracker?.isBlocked ?? true)
             }
         }
     }

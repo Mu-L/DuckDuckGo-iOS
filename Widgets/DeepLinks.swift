@@ -21,14 +21,14 @@ import Core
 
 struct DeepLinks {
 
-    static let newSearch = URL(string: AppDeepLinks.newSearch + "?w=1")!
+    static let newSearch = AppDeepLinkSchemes.newSearch.url
+    static let voiceSearch = AppDeepLinkSchemes.voiceSearch.url
+    static let newEmail = AppDeepLinkSchemes.newEmail.url
+    static let fireButton = AppDeepLinkSchemes.fireButton.url
+    static let favorites = AppDeepLinkSchemes.favorites.url
 
-    static let addFavorite = URL(string: AppDeepLinks.addFavorite)!
+    static let addFavorite = AppDeepLinkSchemes.addFavorite.url
 
-    static func createFavoriteLauncher(forUrl url: URL) -> URL {
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        components?.scheme = String(AppDeepLinks.launchFavorite.dropLast(3))
-        return components?.url ?? url
-    }
-
+    static let openVPN = AppDeepLinkSchemes.openVPN.url
+    static let openPasswords = AppDeepLinkSchemes.openPasswords.url
 }

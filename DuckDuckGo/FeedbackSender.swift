@@ -19,7 +19,10 @@
 
 import Foundation
 import Core
+import BrowserServicesKit
 import os.log
+import Networking
+import Common
 
 /// Represents single component that is being sent to the server.
 /// Feedback as a whole can consist of multiple components. These components are included both in
@@ -86,12 +89,15 @@ struct FeedbackSubmitter: FeedbackSender {
             "v": versionProvider.versionAndBuildNumber,
             "atb": statisticsStore.atbWithVariant ?? ""
         ]
-
-        APIRequest.request(url: AppUrls().feedback, method: .post, parameters: parameters) { _, error in
+        
+        let configuration = APIRequest.Configuration(url: URL.feedback, method: .post, queryParameters: parameters)
+        let request = APIRequest(configuration: configuration, urlSession: .session())
+        
+        request.fetch { _, error in
             if let error = error {
-                os_log("Feedback request failed, %s", log: generalLog, type: .debug, error.localizedDescription)
+                Logger.general.error("Feedback request failed: \(error.localizedDescription, privacy: .public)")
             } else {
-                os_log("Feedback response successful", log: generalLog, type: .debug)
+                Logger.general.debug("Feedback response successful")
             }
         }
     }
@@ -101,20 +107,19 @@ struct FeedbackSubmitter: FeedbackSender {
     }
     
     public func fireNegativeSentimentPixel(with model: Feedback.Model) {
-        guard let category = model.category else { return }
-        
-        var rawPixel = PixelName.feedbackNegativePrefix.rawValue + category.component
-        
+        guard var category = model.category?.component else { return }
+                
         if let subcategory = model.subcategory {
-            rawPixel += "_" + subcategory.component
+            category += "_" + subcategory.component
         } else {
-            rawPixel += "_submit"
+            category += "_submit"
         }
         
-        guard let pixel = PixelName(rawValue: rawPixel) else {
-            fatalError("Could not match feedback components with Pixel")
-        }
-        
+        let pixel = Pixel.Event.feedbackNegativePrefix(category: category)
         Pixel.fire(pixel: pixel)
+    }
+
+    public func fireBrokenSiteReportPixel(with model: Feedback.Model) {
+        Pixel.fire(pixel: .reportBrokenSiteFeedbackCategorySubmitted, withAdditionalParameters: ["category": model.category?.component ?? ""])
     }
 }

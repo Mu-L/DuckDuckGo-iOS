@@ -30,25 +30,24 @@ protocol FullscreenDaxDialogDelegate: NSObjectProtocol {
 
 class FullscreenDaxDialogViewController: UIViewController {
 
-    struct Constants {
-        
-        static let defaultCTAHeight: CGFloat = 100
-        
-    }
     @IBOutlet weak var highlightCutOutView: HighlightCutOutView!
     @IBOutlet weak var containerHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var spacerPadding: NSLayoutConstraint!
+
+    let appSettings = AppDependencyProvider.shared.appSettings
+
     weak var daxDialogViewController: DaxDialogViewController?
     weak var delegate: FullscreenDaxDialogDelegate?
 
     var spec: DaxDialogs.BrowsingSpec?
     var woShown: Bool = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         daxDialogViewController?.cta = spec?.cta
-        daxDialogViewController?.message = spec?.message
+        daxDialogViewController?.message = spec?.message.replacingOccurrences(of: "☝️",
+                                                                              with: appSettings.currentAddressBarPosition == .bottom ? "👇" : "☝️")
         daxDialogViewController?.onTapCta = dismissCta
         
         highlightCutOutView.fillColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
@@ -74,12 +73,13 @@ class FullscreenDaxDialogViewController: UIViewController {
         containerHeight.constant = daxDialogViewController?.calculateHeight() ?? 0
         
         updateCutOut()
+        updateForAddressBarPosition()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let spec = spec {
-            Pixel.fire(pixel: spec.pixelName, withAdditionalParameters: [ "wo": woShown ? "1" : "0" ])
+            Pixel.fire(pixel: spec.pixelName, withAdditionalParameters: [ "wo": woShown ? "1" : "0" ], includedParameters: [.appVersion, .atb])
         }
         containerHeight.constant = daxDialogViewController?.calculateHeight() ?? 0
         daxDialogViewController?.start()
@@ -97,16 +97,20 @@ class FullscreenDaxDialogViewController: UIViewController {
     @objc
     func orientationDidChange() {
         updateCutOut()
+        updateForAddressBarPosition()
     }
-    
+
+    private func updateForAddressBarPosition() {
+        if spec?.highlightAddressBar == true, appSettings.currentAddressBarPosition == .bottom {
+            spacerPadding.constant = 52
+        } else {
+            spacerPadding.constant = 0
+        }
+    }
+
     @objc private func updateCutOut() {
         if spec?.highlightAddressBar ?? false, let rect = delegate?.daxDialogDidRquestAddressBarRect(controller: self) {
-            let padding: CGFloat = 6
-            let paddedRect = CGRect(x: rect.origin.x - padding,
-                                    y: rect.origin.y - padding,
-                                    width: rect.size.width + padding * 2,
-                                    height: rect.size.height + padding * 2)
-            highlightCutOutView.cutOutPath = UIBezierPath(roundedRect: paddedRect, cornerRadius: paddedRect.height / 2.0)
+            highlightCutOutView.cutOutPath = UIBezierPath(roundedRect: rect, cornerRadius: 8)
         } else {
             highlightCutOutView.cutOutPath = nil
         }
@@ -133,7 +137,7 @@ extension TabViewController: FullscreenDaxDialogDelegate {
                                            preferredStyle: isPad ? .alert : .actionSheet)
 
         alertController.addAction(title: UserText.daxDialogHideButton, style: .default) {
-            Pixel.fire(pixel: .daxDialogsHidden, withAdditionalParameters: [ "c": DefaultDaxDialogsSettings().browsingDialogsSeenCount ])
+            Pixel.fire(pixel: .daxDialogsHiddenUnique, withAdditionalParameters: [ "c": DefaultDaxDialogsSettings().browsingDialogsSeenCount ])
             DaxDialogs.shared.dismiss()
         }
         alertController.addAction(title: UserText.daxDialogHideCancel, style: .cancel) {
@@ -149,7 +153,7 @@ extension TabViewController: FullscreenDaxDialogDelegate {
     func closedDaxDialogs(controller: FullscreenDaxDialogViewController) {
         isShowingFullScreenDaxDialog = false
         if controller.spec?.highlightAddressBar ?? false {
-            chromeDelegate?.omniBar.completeAnimations()
+            chromeDelegate?.omniBar.completeAnimationForDaxDialog()
         }
         
         showDaxDialogOrStartTrackerNetworksAnimationIfNeeded()
@@ -160,7 +164,7 @@ extension TabViewController: FullscreenDaxDialogDelegate {
     }
 }
 
-fileprivate extension DefaultDaxDialogsSettings {
+private extension DefaultDaxDialogsSettings {
     
     var browsingDialogsSeenCount: String {
         let count = [ browsingMajorTrackingSiteShown,

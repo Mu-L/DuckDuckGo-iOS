@@ -17,278 +17,302 @@
 //  limitations under the License.
 //
 
+import Common
 import UIKit
 import Core
-import os.log
+import DesignResourcesKit
+import Suggestions
+import Networking
+import CoreData
+import Persistence
+import History
+import Combine
+import BrowserServicesKit
+import SwiftUI
 
-class AutocompleteViewController: UIViewController {
-    
-    struct Constants {
-        static let debounceDelay: TimeInterval = 0.1
-        static let minItems = 1
-        static let maxLocalItems = 2
-    }
+class AutocompleteViewController: UIHostingController<AutocompleteView> {
+
+    private static let debounceDelayMS = 100
+    private static let session = URLSession(configuration: .ephemeral)
+
+    var selectedSuggestion: Suggestion?
 
     weak var delegate: AutocompleteViewControllerDelegate?
     weak var presentationDelegate: AutocompleteViewControllerPresentationDelegate?
 
-    private var lastRequest: AutocompleteRequest?
-    private var receivedResponse = false
-    private var pendingRequest = false
-    
-    fileprivate var query = ""
-    fileprivate var suggestions = [Suggestion]()
-    fileprivate var selectedItem = -1
-    
-    private let bookmarksSearch = BookmarksSearch()
+    private let appSettings: AppSettings
+    private let model: AutocompleteViewModel
 
-    var showBackground = true {
-        didSet {
-            view.backgroundColor = showBackground ? UIColor.black.withAlphaComponent(0.2) : UIColor.clear
+    @Published private var query = ""
+    private var queryDebounceCancellable: AnyCancellable?
+
+    private var lastResults: SuggestionResult?
+    private var loader: SuggestionLoader?
+    private var historyMessageManager: HistoryMessageManager
+    private var featureFlagger: FeatureFlagger
+    private let historyManager: HistoryManaging
+    private let bookmarksDatabase: CoreDataDatabase
+    private let tabsModel: TabsModel
+
+    private var task: URLSessionDataTask?
+
+    lazy var dataSource: AutocompleteSuggestionsDataSource = {
+        return AutocompleteSuggestionsDataSource(
+            historyManager: historyManager,
+            bookmarksDatabase: bookmarksDatabase,
+            featureFlagger: featureFlagger,
+            tabsModel: tabsModel) { [weak self] request, completion in
+                self?.task = Self.session.dataTask(with: request) { data, _, error in
+                    completion(data, error)
+                }
+                self?.task?.resume()
         }
+    }()
+
+    init(historyManager: HistoryManaging,
+         bookmarksDatabase: CoreDataDatabase,
+         appSettings: AppSettings,
+         historyMessageManager: HistoryMessageManager = HistoryMessageManager(),
+         tabsModel: TabsModel,
+         featureFlagger: FeatureFlagger) {
+
+        self.tabsModel = tabsModel
+        self.historyManager = historyManager
+        self.bookmarksDatabase = bookmarksDatabase
+
+        self.appSettings = appSettings
+        self.historyMessageManager = historyMessageManager
+        self.featureFlagger = featureFlagger
+
+        self.model = AutocompleteViewModel(isAddressBarAtBottom: appSettings.currentAddressBarPosition == .bottom,
+                                           showMessage: historyManager.isHistoryFeatureEnabled() && historyMessageManager.shouldShow())
+        super.init(rootView: AutocompleteView(model: model))
+        self.model.delegate = self
     }
-
-    var selectedSuggestion: Suggestion? {
-        let state = (suggestions: self.suggestions, selectedIndex: self.selectedItem)
-        return state.suggestions.indices.contains(state.selectedIndex) ? state.suggestions[state.selectedIndex] : nil
-    }
-
-    private var hidesBarsOnSwipeDefault = true
     
-    private let debounce = Debounce(queue: .main, seconds: Constants.debounceDelay)
-
-    @IBOutlet weak var tableView: UITableView!
-    var shouldOffsetY = false
-    
-    static func loadFromStoryboard() -> AutocompleteViewController {
-        let storyboard = UIStoryboard(name: "Autocomplete", bundle: nil)
-        guard let controller = storyboard.instantiateInitialViewController() as? AutocompleteViewController else {
-            fatalError("Failed to instatiate correct Autocomplete view controller")
-        }
-        return controller
+    @MainActor required dynamic init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
-        applyTheme(ThemeManager.shared.currentTheme)
-    }
-    
-    private func configureTableView() {
-        tableView.backgroundColor = UIColor.clear
-        tableView.tableFooterView = UIView()
-        tableView.sectionFooterHeight = 1.0 / UIScreen.main.scale
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        adjustForInCall()
-        configureNavigationBar()
-    }
+        view.backgroundColor = UIColor(designSystemColor: .background)
 
-    // If auto complete is used after the in-call banner is shown it has the wrong y position (should be zero)
-    private func adjustForInCall() {
-        let frame = self.view.frame
-        self.view.frame = CGRect(x: 0, y: shouldOffsetY ? 45.5 : 0, width: frame.width, height: frame.height)
-    }
-
-    private func configureNavigationBar() {
-        hidesBarsOnSwipeDefault = navigationController?.hidesBarsOnSwipe ?? hidesBarsOnSwipeDefault
-        navigationController?.hidesBarsOnSwipe = false
+        queryDebounceCancellable = $query
+            .debounce(for: .milliseconds(Self.debounceDelayMS), scheduler: RunLoop.main)
+            .sink { [weak self] query in
+                self?.requestSuggestions(query: query)
+            }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        resetNaviagtionBar()
+        historyMessageManager.incrementDisplayCount()
+        fireUsagePixels()
     }
 
-    private func resetNaviagtionBar() {
-        navigationController?.hidesBarsOnSwipe = hidesBarsOnSwipeDefault
-    }
-
-    func updateQuery(query: String) {
-        self.query = query
-        selectedItem = -1
-        cancelInFlightRequests()
-        debounce.schedule { [weak self] in
-            self?.requestSuggestions(query: query)
-        }
-    }
-    
-    func willDismiss(with query: String) {
-        guard selectedItem != -1, selectedItem < suggestions.count else { return }
-        
-        let suggestion = suggestions[selectedItem]
-        if let url = suggestion.url {
-            if query == url.absoluteString {
-                firePixel(selectedSuggestion: suggestion)
-            }
-        } else if query == suggestion.suggestion {
-            firePixel(selectedSuggestion: suggestion)
-        }
-    }
-
-    @IBAction func onPlusButtonPressed(_ button: UIButton) {
-        let suggestion = suggestions[button.tag]
-        delegate?.autocomplete(pressedPlusButtonForSuggestion: suggestion)
-    }
-
-    private func cancelInFlightRequests() {
-        if let inFlightRequest = lastRequest {
-            inFlightRequest.cancel()
-            lastRequest = nil
-        }
-    }
-
-    private func requestSuggestions(query: String) {
-        selectedItem = -1
-        tableView.reloadData()
-        pendingRequest = true
-        
-        lastRequest = AutocompleteRequest(query: query)
-        lastRequest!.execute { [weak self] (suggestions, error) in
-            guard let strongSelf = self else { return }
-            
-            let matches = strongSelf.bookmarksSearch.search(query: query)
-            let notQueryMatches = matches.filter { $0.url.absoluteString != query }
-            let filteredMatches = notQueryMatches.filter { $0.displayTitle != nil }.prefix(Constants.maxLocalItems)
-            let localSuggestions = filteredMatches.map { Suggestion(source: .local, suggestion: $0.displayTitle!, url: $0.url)}
-            
-            guard let suggestions = suggestions, error == nil else {
-                os_log("%s", log: generalLog, type: .debug, error?.localizedDescription ?? "Failed to retrieve suggestions")
-                self?.updateSuggestions(localSuggestions)
-                return
-            }
-
-            let combinedSuggestions = localSuggestions + suggestions
-            strongSelf.updateSuggestions(Array(combinedSuggestions))
-            strongSelf.pendingRequest = false
-        }
-    }
-
-    private func updateSuggestions(_ newSuggestions: [Suggestion]) {
-        receivedResponse = true
-        suggestions = newSuggestions
-        tableView.contentOffset = .zero
-        tableView.reloadData()
-        presentationDelegate?.autocompleteDidChangeContentHeight(height: tableView.contentSize.height)
-    }
-
-    @IBAction func onAutocompleteDismissed(_ sender: Any) {
-        delegate?.autocompleteWasDismissed()
-    }
-}
-
-extension AutocompleteViewController: UITableViewDataSource {
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if suggestions.isEmpty {
-            return noSuggestionsCell(forIndexPath: indexPath)
-        }
-        return suggestionsCell(forIndexPath: indexPath)
-    }
-
-    private func suggestionsCell(forIndexPath indexPath: IndexPath) -> UITableViewCell {
-        let type = SuggestionTableViewCell.reuseIdentifier
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: type, for: indexPath) as? SuggestionTableViewCell else {
-            fatalError("Failed to dequeue \(type) as SuggestionTableViewCell")
-        }
-        
-        let currentTheme = ThemeManager.shared.currentTheme
-        
-        cell.updateFor(query: query, suggestion: suggestions[indexPath.row], with: currentTheme)
-        cell.plusButton.tag = indexPath.row
-        
-        let color = indexPath.row == selectedItem ? currentTheme.tableCellSelectedColor : currentTheme.tableCellBackgroundColor
-        
-        cell.backgroundColor = color
-        cell.tintColor = currentTheme.autocompleteCellAccessoryColor
-        cell.setHighlightedStateBackgroundColor(currentTheme.tableCellHighlightedBackgroundColor)
-        
-        return cell
-    }
-
-    private func noSuggestionsCell(forIndexPath indexPath: IndexPath) -> UITableViewCell {
-        let type = NoSuggestionsTableViewCell.reuseIdentifier
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: type, for: indexPath) as? NoSuggestionsTableViewCell else {
-            fatalError("Failed to dequeue \(type) as NoSuggestionTableViewCell")
-        }
-        
-        let currentTheme = ThemeManager.shared.currentTheme
-        cell.backgroundColor = currentTheme.tableCellBackgroundColor
-        cell.tintColor = currentTheme.autocompleteCellAccessoryColor
-        cell.label?.textColor = currentTheme.tableCellTextColor
-        cell.setHighlightedStateBackgroundColor(currentTheme.tableCellHighlightedBackgroundColor)
-        
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return receivedResponse ? max(Constants.minItems, suggestions.count) : 0
-    }
-    
-    private func firePixel(selectedSuggestion: Suggestion) {
-        let resultsIncludeBookmarks: Bool
-        if let firstSuggestion = suggestions.first {
-            resultsIncludeBookmarks = firstSuggestion.source == .local
-        } else {
-            resultsIncludeBookmarks = false
-        }
-        
-        let params = [PixelParameters.autocompleteBookmarkCapable: bookmarksSearch.hasData ? "true" : "false",
-                      PixelParameters.autocompleteIncludedLocalResults: resultsIncludeBookmarks ? "true" : "false"]
-        
-        if selectedSuggestion.source == .local {
-            Pixel.fire(pixel: .autocompleteSelectedLocal, withAdditionalParameters: params)
-        } else {
-            Pixel.fire(pixel: .autocompleteSelectedRemote, withAdditionalParameters: params)
-        }
-    }
-}
-
-extension AutocompleteViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let suggestion = suggestions[indexPath.row]
-        firePixel(selectedSuggestion: suggestion)
-        delegate?.autocomplete(selectedSuggestion: suggestion)
-    }
-}
-
-extension AutocompleteViewController: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return tableView == touch.view
-    }
-}
-
-extension AutocompleteViewController: Themable {
-    func decorate(with theme: Theme) {
-        tableView.separatorColor = theme.tableCellSeparatorColor
-        tableView.reloadData()
-    }
-}
-
-extension AutocompleteViewController {
- 
     func keyboardMoveSelectionDown() {
-        guard !pendingRequest, !suggestions.isEmpty else { return }
-        selectedItem = (selectedItem + 1 >= itemCount()) ? 0 : selectedItem + 1
-        delegate?.autocomplete(highlighted: suggestions[selectedItem], for: query)
-        tableView.reloadData()
+        model.nextSelection()
     }
 
     func keyboardMoveSelectionUp() {
-        guard !pendingRequest, !suggestions.isEmpty else { return }
-        selectedItem = (selectedItem - 1 < 0) ? itemCount() - 1 : selectedItem - 1
-        delegate?.autocomplete(highlighted: suggestions[selectedItem], for: query)
-        tableView.reloadData()
+        model.previousSelection()
     }
     
-    func keyboardEscape() {
-        delegate?.autocompleteWasDismissed()
+    func updateQuery(_ query: String) {
+        model.selection = nil
+        guard self.query != query else { return }
+        cancelInFlightRequests()
+        self.query = query
+        model.query = query
     }
-    
-    private func itemCount() -> Int {
-        return suggestions.count
+
+    private func fireUsagePixels() {
+        var bookmark = false
+        var favorite = false
+        var history = false
+        var openTab = false
+
+        lastResults?.all.forEach {
+            switch $0 {
+            case .bookmark(_, _, isFavorite: let isFavorite, _):
+                if isFavorite {
+                    favorite = true
+                } else {
+                    bookmark = true
+                }
+
+            case .historyEntry:
+                history = true
+
+            case .openTab:
+                openTab = true
+
+            default: break
+            }
+        }
+
+        if bookmark {
+            Pixel.fire(pixel: .autocompleteDisplayedLocalBookmark)
+        }
+
+        if favorite {
+            Pixel.fire(pixel: .autocompleteDisplayedLocalFavorite)
+        }
+
+        if history {
+            Pixel.fire(pixel: .autocompleteDisplayedLocalHistory)
+        }
+
+        if openTab {
+            Pixel.fire(pixel: .autocompleteDisplayedOpenedTab)
+        }
+
     }
+
+    private func cancelInFlightRequests() {
+        task?.cancel()
+        task = nil
+    }
+
+    private func requestSuggestions(query: String) {
+        model.selection = nil
+
+        loader = SuggestionLoader(urlFactory: { phrase in
+            guard let url = URL(trimmedAddressBarString: phrase),
+                  let scheme = url.scheme,
+                  scheme.description.hasPrefix("http"),
+                  url.isValid else {
+                return nil
+            }
+
+            return url
+        })
+
+        loader?.getSuggestions(query: query, usingDataSource: dataSource) { [weak self] result, error in
+            guard let self, error == nil else { return }
+            let updatedResults = result ?? .empty
+            self.lastResults = updatedResults
+            model.updateSuggestions(updatedResults)
+            updateHeight()
+        }
+
+    }
+
+    private func updateHeight() {
+        guard let lastResults else { return }
+
+        let messageHeight = model.isMessageVisible ? 196 : 0
+        let sectionPadding = 12
+        let controllerPadding = 20
+
+        let height =
+            sectionHeight(lastResults.topHits) +
+            (lastResults.topHits.isEmpty ? 0 : sectionPadding) +
+            sectionHeight(lastResults.duckduckgoSuggestions) +
+            (lastResults.duckduckgoSuggestions.isEmpty ? 0 : sectionPadding) +
+            sectionHeight(lastResults.localSuggestions) +
+            (lastResults.localSuggestions.isEmpty ? 0 : sectionPadding) +
+            messageHeight +
+            controllerPadding
+
+        presentationDelegate?
+            .autocompleteDidChangeContentHeight(height: CGFloat(height))
+    }
+
+    func sectionHeight(_ suggestions: [Suggestion]) -> Int {
+        let standardCellHeight = 44
+        let subtitledCellHeight = 58
+
+        var height = 0
+        for suggestion in suggestions {
+            switch suggestion {
+            case .phrase, .website:
+                height += standardCellHeight
+
+            default:
+                height += subtitledCellHeight
+            }
+        }
+        return height
+    }
+
+}
+
+extension AutocompleteViewController: AutocompleteViewModelDelegate {
+
+    func onMessageDismissed() {
+        historyMessageManager.dismissedByUser()
+        updateHeight()
+    }
+
+    func onMessageShown() {
+        historyMessageManager.shownToUser()
+    }
+
+    func onSuggestionSelected(_ suggestion: Suggestion) {
+        switch suggestion {
+        case .bookmark(_, _, let isFavorite, _):
+            Pixel.fire(pixel: isFavorite ? .autocompleteClickFavorite : .autocompleteClickBookmark)
+
+        case .historyEntry(_, let url, _):
+            Pixel.fire(pixel: url.isDuckDuckGoSearch ? .autocompleteClickSearchHistory : .autocompleteClickSiteHistory)
+
+        case .phrase:
+            Pixel.fire(pixel: .autocompleteClickPhrase)
+
+        case .website:
+            Pixel.fire(pixel: .autocompleteClickWebsite)
+
+        case .openTab:
+            Pixel.fire(pixel: .autocompleteClickOpenTab)
+
+        default:
+            // NO-OP
+            break
+        }
+        self.delegate?.autocomplete(selectedSuggestion: suggestion)
+    }
+
+    func onTapAhead(_ suggestion: Suggestion) {
+        self.delegate?.autocomplete(pressedPlusButtonForSuggestion: suggestion)
+    }
+
+    func onSuggestionHighlighted(_ suggestion: Suggestion, forQuery query: String) {
+        self.delegate?.autocomplete(highlighted: suggestion, for: query)
+    }
+
+    func deleteSuggestion(_ suggestion: Suggestion) {
+        switch suggestion {
+        case .historyEntry(_, let url, _):
+            Task {
+                await historyManager.deleteHistoryForURL(url)
+                Pixel.fire(pixel: .autocompleteSwipeToDelete)
+                DailyPixel.fireDaily(.autocompleteSwipeToDeleteDaily)
+                requestSuggestions(query: self.query)
+            }
+        default:
+            assertionFailure("Only history items can be deleted")
+        }
+    }
+}
+
+private extension SuggestionResult {
+    static let empty = SuggestionResult(topHits: [], duckduckgoSuggestions: [], localSuggestions: [])
+}
+
+extension HistoryEntry: HistorySuggestion {
+
+    public var numberOfVisits: Int {
+        return numberOfTotalVisits
+    }
+
+}
+
+struct OpenTab: BrowserTab {
+
+    let title: String
+    let url: URL
 
 }

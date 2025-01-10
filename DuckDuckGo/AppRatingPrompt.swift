@@ -20,13 +20,16 @@
 import Foundation
 import Core
 import CoreData
+import os.log
 
 protocol AppRatingPromptStorage {
     
+    var firstShown: Date? { get set }
+
     var lastAccess: Date? { get set }
     
-    var uniqueAccessDays: Int { get set }
-    
+    var uniqueAccessDays: Int? { get set }
+
     var lastShown: Date? { get set }
     
 }
@@ -35,58 +38,92 @@ class AppRatingPrompt {
 
     var storage: AppRatingPromptStorage
     
+    var uniqueAccessDays: Int {
+        storage.uniqueAccessDays ?? 0
+    }
+
     init(storage: AppRatingPromptStorage = AppRatingPromptCoreDataStorage()) {
         self.storage = storage
     }
     
     func registerUsage(onDate date: Date = Date()) {
-        if !date.isSameDay(storage.lastAccess) {
-            storage.uniqueAccessDays += 1
-        }        
+        guard storage.lastShown == nil else { return }
+
+        if !date.isSameDay(storage.lastAccess), let currentUniqueAccessDays = storage.uniqueAccessDays {
+            storage.uniqueAccessDays = currentUniqueAccessDays + 1
+        }
         storage.lastAccess = date
     }
     
     func shouldPrompt(onDate date: Date = Date()) -> Bool {
-        return [3, 7].contains(storage.uniqueAccessDays) && !date.isSameDay(storage.lastShown)
+        // To keep the database migration "lightweight" we just need to check if lastShown has been set yet.
+        //  If it has then this user won't see any more prompts, which is preferable to seeing too many or too frequently.
+        if uniqueAccessDays >= 3 && storage.firstShown == nil && storage.lastShown == nil {
+            return true
+        } else if uniqueAccessDays >= 4 && storage.lastShown == nil {
+            return true
+        }
+        return false
     }
     
     func shown(onDate date: Date = Date()) {
-        storage.lastShown = date
+        if storage.firstShown == nil {
+            storage.firstShown = date
+            storage.uniqueAccessDays = 0
+        } else if storage.lastShown == nil {
+            storage.lastShown = date
+        }
     }
     
 }
 
 class AppRatingPromptCoreDataStorage: AppRatingPromptStorage {
     
+    var firstShown: Date? {
+        get {
+            return ratingPromptEntity()?.firstShown
+        }
+        set {
+            ratingPromptEntity()?.firstShown = newValue
+            try? context.save()
+        }
+    }
+
     var lastAccess: Date? {
         get {
-            return entity().lastAccess
+            return ratingPromptEntity()?.lastAccess
         }
         
         set {
-            entity().lastAccess = newValue
-            try? context.save() 
+            ratingPromptEntity()?.lastAccess = newValue
+            try? context.save()
         }
     }
     
-    var uniqueAccessDays: Int {
+    var uniqueAccessDays: Int? {
         get {
-            return Int(entity().uniqueAccessDays)
+            guard let ratingPromptEntity = ratingPromptEntity() else {
+                return nil
+            }
+            return Int(ratingPromptEntity.uniqueAccessDays)
         }
         
         set {
-            entity().uniqueAccessDays = Int64(newValue)
+            guard let newValue else {
+                return
+            }
+            ratingPromptEntity()?.uniqueAccessDays = Int64(newValue)
             try? context.save()
         }
     }
     
     var lastShown: Date? {
         get {
-            return entity().lastShown
+            return ratingPromptEntity()?.lastShown
         }
         
         set {
-            entity().lastShown = newValue
+            ratingPromptEntity()?.lastShown = newValue
             try? context.save()
         }
     }
@@ -95,14 +132,29 @@ class AppRatingPromptCoreDataStorage: AppRatingPromptStorage {
     
     public init() { }
     
-    func entity() -> AppRatingPromptEntity {
+    func ratingPromptEntity() -> AppRatingPromptEntity? {
+
         let fetchRequest: NSFetchRequest<AppRatingPromptEntity> = AppRatingPromptEntity.fetchRequest()
-        
-        guard let results = try? context.fetch(fetchRequest) else {
-            fatalError("Error fetching AppRatingPromptEntity")
+
+        let results: [AppRatingPromptEntity]
+
+        do {
+            results = try context.fetch(fetchRequest)
+        } catch {
+            Logger.general.error("Error while fetching AppRatingPromptEntity: \(error.localizedDescription, privacy: .public)")
+            return nil
         }
-        
-        return results.first ?? AppRatingPromptEntity(context: context)
+
+
+        if let result = results.first {
+            return result
+        } else {
+            let entityDescription = NSEntityDescription.entity(forEntityName: "AppRatingPromptEntity",
+                                                               in: context)!
+
+            return AppRatingPromptEntity(entity: entityDescription,
+                                         insertInto: context)
+        }
     }
     
 }

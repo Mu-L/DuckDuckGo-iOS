@@ -20,11 +20,12 @@
 import XCTest
 @testable import TrackerRadarKit
 @testable import Core
+@testable import BrowserServicesKit
 
 class ContentBlockingRulesTests: XCTestCase {
 
     func test() throws {
-        let url = AppUrls(statisticsStore: MockStatisticsStore()).trackerDataSet
+        let url = URL.trackerDataSet
         let data = try Data(contentsOf: url)
         let trackerData = try JSONDecoder().decode(TrackerData.self, from: data)
         
@@ -32,10 +33,10 @@ class ContentBlockingRulesTests: XCTestCase {
         andTemporaryUnprotectedDomains: [])
          
         // Test tracker is set up to be blocked
-        if let rule = rules.findExactFilter(filter: "^(https?)?(wss?)?://([a-z0-9-]+\\.)*googleadservices\\.com(:?[0-9]+)?/.*") {
+        if let rule = rules.findExactFilter(filter: "^(https?)?(wss?)?://([a-z0-9-]+\\.)*bad\\.third-party\\.site(:?[0-9]+)?/.*") {
             XCTAssert(rule.action == .block())
         } else {
-            XCTFail("Missing google ad services rule")
+            XCTFail("Missing tracking rule")
         }
         
         // Test exceptiions are set to ignore previous rules

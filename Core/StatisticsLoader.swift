@@ -17,40 +17,73 @@
 //  limitations under the License.
 //
 
+import Common
 import Foundation
+import BrowserServicesKit
+import Networking
+import PixelKit
+import PixelExperimentKit
 import os.log
 
 public class StatisticsLoader {
-    
+
     public typealias Completion =  (() -> Void)
-    
+
     public static let shared = StatisticsLoader()
-    
+
     private let statisticsStore: StatisticsStore
-    private let appUrls: AppUrls
+    private let returnUserMeasurement: ReturnUserMeasurement
+    private let usageSegmentation: UsageSegmenting
     private let parser = AtbParser()
-    
-    init(statisticsStore: StatisticsStore = StatisticsUserDefaults()) {
+    private let atbPresenceFileMarker = BoolFileMarker(name: .isATBPresent)
+    private let inconsistencyMonitoring: StatisticsStoreInconsistencyMonitoring
+    private let fireSearchExperimentPixels: () -> Void
+    private let fireAppRetentionExperimentPixels: () -> Void
+    private let pixelFiring: PixelFiring.Type
+
+    init(statisticsStore: StatisticsStore = StatisticsUserDefaults(),
+         returnUserMeasurement: ReturnUserMeasurement = KeychainReturnUserMeasurement(),
+         usageSegmentation: UsageSegmenting = UsageSegmentation(),
+         inconsistencyMonitoring: StatisticsStoreInconsistencyMonitoring = StorageInconsistencyMonitor(),
+         fireAppRetentionExperimentPixels: @escaping () -> Void = PixelKit.fireAppRetentionExperimentPixels,
+         fireSearchExperimentPixels: @escaping () -> Void = PixelKit.fireSearchExperimentPixels,
+         pixelFiring: PixelFiring.Type = Pixel.self) {
         self.statisticsStore = statisticsStore
-        self.appUrls = AppUrls(statisticsStore: statisticsStore)
+        self.returnUserMeasurement = returnUserMeasurement
+        self.usageSegmentation = usageSegmentation
+        self.inconsistencyMonitoring = inconsistencyMonitoring
+        self.fireSearchExperimentPixels = fireSearchExperimentPixels
+        self.fireAppRetentionExperimentPixels = fireAppRetentionExperimentPixels
+        self.pixelFiring = pixelFiring
     }
-    
+
     public func load(completion: @escaping Completion = {}) {
-        if statisticsStore.hasInstallStatistics {
+        let hasFileMarker = atbPresenceFileMarker?.isPresent ?? false
+        let hasInstallStatistics = statisticsStore.hasInstallStatistics
+
+        inconsistencyMonitoring.statisticsDidLoad(hasFileMarker: hasFileMarker, hasInstallStatistics: hasInstallStatistics)
+
+        if hasInstallStatistics {
+            // Synchronize file marker with current state
+            createATBFileMarker()
+
             completion()
             return
         }
         requestInstallStatistics(completion: completion)
     }
-    
+
     private func requestInstallStatistics(completion: @escaping Completion = {}) {
-        APIRequest.request(url: appUrls.initialAtb) { response, error in
+        let configuration = APIRequest.Configuration(url: .atb)
+        let request = APIRequest(configuration: configuration, urlSession: .session())
+
+        request.fetch { response, error in
             if let error = error {
-                os_log("Initial atb request failed with error %s", log: generalLog, type: .debug, error.localizedDescription)
+                Logger.general.error("Initial atb request failed with error: \(error.localizedDescription, privacy: .public)")
                 completion()
                 return
             }
-            
+
             if let data = response?.data, let atb  = try? self.parser.convert(fromJsonData: data) {
                 self.requestExti(atb: atb, completion: completion)
             } else {
@@ -58,59 +91,100 @@ public class StatisticsLoader {
             }
         }
     }
-    
+
     private func requestExti(atb: Atb, completion: @escaping Completion = {}) {
-        
         let installAtb = atb.version + (statisticsStore.variant ?? "")
-        APIRequest.request(url: appUrls.exti(forAtb: installAtb)) { _, error in
+        let url = URL.makeExtiURL(atb: installAtb)
+
+        let configuration = APIRequest.Configuration(url: url)
+        let request = APIRequest(configuration: configuration, urlSession: .session())
+
+        request.fetch { _, error in
             if let error = error {
-                os_log("Exti request failed with error %s", log: generalLog, type: .debug, error.localizedDescription)
+                Logger.general.error("Exit request failed with error: \(error.localizedDescription, privacy: .public)")
                 completion()
                 return
             }
+            self.fireInstallPixel()
             self.statisticsStore.installDate = Date()
             self.statisticsStore.atb = atb.version
+            self.returnUserMeasurement.installCompletedWithATB(atb)
+            self.createATBFileMarker()
             completion()
         }
     }
-    
+
+    private func fireInstallPixel() {
+        let formattedLocale = Locale.current.localeIdentifierAsJsonFormat
+        let isReinstall = String(statisticsStore.variant == VariantIOS.returningUser.name)
+        let parameters = [
+            "locale": formattedLocale,
+            "reinstall": isReinstall
+        ]
+        pixelFiring.fire(.appInstall, withAdditionalParameters: parameters, includedParameters: [.appVersion], onComplete: { error in
+            if let error {
+                Logger.general.error("Install pixel failed with error: \(error.localizedDescription, privacy: .public)")
+            }
+        })
+    }
+
+    private func createATBFileMarker() {
+        atbPresenceFileMarker?.mark()
+    }
+
     public func refreshSearchRetentionAtb(completion: @escaping Completion = {}) {
-        
-        guard let url = appUrls.searchAtb else {
-            requestInstallStatistics(completion: completion)
+        fireSearchExperimentPixels()
+        guard let url = StatisticsDependentURLFactory(statisticsStore: statisticsStore).makeSearchAtbURL() else {
+            requestInstallStatistics {
+                self.updateUsageSegmentationAfterInstall(activityType: .search)
+                completion()
+            }
             return
         }
-        
-        APIRequest.request(url: url) { response, error in
+
+        let configuration = APIRequest.Configuration(url: url)
+        let request = APIRequest(configuration: configuration, urlSession: .session())
+
+        request.fetch { response, error in
             if let error = error {
-                os_log("Search atb request failed with error %s", log: generalLog, type: .debug, error.localizedDescription)
+                Logger.general.error("Search atb request failed with error: \(error.localizedDescription, privacy: .public)")
                 completion()
                 return
             }
-            if let data = response?.data, let atb  = try? self.parser.convert(fromJsonData: data) {
+            if let data = response?.data, let atb = try? self.parser.convert(fromJsonData: data) {
                 self.statisticsStore.searchRetentionAtb = atb.version
                 self.storeUpdateVersionIfPresent(atb)
+                self.updateUsageSegmentationWithAtb(atb, activityType: .search)
+                NotificationCenter.default.post(name: .searchDAU,
+                                                object: nil, userInfo: nil)
             }
             completion()
         }
     }
-    
+
     public func refreshAppRetentionAtb(completion: @escaping Completion = {}) {
-        
-        guard let url = appUrls.appAtb else {
-            requestInstallStatistics(completion: completion)
+        fireAppRetentionExperimentPixels()
+        guard let url = StatisticsDependentURLFactory(statisticsStore: statisticsStore).makeAppAtbURL() else {
+            requestInstallStatistics {
+                self.updateUsageSegmentationAfterInstall(activityType: .appUse)
+                completion()
+            }
             return
         }
-        
-        APIRequest.request(url: url) { response, error in
+
+        let configuration = APIRequest.Configuration(url: url)
+        let request = APIRequest(configuration: configuration, urlSession: .session())
+
+        request.fetch { response, error in
             if let error = error {
-                os_log("App atb request failed with error %s", log: generalLog, type: .debug, error.localizedDescription)
+                Logger.general.error("App atb request failed with error: \(error.localizedDescription, privacy: .public)")
                 completion()
                 return
             }
-            if let data = response?.data, let atb  = try? self.parser.convert(fromJsonData: data) {
+            if let data = response?.data, let atb = try? self.parser.convert(fromJsonData: data) {
                 self.statisticsStore.appRetentionAtb = atb.version
                 self.storeUpdateVersionIfPresent(atb)
+                self.updateUsageSegmentationWithAtb(atb, activityType: .appUse)
             }
             completion()
         }
@@ -119,6 +193,28 @@ public class StatisticsLoader {
     public func storeUpdateVersionIfPresent(_ atb: Atb) {
         if let updateVersion = atb.updateVersion {
             statisticsStore.atb = updateVersion
+            statisticsStore.variant = nil
+            returnUserMeasurement.updateStoredATB(atb)
         }
     }
+
+    private func processUsageSegmentation(atb: Atb?, activityType: UsageActivityType) {
+        guard let installAtbValue = statisticsStore.atb else { return }
+        let installAtb = Atb(version: installAtbValue + (statisticsStore.variant ?? ""), updateVersion: nil)
+        let usageAtb = atb ?? installAtb
+
+        self.usageSegmentation.processATB(usageAtb, withInstallAtb: installAtb, andActivityType: activityType)
+    }
+
+    private func updateUsageSegmentationWithAtb(_ atb: Atb, activityType: UsageActivityType) {
+        processUsageSegmentation(atb: atb, activityType: activityType)
+    }
+
+    private func updateUsageSegmentationAfterInstall(activityType: UsageActivityType) {
+        processUsageSegmentation(atb: nil, activityType: activityType)
+    }
+}
+
+private extension BoolFileMarker.Name {
+    static let isATBPresent = BoolFileMarker.Name(rawValue: "atb-present")
 }

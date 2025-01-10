@@ -1,0 +1,54 @@
+# swipe_tabs.yaml
+appId: com.duckduckgo.mobile.ios
+tags:
+    - release
+
+---
+
+# Set up 
+- runFlow: 
+    file: ../shared/setup.yaml
+
+# Load Site
+- assertVisible:
+    id: "searchEntry"
+- tapOn:
+    id: "searchEntry"
+- inputText: "https://www.search-company.site"
+- pressKey: Enter
+
+- assertVisible: "Search engine"
+
+# Open New Tab
+- tapOn: "Tab Switcher"
+- tapOn:
+    id: Add
+
+# Perform a search
+- assertVisible:
+    id: "searchEntry"
+- tapOn:
+    id: "searchEntry"
+- inputText: "https://privacy-test-pages.site/features/favicon/"
+- pressKey: Enter
+
+- assertVisible: "Favicon Tests"
+
+# Swipe to first tab
+- swipe:  
+    start: 10%, 10%
+    end: 90%, 10%
+
+- assertVisible: "Search engine"
+
+# Ensure address bar still works
+- assertVisible:
+    id: "searchEntry"
+- tapOn:
+    id: "searchEntry"
+- inputText: "https://privacy-test-pages.site/features/download/"
+- pressKey: Enter
+
+- assertVisible: "Download PDF"
+
+# TODO when settings experiment finishes update this test to open settings and move bar to bottom then test swipe again

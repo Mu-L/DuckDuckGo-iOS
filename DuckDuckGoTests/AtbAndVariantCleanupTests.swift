@@ -21,6 +21,7 @@ import Foundation
 import XCTest
 @testable import DuckDuckGo
 @testable import Core
+@testable import BrowserServicesKit
 
 class AtbAndVariantCleanupTests: XCTestCase {
 
@@ -36,7 +37,7 @@ class AtbAndVariantCleanupTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        UserDefaults.clearStandard()
+        setupUserDefault(with: #file)
     }
 
     func testWhenAtbHasVariantThenAtbStoredWithVariantRemoved() {
@@ -50,8 +51,21 @@ class AtbAndVariantCleanupTests: XCTestCase {
 
     }
 
+    func testWhenAtbHasDifferentVariantThenAtbStoredWithVariantIsNotRemoved() {
+
+        let otherVariant = "\(Constants.atb)otherVariant"
+        mockStorage.atb = otherVariant
+        mockStorage.variant = Constants.variant
+
+        AtbAndVariantCleanup.cleanup(statisticsStorage: mockStorage, variantManager: mockVariantManager)
+
+        XCTAssertEqual(mockStorage.atb, otherVariant)
+
+    }
+
     func testWhenVariantIsNotInCurrentExperimentThenVariantRemovedFromStorage() {
 
+        let mockVariantManager = MockVariantManager(currentVariant: nil)
         mockStorage.atb = "\(Constants.atb)\(Constants.variant)"
         mockStorage.variant = Constants.variant
 
@@ -63,7 +77,7 @@ class AtbAndVariantCleanupTests: XCTestCase {
 
     func testWhenVariantIsInCurrentExperimentThenVariantIsNotRemovedFromStorage() {
 
-        let variant = Variant(name: Constants.variant, weight: 100, isIncluded: Variant.When.always, features: [])
+        let variant = VariantIOS(name: Constants.variant, weight: 100, isIncluded: VariantIOS.When.always, features: [])
         let mockVariantManager = MockVariantManager(currentVariant: variant)
 
         mockStorage.atb = "\(Constants.atb)\(Constants.variant)"

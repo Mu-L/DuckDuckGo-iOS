@@ -19,6 +19,8 @@
 
 import WebKit
 import Core
+import BrowserServicesKit
+import PrivacyDashboard
 
 protocol TabDelegate: AnyObject {
 
@@ -28,39 +30,57 @@ protocol TabDelegate: AnyObject {
 
     func tab(_ tab: TabViewController,
              didRequestNewWebViewWithConfiguration configuration: WKWebViewConfiguration,
-             for navigationAction: WKNavigationAction) -> WKWebView?
+             for navigationAction: WKNavigationAction,
+             inheritingAttribution: AdClickAttributionLogic.State?) -> WKWebView?
 
     func tabDidRequestClose(_ tab: TabViewController)
 
-    func tab(_ tab: TabViewController, didRequestNewTabForUrl url: URL, openedByPage: Bool)
+    func tab(_ tab: TabViewController,
+             didRequestNewTabForUrl url: URL,
+             openedByPage: Bool,
+             inheritingAttribution: AdClickAttributionLogic.State?)
 
-    func tab(_ tab: TabViewController, didRequestNewBackgroundTabForUrl url: URL)
-    
+    func tab(_ tab: TabViewController,
+             didRequestNewBackgroundTabForUrl url: URL,
+             inheritingAttribution: AdClickAttributionLogic.State?)
+
     func tabLoadingStateDidChange(tab: TabViewController)
     func tab(_ tab: TabViewController, didUpdatePreview preview: UIImage)
 
-    func tab(_ tab: TabViewController, didChangeSiteRating siteRating: SiteRating?)
+    func tab(_ tab: TabViewController, didChangePrivacyInfo privacyInfo: PrivacyInfo?)
 
     func tabDidRequestReportBrokenSite(tab: TabViewController)
-    
+
+    func tab(_ tab: TabViewController, didRequestToggleReportWithCompletionHandler completionHandler: @escaping (Bool) -> Void)
+
     func tabDidRequestBookmarks(tab: TabViewController)
     
     func tabDidRequestEditBookmark(tab: TabViewController)
+    
+    func tabDidRequestDownloads(tab: TabViewController)
+
+    func tabDidRequestAIChat(tab: TabViewController)
+
+    func tabDidRequestAutofillLogins(tab: TabViewController)
 
     func tabDidRequestSettings(tab: TabViewController)
+
+    func tab(_ tab: TabViewController,
+             didRequestSettingsToLogins account: SecureVaultModels.WebsiteAccount)
     
     func tabDidRequestFindInPage(tab: TabViewController)
+    func closeFindInPage(tab: TabViewController)
 
     func tabContentProcessDidTerminate(tab: TabViewController)
     
-    func tabDidRequestForgetAll(tab: TabViewController)
-    
     func tabDidRequestFireButtonPulse(tab: TabViewController)
-        
+
+    func tabDidRequestPrivacyDashboardButtonPulse(tab: TabViewController, animated: Bool)
+
     func tabDidRequestSearchBarRect(tab: TabViewController) -> CGRect
 
     func tab(_ tab: TabViewController,
-             didRequestPresentingTrackerAnimation siteRating: SiteRating,
+             didRequestPresentingTrackerAnimation privacyInfo: PrivacyInfo,
              isCollapsing: Bool)
     
     func tabDidRequestShowingMenuHighlighter(tab: TabViewController)
@@ -71,4 +91,9 @@ protocol TabDelegate: AnyObject {
     
     func showBars()
 
+    func tab(_ tab: TabViewController, didRequestLoadURL url: URL)
+    func tab(_ tab: TabViewController, didRequestLoadQuery query: String)
+
+    func tabDidRequestRefresh(tab: TabViewController)
+    func tabDidRequestNavigationToDifferentSite(tab: TabViewController)
 }

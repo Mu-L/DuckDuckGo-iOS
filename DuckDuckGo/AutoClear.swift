@@ -19,58 +19,64 @@
 
 import Foundation
 import UIKit
+import Core
 
 protocol AutoClearWorker {
-    
+
     func clearNavigationStack()
-    func forgetData()
+    func forgetData() async
+    func forgetData(applicationState: DataStoreWarmup.ApplicationState) async
     func forgetTabs()
+
+    func willStartClearing(_: AutoClear)
+    func autoClearDidFinishClearing(_: AutoClear, isLaunching: Bool)
 }
 
 class AutoClear {
-    
-    private let worker: AutoClearWorker
+
+    private let worker: AutoClearWorker // shouldn't it be weak?
     private var timestamp: TimeInterval?
-    
-    private lazy var appSettings = AppDependencyProvider.shared.appSettings
-    
+
+    private let appSettings: AppSettings
+
     var isClearingEnabled: Bool {
         return AutoClearSettingsModel(settings: appSettings) != nil
     }
-    
-    init(worker: AutoClearWorker) {
+
+    init(worker: AutoClearWorker, appSettings: AppSettings = AppDependencyProvider.shared.appSettings) {
         self.worker = worker
+        self.appSettings = appSettings
     }
-    
-    private func clearData() {
+
+    @MainActor
+    func clearDataIfEnabled(launching: Bool = false, applicationState: DataStoreWarmup.ApplicationState = .unknown) async {
         guard let settings = AutoClearSettingsModel(settings: appSettings) else { return }
-        
-        if settings.action.contains(.clearData) {
-            worker.forgetData()
-        }
-        
+
+        worker.willStartClearing(self)
+
         if settings.action.contains(.clearTabs) {
             worker.forgetTabs()
         }
-    }
-    
-    func applicationDidLaunch() {
-        guard let settings = AutoClearSettingsModel(settings: appSettings) else { return }
-        
-        // Note: for startup, we clear only Data, as TabsModel is cleared on load
+
         if settings.action.contains(.clearData) {
-            worker.forgetData()
+            await worker.forgetData(applicationState: applicationState)
         }
+
+        worker.autoClearDidFinishClearing(self, isLaunching: launching)
     }
-    
+
     /// Note: function is parametrised because of tests.
-    func applicationDidEnterBackground(_ time: TimeInterval = Date().timeIntervalSince1970) {
+    func startClearingTimer(_ time: TimeInterval = Date().timeIntervalSince1970) {
         timestamp = time
     }
-    
+
     private func shouldClearData(elapsedTime: TimeInterval) -> Bool {
         guard let settings = AutoClearSettingsModel(settings: appSettings) else { return false }
-        
+
+        if ProcessInfo.processInfo.arguments.contains("autoclear-ui-test") {
+            return elapsedTime > 5
+        }
+
         switch settings.timing {
         case .termination:
             return false
@@ -84,14 +90,16 @@ class AutoClear {
             return elapsedTime > 60 * 60
         }
     }
-    
-    func applicationWillMoveToForeground() {
+
+    @MainActor
+    func clearDataIfEnabledAndTimeExpired(baseTimeInterval: TimeInterval = Date().timeIntervalSince1970,
+                                          applicationState: DataStoreWarmup.ApplicationState) async {
         guard isClearingEnabled,
             let timestamp = timestamp,
-            shouldClearData(elapsedTime: Date().timeIntervalSince1970 - timestamp) else { return }
-        
-        worker.clearNavigationStack()
-        clearData()
+            shouldClearData(elapsedTime: baseTimeInterval - timestamp) else { return }
+
         self.timestamp = nil
+        worker.clearNavigationStack()
+        await clearDataIfEnabled(applicationState: applicationState)
     }
 }

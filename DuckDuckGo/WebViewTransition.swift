@@ -73,28 +73,38 @@ class FromWebViewTransition: WebViewTransition {
         tabSwitcherViewController.view.frame = transitionContext.finalFrame(for: tabSwitcherViewController)
         tabSwitcherViewController.prepareForPresentation()
         
-        guard let webView = mainViewController.currentTab!.webView,
-            let tab = mainViewController.currentTab?.tabModel,
-        let rowIndex = tabSwitcherViewController.tabsModel.indexOf(tab: tab),
-        let layoutAttr = tabSwitcherViewController.collectionView.layoutAttributesForItem(at: IndexPath(row: rowIndex, section: 0)),
-        let preview = tabSwitcherViewController.previewsSource.preview(for: tab)
-            else {
-                tabSwitcherViewController.view.alpha = 1
-                return
+        guard let webView = mainViewController.currentTab?.webView,
+              let tab = mainViewController.tabManager.model.currentTab,
+              let rowIndex = tabSwitcherViewController.tabsModel.indexOf(tab: tab)
+        else {
+            tabSwitcherViewController.view.alpha = 1
+            transitionContext.completeTransition(true)
+            return
         }
-        
+
+        let indexPath = IndexPath(row: rowIndex, section: 0)
+        tabSwitcherViewController.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
+
+        guard let layoutAttr = tabSwitcherViewController.collectionView.layoutAttributesForItem(at: indexPath),
+              let preview = tabSwitcherViewController.previewsSource.preview(for: tab)
+        else {
+            tabSwitcherViewController.view.alpha = 1
+            transitionContext.completeTransition(true)
+            return
+        }
+
         let theme = ThemeManager.shared.currentTheme
         let webViewFrame = webView.convert(webView.bounds, to: nil)
         
         solidBackground.backgroundColor = theme.backgroundColor
         solidBackground.frame = webViewFrame
         
-        imageContainer.frame = webViewFrame
+        imageContainer.frame = mainViewController.viewCoordinator.contentContainer.frame
         imageView.frame = imageContainer.bounds
         imageView.image = preview
-        
+
         UIView.animateKeyframes(withDuration: TabSwitcherTransition.Constants.duration, delay: 0, options: .calculationModeLinear, animations: {
-            
+
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1.0) {
                 let containerFrame = self.tabSwitcherCellFrame(for: layoutAttr)
                 self.imageContainer.frame = containerFrame
@@ -126,12 +136,13 @@ class ToWebViewTransition: WebViewTransition {
         prepareSubviews(using: transitionContext)
         
         guard let mainViewController = transitionContext.viewController(forKey: .to) as? MainViewController,
-            let webView = mainViewController.currentTab!.webView,
-            let tab = mainViewController.currentTab?.tabModel,
-            let rowIndex = tabSwitcherViewController.tabsModel.indexOf(tab: tab),
-            let layoutAttr = tabSwitcherViewController.collectionView.layoutAttributesForItem(at: IndexPath(row: rowIndex, section: 0))
-            else {
-                return
+              let webView = mainViewController.currentTab?.webView,
+              let tab = mainViewController.currentTab?.tabModel,
+              let rowIndex = tabSwitcherViewController.tabsModel.indexOf(tab: tab),
+              let layoutAttr = tabSwitcherViewController.collectionView.layoutAttributesForItem(at: IndexPath(row: rowIndex, section: 0))
+        else {
+            transitionContext.completeTransition(true)
+            return
         }
                 
         let theme = ThemeManager.shared.currentTheme
@@ -150,7 +161,7 @@ class ToWebViewTransition: WebViewTransition {
         let preview = tabSwitcherViewController.previewsSource.preview(for: tab)
         if let preview = preview {
             imageView.frame = previewFrame(for: imageContainer.bounds.size,
-            preview: preview)
+                                           preview: preview)
         } else {
             imageView.frame = CGRect(origin: .zero, size: imageContainer.bounds.size)
         }
@@ -163,8 +174,9 @@ class ToWebViewTransition: WebViewTransition {
         scrollIfOutsideViewport(collectionView: tabSwitcherViewController.collectionView, rowIndex: rowIndex, attributes: layoutAttr)
         
         UIView.animate(withDuration: TabSwitcherTransition.Constants.duration, animations: {
-            self.imageContainer.frame = webViewFrame
+            self.imageContainer.frame = mainViewController.viewCoordinator.contentContainer.frame
             self.imageContainer.layer.cornerRadius = 0
+
             self.imageView.frame = self.destinationImageFrame(for: webViewFrame.size,
                                                               preview: preview)
             self.imageView.alpha = 1

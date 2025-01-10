@@ -1,5 +1,44 @@
-/* No comment provided by engineer. */
-"Label" = "Етикет";
+/* Description shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.description" = "Незабавно генериране на нов личен Duck Address.";
+
+/* Title shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.title" = "Защита на имейл";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.favorites.description" = "Бързо отваряне на любимите уебсайтове с едно докосване.";
+
+/* Title shown to the user when adding the favorites lock screen widget */
+"lock.screen.widget.favorites.title" = "Любими";
+
+/* Description shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.description" = "Незабавно изтриване на историята на сърфиране и стартиране ново поверително търсене в DuckDuckGo.";
+
+/* Title shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.title" = "Fire Button";
+
+/* Description shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.description" = "Бързо търсене на запазените пароли за DuckDuckGo.";
+
+/* Title shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.title" = "Търсене на пароли";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.description" = "Незабавно стартиране на поверително търсене в DuckDuckGo.";
+
+/* Title shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.title" = "поверително търсене";
+
+/* Description shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.description" = "Незабавно стартиране на ново поверително гласово търсене в DuckDuckGo.";
+
+/* Title shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.title" = "Гласово търсене";
+
+/* Description of search passwords widget in widget gallery */
+"widget.gallery.passwords.description" = "Бързо търсене на запазените пароли за DuckDuckGo.";
+
+/* Display name for search passwords widget in widget gallery */
+"widget.gallery.passwords.display.name" = "Търсене на пароли";
 
 /* Description of search and favorites widget in widget gallery */
 "widget.gallery.search.and.favorites.description" = "Насладете се на поверително търсене и сърфиране в любимите си сайтове само с едно докосване.";
@@ -13,12 +52,54 @@
 /* Display name for search only widget in widget gallery */
 "widget.gallery.search.display.name" = "Търсене";
 
+/* Description of VPN widget in widget gallery */
+"widget.gallery.vpn.description" = "Преглеждайте и управлявайте своята VPN връзка. Изисква абонамент за Privacy Pro.";
+
+/* Display name for VPN widget in widget gallery */
+"widget.gallery.vpn.display.name" = "VPN";
+
 /* CTA shown in the favorites widget empty state. */
 "widget.no.favorites.cta" = "Добавяне към любими";
 
 /* Message shown in the favorites widget empty state. */
 "widget.no.favorites.message" = "Отварянето на любимите ви сайтове става бързо.";
 
+/* Text in passwords widget */
+"widget.passwords" = "Търсене на пароли";
+
 /* Placeholder text in search field on the search and favorites widget */
 "widget.search.duckduckgo" = "Търси с DuckDuckGo";
+
+/* VPN connect button text */
+"widget.vpn.button.connect" = "Свързване";
+
+/* VPN disconnect button text */
+"widget.vpn.button.disconnect" = "Прекъсване на връзката";
+
+/* Label for the snooze end date, e.g. 'Until 9:51 AM' */
+"widget.vpn.label.snoozing-until" = "До %@";
+
+/* VPN Live Activity dismiss button text */
+"widget.vpn.live-activity.button.dismiss" = "Отказване";
+
+/* VPN Live Activity wake up button text */
+"widget.vpn.live-activity.button.wake-up" = "Събуждане";
+
+/* VPN Live Activity active label text */
+"widget.vpn.live-activity.label.active" = "VPN е включена";
+
+/* VPN Live Activity snoozing label text */
+"widget.vpn.live-activity.label.snoozing" = "VPN е отложен";
+
+/* Message describing VPN connected status */
+"widget.vpn.status.connected" = "VPN е включена";
+
+/* Message describing VPN disconnected status */
+"widget.vpn.status.disconnected" = "VPN е изключена";
+
+/* Message describing VPN snoozing status */
+"widget.vpn.status.snoozed" = "VPN е в режим на изчакване";
+
+/* Subtitle describing VPN disconnected status */
+"widget.vpn.subtitle.disconnected" = "Няма връзка";
 

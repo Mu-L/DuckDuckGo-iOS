@@ -8,6 +8,10 @@ DerivedData/
 Carthage/Checkouts
 node_modules/
 
+## UI Testing
+.maestro/device_uuid.txt
+xcodebuild.log
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
@@ -24,6 +28,7 @@ xcuserdata/
 *.moved-aside
 *.xcuserstate
 .DS_Store
+default.profraw
 
 ## Obj-C/Swift specific
 *.hmap
@@ -56,6 +61,9 @@ playground.xcworkspace
 
 Carthage/Build
 
+# ruby
+vendor
+
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
@@ -70,3 +78,7 @@ fastlane/test_output
 # DuckDuckGo
 
 Configuration/ExternalDeveloper.xcconfig
+scripts/assets
+
+DuckDuckGoTests/NetworkProtectionVPNLocationViewModelTests.swift*.plist
+*.profraw

@@ -22,6 +22,7 @@ import WebKit
 import XCTest
 import BrowserServicesKit
 import TrackerRadarKit
+import ContentBlocking
 @testable import Core
 @testable import DuckDuckGo
 
@@ -38,44 +39,12 @@ class MockNavigationDelegate: NSObject, WKNavigationDelegate {
     }
 }
 
-class MockRulesUserScriptDelegate: NSObject, ContentBlockerRulesUserScriptDelegate {
-
-    var shouldProcessTrackers = true
-    var onTrackerDetected: ((DetectedTracker) -> Void)?
-    var detectedTrackers = Set<DetectedTracker>()
-
-    func reset() {
-        detectedTrackers.removeAll()
-    }
-
-    func contentBlockerUserScriptShouldProcessTrackers(_ script: ContentBlockerRulesUserScript) -> Bool {
-        return shouldProcessTrackers
-    }
-
-    func contentBlockerUserScript(_ script: ContentBlockerRulesUserScript,
-                                  detectedTracker tracker: DetectedTracker) {
-        detectedTrackers.insert(tracker)
-        onTrackerDetected?(tracker)
-    }
-}
-
-class MockUserScriptConfigSource: ContentBlockerUserScriptConfigSource {
-
-    init(privacyConfig: PrivacyConfiguration) {
-        self.privacyConfig = privacyConfig
-    }
-
-    public private(set) var privacyConfig: PrivacyConfiguration
-
-    public var trackerData: TrackerData?
-}
-
 class MockSurrogatesUserScriptDelegate: NSObject, SurrogatesUserScriptDelegate {
 
     var shouldProcessTrackers = true
 
-    var onSurrogateDetected: ((DetectedTracker, String) -> Void)?
-    var detectedSurrogates = Set<DetectedTracker>()
+    var onSurrogateDetected: ((DetectedRequest, String) -> Void)?
+    var detectedSurrogates = Set<DetectedRequest>()
 
     func reset() {
         detectedSurrogates.removeAll()
@@ -84,26 +53,17 @@ class MockSurrogatesUserScriptDelegate: NSObject, SurrogatesUserScriptDelegate {
     func surrogatesUserScriptShouldProcessTrackers(_ script: SurrogatesUserScript) -> Bool {
         return shouldProcessTrackers
     }
+    
+    func surrogatesUserScriptShouldProcessCTLTrackers(_ script: SurrogatesUserScript) -> Bool {
+        false
+    }
 
     func surrogatesUserScript(_ script: SurrogatesUserScript,
-                              detectedTracker tracker: DetectedTracker,
+                              detectedTracker tracker: DetectedRequest,
                               withSurrogate host: String) {
         detectedSurrogates.insert(tracker)
         onSurrogateDetected?(tracker, host)
     }
-}
-
-class MockSurrogatesUserScriptConfigSource: SurrogatesUserScriptConfigSource {
-
-    init(privacyConfig: PrivacyConfiguration) {
-        self.privacyConfig = privacyConfig
-    }
-
-    public private(set) var privacyConfig: PrivacyConfiguration
-
-    public var encodedTrackerData: String?
-
-    public var surrogates = ""
 }
 
 class MockDomainsProtectionStore: DomainsProtectionStore {
@@ -115,15 +75,6 @@ class MockDomainsProtectionStore: DomainsProtectionStore {
 
     func enableProtection(forDomain domain: String) {
         unprotectedDomains.insert(domain)
-    }
-}
-
-class CustomContentBlockerRulesUserScript: ContentBlockerRulesUserScript {
-
-    var onSourceInjection: (String) -> String = { $0 }
-
-    override var source: String {
-        return onSourceInjection(super.source)
     }
 }
 
@@ -160,7 +111,8 @@ class WebKitTestHelper {
 
         return AppPrivacyConfiguration(data: privacyData,
                                        identifier: "",
-                                       localProtection: localProtection)
+                                       localProtection: localProtection,
+                                       internalUserDecider: DefaultInternalUserDecider())
     }
 
     static func prepareContentBlockingRules(trackerData: TrackerData,

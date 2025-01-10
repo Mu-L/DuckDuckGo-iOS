@@ -1,0 +1,24 @@
+appId: com.duckduckgo.mobile.ios
+tags:
+    - securityTest
+---
+
+# Set up 
+- runFlow: 
+    file: ../shared/setup.yaml
+
+# Load Site
+- assertVisible:
+    id: "searchEntry"
+- tapOn: 
+    id: "searchEntry"
+- inputText: "https://privacy-test-pages.site/security/address-bar-spoofing/spoof-form-action.html"
+- pressKey: Enter
+
+# Test
+- tapOn: "run"
+# Should navigate to duckduckgo.com without any spoofed HTML document content.
+- copyTextFrom:
+    id: "searchEntry"
+- assertTrue: ${maestro.copiedText == "duckduckgo.com"}
+- assertNotVisible: "Not DDG."

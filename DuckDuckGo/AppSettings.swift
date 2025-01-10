@@ -17,8 +17,34 @@
 //  limitations under the License.
 //
 
-protocol AppSettings: AnyObject {
+import Bookmarks
+import Foundation
+
+enum AddressBarPosition: String, CaseIterable, CustomStringConvertible {
+    case top
+    case bottom
+
+    var isBottom: Bool {
+        self == .bottom
+    }
+    
+    var description: String {
+        return descriptionText
+    }
+
+    var descriptionText: String {
+        switch self {
+        case .top:
+            return UserText.addressBarPositionTop
+        case .bottom:
+            return UserText.addressBarPositionBottom
+        }
+    }
+}
+
+protocol AppSettings: AnyObject, AppDebugSettings {
     var autocomplete: Bool { get set }
+    var recentlyVisitedSites: Bool { get set }
     var currentThemeName: ThemeName { get set }
     
     var autoClearAction: AutoClearSettingsModel.Action { get set }
@@ -31,6 +57,38 @@ protocol AppSettings: AnyObject {
     var sendDoNotSell: Bool { get set }
     
     var currentFireButtonAnimation: FireButtonAnimationType { get set }
+    var currentAddressBarPosition: AddressBarPosition { get set }
+    var showFullSiteAddress: Bool { get set }
+
+    var defaultTextZoomLevel: TextZoomLevel { get set }
+
+    var favoritesDisplayMode: FavoritesDisplayMode { get set }
     
-    var textSize: Int { get set }
+    var autofillCredentialsEnabled: Bool { get set }
+    var autofillCredentialsSavePromptShowAtLeastOnce: Bool { get set }
+    var autofillCredentialsHasBeenEnabledAutomaticallyIfNecessary: Bool { get set }
+    var autofillIsNewInstallForOnByDefault: Bool? { get set }
+    func setAutofillIsNewInstallForOnByDefault()
+    var autofillImportViaSyncStart: Date? { get set }
+    func clearAutofillImportViaSyncStart()
+
+    var voiceSearchEnabled: Bool { get set }
+
+    func isWidgetInstalled() async -> Bool
+    
+    var autoconsentEnabled: Bool { get set }
+
+    var crashCollectionOptInStatus: CrashCollectionOptInStatus { get set }
+    var crashCollectionShouldRevertOptedInStatusTrigger: Int { get set }
+    
+    var duckPlayerMode: DuckPlayerMode { get set }
+    var duckPlayerAskModeOverlayHidden: Bool { get set }
+    var duckPlayerOpenInNewTab: Bool { get set }
+
+    var appBehavior: AppBehavior? { get set }
+}
+
+protocol AppDebugSettings {
+    var onboardingHighlightsEnabled: Bool { get set }
+    var onboardingAddToDockState: OnboardingAddToDockState { get set }
 }

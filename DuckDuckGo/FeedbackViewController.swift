@@ -35,7 +35,7 @@ class FeedbackViewController: UIViewController {
 
         configureLabels()
         configureButtons()
-        applyTheme(ThemeManager.shared.currentTheme)
+        decorate()
     }
     
     private func configureLabels() {
@@ -69,18 +69,18 @@ class FeedbackViewController: UIViewController {
         let isNavigatingToCategories = sender as? UIButton == negativeFeedbackButton
         if isNavigatingToCategories {
             controller.loadViewIfNeeded()
-            controller.configure(with: Feedback.Category.allCases)
+            controller.configure(with: Feedback.Category.allCases, isFromBrokenSiteReportFlow: false)
             return
         }
     }
 }
 
-extension FeedbackViewController: Themable {
+extension FeedbackViewController {
     
-    func decorate(with theme: Theme) {
-        decorateNavigationBar(with: theme)
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
+        decorateNavigationBar()
         
-        overrideSystemTheme(with: theme)
 
         view.backgroundColor = theme.backgroundColor
         

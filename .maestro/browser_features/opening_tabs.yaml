@@ -1,0 +1,49 @@
+# tabs.yaml
+appId: com.duckduckgo.mobile.ios
+tags:
+    - release
+
+---
+
+# Set up 
+- runFlow: 
+    file: ../shared/setup.yaml
+
+# Load Site
+- assertVisible:
+    id: "searchEntry"
+- tapOn:
+    id: "searchEntry"
+- inputText: "https://privacy-test-pages.site"
+- pressKey: Enter
+
+- assertVisible: ".*Privacy Test Pages.*"
+- tapOn: "Links Open in New Window"
+
+# Validate there's one tab
+- runFlow:
+    file: ../shared/check_number_of_tabs.yaml
+    env:
+      TITLE: "1 Private Tab"
+
+- tapOn: "Opens in new window"
+- runFlow:
+    file: ../shared/check_number_of_tabs.yaml
+    env:
+      TITLE: "2 Private Tabs"
+
+- tapOn: "Close"
+- assertVisible: "A link that opens in a new window"
+- tapOn: "Opens in new window"
+- runFlow:
+    file: ../shared/check_number_of_tabs.yaml
+    env:
+      TITLE: "2 Private Tabs"
+
+- tapOn: "Browse Back"
+- assertVisible: "A link that opens in a new window"
+
+- runFlow:
+    file: ../shared/check_number_of_tabs.yaml
+    env:
+      TITLE: "1 Private Tab"

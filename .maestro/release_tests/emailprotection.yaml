@@ -1,0 +1,35 @@
+appId: com.duckduckgo.mobile.ios
+tags:
+    - release
+
+---
+
+- runFlow: 
+    file: ../shared/setup.yaml
+    
+- tapOn: Settings
+# Handling two different flows because of the current experiment
+# TODO: Remove the unused flow when the experiment is completed.
+- runFlow:
+    # New Settings UI
+    when:
+      visible: "Email Protection"
+    commands:
+      - tapOn: Email Protection
+      - assertVisible: Enable Email Protection
+      - tapOn: Enable Email Protection
+- runFlow:
+    # Old Settings UI
+    when:
+      notVisible: "Email Protection"
+    commands:
+      - scroll
+      - scroll
+      - assertVisible: Email Protection
+      - tapOn: Email Protection
+- assertVisible: Email privacy, protected.
+- assertVisible:
+    id: searchEntry
+- tapOn: 
+    id: "searchEntry"
+- assertVisible: https://duckduckgo.com/email/

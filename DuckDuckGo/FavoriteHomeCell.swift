@@ -19,6 +19,7 @@
 
 import UIKit
 import Core
+import Bookmarks
 
 class FavoriteHomeCell: UICollectionViewCell {
 
@@ -32,28 +33,30 @@ class FavoriteHomeCell: UICollectionViewCell {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var highlightMask: UIView!
     @IBOutlet weak var iconSize: NSLayoutConstraint!
-    
-    static let appUrls = AppUrls()
-    
-    var isReordering = false {
+    @IBOutlet weak var deleteButton: UIButton!
+
+    var isEditing = false {
         didSet {
-            let scale: CGFloat = isReordering ? 1.2 : 1.0
-            transform = CGAffineTransform.identity.scaledBy(x: scale, y: scale)
-            contentView.alpha = isReordering ? 0.5 : 1.0
+            deleteButton.isHidden = !isEditing
+            deleteButton.isEnabled = isEditing
         }
     }
-    
-    var onDelete: (() -> Void)?
-    var onEdit: (() -> Void)?
-    
-    private var link: Link?
-    private var theme: Theme?
-    
-    struct Actions {
-        static let delete = #selector(FavoriteHomeCell.doDelete(sender:))
-        static let edit = #selector(FavoriteHomeCell.doEdit(sender:))
+
+    var truncatedUrlString: String? {
+        guard let url = favorite?.url else { return nil }
+        let urlString = url.prefix(100).description
+        let ellipsis = url.count != urlString.count ? "…" : ""
+        return urlString + ellipsis
     }
-    
+
+    var title: String? {
+        favorite?.title
+    }
+
+    var onRemove: (() -> Void)?
+     
+    var favorite: BookmarkEntity?
+
     override var isHighlighted: Bool {
         didSet {
             highlightMask.isHidden = !isHighlighted
@@ -67,41 +70,53 @@ class FavoriteHomeCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         FavoriteHomeCell.applyDropshadow(to: iconBackground)
+        FavoriteHomeCell.applyDropshadow(to: deleteButton)
+        layer.cornerRadius = 8
+
+        decorate()
     }
-    
-    @objc func doDelete(sender: Any?) {
-        onDelete?()
+
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if deleteButton.frame.contains(point) {
+            return deleteButton
+        }
+        return super.hitTest(point, with: event)
     }
-    
-    @objc func doEdit(sender: Any?) {
-        onEdit?()
+
+    @IBAction func onRemoveAction() {
+        guard isEditing else { return }
+        self.onRemove?()
     }
-    
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return [ Actions.delete, Actions.edit ].contains(action)
-    }
-    
-    func updateFor(link: Link) {
-        self.link = link
+
+    func updateFor(favorite: BookmarkEntity, onFaviconMissing: ((String) -> Void)? = nil) {
+        self.favorite = favorite
         
-        let host = link.url.host?.dropPrefix(prefix: "www.") ?? ""
+        let host = favorite.host
+        let color = UIColor.forDomain(host)
         
         isAccessibilityElement = true
         accessibilityTraits = .button
-        accessibilityLabel = "\(link.displayTitle ?? "")). \(UserText.favorite)"
+        accessibilityLabel = "\(favorite.displayTitle). \(UserText.favorite)"
         
-        titleLabel.text = link.displayTitle
-        iconBackground.backgroundColor = UIColor.forDomain(host)
-        
-        if let domain = link.url.host?.dropPrefix(prefix: "www."),
-           let fakeFavicon = UIImageView.createFakeFavicon(forDomain: link.url.host ?? "", backgroundColor: UIColor.forDomain(domain), bold: false) {
-            iconImage.image = fakeFavicon
-        }
+        titleLabel.text = favorite.displayTitle
+        iconBackground.backgroundColor = color
 
-        iconImage.loadFavicon(forDomain: link.url.host, usingCache: .bookmarks, useFakeFavicon: false) { image, _ in
-            guard let image = image else { return }
+        let iconImage = self.iconImage
+        let domain = favorite.host
+        let fakeFavicon = FaviconsHelper.createFakeFavicon(forDomain: domain,
+                                                           size: iconImage?.frame.width ?? 64,
+                                                           backgroundColor: color,
+                                                           bold: false)
+        iconImage?.image = fakeFavicon
 
-            let useBorder = Self.appUrls.isDuckDuckGo(domain: link.url.host) || image.size.width < Constants.largeFaviconSize
+        iconImage?.loadFavicon(forDomain: domain, usingCache: .fireproof, useFakeFavicon: false) { image, _ in
+            guard let image = image else {
+                iconImage?.image = fakeFavicon
+                onFaviconMissing?(domain)
+                return
+            }
+
+            let useBorder = URL.isDuckDuckGo(domain: domain) || image.size.width < Constants.largeFaviconSize
             self.useImageBorder(useBorder)
             self.applyFavicon(image)
         }
@@ -117,8 +132,7 @@ class FavoriteHomeCell: UICollectionViewCell {
 
         iconImage.contentMode = image.size.width < Constants.largeFaviconSize ? .center : .scaleAspectFit
 
-        guard let theme = theme else { return }
-        iconBackground.backgroundColor = theme.faviconBackgroundColor
+        iconBackground.backgroundColor = ThemeManager.shared.currentTheme.faviconBackgroundColor
     }
     
     class func applyDropshadow(to view: UIView) {
@@ -128,17 +142,41 @@ class FavoriteHomeCell: UICollectionViewCell {
         view.layer.shadowOpacity = 0.12
         view.layer.masksToBounds = false
     }
-    
 }
 
-extension FavoriteHomeCell: Themable {
-    
-    func decorate(with theme: Theme) {
-        self.theme = theme
-        titleLabel.textColor = theme.favoriteTextColor
-        if let link = link {
-            updateFor(link: link)
+private extension BookmarkEntity {
+
+    var displayTitle: String {
+        if let title = title?.trimmingWhitespace() {
+            return title
         }
+
+        if let host = urlObject?.host?.droppingWwwPrefix() {
+            return host
+        }
+
+        assertionFailure("Unable to create display title")
+        return ""
     }
 
+    var host: String {
+        return urlObject?.host ?? ""
+    }
+
+}
+
+extension FavoriteHomeCell {
+    
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
+        titleLabel.textColor = theme.favoriteTextColor
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection), let favorite {
+            updateFor(favorite: favorite)
+        }
+    }
 }

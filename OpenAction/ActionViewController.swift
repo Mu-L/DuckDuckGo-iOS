@@ -17,10 +17,12 @@
 //  limitations under the License.
 //
 
+import Common
 import UIKit
 import MobileCoreServices
 import Core
-import os
+import UniformTypeIdentifiers
+import os.log
 
 class ActionViewController: UIViewController {
 
@@ -30,16 +32,20 @@ class ActionViewController: UIViewController {
         for item in extensionContext?.inputItems as? [NSExtensionItem] ?? [] {
             for provider in item.attachments ?? [] {
 
-                if provider.hasItemConformingToTypeIdentifier(kUTTypeText as String) {
-                    provider.loadItem(forTypeIdentifier: kUTTypeText as String, options: nil) { text, _ in
+                if provider.hasItemConformingToTypeIdentifier(UTType.text.identifier) {
+                    provider.loadItem(forTypeIdentifier: UTType.text.identifier, options: nil) { text, _ in
                         guard let text = text as? String else { return }
-                        self.launchBrowser(withUrl: AppUrls().url(forQuery: text))
+                        guard let url = URL.makeSearchURL(text: text) else {
+                            Logger.lifecycle.error("Couldn‘t form URL for query “\(text, privacy: .public)”")
+                            return
+                        }
+                        self.launchBrowser(withUrl: url)
                     }
                     break
                 }
 
-                if provider.hasItemConformingToTypeIdentifier(kUTTypeURL as String) {
-                    provider.loadItem(forTypeIdentifier: kUTTypeURL as String, options: nil) { url, _ in
+                if provider.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
+                    provider.loadItem(forTypeIdentifier: UTType.url.identifier, options: nil) { url, _ in
                         guard let url = url as? URL else { return }
                         self.launchBrowser(withUrl: url)
                     }
@@ -53,14 +59,21 @@ class ActionViewController: UIViewController {
     func launchBrowser(withUrl url: URL) {
 
         DispatchQueue.main.async {
-            let path = "\(AppDeepLinks.quickLink)\(url.absoluteString)"
+            let path = AppDeepLinkSchemes.quickLink.appending(url.absoluteString)
             guard let url = URL(string: path) else { return }
             var responder = self as UIResponder?
             let selectorOpenURL = sel_registerName("openURL:")
             while let current = responder {
-                if current.responds(to: selectorOpenURL) {
-                    current.perform(selectorOpenURL, with: url, afterDelay: 0)
-                    break
+                if #available(iOS 18.0, *) {
+                    if let application = current as? UIApplication {
+                        application.open(url, options: [:], completionHandler: nil)
+                        break
+                    }
+                } else {
+                    if current.responds(to: selectorOpenURL) {
+                        current.perform(selectorOpenURL, with: url, afterDelay: 0)
+                        break
+                    }
                 }
                 responder = current.next
             }

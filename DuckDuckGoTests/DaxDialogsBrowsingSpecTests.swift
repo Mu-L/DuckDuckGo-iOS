@@ -18,10 +18,11 @@
 //
 
 import XCTest
+import PrivacyDashboard
 @testable import DuckDuckGo
 
 class DaxDialogsBrowsingSpecTests: XCTestCase {
-    
+
     func testWhenSiteIsOwnedByMajorTrackerIsFormattedThenContainsNamesDomainAndPercentage() {
         let majorTracker1 = "TestTracker1"
         let domain = "testtracker.com"
@@ -46,7 +47,7 @@ class DaxDialogsBrowsingSpecTests: XCTestCase {
         let majorTracker1 = "TestTracker1"
         let majorTracker2 = "TestTracker2"
         let count = 1
-        let message = DaxDialogs.BrowsingSpec.withMutipleTrackers.format(args: count, majorTracker1, majorTracker2).message
+        let message = DaxDialogs.BrowsingSpec.withMultipleTrackers.format(args: count, majorTracker1, majorTracker2).message
         XCTAssertTrue(message.contains(majorTracker1))
         XCTAssertTrue(message.contains(majorTracker2))
         XCTAssertTrue(message.contains("\(count)"))
@@ -61,7 +62,7 @@ class DaxDialogsBrowsingSpecTests: XCTestCase {
         let majorTracker1 = "TestTracker1"
         let majorTracker2 = "TestTracker2"
         let count = 6
-        let message = DaxDialogs.BrowsingSpec.withMutipleTrackers.format(args: count, majorTracker1, majorTracker2).message
+        let message = DaxDialogs.BrowsingSpec.withMultipleTrackers.format(args: count, majorTracker1, majorTracker2).message
         XCTAssertTrue(message.contains(majorTracker1))
         XCTAssertTrue(message.contains(majorTracker2))
         XCTAssertTrue(message.contains("\(count)"))
@@ -72,7 +73,7 @@ class DaxDialogsBrowsingSpecTests: XCTestCase {
     func testWhenTwoTrackersThenMessageContainsBothTrackers() {
         let majorTracker1 = "TestTracker1"
         let majorTracker2 = "TestTracker2"
-        let message = DaxDialogs.BrowsingSpec.withMutipleTrackers.format(args: 0, majorTracker1, majorTracker2).message
+        let message = DaxDialogs.BrowsingSpec.withMultipleTrackers.format(args: 0, majorTracker1, majorTracker2).message
         XCTAssertTrue(message.contains(majorTracker1))
         XCTAssertTrue(message.contains(majorTracker2))
         XCTAssertTrue(message.contains("\n"))
@@ -84,11 +85,11 @@ class DaxDialogsBrowsingSpecTests: XCTestCase {
         let message = DaxDialogs.BrowsingSpec.withOneTracker.format(args: majorTracker).message
         XCTAssertTrue(message.contains(majorTracker))
     }
-    
+
 }
 
 // From: https://stackoverflow.com/a/49547114/73479
-fileprivate extension String {
+private extension String {
     func countInstances(of stringToFind: String) -> Int {
         var stringToSearch = self
         var count = 0

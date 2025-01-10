@@ -22,7 +22,7 @@ import UIKit
 class TabSwitcherTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     struct Constants {
-        static let duration = 0.15
+        static let duration = 0.20
     }
     
     // Used to hide contents of the 'from' VC when animating.
@@ -86,7 +86,7 @@ class TabSwitcherTransitionDelegate: NSObject, UIViewControllerTransitioningDele
             return nil
         }
         
-        if mainVC.homeController != nil {
+        if mainVC.newTabPageViewController != nil {
             return FromHomeScreenTransition(mainViewController: mainVC,
                                             tabSwitcherViewController: tabSwitcherVC)
         }

@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bookmark.deleteFolderAlert.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Haluatko varmasti poistaa tämän kansion ja %1$d kohteen?</string>
+			<key>other</key>
+			<string>Haluatko varmasti poistaa tämän kansion ja %1$d kohdetta?</string>
+		</dict>
+	</dict>
 	<key>dax.onboarding.browsing.multiple.trackers</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,17 +29,37 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>*%2$@, %3$@* ja *1 muu* yrittivät seurata sinua.
+			<string>*%2$@, %3$@* ja *1 muu* yrittivät seurata sinua täällä.
 
-Estin sen!
+ Estin heidät! 
 
-☝️ Tarkista URL-palkista, kuka yrittää seurata sinua vieraillessasi uudella sivustolla.️</string>
+☝️ Voit tarkistaa osoitekentästä, kuka yrittää seurata sinua vieraillessasi uudella sivustolla.</string>
 			<key>other</key>
-			<string>*%2$@, %3$@* ja *%1$d muuta* yrittivät seurata sinua.
+			<string>*%2$@, %3$@* ja *%1$d muuta* yrittivät seurata sinua täällä.
 
-Estin sen!
+ Estin heidät! 
 
-☝️ Tarkista URL-palkista, kuka yrittää seurata sinua vieraillessasi uudella sivustolla.️</string>
+☝️ Voit tarkistaa osoitekentästä, kuka yrittää seurata sinua vieraillessasi uudella sivustolla.</string>
+		</dict>
+	</dict>
+	<key>contextual.onboarding.browsing.multiple.trackers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1#@count@</string>
+		<key>count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>*%2$@, %3$@* ja 1 muu yritti seurata sinua täällä. Estin ne!
+
+☝️ Napauta kilpeä saadaksesi lisätietoja.️</string>
+			<key>other</key>
+			<string>*%2$@, %3$@* ja *%1$d muuta* yrittivät seurata sinua täällä. Estin ne!
+
+☝️ Napauta kilpeä saadaksesi lisätietoja.</string>
 		</dict>
 	</dict>
 	<key>privacy.protection.major.trackers.found</key>
@@ -104,6 +140,108 @@ Estin sen!
 			<string>%1$d yksityinen välilehti</string>
 			<key>other</key>
 			<string>%1$d yksityistä välilehteä</string>
+		</dict>
+	</dict>
+	<key>autofill.number.of.passwords</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d salasana</string>
+			<key>other</key>
+			<string>%1$d salasanaa</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.title</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Haluatko varmasti poistaa %1$d salasanan?</string>
+			<key>other</key>
+			<string>Haluatko varmasti poistaa %1$d salasanaa?</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Salasanasi poistetaan tästä laitteesta. Varmista, että pääset yhä käyttämään %2$#@accounts@.</string>
+			<key>other</key>
+			<string>Salasanasi poistetaan tästä laitteesta. Varmista, että pääset yhä käyttämään %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>tiliäsi</string>
+			<key>other</key>
+			<string>tilejäsi</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.sync.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Salasanasi poistetaan kaikista synkronoiduista laitteista. Varmista, että pääset yhä käyttämään %2$#@accounts@.</string>
+			<key>other</key>
+			<string>Salasanasi poistetaan kaikista synkronoiduista laitteista. Varmista, että pääset yhä käyttämään %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>tiliäsi</string>
+			<key>other</key>
+			<string>tilejäsi</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.completion</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d salasana poistettu</string>
+			<key>other</key>
+			<string>%1$d salasanaa poistettu</string>
 		</dict>
 	</dict>
 </dict>

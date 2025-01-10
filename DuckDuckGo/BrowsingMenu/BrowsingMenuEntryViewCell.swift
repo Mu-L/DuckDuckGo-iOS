@@ -24,16 +24,23 @@ class BrowsingMenuEntryViewCell: UITableViewCell {
     
     @IBOutlet weak var entryImage: UIImageView!
     @IBOutlet weak var entryLabel: UILabel!
+    @IBOutlet weak var notificationDot: UIView!
     
-    func configure(image: UIImage, label: String, accessibilityLabel: String?, theme: Theme) {
+    func configure(image: UIImage, label: String, accessibilityLabel: String?, showNotificationDot: Bool = false) {
         entryImage.image = image
         entryLabel.setAttributedTextString(label)
         entryLabel.accessibilityLabel = accessibilityLabel
-        
+
+        let theme = ThemeManager.shared.currentTheme
+
+        decorate(with: theme)
         entryImage.tintColor = theme.browsingMenuIconsColor
         entryLabel.textColor = theme.browsingMenuTextColor
         backgroundColor = theme.browsingMenuBackgroundColor
         setHighlightedStateBackgroundColor(theme.browsingMenuHighlightColor)
+        
+        notificationDot.isHidden = !showNotificationDot
+        notificationDot.layer.cornerRadius = 4
     }
     
     static func preferredWidth(for text: String) -> CGFloat {
@@ -43,6 +50,6 @@ class BrowsingMenuEntryViewCell: UITableViewCell {
                                                    attributes: [.font: UIFont.appFont(ofSize: 17)],
                                                    context: nil)
         
-        return size.width + 69 // Left Margin + Icon width + Spacing + Right Margin
+        return size.width + 90 // Left Margin + Icon width + Spacing + Right Margin
     }
 }

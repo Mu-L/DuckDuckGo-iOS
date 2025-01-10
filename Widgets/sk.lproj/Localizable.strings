@@ -1,5 +1,44 @@
-/* No comment provided by engineer. */
-"Label" = "Označenie";
+/* Description shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.description" = "Okamžite vygenerujte novú súkromnú Duck adresu.";
+
+/* Title shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.title" = "Ochrana e-mailu";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.favorites.description" = "Svoje obľúbené webové stránky otvoríte rýchlo jediným ťuknutím.";
+
+/* Title shown to the user when adding the favorites lock screen widget */
+"lock.screen.widget.favorites.title" = "Obľúbené položky";
+
+/* Description shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.description" = "Okamžite vymažete históriu prehľadávania a spustíte nové súkromné vyhľadávanie v DuckDuckGo.";
+
+/* Title shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.title" = "Fire Button";
+
+/* Description shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.description" = "Rýchlo vyhľadajte svoje uložené DuckDuckGo heslá.";
+
+/* Title shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.title" = "Vyhľadávanie hesiel";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.description" = "Okamžite spustíte súkromné vyhľadávanie v DuckDuckGo.";
+
+/* Title shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.title" = "Súkromné vyhľadávanie";
+
+/* Description shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.description" = "Okamžite spustíte nové súkromné hlasové vyhľadávanie v službe DuckDuckGo.";
+
+/* Title shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.title" = "Hlasové vyhľadávanie";
+
+/* Description of search passwords widget in widget gallery */
+"widget.gallery.passwords.description" = "Rýchlo vyhľadajte svoje uložené DuckDuckGo heslá.";
+
+/* Display name for search passwords widget in widget gallery */
+"widget.gallery.passwords.display.name" = "Vyhľadávanie hesiel";
 
 /* Description of search and favorites widget in widget gallery */
 "widget.gallery.search.and.favorites.description" = "Vyhľadávajte alebo navštevujte svoje obľúbené stránky súkromne iba pomocou jedného kliknutia.";
@@ -13,12 +52,54 @@
 /* Display name for search only widget in widget gallery */
 "widget.gallery.search.display.name" = "Vyhľadávať";
 
+/* Description of VPN widget in widget gallery */
+"widget.gallery.vpn.description" = "Zobrazenie a správa pripojenia VPN. Vyžaduje predplatné služby Privacy Pro.";
+
+/* Display name for VPN widget in widget gallery */
+"widget.gallery.vpn.display.name" = "VPN";
+
 /* CTA shown in the favorites widget empty state. */
 "widget.no.favorites.cta" = "Pridať do obľúbených položiek";
 
 /* Message shown in the favorites widget empty state. */
 "widget.no.favorites.message" = "Navštívte svoje obľúbené stránky rýchlo.";
 
+/* Text in passwords widget */
+"widget.passwords" = "Vyhľadávanie hesiel";
+
 /* Placeholder text in search field on the search and favorites widget */
 "widget.search.duckduckgo" = "Vyhľadávajte cez DuckDuckGo";
+
+/* VPN connect button text */
+"widget.vpn.button.connect" = "Pripojiť";
+
+/* VPN disconnect button text */
+"widget.vpn.button.disconnect" = "Odpojenie";
+
+/* Label for the snooze end date, e.g. 'Until 9:51 AM' */
+"widget.vpn.label.snoozing-until" = "Do %@";
+
+/* VPN Live Activity dismiss button text */
+"widget.vpn.live-activity.button.dismiss" = "Odmietnuť";
+
+/* VPN Live Activity wake up button text */
+"widget.vpn.live-activity.button.wake-up" = "Prebuď sa";
+
+/* VPN Live Activity active label text */
+"widget.vpn.live-activity.label.active" = "VPN je zapnutá";
+
+/* VPN Live Activity snoozing label text */
+"widget.vpn.live-activity.label.snoozing" = "Odloženie VPN";
+
+/* Message describing VPN connected status */
+"widget.vpn.status.connected" = "VPN je zapnutá";
+
+/* Message describing VPN disconnected status */
+"widget.vpn.status.disconnected" = "VPN je vypnutá";
+
+/* Message describing VPN snoozing status */
+"widget.vpn.status.snoozed" = "VPN je pozastavená";
+
+/* Subtitle describing VPN disconnected status */
+"widget.vpn.subtitle.disconnected" = "Nie je pripojený";
 

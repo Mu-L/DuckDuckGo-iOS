@@ -17,9 +17,11 @@
 //  limitations under the License.
 //
 
+import Common
 import Core
 import UIKit
 import WebKit
+import Networking
 import os.log
 
 /// Use title property to set the displayed title
@@ -46,8 +48,6 @@ class WebContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        applyTheme(ThemeManager.shared.currentTheme)
-
         let webView = WKWebView(frame: view.frame)
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
@@ -62,12 +62,12 @@ class WebContainerViewController: UIViewController {
     }
 
     @IBAction func dismiss() {
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
 
     private func load(url: URL) {
         var request = URLRequest.userInitiated(url)
-        APIHeaders().addHeaders(to: &request)
+        request.addValue(DefaultUserAgentManager.duckDuckGoUserAgent, forHTTPHeaderField: "User-Agent")
         webView?.load(request)
     }
 
@@ -86,7 +86,7 @@ class WebContainerViewController: UIViewController {
             progress = Float(webView?.estimatedProgress ?? 0.0)
 
         default:
-            os_log("Unhandled keyPath %s", log: generalLog, type: .debug, keyPath)
+            Logger.general.debug("Unhandled keyPath \(keyPath)")
         }
     }
 
@@ -100,5 +100,3 @@ class WebContainerViewController: UIViewController {
     }
 
 }
-
-extension WebContainerViewController: Themable { }

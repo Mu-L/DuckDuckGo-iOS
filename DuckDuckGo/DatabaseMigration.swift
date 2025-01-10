@@ -17,6 +17,8 @@
 //  limitations under the License.
 //
 
+import BrowserServicesKit
+import Common
 import Foundation
 import CoreData
 import Core
@@ -26,11 +28,9 @@ class DatabaseMigration {
     
     private enum LegacyStores: String, CaseIterable {
         case appRating = "AppRatingPrompt"
-        case networkLeaderboard = "NetworkLeaderboard"
         case httpsUpgrade = "HTTPSUpgrade"
     }
     
-    // swiftlint:disable function_body_length
     static func migrate(to context: NSManagedObjectContext) {
         let group = DispatchGroup()
         
@@ -41,29 +41,6 @@ class DatabaseMigration {
                     destination.lastAccess = source.lastAccess
                     destination.lastShown = source.lastShown
                     destination.uniqueAccessDays = source.uniqueAccessDays
-        }, completion: { result in
-            group.leave()
-            success = success && result
-        })
-        
-        group.enter()
-        migrate(db: LegacyStores.networkLeaderboard.rawValue, to: context,
-                with: { (source: PPTrackerNetwork, destination: PPTrackerNetwork) in
-                    destination.detectedOnCount = source.detectedOnCount
-                    destination.trackersCount = source.trackersCount
-                    destination.name = source.name
-        }, completion: { result in
-            group.leave()
-            success = success && result
-        })
-        
-        group.enter()
-        migrate(db: LegacyStores.networkLeaderboard.rawValue, to: context,
-                with: { (source: PPPageStats, destination: PPPageStats) in
-                    destination.httpsUpgrades = source.httpsUpgrades
-                    destination.pagesLoaded = source.pagesLoaded
-                    destination.pagesWithTrackers = source.pagesWithTrackers
-                    destination.startDate = source.startDate
         }, completion: { result in
             group.leave()
             success = success && result
@@ -99,7 +76,6 @@ class DatabaseMigration {
             }
         }
     }
-    // swiftlint:enable function_body_length
     
     static func migrate<T: NSManagedObject>(db name: String,
                                             to destination: NSManagedObjectContext,
@@ -130,7 +106,7 @@ class DatabaseMigration {
                 try stack.persistenceStoreCoordinator.remove(store)
             } catch {
                 Pixel.fire(pixel: .dbRemovalError, error: error)
-                os_log("Error removing store: %s", log: generalLog, type: .debug, error.localizedDescription)
+                Logger.general.error("Error removing store: \(error.localizedDescription, privacy: .public)")
             }
         }
     }
@@ -179,15 +155,15 @@ class DatabaseMigration {
                                                      concurrencyType: .privateQueueConcurrencyType),
             let storeURL = oldStack.persistenceStoreCoordinator.persistentStores.last?.url else { return }
 
-        os_log("Destroying store: %s", log: generalLog, type: .debug, dbName)
-        
+        Logger.general.debug("Destroying store: \(dbName)")
+
         do {
             try oldStack.persistenceStoreCoordinator.destroyPersistentStore(at: storeURL,
                                                                             ofType: NSSQLiteStoreType,
                                                                             options: nil)
         } catch {
             Pixel.fire(pixel: .dbDestroyError, error: error)
-            os_log("Error destroying store: %s", log: generalLog, type: .debug, error.localizedDescription)
+            Logger.general.error("Error destroying store: \(error.localizedDescription, privacy: .public)")
         }
         
         removeFile(at: storeURL)
@@ -206,14 +182,7 @@ class DatabaseMigration {
             if nserror.domain != NSCocoaErrorDomain || nserror.code != NSFileNoSuchFileError {
                 Pixel.fire(pixel: .dbDestroyFileError, error: error)
             }
-            os_log("Error removing file: %s", log: generalLog, type: .debug, error.localizedDescription)
+            Logger.general.error("Error removing file: \(error.localizedDescription, privacy: .public)")
         }
-    }
-}
-
-private class MigrationPersistentContainer: NSPersistentContainer {
-
-    override public class func defaultDirectoryURL() -> URL {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
     }
 }

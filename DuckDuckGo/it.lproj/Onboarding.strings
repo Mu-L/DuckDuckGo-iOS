@@ -7,14 +7,8 @@
 /* Class = "UILabel"; text = "1"; ObjectID = "8Yp-jL-Y1J"; */
 "8Yp-jL-Y1J.text" = "1";
 
-/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "ciS-pA-ovS"; */
-"ciS-pA-ovS.normalTitle" = "Continua";
-
 /* Class = "UIButton"; normalTitle = "Got It"; ObjectID = "HOt-9c-gP5"; */
 "HOt-9c-gP5.normalTitle" = "Fatto";
-
-/* Class = "UIButton"; normalTitle = "SKIP"; ObjectID = "J1y-Qk-FSX"; */
-"J1y-Qk-FSX.normalTitle" = "SALTA";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "kYm-7s-KFg"; */
 "kYm-7s-KFg.text" = "3";
@@ -27,7 +21,4 @@
 
 /* Class = "UILabel"; text = "2"; ObjectID = "XBd-OG-vC0"; */
 "XBd-OG-vC0.text" = "2";
-
-/* Class = "UIViewController"; title = "Search and browse privately,\nevery day."; ObjectID = "Xjr-gI-tDG"; */
-"Xjr-gI-tDG.title" = "Effettua ricerche e naviga in privato,\ntutti i giorni.";
 

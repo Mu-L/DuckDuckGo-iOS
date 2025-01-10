@@ -1,5 +1,44 @@
-/* No comment provided by engineer. */
-"Label" = "Etikett";
+/* Description shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.description" = "Generera omedelbart en ny privat Duck Address.";
+
+/* Title shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.title" = "E-postskydd";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.favorites.description" = "Öppna dina favoritwebbplatser snabbt med bara ett tryck.";
+
+/* Title shown to the user when adding the favorites lock screen widget */
+"lock.screen.widget.favorites.title" = "Favoriter";
+
+/* Description shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.description" = "Radera omedelbart din surfhistorik och starta en ny privat sökning i DuckDuckGo.";
+
+/* Title shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.title" = "Fire Button";
+
+/* Description shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.description" = "Sök snabbt bland dina sparade DuckDuckGo-lösenord.";
+
+/* Title shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.title" = "Sök lösenord";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.description" = "Starta omedelbart en privat sökning i DuckDuckGo.";
+
+/* Title shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.title" = "Privatsökning";
+
+/* Description shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.description" = "Starta omedelbart en ny privat röstsökning i DuckDuckGo.";
+
+/* Title shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.title" = "Röstsökning";
+
+/* Description of search passwords widget in widget gallery */
+"widget.gallery.passwords.description" = "Sök snabbt bland dina sparade DuckDuckGo-lösenord.";
+
+/* Display name for search passwords widget in widget gallery */
+"widget.gallery.passwords.display.name" = "Sök lösenord";
 
 /* Description of search and favorites widget in widget gallery */
 "widget.gallery.search.and.favorites.description" = "Gör sökningar eller besök dina favoritwebbplatser privat med ett enda tryck.";
@@ -13,12 +52,54 @@
 /* Display name for search only widget in widget gallery */
 "widget.gallery.search.display.name" = "Sök";
 
+/* Description of VPN widget in widget gallery */
+"widget.gallery.vpn.description" = "Visa och hantera din VPN-anslutning. Kräver en prenumeration på Privacy Pro.";
+
+/* Display name for VPN widget in widget gallery */
+"widget.gallery.vpn.display.name" = "VPN";
+
 /* CTA shown in the favorites widget empty state. */
 "widget.no.favorites.cta" = "Lägg till favoriter";
 
 /* Message shown in the favorites widget empty state. */
 "widget.no.favorites.message" = "Besök dina favoritwebbplatser snabbt.";
 
+/* Text in passwords widget */
+"widget.passwords" = "Sök lösenord";
+
 /* Placeholder text in search field on the search and favorites widget */
 "widget.search.duckduckgo" = "Sök med DuckDuckGo";
+
+/* VPN connect button text */
+"widget.vpn.button.connect" = "Anslut";
+
+/* VPN disconnect button text */
+"widget.vpn.button.disconnect" = "Koppla från";
+
+/* Label for the snooze end date, e.g. 'Until 9:51 AM' */
+"widget.vpn.label.snoozing-until" = "Fram till %@";
+
+/* VPN Live Activity dismiss button text */
+"widget.vpn.live-activity.button.dismiss" = "Avvisa";
+
+/* VPN Live Activity wake up button text */
+"widget.vpn.live-activity.button.wake-up" = "Väck";
+
+/* VPN Live Activity active label text */
+"widget.vpn.live-activity.label.active" = "VPN är på";
+
+/* VPN Live Activity snoozing label text */
+"widget.vpn.live-activity.label.snoozing" = "VPN har pausats";
+
+/* Message describing VPN connected status */
+"widget.vpn.status.connected" = "VPN är på";
+
+/* Message describing VPN disconnected status */
+"widget.vpn.status.disconnected" = "VPN är av";
+
+/* Message describing VPN snoozing status */
+"widget.vpn.status.snoozed" = "VPN har pausats";
+
+/* Subtitle describing VPN disconnected status */
+"widget.vpn.subtitle.disconnected" = "Ej ansluten";
 

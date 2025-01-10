@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bookmark.deleteFolderAlert.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Voulez-vous vraiment supprimer ce dossier et %1$d élément ?</string>
+			<key>other</key>
+			<string>Voulez-vous vraiment supprimer ce dossier et %1$d éléments ?</string>
+		</dict>
+	</dict>
 	<key>dax.onboarding.browsing.multiple.trackers</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,13 +29,37 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>*%2$@, %3$@* et *1 autre* essayaient de vous traquer ici. Je les ai bloqués !
+			<string>*%2$@, %3$@* et *1 autre* essayaient de vous suivre ici.
 
- ☝️Vous pouvez voir dans la barre d&apos;adresse URL qui essaie de vous traquer lorsque vous visitez un nouveau site.️</string>
+Je les ai bloqués !
+
+☝️ Vous pouvez voir dans la barre d&apos;adresse qui essaie de vous suivre lorsque vous visitez un nouveau site.️</string>
 			<key>other</key>
-			<string>*%2$@, %3$@* et *%1$d autres* essayaient de vous traquer ici. Je les ai bloqués !
+			<string>*%2$@, %3$@* et *%1$d autres* essayaient de vous suivre ici.
 
- ☝️Vous pouvez voir dans la barre d&apos;adresse URL qui essaie de vous traquer lorsque vous visitez un nouveau site.️</string>
+Je les ai bloqués !
+
+☝️ Vous pouvez voir dans la barre d&apos;adresse qui essaie de vous suivre lorsque vous visitez un nouveau site.️</string>
+		</dict>
+	</dict>
+	<key>contextual.onboarding.browsing.multiple.trackers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1#@count@</string>
+		<key>count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>*%2$@, %3$@* et *1 autre* essayaient de vous suivre ici. Je les ai bloqués !
+
+☝️ Appuyez sur le bouclier pour en savoir plus.️</string>
+			<key>other</key>
+			<string>*%2$@, %3$@* et *%1$d autres* essayaient de vous suivre ici. Je les ai bloqués !
+
+☝️ Appuyez sur le bouclier pour en savoir plus.️</string>
 		</dict>
 	</dict>
 	<key>privacy.protection.major.trackers.found</key>
@@ -100,6 +140,108 @@
 			<string>%1$d onglet privé</string>
 			<key>other</key>
 			<string>%1$d onglets privés</string>
+		</dict>
+	</dict>
+	<key>autofill.number.of.passwords</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d mot de passe</string>
+			<key>other</key>
+			<string>%1$d mots de passe</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.title</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Voulez-vous vraiment supprimer %1$d mot de passe ?</string>
+			<key>other</key>
+			<string>Voulez-vous vraiment supprimer %1$d mots de passe ?</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Votre mot de passe sera supprimé de cet appareil. Assurez-vous d&apos;avoir toujours un moyen d&apos;accéder à votre %2$#@accounts@.</string>
+			<key>other</key>
+			<string>Vos mots de passe seront supprimés de cet appareil. Assurez-vous d&apos;avoir toujours un moyen d&apos;accéder à vos %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>compte</string>
+			<key>other</key>
+			<string>comptes</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.sync.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Votre mot de passe sera supprimé de tous les appareils synchronisés. Assurez-vous d&apos;avoir toujours un moyen d&apos;accéder à votre %2$#@accounts@.</string>
+			<key>other</key>
+			<string>Vos mots de passe seront supprimés de tous les appareils synchronisés. Assurez-vous d&apos;avoir toujours un moyen d&apos;accéder à vos %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>compte</string>
+			<key>other</key>
+			<string>comptes</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.completion</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d mot de passe supprimé</string>
+			<key>other</key>
+			<string>%1$d mots de passe supprimés</string>
 		</dict>
 	</dict>
 </dict>

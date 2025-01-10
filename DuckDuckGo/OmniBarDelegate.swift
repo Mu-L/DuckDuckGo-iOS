@@ -18,6 +18,12 @@
 //
 
 import Foundation
+import Suggestions
+
+enum OmniBarEditingEndResult {
+    case suspended
+    case dismissed
+}
 
 protocol OmniBarDelegate: AnyObject {
 
@@ -27,16 +33,22 @@ protocol OmniBarDelegate: AnyObject {
 
     func onOmniSuggestionSelected(_ suggestion: Suggestion)
     
-    func onDismissed()
-    
-    func onSiteRatingPressed()
+    func onEditingEnd() -> OmniBarEditingEndResult
+
+    func onPrivacyIconPressed(isHighlighted: Bool)
     
     func onMenuPressed()
-    
+
     func onBookmarksPressed()
     
     func onSettingsPressed()
-    
+
+    func onSettingsLongPressed()
+
+    func onClearPressed()
+
+    func onAbortPressed()
+
     func onCancelPressed()
     
     func onEnterPressed()
@@ -47,14 +59,18 @@ protocol OmniBarDelegate: AnyObject {
     
     func onForwardPressed()
     
-    func onSharePressed()
-    
-    func onTextFieldWillBeginEditing(_ omniBar: OmniBar)
+    func onAccessoryPressed(accessoryType: OmniBar.AccessoryType)
+
+    func onAccessoryLongPressed(accessoryType: OmniBar.AccessoryType)
+
+    func onTextFieldWillBeginEditing(_ omniBar: OmniBar, tapped: Bool)
     
     // Returns whether field should select the text or not
     func onTextFieldDidBeginEditing(_ omniBar: OmniBar) -> Bool
 
     func selectedSuggestion() -> Suggestion?
+    
+    func onVoiceSearchPressed()
 
 }
 
@@ -68,18 +84,18 @@ extension OmniBarDelegate {
         
     }
     
-    func onDismissed() {
-        
-    }
-    
-    func onSiteRatingPressed() {
-        
+    func onPrivacyIconPressed(isHighlighted: Bool) {
+
     }
     
     func onMenuPressed() {
         
     }
-    
+
+    func onAccessoryLongPressed(accessoryType: OmniBar.AccessoryType) {
+
+    }
+
     func onBookmarksPressed() {
         
     }
@@ -87,7 +103,11 @@ extension OmniBarDelegate {
     func onSettingsPressed() {
         
     }
-    
+
+    func onSettingsLongPressed() {
+
+    }
+
     func onCancelPressed() {
         
     }
@@ -104,9 +124,9 @@ extension OmniBarDelegate {
     
     }
 
-    func onSharePressed() {
+    func onAccessoryPressed(accessoryType: OmniBar.AccessoryType) {
     }
-    
+
     func onBackPressed() {
     }
     

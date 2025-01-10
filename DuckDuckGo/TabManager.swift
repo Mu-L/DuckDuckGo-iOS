@@ -17,8 +17,14 @@
 //  limitations under the License.
 //
 
+import Common
 import Core
+import DDGSync
 import WebKit
+import BrowserServicesKit
+import Persistence
+import History
+import Subscription
 import os.log
 
 class TabManager {
@@ -27,31 +33,88 @@ class TabManager {
     
     private var tabControllerCache = [TabViewController]()
 
+    private let bookmarksDatabase: CoreDataDatabase
+    private let historyManager: HistoryManaging
+    private let syncService: DDGSyncing
     private var previewsSource: TabPreviewsSource
+    private var duckPlayer: DuckPlayerControlling
+    private var privacyProDataReporter: PrivacyProDataReporting
+    private let contextualOnboardingPresenter: ContextualOnboardingPresenting
+    private let contextualOnboardingLogic: ContextualOnboardingLogic
+    private let onboardingPixelReporter: OnboardingPixelReporting
+    private let featureFlagger: FeatureFlagger
+    private let textZoomCoordinator: TextZoomCoordinating
+    private let fireproofing: Fireproofing
+    private let websiteDataManager: WebsiteDataManaging
+    private let subscriptionCookieManager: SubscriptionCookieManaging
+    private let appSettings: AppSettings
+
     weak var delegate: TabDelegate?
 
-    init(model: TabsModel, previewsSource: TabPreviewsSource, delegate: TabDelegate) {
+    @UserDefaultsWrapper(key: .faviconTabsCacheNeedsCleanup, defaultValue: true)
+    var tabsCacheNeedsCleanup: Bool
+
+    @MainActor
+    init(model: TabsModel,
+         previewsSource: TabPreviewsSource,
+         bookmarksDatabase: CoreDataDatabase,
+         historyManager: HistoryManaging,
+         syncService: DDGSyncing,
+         duckPlayer: DuckPlayer = DuckPlayer(),
+         privacyProDataReporter: PrivacyProDataReporting,
+         contextualOnboardingPresenter: ContextualOnboardingPresenting,
+         contextualOnboardingLogic: ContextualOnboardingLogic,
+         onboardingPixelReporter: OnboardingPixelReporting,
+         featureFlagger: FeatureFlagger,
+         subscriptionCookieManager: SubscriptionCookieManaging,
+         appSettings: AppSettings,
+         textZoomCoordinator: TextZoomCoordinating,
+         websiteDataManager: WebsiteDataManaging,
+         fireproofing: Fireproofing) {
         self.model = model
         self.previewsSource = previewsSource
-        self.delegate = delegate
-        let index = model.currentIndex
-        let tab = model.tabs[index]
-        if tab.link != nil {
-            let controller = buildController(forTab: tab)
-            tabControllerCache.append(controller)
-        }
-
+        self.bookmarksDatabase = bookmarksDatabase
+        self.historyManager = historyManager
+        self.syncService = syncService
+        self.duckPlayer = duckPlayer
+        self.privacyProDataReporter = privacyProDataReporter
+        self.contextualOnboardingPresenter = contextualOnboardingPresenter
+        self.contextualOnboardingLogic = contextualOnboardingLogic
+        self.onboardingPixelReporter = onboardingPixelReporter
+        self.featureFlagger = featureFlagger
+        self.subscriptionCookieManager = subscriptionCookieManager
+        self.appSettings = appSettings
+        self.textZoomCoordinator = textZoomCoordinator
+        self.websiteDataManager = websiteDataManager
+        self.fireproofing = fireproofing
         registerForNotifications()
     }
 
-    private func buildController(forTab tab: Tab) -> TabViewController {
+    @MainActor
+    private func buildController(forTab tab: Tab, inheritedAttribution: AdClickAttributionLogic.State?) -> TabViewController {
         let url = tab.link?.url
-        return buildController(forTab: tab, url: url)
+        return buildController(forTab: tab, url: url, inheritedAttribution: inheritedAttribution)
     }
 
-    private func buildController(forTab tab: Tab, url: URL?) -> TabViewController {
+    @MainActor
+    private func buildController(forTab tab: Tab, url: URL?, inheritedAttribution: AdClickAttributionLogic.State?) -> TabViewController {
         let configuration =  WKWebViewConfiguration.persistent()
-        let controller = TabViewController.loadFromStoryboard(model: tab)
+
+        let controller = TabViewController.loadFromStoryboard(model: tab,
+                                                              bookmarksDatabase: bookmarksDatabase,
+                                                              historyManager: historyManager,
+                                                              syncService: syncService,
+                                                              duckPlayer: duckPlayer,
+                                                              privacyProDataReporter: privacyProDataReporter,
+                                                              contextualOnboardingPresenter: contextualOnboardingPresenter,
+                                                              contextualOnboardingLogic: contextualOnboardingLogic,
+                                                              onboardingPixelReporter: onboardingPixelReporter,
+                                                              featureFlagger: featureFlagger,
+                                                              subscriptionCookieManager: subscriptionCookieManager,
+                                                              textZoomCoordinator: textZoomCoordinator,
+                                                              websiteDataManager: websiteDataManager,
+                                                              fireproofing: fireproofing)
+        controller.applyInheritedAttribution(inheritedAttribution)
         controller.attachWebView(configuration: configuration,
                                  andLoadRequest: url == nil ? nil : URLRequest.userInitiated(url!),
                                  consumeCookies: !model.hasActiveTabs)
@@ -60,18 +123,20 @@ class TabManager {
         return controller
     }
 
-    var current: TabViewController? {
-
+    @MainActor
+    func current(createIfNeeded: Bool = false) -> TabViewController? {
         let index = model.currentIndex
         let tab = model.tabs[index]
 
         if let controller = controller(for: tab) {
             return controller
-        } else {
-            os_log("Tab not in cache, creating", log: generalLog, type: .debug)
-            let controller = buildController(forTab: tab)
+        } else if createIfNeeded {
+            Logger.general.debug("Tab not in cache, creating")
+            let controller = buildController(forTab: tab, inheritedAttribution: nil)
             tabControllerCache.append(controller)
             return controller
+        } else {
+            return nil
         }
     }
     
@@ -91,29 +156,53 @@ class TabManager {
         return model.count
     }
 
+    @MainActor
     func select(tabAt index: Int) -> TabViewController {
-        current?.dismiss()
+        current()?.dismiss()
         model.select(tabAt: index)
 
         save()
-        return current!
+        return current(createIfNeeded: true)!
     }
 
-    func addURLRequest(_ request: URLRequest,
-                       withConfiguration configuration: WKWebViewConfiguration) -> TabViewController {
+    func addURLRequest(_ request: URLRequest?,
+                       with configuration: WKWebViewConfiguration,
+                       inheritedAttribution: AdClickAttributionLogic.State?) -> TabViewController {
 
         guard let configCopy = configuration.copy() as? WKWebViewConfiguration else {
             fatalError("Failed to copy configuration")
         }
 
-        let tab = Tab(link: request.url == nil ? nil : Link(title: nil, url: request.url!))
+        let tab: Tab
+        if let request {
+            tab = Tab(link: request.url == nil ? nil : Link(title: nil, url: request.url!))
+        } else {
+            tab = Tab()
+        }
         model.insert(tab: tab, at: model.currentIndex + 1)
         model.select(tabAt: model.currentIndex + 1)
 
-        let controller = TabViewController.loadFromStoryboard(model: tab)
-        controller.attachWebView(configuration: configCopy, andLoadRequest: request, consumeCookies: !model.hasActiveTabs)
+        let controller = TabViewController.loadFromStoryboard(model: tab,
+                                                              bookmarksDatabase: bookmarksDatabase,
+                                                              historyManager: historyManager,
+                                                              syncService: syncService,
+                                                              duckPlayer: duckPlayer,
+                                                              privacyProDataReporter: privacyProDataReporter,
+                                                              contextualOnboardingPresenter: contextualOnboardingPresenter,
+                                                              contextualOnboardingLogic: contextualOnboardingLogic,
+                                                              onboardingPixelReporter: onboardingPixelReporter,
+                                                              featureFlagger: featureFlagger,
+                                                              subscriptionCookieManager: subscriptionCookieManager,
+                                                              textZoomCoordinator: textZoomCoordinator,
+                                                              websiteDataManager: websiteDataManager,
+                                                              fireproofing: fireproofing)
+        controller.attachWebView(configuration: configCopy,
+                                 andLoadRequest: request,
+                                 consumeCookies: !model.hasActiveTabs,
+                                 loadingInitiatedByParentTab: true)
         controller.delegate = delegate
         controller.loadViewIfNeeded()
+        controller.applyInheritedAttribution(inheritedAttribution)
         tabControllerCache.append(controller)
 
         save()
@@ -154,27 +243,16 @@ class TabManager {
         save()
     }
 
-    func loadUrlInCurrentTab(_ url: URL) -> TabViewController {
-        guard let tab = model.currentTab else {
-            fatalError("No current tab")
-
-        }
-        let controller = buildController(forTab: tab, url: url)
-        tabControllerCache.append(controller)
-        
-        save()
-        return controller
-    }
-
-    func add(url: URL?, inBackground: Bool = false) -> TabViewController {
+    @MainActor
+    func add(url: URL?, inBackground: Bool = false, inheritedAttribution: AdClickAttributionLogic.State?) -> TabViewController {
 
         if !inBackground {
-            current?.dismiss()
+            current()?.dismiss()
         }
 
         let link = url == nil ? nil : Link(title: nil, url: url!)
         let tab = Tab(link: link)
-        let controller = buildController(forTab: tab, url: url)
+        let controller = buildController(forTab: tab, url: url, inheritedAttribution: inheritedAttribution)
         tabControllerCache.append(controller)
 
         let index = model.currentIndex
@@ -214,10 +292,11 @@ class TabManager {
         save()
     }
 
+    @MainActor
     func invalidateCache(forController controller: TabViewController) {
-        if current === controller {
+        if current() === controller {
             Pixel.fire(pixel: .webKitTerminationDidReloadCurrentTab)
-            current?.reload(scripts: false)
+            current()?.reload()
         } else {
             removeFromCache(controller)
         }
@@ -227,21 +306,50 @@ class TabManager {
         model.save()
     }
     
-    func stopLoadingInAllTabs() {
-        tabControllerCache.forEach { $0.stopLoading() }
+    @MainActor
+    func prepareAllTabsExceptCurrentForDataClearing() {
+        tabControllerCache.filter { $0 !== current() }.forEach { $0.prepareForDataClearing() }
+    }
+    
+    @MainActor
+    func prepareCurrentTabForDataClearing() {
+        current()?.prepareForDataClearing()
     }
 
-}
+    func cleanupTabsFaviconCache() {
+        guard tabsCacheNeedsCleanup else { return }
 
-extension TabManager: Themable {
-    
-    func decorate(with theme: Theme) {
-        for tabController in tabControllerCache {
-            tabController.decorate(with: theme)
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let self = self,
+                  let tabsCacheUrl = FaviconsCacheType.tabs.cacheLocation()?.appendingPathComponent(Favicons.Constants.tabsCachePath),
+                  let contents = try? FileManager.default.contentsOfDirectory(at: tabsCacheUrl, includingPropertiesForKeys: nil, options: []),
+                    !contents.isEmpty else { return }
+
+            let imageDomainURLs = contents.compactMap({ $0.filename })
+
+            // create a Set of all unique hosts in case there are hundreds of tabs with many duplicate hosts
+            let tabLink = Set(self.model.tabs.compactMap { tab in
+                if let host = tab.link?.url.host {
+                    return host
+                }
+
+                return nil
+            })
+
+            // hash the unique tab hosts
+            let tabLinksHashed = tabLink.map { FaviconHasher.createHash(ofDomain: $0) }
+
+            // filter images that don't have a corresponding tab
+            let toDelete = imageDomainURLs.filter { !tabLinksHashed.contains($0) }
+            toDelete.forEach {
+                Favicons.shared.removeTabFavicon(forCacheKey: $0)
+            }
+
+            self.tabsCacheNeedsCleanup = false
         }
     }
-    
 }
+
 
 // MARK: - Debugging Pixels
 
@@ -270,4 +378,5 @@ extension TabManager {
             TabPreviewsCleanup.shared.startCleanup(with: model, source: previewsSource)
         }
     }
+
 }

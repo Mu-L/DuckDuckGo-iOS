@@ -19,6 +19,7 @@
 
 import UIKit
 import Core
+import DuckPlayer
 
 class TabViewGridCell: TabViewCell {
 
@@ -84,22 +85,23 @@ class TabViewGridCell: TabViewCell {
         previewTrailingConstraint?.isActive = true
     }
     
-    private static var darkThemeUnreadImage = PrivacyProtectionIconSource.stackedIconImage(withIconImage: UIImage(named: "TabUnread")!,
-                                                                                     borderWidth: 6.0,
-                                                                                     foregroundColor: .cornflowerBlue,
-                                                                                     borderColor: DarkTheme().tabSwitcherCellBackgroundColor)
-    private static var lighThemeUnreadImage = PrivacyProtectionIconSource.stackedIconImage(withIconImage: UIImage(named: "TabUnread")!,
-                                                                                     borderWidth: 6.0,
-                                                                                     foregroundColor: .cornflowerBlue,
-                                                                                     borderColor: LightTheme().tabSwitcherCellBackgroundColor)
-    
-    private static func unreadImage(for theme: Theme) -> UIImage {
-        switch theme.currentImageSet {
-        case .dark:
-            return darkThemeUnreadImage
-        case .light:
-            return lighThemeUnreadImage
+    private static var unreadImageAsset: UIImageAsset {
+
+        func unreadImage(for style: UIUserInterfaceStyle) -> UIImage {
+            let color = ThemeManager.shared.currentTheme.tabSwitcherCellBackgroundColor.resolvedColor(with: .init(userInterfaceStyle: style))
+            let image = UIImage.stackedIconImage(withIconImage: UIImage(named: "TabUnread")!,
+                                                 borderWidth: 6.0,
+                                                 foregroundColor: .cornflowerBlue,
+                                                 borderColor: color)
+            return image
         }
+
+        let asset = UIImageAsset()
+
+        asset.register(unreadImage(for: .dark), with: .init(userInterfaceStyle: .dark))
+        asset.register(unreadImage(for: .light), with: .init(userInterfaceStyle: .light))
+
+        return asset
     }
     
     static let logoImage: UIImage = {
@@ -130,18 +132,18 @@ class TabViewGridCell: TabViewCell {
         }
         isCurrent = delegate?.isCurrent(tab: tab) ?? false
         
-        decorate(with: ThemeManager.shared.currentTheme)
+        decorate()
         
         border.layer.borderWidth = isCurrent ? Constants.selectedBorderWidth : Constants.unselectedBorderWidth
 
         if let link = tab.link {
-            removeButton.accessibilityLabel = UserText.closeTab(withTitle: link.displayTitle ?? "", atAddress: link.url.host ?? "")
-            title.accessibilityLabel = UserText.openTab(withTitle: link.displayTitle ?? "", atAddress: link.url.host ?? "")
+            removeButton.accessibilityLabel = UserText.closeTab(withTitle: link.displayTitle, atAddress: link.url.host ?? "")
+            title.accessibilityLabel = UserText.openTab(withTitle: link.displayTitle, atAddress: link.url.host ?? "")
             title.text = tab.link?.displayTitle
         }
         
         unread.isHidden = tab.viewed
-        
+
         if tab.link == nil {
             updatePreviewToDisplayLogo()
             self.preview.image = Self.logoImage
@@ -154,7 +156,16 @@ class TabViewGridCell: TabViewCell {
             title.isHidden = !tab.viewed
             favicon.isHidden = !tab.viewed
             removeButton.isHidden = !tab.viewed
+            
         } else {
+            
+            // Duck Player videos
+            if let url = tab.link?.url, url.isDuckPlayer {
+                favicon.image = UIImage(named: "DuckPlayerURLIcon")
+            } else {
+                favicon.loadFavicon(forDomain: tab.link?.url.host, usingCache: .tabs)
+            }
+            
             if let preview = preview {
                 self.updatePreviewToDisplay(image: preview)
                 self.preview.contentMode = .scaleAspectFill
@@ -164,16 +175,28 @@ class TabViewGridCell: TabViewCell {
             }
             
             removeButton.isHidden = false
-            favicon.loadFavicon(forDomain: tab.link?.url.host, usingCache: .tabs)
+            
         }
     }
-    
-    override func decorate(with theme: Theme) {
-        super.decorate(with: theme)
-        border.layer.borderColor = theme.tabSwitcherCellBorderColor.cgColor
-        unread.image = Self.unreadImage(for: theme)
-        
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            setBorderColor()
+        }
+    }
+
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
+        setBorderColor()
+        unread.image = Self.unreadImageAsset.image(with: .current)
+
         background.backgroundColor = theme.tabSwitcherCellBackgroundColor
         title.textColor = theme.tabSwitcherCellTextColor
+    }
+
+    private func setBorderColor() {
+        border.layer.borderColor = ThemeManager.shared.currentTheme.tabSwitcherCellBorderColor.cgColor
     }
 }
