@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bookmark.deleteFolderAlert.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Biztos, hogy törölni akarod ezt a mappát és annak %1$d elemét?</string>
+			<key>other</key>
+			<string>Biztos, hogy törölni akarod ezt a mappát és annak %1$d elemét?</string>
+		</dict>
+	</dict>
 	<key>dax.onboarding.browsing.multiple.trackers</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,17 +29,37 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>*%2$@, %3$@* és *további 1* próbált itt követni.
+			<string>*%2$@, %3$@* és *1 másik* megpróbált itt követni. 
 
 Blokkoltam őket!
 
-☝️ Ellenőrizheted az URL-sávot, hogy megtudhasd, ki próbál nyomon követni, amikor új weboldalra látogatsz.</string>
+ ☝️A címsorban láthatod, hogy ki próbál meg követni, amikor új webhelyre látogatsz.</string>
 			<key>other</key>
-			<string>*%2$@, %3$@* és *további %1$d* próbált itt követni.
+			<string>*%2$@, %3$@* és *%1$d másik* megpróbált itt követni. 
 
 Blokkoltam őket!
 
-☝️ Ellenőrizheted az URL-sávot, hogy megtudhasd, ki próbál nyomon követni, amikor új weboldalra látogatsz.</string>
+ ☝️A címsorban láthatod, hogy ki próbál meg követni, amikor új webhelyre látogatsz.</string>
+		</dict>
+	</dict>
+	<key>contextual.onboarding.browsing.multiple.trackers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1#@count@</string>
+		<key>count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>A(z) *%2$@, a(z) %3$@* és további 1 oldal követni próbált téged itt. Blokkoltam őket!
+
+☝️ További információkért koppints a pajzsra.</string>
+			<key>other</key>
+			<string>A(z) *%2$@, a(z) %3$@* és további %1$d oldal követni próbált téged itt. Blokkoltam őket!
+
+☝️ További információkért koppints a pajzsra.</string>
 		</dict>
 	</dict>
 	<key>privacy.protection.major.trackers.found</key>
@@ -104,6 +140,108 @@ Blokkoltam őket!
 			<string>%1$d privát lap</string>
 			<key>other</key>
 			<string>%1$d privát lap</string>
+		</dict>
+	</dict>
+	<key>autofill.number.of.passwords</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d jelszó</string>
+			<key>other</key>
+			<string>%1$d jelszó</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.title</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Biztosan törölni szeretnél %1$d jelszót?</string>
+			<key>other</key>
+			<string>Biztosan törölni szeretnél %1$d jelszót?</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>A jelszó törölve lesz erről az eszközről. Győződj meg róla, hogy továbbra is hozzáférsz a %2$#@accounts@.</string>
+			<key>other</key>
+			<string>A jelszavak törölve lesznek erről az eszközről. Győződj meg róla, hogy továbbra is hozzáférsz a %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>fiókodhoz</string>
+			<key>other</key>
+			<string>fiókjaidhoz</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.sync.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>A jelszó minden szinkronizált eszközről törölve lesz. Győződj meg róla, hogy továbbra is hozzáférsz a %2$#@accounts@.</string>
+			<key>other</key>
+			<string>A jelszavak minden szinkronizált eszközről törölve lesznek. Győződj meg róla, hogy továbbra is hozzáférsz a %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>fiókodhoz</string>
+			<key>other</key>
+			<string>fiókjaidhoz</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.completion</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d jelszó törölve</string>
+			<key>other</key>
+			<string>%1$d jelszó törölve</string>
 		</dict>
 	</dict>
 </dict>

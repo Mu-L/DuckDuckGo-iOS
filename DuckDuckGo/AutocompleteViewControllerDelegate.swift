@@ -18,8 +18,11 @@
 //
 
 import UIKit
+import Suggestions
 
 protocol AutocompleteViewControllerDelegate: AnyObject {
+
+    func autocompleteDidEndWithUserQuery()
 
     func autocomplete(selectedSuggestion suggestion: Suggestion)
 
@@ -28,6 +31,7 @@ protocol AutocompleteViewControllerDelegate: AnyObject {
     func autocomplete(pressedPlusButtonForSuggestion suggestion: Suggestion)
 
     func autocompleteWasDismissed()
+    
 }
 
 protocol AutocompleteViewControllerPresentationDelegate: AnyObject {

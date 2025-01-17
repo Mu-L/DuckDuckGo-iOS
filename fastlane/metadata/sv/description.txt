@@ -1,24 +1,23 @@
-Ett förenklat integritetsskydd.
+DuckDuckGo-appen ger det mest omfattande integritetsskyddet online med ett enda knapptryck. Med en nedladdning får du en ny vardagswebbläsare som erbjuder sömlöst skydd medan du söker och surfar. Du får även tillgång till spårningsskydd för inkommande e-postmeddelanden. Många av dessa skydd erbjuds inte som standard i de populäraste webbläsarna.
 
-På DuckDuckGo menar vi att internet inte bör kännas så skrämmande och att det bör vara lika enkelt att få det integritetsskydd du förtjänar som det är att dra ner persiennerna. 
+FUNKTIONER I FOKUS 
+• Sök privat som standard – DuckDuckGo Private Search är inbyggt så att du enkelt kan söka på webben utan att bli spårad. 
 
-Vi erbjuder det grundläggande sekretesskydd du behöver för att du obehindrat ska kunna ta kontrollen över dina personuppgifter medan du söker eller bläddrar på nätet, oavsett var på internet du befinner dig:
-• Undanta annonsnätverk med spårare – Vårt sekretesskydd kommer att blockera alla dolda spårare som vi hittar och visa de större annonsnätverk som spårar dig över tid så att du i din tur kan spåra de som spårar dig.
-• Utökat krypteringsskydd – Vi tvingar webbplatser att använda en krypterad anslutning för att skydda dina uppgifter från nyfikna ögon – som internetoperatörers.
-• Privata sökningar – Du delar dina mest personliga uppgifter med din sökmotor, som finansiell, medicinsk och politisk information. Vad du söker efter är din ensak; det är därför en DuckDuckGo-sökning inte spårar dig. Aldrig någonsin!
-• Avkodade integritetspolicyer – Vi har ingått ett samarbete med Terms of Service Didn't Read för att inkludera deras resultat och etiketter för webbplatstermer på servicevillkor och integritetspolicyer, där sådana är tillgängliga. 
+• Undgå webbplatsspårare innan de blir inlästa – Stoppa automatiskt de flesta dolda spårare (skript från tredje part) från att läsas in. Det hindrar företag från att samla in och använda data från dessa spårare (för försäljning, reklam, mm). Vår banbrytande teknik för spårningsblockering – 3rd-Party Tracker Loading Protection – ger dig mycket mer än det du får som standard i de populäraste webbläsarna. 
 
-Medan du söker och bläddrar visar DuckDuckGo ett integritetsskyddsbetyg (Privacy Grade – från A-F) för den besökta webbplatsen. Betyget ger en översiktsbild över ditt skydd och undersöker mer i detalj vilka som försöker spåra dig samt visar dig hur webbplatsens underliggande sekretessåtgärder kan förbättras. Integritetsskyddsbetyget sätts automatiskt baserat på förekomsten av dolda spårningsnätverk, aktuella krypteringsmöjligheter och webbplatsens sekretesspraxis.
+• Automatisk kryptering – Tvingar många webbplatser du besöker att automatiskt använda en krypterad anslutning (HTTPS), vilket skyddar dina data från tjuvlyssnare och nätverksobservatörer på webben, t.ex. din internetleverantör. 
 
-Vår app tillhandahåller de standardmässiga webbläsarfunktionerna, som flikar, bokmärken och textförslag. Förutom det starka integritetsstöd som beskrivs ovan har vi dessutom packat in några extra integritetsskyddsfinesser i själva webbläsaren:
-• Fire Button – Rensar all data och alla flikar med ett knapptryck.
-• Applås – Skydda appen med fingeravtrycksläsare eller ansiktsigenkänning.
+• Aktivera inbyggt e-postskydd – Över 85 % av de e-postmeddelanden som skickades till Duck-adresser innehöll spårare som kan avläsa när du har öppnat ett meddelande, var du befann dig när du öppnade det och vilken enhet du använde. E-postskydd gör det enkelt att blockera de flesta e-postspårare och dölja din befintliga adress när du registrerar dig för saker på nätet, allt utan att byta e-postleverantör. 
 
-Många tror att det är omöjligt att förvänta sig sekretess och integritetsskydd på internet. Vi kämpar för att förändra det och vi har gjort det till vår främsta uppgift att sätta en ny standard för förtroende på nätet. Installera DuckDuckGo och återtfå kontrollen över ditt privatliv!
+• Undgå registrering av webbläsarinformation – Hjälper till att hindra företag från att skapa en unik identifierare för dig genom att deras försök att kombinera specifik information om din webbläsare och dina enhetsinställningar blockeras.  
 
-Om oss: https://duckduckgo.com/about/
-Tips för en säkrare enhet: https://spreadprivacy.com/tag/device-privacy-tips/
-Fler tips för ditt sekretesskydd: https://spreadprivacy.com/tag/privacy-newsletter/
-Vår integritetspolicy: https://duckduckgo.com/privacy/
+• Blockera spårningscookies – Hindrar de flesta cookies från tredje part från att spåra dig när du surfar mellan olika webbplatser.
 
-Öppen källkod på https://github.com/duckduckgo/iOS.
+INTEGRITETSKONTROLLER VARJE DAG
+• Tryck på brännarknappen, bränn data – Rensa dina flikar och webbläsardata med vår brännarknapp.
+
+• Ange dina integritetsinställningar med Global Privacy Control (GPC) – GPC är inbyggd i vår app och är till för att hjälpa dig att automatiskt utnyttja din rätt att välja genom att tala om för webbplatser att de inte får sälja eller dela din personliga information. Huruvida det kan användas för att genomdriva dina juridiska rättigheter (till exempel nuvarande eller framtida CCPA- eller GDPR-krav) beror på lagarna i din jurisdiktion.  
+
+Läs mer om detta och vårt skydd mot spårning på https://help.duckduckgo.com/privacy/web-tracking-protections/ 
+
+Du behöver inte vänta med att ta tillbaka din integritet. Gör som miljontals människor som använder DuckDuckGo och skydda många av dina dagliga onlineaktiviteter med en app. Det är personlig integritet, förenklad.  

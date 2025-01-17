@@ -75,7 +75,7 @@ public class TabsModel: NSObject, NSCoding {
 
     var currentTab: Tab? {
         let index = currentIndex
-        return tabs[index]
+        return tabs.indices.contains(index) ? tabs[index] : nil
     }
 
     var count: Int {
@@ -151,5 +151,9 @@ public class TabsModel: NSObject, NSCoding {
         tabs.removeAll()
         tabs.append(Tab())
         currentIndex = 0
+    }
+    
+    func tabExists(withHost host: String) -> Bool {
+        return tabs.contains { $0.link?.url.host == host }
     }
 }

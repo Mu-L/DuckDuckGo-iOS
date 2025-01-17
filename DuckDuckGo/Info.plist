@@ -2,10 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>youtube</string>
+	</array>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>com.duckduckgo.app.waitlistStatus</string>
 		<string>com.duckduckgo.app.configurationRefresh</string>
+		<string>com.duckduckgo.app.remoteMessageRefresh</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
@@ -17,49 +21,39 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>black</key>
+			<key>AppIcon-black</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>AppIconBlack29x29</string>
-					<string>AppIconBlack40x40</string>
-					<string>AppIconBlack60x60</string>
+					<string>AppIcon-black</string>
 				</array>
 			</dict>
-			<key>blue</key>
+			<key>AppIcon-blue</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>AppIconBlue29x29</string>
-					<string>AppIconBlue40x40</string>
-					<string>AppIconBlue60x60</string>
+					<string>AppIcon-blue</string>
 				</array>
 			</dict>
-			<key>green</key>
+			<key>AppIcon-green</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>AppIconGreen29x29</string>
-					<string>AppIconGreen40x40</string>
-					<string>AppIconGreen60x60</string>
+					<string>AppIcon-green</string>
 				</array>
 			</dict>
-			<key>purple</key>
+			<key>AppIcon-purple</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>AppIconPurple29x29</string>
-					<string>AppIconPurple40x40</string>
-					<string>AppIconPurple60x60</string>
+					<string>AppIcon-purple</string>
 				</array>
 			</dict>
-			<key>yellow</key>
+			<key>AppIcon-yellow</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>AppIconYellow29x29</string>
-					<string>AppIconYellow40x40</string>
-					<string>AppIconYellow60x60</string>
+					<string>AppIcon-yellow</string>
 				</array>
 			</dict>
 		</dict>
@@ -77,44 +71,39 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>black</key>
+			<key>AppIcon-black</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>AppIconBlack76x76</string>
-					<string>AppIconBlack83.5x83.5</string>
+					<string>AppIcon-black</string>
 				</array>
 			</dict>
-			<key>blue</key>
+			<key>AppIcon-green</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>AppIconBlue76x76</string>
-					<string>AppIconBlue83.5x83.5</string>
+					<string>AppIcon-blue</string>
 				</array>
 			</dict>
-			<key>green</key>
+			<key>AppIcon-green</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>AppIconGreen76x76</string>
-					<string>AppIconGreen83.5x83.5</string>
+					<string>AppIcon-green</string>
 				</array>
 			</dict>
-			<key>purple</key>
+			<key>AppIcon-purple</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>AppIconPurple76x76</string>
-					<string>AppIconPurple83.5x83.5</string>
+					<string>AppIcon-purple</string>
 				</array>
 			</dict>
-			<key>yellow</key>
+			<key>AppIcon-yellow</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>AppIconYellow76x76</string>
-					<string>AppIconYellow83.5x83.5</string>
+					<string>AppIcon-yellow</string>
 				</array>
 			</dict>
 		</dict>
@@ -148,11 +137,12 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>ddgNewSearch</string>
+				<string>ddgVoiceSearch</string>
+				<string>ddgFireButton</string>
+				<string>ddgFavorites</string>
 				<string>ddgQuickLink</string>
-				<string>ddgBookmarks</string>
-				<string>ddgFire</string>
-				<string>ddgFavorite</string>
 				<string>ddgAddFavorite</string>
+				<string>ddgOpenPasswords</string>
 				<string>http</string>
 				<string>https</string>
 			</array>
@@ -166,6 +156,8 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -178,20 +170,14 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allows you to share your location</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Allows you to share recordings</string>
+	<string>This is required to use voice features. DuckDuckGo never records what you say.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Allows you to save images to your device</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>This is required to use voice search. DuckDuckGo never records what you say.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>ConfigurationIntent</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>proximanova-extrabold.otf</string>
-		<string>proximanova-light.otf</string>
-		<string>proximanova-regular.otf</string>
-		<string>proximanova-bold.otf</string>
-		<string>proximanova-semibold.otf</string>
 	</array>
 	<key>UIApplicationShortcutItems</key>
 	<array>
@@ -203,21 +189,33 @@
 			<key>UIApplicationShortcutItemType</key>
 			<string>com.duckduckgo.mobile.ios.clipboard</string>
 		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>Key-24</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Search Passwords</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.duckduckgo.mobile.ios.passwords</string>
+		</dict>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
 		<string>processing</string>
 	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
 	</array>
 	<key>UIStatusBarHidden</key>
+	<true/>
+	<key>SUBSCRIPTION_APP_GROUP</key>
+	<string>$(AppIdentifierPrefix)$(SUBSCRIPTION_APP_GROUP)</string>
+	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleDefault</string>
@@ -228,7 +226,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAdvertisingAttributionReportEndpoint</key>
+	<string>https://duckduckgo.com</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>VAULT_APP_GROUP</key>
+	<string>$(AppIdentifierPrefix)$(VAULT_APP_GROUP)</string>
 </dict>
 </plist>

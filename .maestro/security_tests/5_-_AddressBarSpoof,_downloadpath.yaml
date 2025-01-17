@@ -1,0 +1,49 @@
+appId: com.duckduckgo.mobile.ios
+tags:
+    - securityTest
+---
+
+# Set up 
+- runFlow: 
+    file: ../shared/setup.yaml
+
+# Load Site
+- assertVisible:
+    id: "searchEntry"
+- tapOn: 
+    id: "searchEntry"
+- inputText: "https://privacy-test-pages.site/security/address-bar-spoofing/spoof-js-download-url.html"
+- pressKey: Enter
+
+# Test
+- tapOn: "Start"
+# Dismiss Download Prompt if shown
+- runFlow:
+    when:
+        visible: "Cancel"
+    commands:
+        - tapOn: "Cancel"
+- copyTextFrom:
+    id: "searchEntry"
+- assertTrue: ${maestro.copiedText == "about:blank"} # Downloads should occur in empty origin.
+- tapOn:
+    id: "searchEntry"
+- pressKey: Backspace
+- inputText: "https://privacy-test-pages.site/security/address-bar-spoofing/spoof-js-download-url.html"
+- pressKey: Enter
+- tapOn: "Start"
+# Dismiss Download Prompt if shown
+- runFlow:
+    when:
+        visible: "Save to Downloads"
+    commands:
+        - tapOn: "Save to Downloads"
+- copyTextFrom:
+    id: "searchEntry"
+- assertTrue: ${maestro.copiedText == "about:blank"} # Downloads should occur in empty origin.
+# Return to previous page, about:blank messes with future tests
+- tapOn:
+    id: "searchEntry"
+- pressKey: Backspace
+- inputText: "https://privacy-test-pages.site/security/address-bar-spoofing/spoof-js-download-url.html"
+- pressKey: Enter

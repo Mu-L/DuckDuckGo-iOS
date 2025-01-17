@@ -23,8 +23,6 @@ protocol DaxDialogsSettings {
     
     var isDismissed: Bool { get set }
     
-    var homeScreenMessagesSeen: Int { get set }
-    
     var browsingAfterSearchShown: Bool { get set }
     
     var browsingWithTrackersShown: Bool { get set }
@@ -34,8 +32,18 @@ protocol DaxDialogsSettings {
     var browsingMajorTrackingSiteShown: Bool { get set }
     
     var fireButtonEducationShownOrExpired: Bool { get set }
-    
+
+    var fireMessageExperimentShown: Bool { get set }
+
     var fireButtonPulseDateShown: Date? { get set }
+
+    var privacyButtonPulseShown: Bool { get set }
+
+    var browsingFinalDialogShown: Bool { get set }
+
+    var lastVisitedOnboardingWebsiteURLPath: String? { get set }
+
+    var lastShownContextualOnboardingDialogType: String? { get set }
 
 }
 
@@ -61,17 +69,30 @@ class DefaultDaxDialogsSettings: DaxDialogsSettings {
     
     @UserDefaultsWrapper(key: .daxFireButtonEducationShownOrExpired, defaultValue: false)
     var fireButtonEducationShownOrExpired: Bool
-    
+
+    @UserDefaultsWrapper(key: .daxFireMessageExperimentShown, defaultValue: false)
+    var fireMessageExperimentShown: Bool
+
     @UserDefaultsWrapper(key: .fireButtonPulseDateShown, defaultValue: nil)
     var fireButtonPulseDateShown: Date?
-    
+
+    @UserDefaultsWrapper(key: .privacyButtonPulseShown, defaultValue: false)
+    var privacyButtonPulseShown: Bool
+
+    @UserDefaultsWrapper(key: .daxBrowsingFinalDialogShown, defaultValue: false)
+    var browsingFinalDialogShown: Bool
+
+    @UserDefaultsWrapper(key: .daxLastVisitedOnboardingWebsite, defaultValue: nil)
+    var lastVisitedOnboardingWebsiteURLPath: String?
+
+    @UserDefaultsWrapper(key: .daxLastShownContextualOnboardingDialogType, defaultValue: nil)
+    var lastShownContextualOnboardingDialogType: String?
+
 }
 
 class InMemoryDaxDialogsSettings: DaxDialogsSettings {
     
     var isDismissed: Bool = false
-    
-    var homeScreenMessagesSeen: Int = 0
     
     var browsingAfterSearchShown: Bool = false
     
@@ -82,7 +103,17 @@ class InMemoryDaxDialogsSettings: DaxDialogsSettings {
     var browsingMajorTrackingSiteShown: Bool = false
     
     var fireButtonEducationShownOrExpired: Bool = false
-    
+
+    var fireMessageExperimentShown: Bool = false
+
     var fireButtonPulseDateShown: Date?
-    
+
+    var privacyButtonPulseShown: Bool = false
+
+    var browsingFinalDialogShown = false
+
+    var lastVisitedOnboardingWebsiteURLPath: String?
+
+    var lastShownContextualOnboardingDialogType: String?
+
 }

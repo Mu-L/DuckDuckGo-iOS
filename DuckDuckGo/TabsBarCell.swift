@@ -19,11 +19,10 @@
 
 import UIKit
 import Core
+import DesignResourcesKit
 
 class TabsBarCell: UICollectionViewCell {
-    
-    static let appUrls = AppUrls()
-    
+
     @IBOutlet weak var label: FadeOutLabel!
     @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var faviconImage: UIImageView!
@@ -40,20 +39,17 @@ class TabsBarCell: UICollectionViewCell {
     
     var onRemove: (() -> Void)?
 
-    private var model: Tab?
+    private weak var model: Tab?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        if #available(iOS 13.4, *) {
-            removeButton.isPointerInteractionEnabled = true
-            removeButton.pointerStyleProvider = { button, effect, _ -> UIPointerStyle? in
-                return .init(effect: .lift(.init(view: button)))
-            }
-            
-            contentView.addInteraction(UIPointerInteraction(delegate: self))
+        removeButton.isPointerInteractionEnabled = true
+        removeButton.pointerStyleProvider = { button, _, _ -> UIPointerStyle? in
+            return .init(effect: .lift(.init(view: button)))
         }
         
+        contentView.addInteraction(UIPointerInteraction(delegate: self))
     }
     
     @IBAction func onRemovePressed() {
@@ -88,8 +84,8 @@ class TabsBarCell: UICollectionViewCell {
 
         label.primaryColor = theme.barTintColor
         if isCurrent {
-            topBackgroundView.backgroundColor = theme.barBackgroundColor
-            bottomBackgroundView.backgroundColor = theme.barBackgroundColor
+            topBackgroundView.backgroundColor = theme.omniBarBackgroundColor
+            bottomBackgroundView.backgroundColor = theme.omniBarBackgroundColor
         } else {
             topBackgroundView.backgroundColor = .clear
             bottomBackgroundView.backgroundColor = .clear
@@ -106,13 +102,13 @@ class TabsBarCell: UICollectionViewCell {
     private func applyModel(_ model: Tab) {
         
         if model.link == nil {
-            faviconImage.loadFavicon(forDomain: Self.appUrls.base.host, usingCache: .tabs)            
+            faviconImage.loadFavicon(forDomain: URL.ddg.host, usingCache: .tabs)
             label.text = UserText.homeTabTitle
             label.accessibilityLabel = UserText.openHomeTab
             removeButton.accessibilityLabel = UserText.closeHomeTab
         } else {
             faviconImage.loadFavicon(forDomain: model.link?.url.host, usingCache: .tabs)
-            label.text = model.link?.displayTitle ?? model.link?.url.host?.dropPrefix(prefix: "www.")
+            label.text = model.link?.displayTitle ?? model.link?.url.host?.droppingWwwPrefix()
             label.accessibilityLabel = UserText.openTab(withTitle: model.link?.displayTitle ?? "", atAddress: model.link?.url.host ?? "")
             removeButton.accessibilityLabel = UserText.closeTab(withTitle: model.link?.displayTitle ?? "", atAddress: model.link?.url.host ?? "")
         }
@@ -128,7 +124,6 @@ extension TabsBarCell: TabObserver {
     }
 }
 
-@available(iOS 13.4, *)
 extension TabsBarCell: UIPointerInteractionDelegate {
     
     func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {

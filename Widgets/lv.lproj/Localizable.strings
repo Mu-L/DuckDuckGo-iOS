@@ -1,5 +1,44 @@
-/* No comment provided by engineer. */
-"Label" = "Etiķete";
+/* Description shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.description" = "Nekavējoties ģenerē jaunu privātu Duck adresi.";
+
+/* Title shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.title" = "E-pasta aizsardzība";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.favorites.description" = "Ātri atver savas iecienītākās vietnes ar pieskārienu.";
+
+/* Title shown to the user when adding the favorites lock screen widget */
+"lock.screen.widget.favorites.title" = "Izlase";
+
+/* Description shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.description" = "Nekavējoties dzēs savu pārlūkošanas vēsturi un sāc jaunu privātu meklēšanu pakalpojumā DuckDuckGo.";
+
+/* Title shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.title" = "Fire Button";
+
+/* Description shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.description" = "Ātri meklē savas saglabātās DuckDuckGo paroles.";
+
+/* Title shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.title" = "Meklēt paroles";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.description" = "Nekavējoties sāc privātu meklēšanu pakalpojumā DuckDuckGo.";
+
+/* Title shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.title" = "Privāta meklēšana";
+
+/* Description shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.description" = "Nekavējoties sāc jaunu privātu balss meklēšanu pakalpojumā DuckDuckGo.";
+
+/* Title shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.title" = "Balss meklēšana";
+
+/* Description of search passwords widget in widget gallery */
+"widget.gallery.passwords.description" = "Ātri meklē savas saglabātās DuckDuckGo paroles.";
+
+/* Display name for search passwords widget in widget gallery */
+"widget.gallery.passwords.display.name" = "Meklēt paroles";
 
 /* Description of search and favorites widget in widget gallery */
 "widget.gallery.search.and.favorites.description" = "Meklē vai atver savas iecienītākās vietnes konfidenciāli, veicot tikai vienu pieskārienu.";
@@ -13,12 +52,54 @@
 /* Display name for search only widget in widget gallery */
 "widget.gallery.search.display.name" = "Meklēt";
 
+/* Description of VPN widget in widget gallery */
+"widget.gallery.vpn.description" = "Skati un pārvaldi savu VPN savienojumu. Nepieciešams Privacy Pro abonements.";
+
+/* Display name for VPN widget in widget gallery */
+"widget.gallery.vpn.display.name" = "VPN";
+
 /* CTA shown in the favorites widget empty state. */
 "widget.no.favorites.cta" = "Pievienot izlasei";
 
 /* Message shown in the favorites widget empty state. */
 "widget.no.favorites.message" = "Ātri atver savas mīļākās vietnes.";
 
+/* Text in passwords widget */
+"widget.passwords" = "Meklēt paroles";
+
 /* Placeholder text in search field on the search and favorites widget */
 "widget.search.duckduckgo" = "Meklēt DuckDuckGo";
+
+/* VPN connect button text */
+"widget.vpn.button.connect" = "Savienot";
+
+/* VPN disconnect button text */
+"widget.vpn.button.disconnect" = "Atvienot";
+
+/* Label for the snooze end date, e.g. 'Until 9:51 AM' */
+"widget.vpn.label.snoozing-until" = "Līdz %@.";
+
+/* VPN Live Activity dismiss button text */
+"widget.vpn.live-activity.button.dismiss" = "Nerādīt";
+
+/* VPN Live Activity wake up button text */
+"widget.vpn.live-activity.button.wake-up" = "Pamodināt";
+
+/* VPN Live Activity active label text */
+"widget.vpn.live-activity.label.active" = "VPN ir ieslēgts";
+
+/* VPN Live Activity snoozing label text */
+"widget.vpn.live-activity.label.snoozing" = "VPN atslēgšana";
+
+/* Message describing VPN connected status */
+"widget.vpn.status.connected" = "VPN ir ieslēgts";
+
+/* Message describing VPN disconnected status */
+"widget.vpn.status.disconnected" = "VPN ir izslēgts";
+
+/* Message describing VPN snoozing status */
+"widget.vpn.status.snoozed" = "VPN ir atslēgts";
+
+/* Subtitle describing VPN disconnected status */
+"widget.vpn.subtitle.disconnected" = "Nav savienots";
 

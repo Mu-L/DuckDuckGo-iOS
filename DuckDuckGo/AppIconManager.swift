@@ -17,6 +17,7 @@
 //  limitations under the License.
 //
 
+import Foundation
 import UIKit
 import Core
 import os.log
@@ -29,10 +30,6 @@ class AppIconManager {
         UIApplication.shared.supportsAlternateIcons
     }
 
-    enum AppIconManagerError: Error {
-        case changeNotSupported
-    }
-
     func changeAppIcon(_ appIcon: AppIcon, completionHandler: ((Error?) -> Void)? = nil) {
         if self.appIcon == appIcon {
             completionHandler?(nil)
@@ -42,7 +39,7 @@ class AppIconManager {
         let alternateIconName = appIcon != AppIcon.defaultAppIcon ? appIcon.rawValue : nil
         UIApplication.shared.setAlternateIconName(alternateIconName) { error in
             if let error = error {
-                os_log("Error while changing app icon: %s", log: generalLog, type: .debug, error.localizedDescription)
+                Logger.general.error("Error while changing app icon: \(error.localizedDescription, privacy: .public)")
                 completionHandler?(error)
             } else {
                 completionHandler?(nil)

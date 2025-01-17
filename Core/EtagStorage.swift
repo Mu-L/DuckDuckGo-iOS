@@ -17,29 +17,32 @@
 //  limitations under the License.
 //
 
+import Common
 import Foundation
+import Configuration
 import os.log
 
-protocol BlockerListETagStorage {
-    
-    func set(etag: String?, for list: ContentBlockerRequest.Configuration)
-    
-    func etag(for list: ContentBlockerRequest.Configuration) -> String?
-    
+public protocol BlockerListETagStorage {
+
+    func saveEtag(_ etag: String, for configuration: Configuration)
+    func loadEtag(for configuration: Configuration) -> String?
+
 }
 
-class UserDefaultsETagStorage: BlockerListETagStorage {
-    
-    lazy var defaults = UserDefaults(suiteName: "com.duckduckgo.blocker-list.etags")
-    
-    func etag(for list: ContentBlockerRequest.Configuration) -> String? {
-        let etag = defaults?.string(forKey: list.rawValue)
-        os_log("stored etag for %s %s", log: generalLog, type: .debug, list.rawValue, etag ?? "nil")
+public struct UserDefaultsETagStorage: BlockerListETagStorage {
+
+    private let defaults = UserDefaults(suiteName: "\(Global.groupIdPrefix).app-configuration")
+
+    public init() { }
+
+    public func loadEtag(for configuration: Configuration) -> String? {
+        let etag = defaults?.string(forKey: configuration.storeKey)
+        Logger.general.debug("Stored etag for \(configuration.storeKey) \(etag ?? "nil")")
         return etag
     }
-    
-    func set(etag: String?, for list: ContentBlockerRequest.Configuration) {
-        defaults?.set(etag, forKey: list.rawValue)
+
+    public func saveEtag(_ etag: String, for configuration: Configuration) {
+        defaults?.set(etag, forKey: configuration.storeKey)
     }
-    
+
 }

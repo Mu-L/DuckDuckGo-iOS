@@ -2,6 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bookmark.deleteFolderAlert.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Opravdu chceš smazat tuhle složku a %1$d položku?</string>
+			<key>few</key>
+			<string>Opravdu chceš smazat tuhle složku a %1$d položky?</string>
+			<key>many</key>
+			<string>Opravdu chceš smazat tuhle složku a %1$d položky?</string>
+			<key>other</key>
+			<string>Opravdu chceš smazat tuhle složku a %1$d položek?</string>
+		</dict>
+	</dict>
 	<key>dax.onboarding.browsing.multiple.trackers</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,29 +33,57 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>*%2$@, %3$@* a *1 další* se vás snažili tady vysledovat.
+			<string>*%2$@, %3$@* a *1 další subjekt* se tě tady pokouší sledovat.
 
-Zablokovali jsme je!
+Zablokovali jsme je.
 
-☝️Můžete zkontrolovat panel URL a zjistit, kdo se vás snaží sledovat, když navštívíte nový web. ️</string>
+☝️ Při návštěvě nového webu můžeš zjistit, kdo se tě snaží sledovat, v adresním řádku.</string>
 			<key>few</key>
-			<string>*%2$@, %3$@* a *%1$d další* se vás snažili tady vysledovat.
+			<string>*%2$@, %3$@* a *%1$d další subjekty* se tě tady pokouší sledovat.
 
-Zablokovali jsme je!
+Zablokovali jsme je.
 
-☝️Můžete zkontrolovat panel URL a zjistit, kdo se vás snaží sledovat, když navštívíte nový web. ️</string>
+☝️ Při návštěvě nového webu můžeš zjistit, kdo se tě snaží sledovat, v adresním řádku.</string>
 			<key>many</key>
-			<string>*%2$@, %3$@* a *%1$d dalších* se vás snažilo tady vysledovat.
+			<string>*%2$@, %3$@* a *%1$d dalšího subjektu* se tě tady pokouší sledovat.
 
-Zablokovali jsme je!
+Zablokovali jsme je.
 
-☝️Můžete zkontrolovat panel URL a zjistit, kdo se vás snaží sledovat, když navštívíte nový web. ️</string>
+☝️ Při návštěvě nového webu můžeš zjistit, kdo se tě snaží sledovat, v adresním řádku.</string>
 			<key>other</key>
-			<string>*%2$@, %3$@* a *%1$d dalších* se vás snažilo tady vysledovat.
+			<string>*%2$@, %3$@* a *%1$d dalších subjektů* se tě tady pokouší sledovat.
 
-Zablokovali jsme je!
+Zablokovali jsme je.
 
-☝️Můžete zkontrolovat panel URL a zjistit, kdo se vás snaží sledovat, když navštívíte nový web. ️</string>
+☝️ Při návštěvě nového webu můžeš zjistit, kdo se tě snaží sledovat, v adresním řádku.</string>
+		</dict>
+	</dict>
+	<key>contextual.onboarding.browsing.multiple.trackers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1#@count@</string>
+		<key>count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>*%2$@, %3$@* a *1 další stránka* se tě tady snaží sledovat. A tak jsem je všechny zablokoval!
+
+☝️ Klepnutím na štít si zobrazíš další informace.</string>
+			<key>few</key>
+			<string>*%2$@, %3$@* a *%1$d další stránky* se tě tady snaží sledovat. A tak jsem je všechny zablokoval!
+
+☝️ Klepnutím na štít si zobrazíš další informace.</string>
+			<key>many</key>
+			<string>*%2$@, %3$@* a *%1$d další stránky* se tě tady snaží sledovat. A tak jsem je všechny zablokoval!
+
+☝️ Klepnutím na štít si zobrazíš další informace.</string>
+			<key>other</key>
+			<string>*%2$@, %3$@* a *%1$d dalších stránek* se tě tady snaží sledovat. A tak jsem je všechny zablokoval!
+
+☝️ Klepnutím na štít si zobrazíš další informace.</string>
 		</dict>
 	</dict>
 	<key>privacy.protection.major.trackers.found</key>
@@ -136,6 +184,136 @@ Zablokovali jsme je!
 			<string>%1$d soukromých karet</string>
 			<key>other</key>
 			<string>%1$d soukromých karet</string>
+		</dict>
+	</dict>
+	<key>autofill.number.of.passwords</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d heslo</string>
+			<key>few</key>
+			<string>%1$d hesla</string>
+			<key>many</key>
+			<string>%1$d hesla</string>
+			<key>other</key>
+			<string>%1$d hesel</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.title</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Opravdu chceš smazat %1$d heslo?</string>
+			<key>few</key>
+			<string>Opravdu chceš smazat %1$d hesla?</string>
+			<key>many</key>
+			<string>Opravdu chceš smazat %1$d hesla?</string>
+			<key>other</key>
+			<string>Opravdu chceš smazat %1$d hesel?</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Tvoje heslo se z tohohle zařízení smaže. Zkontroluj si předtím, že se k %2$#@accounts@ i tak dostaneš.</string>
+			<key>few</key>
+			<string>Tvoje hesla se z tohohle zařízení smažou. Zkontroluj si předtím, že se k %2$#@accounts@ i tak dostaneš.</string>
+			<key>many</key>
+			<string>Tvoje hesla se z tohohle zařízení smažou. Zkontroluj si předtím, že se k %2$#@accounts@ i tak dostaneš.</string>
+			<key>other</key>
+			<string>Tvoje hesla se z tohohle zařízení smažou. Zkontroluj si předtím, že se k %2$#@accounts@ i tak dostaneš.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>účtu</string>
+			<key>few</key>
+			<string>účtům</string>
+			<key>many</key>
+			<string>účtům</string>
+			<key>other</key>
+			<string>účtům</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.sync.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Tvoje heslo se smaže ze všech synchronizovaných zařízení. Zkontroluj si předtím, že se k %2$#@accounts@ i tak dostaneš.</string>
+			<key>few</key>
+			<string>Tvoje hesla se smažou ze všech synchronizovaných zařízení. Zkontroluj si předtím, že se k %2$#@accounts@ i tak dostaneš.</string>
+			<key>many</key>
+			<string>Tvoje hesla se smažou ze všech synchronizovaných zařízení. Zkontroluj si předtím, že se k %2$#@accounts@ i tak dostaneš.</string>
+			<key>other</key>
+			<string>Tvoje hesla se smažou ze všech synchronizovaných zařízení. Zkontroluj si předtím, že se k %2$#@accounts@ i tak dostaneš.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>účtu</string>
+			<key>few</key>
+			<string>účtům</string>
+			<key>many</key>
+			<string>účtům</string>
+			<key>other</key>
+			<string>účtům</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.completion</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d smazané heslo</string>
+			<key>few</key>
+			<string>%1$d smazaná hesla</string>
+			<key>many</key>
+			<string>%1$d smazaného hesla</string>
+			<key>other</key>
+			<string>%1$d smazaných hesel</string>
 		</dict>
 	</dict>
 </dict>

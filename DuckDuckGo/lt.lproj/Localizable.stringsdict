@@ -2,6 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bookmark.deleteFolderAlert.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Ar tikrai norite ištrinti šį aplanką ir %1$d elementą?</string>
+			<key>few</key>
+			<string>Ar tikrai norite ištrinti šį aplanką ir %1$d elementus?</string>
+			<key>many</key>
+			<string>Ar tikrai norite ištrinti šį aplanką ir %1$d elemento?</string>
+			<key>other</key>
+			<string>Ar tikrai norite ištrinti šį aplanką ir %1$d elementų?</string>
+		</dict>
+	</dict>
 	<key>dax.onboarding.browsing.multiple.trackers</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,29 +33,57 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>*%2$@, %3$@* ir *1 kitas* bandė tave stebėti.
+			<string>*%2$@, %3$@* ir *dar 1* bandė tave sekti.
 
 Užblokavau juos!
 
-☝️Patikrink URL juostą ir pamatyk, kas bando tave stebėti, kai lankaisi naujoje svetainėje.️</string>
+☝️ Patikrink adreso juostą ir pamatyk, kas bando tave sekti, kai lankaisi naujoje svetainėje.️</string>
 			<key>few</key>
-			<string>*%2$@, %3$@* ir *%1$d kiti* bandė tave stebėti.
+			<string>*%2$@, %3$@* ir *dar %1$d* bandė tave sekti.
 
 Užblokavau juos!
 
-☝️Patikrink URL juostą ir pamatyk, kas bando tave stebėti, kai lankaisi naujoje svetainėje.️</string>
+☝️ Patikrink adreso juostą ir pamatyk, kas bando tave sekti, kai lankaisi naujoje svetainėje.️</string>
 			<key>many</key>
-			<string>*%2$@, %3$@* ir *%1$d kito* bandė tave stebėti.
+			<string>*%2$@, %3$@* ir *dar %1$d* bandė tave sekti.
 
 Užblokavau juos!
 
-☝️Patikrink URL juostą ir pamatyk, kas bando tave stebėti, kai lankaisi naujoje svetainėje.️</string>
+☝️ Patikrink adreso juostą ir pamatyk, kas bando tave sekti, kai lankaisi naujoje svetainėje.️</string>
 			<key>other</key>
-			<string>*%2$@, %3$@* ir *%1$d kitų* bandė tave stebėti.
+			<string>*%2$@, %3$@* ir *dar %1$d* bandė tave sekti.
 
 Užblokavau juos!
 
-☝️Patikrink URL juostą ir pamatyk, kas bando tave stebėti, kai lankaisi naujoje svetainėje.️</string>
+☝️ Patikrink adreso juostą ir pamatyk, kas bando tave sekti, kai lankaisi naujoje svetainėje.️</string>
+		</dict>
+	</dict>
+	<key>contextual.onboarding.browsing.multiple.trackers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1#@count@</string>
+		<key>count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>*%2$@, %3$@* ir *dar 1* bandė jus sekti čia. Aš juos užblokavau!
+
+☝️ Norėdami gauti daugiau informacijos, bakstelėkite skydą.</string>
+			<key>few</key>
+			<string>*%2$@, %3$@* ir *dar %1$d* bandė jus sekti čia. Aš juos užblokavau!
+
+☝️ Norėdami gauti daugiau informacijos, bakstelėkite skydą.</string>
+			<key>many</key>
+			<string>*%2$@, %3$@* ir *dar %1$d* bandė jus sekti čia. Aš juos užblokavau!
+
+☝️ Norėdami gauti daugiau informacijos, bakstelėkite skydą.</string>
+			<key>other</key>
+			<string>*%2$@, %3$@* ir *dar %1$d* bandė jus sekti čia. Aš juos užblokavau!
+
+☝️ Norėdami gauti daugiau informacijos, bakstelėkite skydą.</string>
 		</dict>
 	</dict>
 	<key>privacy.protection.major.trackers.found</key>
@@ -136,6 +184,136 @@ Užblokavau juos!
 			<string>%1$d privataus skirtuko</string>
 			<key>other</key>
 			<string>%1$d privačiu skirtukų</string>
+		</dict>
+	</dict>
+	<key>autofill.number.of.passwords</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d slaptažodžis</string>
+			<key>few</key>
+			<string>%1$d slaptažodžiai</string>
+			<key>many</key>
+			<string>%1$d slaptažodžio</string>
+			<key>other</key>
+			<string>%1$d slaptažodžių</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.title</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Ar tikrai norite ištrinti %1$d slaptažodį?</string>
+			<key>few</key>
+			<string>Ar tikrai norite ištrinti %1$d slaptažodžius?</string>
+			<key>many</key>
+			<string>Ar tikrai norite ištrinti %1$d slaptažodžio?</string>
+			<key>other</key>
+			<string>Ar tikrai norite ištrinti %1$d slaptažodžių?</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Jūsų slaptažodžiai bus ištrinti iš šio įrenginio. Įsitikinkite, kad vis dar turite galimybę pasiekti savo %2$#@accounts@.</string>
+			<key>few</key>
+			<string>Jūsų slaptažodžiai bus ištrinti iš šio įrenginio. Įsitikinkite, kad vis dar turite galimybę pasiekti savo %2$#@accounts@.</string>
+			<key>many</key>
+			<string>Jūsų slaptažodžiai bus ištrinti iš šio įrenginio. Įsitikinkite, kad vis dar turite galimybę pasiekti savo %2$#@accounts@.</string>
+			<key>other</key>
+			<string>Jūsų slaptažodžiai bus ištrinti iš šio įrenginio. Įsitikinkite, kad vis dar turite galimybę pasiekti savo %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>sąskaita</string>
+			<key>few</key>
+			<string>sąskaitos</string>
+			<key>many</key>
+			<string>sąskaitos</string>
+			<key>other</key>
+			<string>sąskaitų</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.sync.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Jūsų slaptažodžiai bus ištrinti iš visų sinchronizuojamų įrenginių. Įsitikinkite, kad vis dar turite būdą, kaip pasiekti %2$#@accounts@ paskyrą.</string>
+			<key>few</key>
+			<string>Jūsų slaptažodžiai bus ištrinti iš visų sinchronizuojamų įrenginių. Įsitikinkite, kad vis dar turite būdą, kaip pasiekti %2$#@accounts@ paskyras.</string>
+			<key>many</key>
+			<string>Jūsų slaptažodžiai bus ištrinti iš visų sinchronizuojamų įrenginių. Įsitikinkite, kad vis dar turite būdą, kaip pasiekti %2$#@accounts@ paskyros.</string>
+			<key>other</key>
+			<string>Jūsų slaptažodžiai bus ištrinti iš visų sinchronizuojamų įrenginių. Įsitikinkite, kad vis dar turite būdą, kaip pasiekti %2$#@accounts@ paskyrų.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>sąskaita</string>
+			<key>few</key>
+			<string>sąskaitos</string>
+			<key>many</key>
+			<string>sąskaitos</string>
+			<key>other</key>
+			<string>sąskaitų</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.completion</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d slaptažodis ištrintas</string>
+			<key>few</key>
+			<string>%1$d slaptažodžiai ištrinti</string>
+			<key>many</key>
+			<string>%1$d slaptažodžio ištrinta</string>
+			<key>other</key>
+			<string>%1$d slaptažodžių ištrinti</string>
 		</dict>
 	</dict>
 </dict>

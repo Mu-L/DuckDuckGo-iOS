@@ -18,6 +18,7 @@
 //
 
 import Foundation
+import BrowserServicesKit
 
 public class StatisticsUserDefaults: StatisticsStore {
 
@@ -55,7 +56,7 @@ public class StatisticsUserDefaults: StatisticsStore {
             userDefaults?.setValue(newValue, forKey: Keys.atb)
         }
     }
-    
+
     public var installDate: Date? {
         get {
             guard let interval = userDefaults?.double(forKey: Keys.installDate), interval > 0 else {
@@ -76,7 +77,7 @@ public class StatisticsUserDefaults: StatisticsStore {
             userDefaults?.setValue(newValue, forKey: Keys.searchRetentionAtb)
         }
     }
-    
+
     public var appRetentionAtb: String? {
         get {
             return userDefaults?.string(forKey: Keys.appRetentionAtb) ?? atb

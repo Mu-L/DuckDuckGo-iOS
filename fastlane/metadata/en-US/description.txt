@@ -1,25 +1,46 @@
-Tired of being tracked online? We can help. At DuckDuckGo, we believe online privacy should be simple.
+DuckDuckGo is a free browser that provides the most comprehensive online privacy protection in one app. Unlike most popular browsers, it has powerful privacy protections by default, including our search engine that doesn’t track your history and over a dozen other built-in protections. Millions of people use DuckDuckGo as their go-to browser to protect their everyday online activities, from searching to browsing, emailing, and more.
 
-DuckDuckGo Privacy Browser has the speed you need, the browsing features you expect (like tabs & bookmarks), and comes packed with best-in-class privacy essentials:
+FEATURE HIGHLIGHTS
 
- • Tap Fire Button, Burn Data — clear all your tabs and browsing data with one tap.
+• Search Privately by Default: DuckDuckGo Private Search comes built-in, so you can easily search online without being tracked.
 
- • Escape Online Tracking — automatically block hidden third-party trackers we can find lurking on websites you visit, which stops the companies behind those trackers from collecting and selling your data.
+• Block Most Trackers Before They Load: Our 3rd-Party Tracker Loading Protection exceeds what most popular browsers offer by default, stopping hidden tracking scripts from loading and collecting your personal data.
 
- • Search Privately — our private search engine comes built-in so you can search the Internet without being tracked.
+• Enable Built-in Email Protection: Block most email trackers and hide your existing email address with @duck.com addresses.
 
- • Enforce Encryption — force sites to use an encrypted (HTTPS) connection where available, protecting your data from prying eyes, like from unwanted snoopers and Internet service providers.
+• Automatically Enforce Encryption: Shield your data from network and Wi-Fi snoopers by forcing many sites to use an HTTPS connection.
 
- • Decode Privacy — each site you visit gets a Privacy Grade (A-F) so you can see how protected you are at a glance, and you can even dig into the details to see who we caught trying to track you.
+• Escape Fingerprinting: Make it harder for companies to create a unique identifier for you by blocking attempts to combine info about your browser and device.
 
- • Signal Your Privacy Preference With GPC — built into the browser, Global Privacy Control (GPC) intends to help you express your legal opt-out rights automatically. This will tell websites not to sell or share your personal information under future legal frameworks (e.g., CCPA, GDPR) in various states or countries.
+• Sync and Backup: Securely sync bookmarks and passwords across your devices.
 
- • Limit Access — secure your browser with Touch ID or Face ID.
+We feature many protections not available on most browsers, even in private browsing mode, including protection from link tracking, AMP tracking, and more.
+ 
 
-Privacy, simplified.
+EVERYDAY PRIVACY CONTROLS
 
-About Us: https://duckduckgo.com/about/
-Device Privacy: https://spreadprivacy.com/tag/device-privacy-tips/
-Privacy Newsletter: https://duckduckgo.com/newsletter
+• Clear your tabs and browsing data in a flash with the Fire Button.
+
+• Banish cookie pop-ups and automatically set your preferences to minimize cookies and maximize privacy.  
+
+• Signal Your Privacy Preference with Global Privacy Control (GPC) built into our app. GPC intends to help you express your opt-out rights automatically by telling websites not to sell or share your personal info. Whether it can be used to enforce your legal rights depends on the laws in your jurisdiction.
+
+PRIVACY PRO 
+Subscribe to Privacy Pro for: 
+
+• Our VPN: Secure your connection on up to 5 devices. 
+
+• Identity Theft Restoration: If your identity is stolen, we’ll help restore it. 
+
+Sync across DuckDuckGo apps: Activate your subscription in other DuckDuckGo apps. For example, you can access Personal Information Removal in DuckDuckGo for Mac.
+ 
+Privacy Pro Pricing & Terms 
+
+Payment will be charged automatically to your iTunes account until you cancel, which you can do in app settings. Your personal info is not required to subscribe. You have the option to provide an email address to activate your subscription on other devices, and we will only use that email address to verify your subscription. For terms of service and privacy policy, visit https://duckduckgo.com/pro/privacy-terms
+
+You don't need to wait to take back your privacy. Join the millions of people using DuckDuckGo and protect many of your everyday online activities with one app. It's privacy, simplified.
+
+Read more about our free Tracking Protections at https://help.duckduckgo.com/privacy/web-tracking-protections
+
 Privacy Policy: https://duckduckgo.com/privacy/
-Open Source: https://github.com/duckduckgo/iOS
+Terms of Service: https://duckduckgo.com/terms

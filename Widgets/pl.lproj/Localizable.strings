@@ -1,5 +1,44 @@
-/* No comment provided by engineer. */
-"Label" = "Etykieta";
+/* Description shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.description" = "Błyskawicznie wygeneruj prywatny adres Duck Address.";
+
+/* Title shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.title" = "Ochrona poczty e-mail";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.favorites.description" = "Szybko otwieraj ulubione witryny jednym dotknięciem.";
+
+/* Title shown to the user when adding the favorites lock screen widget */
+"lock.screen.widget.favorites.title" = "Ulubione";
+
+/* Description shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.description" = "Błyskawicznie usuń historię przeglądania i rozpocznij nowe prywatne wyszukiwanie w DuckDuckGo.";
+
+/* Title shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.title" = "Fire Button";
+
+/* Description shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.description" = "Szybko wyszukuj zapisane hasła DuckDuckGo.";
+
+/* Title shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.title" = "Wyszukaj hasła";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.description" = "Błyskawicznie rozpocznij prywatne wyszukiwanie w DuckDuckGo.";
+
+/* Title shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.title" = "Prywatne Wyszukiwanie";
+
+/* Description shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.description" = "Błyskawicznie rozpocznij nowe prywatne wyszukiwanie głosowe w DuckDuckGo.";
+
+/* Title shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.title" = "Wyszukiwanie głosowe";
+
+/* Description of search passwords widget in widget gallery */
+"widget.gallery.passwords.description" = "Szybko wyszukuj zapisane hasła DuckDuckGo.";
+
+/* Display name for search passwords widget in widget gallery */
+"widget.gallery.passwords.display.name" = "Wyszukaj hasła";
 
 /* Description of search and favorites widget in widget gallery */
 "widget.gallery.search.and.favorites.description" = "Prywatnie przeszukuj lub odwiedzaj swoje ulubione witryny za pomocą jednego dotknięcia.";
@@ -13,12 +52,54 @@
 /* Display name for search only widget in widget gallery */
 "widget.gallery.search.display.name" = "Szukaj";
 
+/* Description of VPN widget in widget gallery */
+"widget.gallery.vpn.description" = "Przeglądaj połączenie VPN i nim zarządzaj. Wymaga subskrypcji Privacy Pro.";
+
+/* Display name for VPN widget in widget gallery */
+"widget.gallery.vpn.display.name" = "VPN";
+
 /* CTA shown in the favorites widget empty state. */
 "widget.no.favorites.cta" = "Dodaj ulubione";
 
 /* Message shown in the favorites widget empty state. */
 "widget.no.favorites.message" = "Szybko odwiedzaj swoje ulubione witryny.";
 
+/* Text in passwords widget */
+"widget.passwords" = "Wyszukaj hasła";
+
 /* Placeholder text in search field on the search and favorites widget */
 "widget.search.duckduckgo" = "Przeszukaj DuckDuckGo";
+
+/* VPN connect button text */
+"widget.vpn.button.connect" = "Połącz";
+
+/* VPN disconnect button text */
+"widget.vpn.button.disconnect" = "Odłącz";
+
+/* Label for the snooze end date, e.g. 'Until 9:51 AM' */
+"widget.vpn.label.snoozing-until" = "Do %@";
+
+/* VPN Live Activity dismiss button text */
+"widget.vpn.live-activity.button.dismiss" = "Odrzuć";
+
+/* VPN Live Activity wake up button text */
+"widget.vpn.live-activity.button.wake-up" = "Przywróć";
+
+/* VPN Live Activity active label text */
+"widget.vpn.live-activity.label.active" = "Włączono VPN";
+
+/* VPN Live Activity snoozing label text */
+"widget.vpn.live-activity.label.snoozing" = "Wstrzymano VPN";
+
+/* Message describing VPN connected status */
+"widget.vpn.status.connected" = "Włączono VPN";
+
+/* Message describing VPN disconnected status */
+"widget.vpn.status.disconnected" = "Wyłączono VPN";
+
+/* Message describing VPN snoozing status */
+"widget.vpn.status.snoozed" = "Wstrzymano VPN";
+
+/* Subtitle describing VPN disconnected status */
+"widget.vpn.subtitle.disconnected" = "Nie połączono";
 

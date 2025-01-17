@@ -18,6 +18,7 @@
 //
 
 import Core
+import BrowserServicesKit
 
 protocol HomeRowReminderStorage {
 
@@ -36,18 +37,24 @@ class HomeRowReminder {
 
     private var storage: HomeRowReminderStorage
     private var homeMessageStorage: HomeMessageStorage
+    private let variantManager: VariantManager
 
-    init(storage: HomeRowReminderStorage = UserDefaultsHomeRowReminderStorage(),
-         homeMessageStorage: HomeMessageStorage = HomeMessageStorage()) {
+    init(
+        storage: HomeRowReminderStorage = UserDefaultsHomeRowReminderStorage(),
+        homeMessageStorage: HomeMessageStorage = HomeMessageStorage(),
+        variantManager: VariantManager = DefaultVariantManager()
+    ) {
         self.storage = storage
         self.homeMessageStorage = homeMessageStorage
+        self.variantManager = variantManager
     }
 
-    func showNow(isDefaultBrowserSupported: Bool) -> Bool {
-        // Note this is also depedent on when the Default browser home message was dismissed
-        // we should bare this depedency in mind when experimenting in the future
+    func showNow() -> Bool {
+        // If user saw Add to Dock instruction during onboarding do not show the reminder.
+        guard !(variantManager.isSupported(feature: .addToDockIntro) || variantManager.isSupported(feature: .addToDockContextual)) else { return false }
+
         guard !hasShownBefore() else { return false }
-        guard hasReminderTimeElapsed(isDefaultBrowserSupported: isDefaultBrowserSupported) else { return false }
+        guard hasReminderTimeElapsed else { return false }
         return true
     }
 
@@ -59,17 +66,13 @@ class HomeRowReminder {
         return storage.shown
     }
 
-    private func hasReminderTimeElapsed(isDefaultBrowserSupported: Bool) -> Bool {
-        if isDefaultBrowserSupported {
-            return homeMessageStorage.hasExpiredForHomeRow()
-        } else {
-            guard let date = storage.firstAccessDate else {
-                storage.firstAccessDate = Date()
-                return false
-            }
-            let days = abs(date.timeIntervalSinceNow / 24 / 60 / 60)
-            return days > Constants.reminderTimeInDays
+    private var hasReminderTimeElapsed: Bool {
+        guard let date = storage.firstAccessDate else {
+            storage.firstAccessDate = Date()
+            return false
         }
+        let days = abs(date.timeIntervalSinceNow / 24 / 60 / 60)
+        return days > Constants.reminderTimeInDays
     }
 
 }
@@ -114,7 +117,7 @@ public class UserDefaultsHomeRowReminderStorage: HomeRowReminderStorage {
 
     private let userDefaults: UserDefaults
 
-    public init(userDefaults: UserDefaults = UserDefaults.standard) {
+    public init(userDefaults: UserDefaults = UserDefaults.app) {
         self.userDefaults = userDefaults
     }
 

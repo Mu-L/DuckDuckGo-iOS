@@ -1,0 +1,42 @@
+# search_bar.yaml
+appId: com.duckduckgo.mobile.ios
+tags:
+    - release
+
+---
+
+# Set up 
+- runFlow: 
+    file: ../shared/setup.yaml
+
+# Load Site
+- assertVisible:
+    id: "searchEntry"
+- tapOn:
+    id: "searchEntry"
+- inputText: "https://privacy-test-pages.site/features/auto-refresh.html"
+- pressKey: Enter
+
+- assertVisible: "Website that refreshes every 3 seconds."
+
+# Start typing
+- tapOn:
+    id: "searchEntry"
+- inputText: "abcd"
+- assertVisible: "abcd"
+
+# Delay execution and let page refresh
+- runFlow:
+    file: ../shared/delay.yaml
+       
+# More text to append 
+- inputText: "efgh"
+- assertVisible: "abcdefgh"
+
+# Delay execution and let page refresh
+- runFlow:
+    file: ../shared/delay.yaml
+        
+- inputText: "ijkl"
+- assertVisible: "abcdefghijkl"
+

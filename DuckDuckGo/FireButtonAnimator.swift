@@ -20,12 +20,18 @@
 import UIKit
 import Lottie
 
-enum FireButtonAnimationType: String, CaseIterable {
+enum FireButtonAnimationType: String, CaseIterable, Identifiable, CustomStringConvertible {
+    
+    var description: String {
+        return descriptionText
+    }
 
     case fireRising
     case waterSwirl
     case airstream
     case none
+    
+    var id: String { self.rawValue }
     
     var descriptionText: String {
         switch self {
@@ -40,9 +46,9 @@ enum FireButtonAnimationType: String, CaseIterable {
         }
     }
     
-    var composition: LOTComposition? {
+    var composition: LottieAnimation? {
         guard let fileName = fileName else { return nil }
-        return LOTComposition(name: fileName)
+        return LottieAnimation.named(fileName, animationCache: DefaultAnimationCache.sharedCache)
     }
 
     var transition: Double {
@@ -92,8 +98,8 @@ enum FireButtonAnimationType: String, CaseIterable {
 class FireButtonAnimator {
     
     private let appSettings: AppSettings
-    private var preLoadedComposition: LOTComposition?
-    
+    private var preLoadedComposition: LottieAnimation?
+
     init(appSettings: AppSettings) {
         self.appSettings = appSettings
         reloadPreLoadedComposition()
@@ -104,47 +110,57 @@ class FireButtonAnimator {
                                                object: nil)
     }
         
-    func animate(onAnimationStart: @escaping () -> Void, onTransitionCompleted: @escaping () -> Void, completion: @escaping () -> Void) {
-        
-        guard let window = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first,
+    func animate(onAnimationStart: @escaping () async -> Void, onTransitionCompleted: @escaping () async -> Void, completion: @escaping () async -> Void) {
+
+        guard let window = UIApplication.shared.firstKeyWindow,
               let snapshot = window.snapshotView(afterScreenUpdates: false) else {
-            onAnimationStart()
-            onTransitionCompleted()
-            completion()
+            Task { @MainActor in
+                await onAnimationStart()
+                await onTransitionCompleted()
+                await completion()
+            }
             return
         }
         
         guard let composition = preLoadedComposition else {
-            onAnimationStart()
-            onTransitionCompleted()
-            completion()
+            Task { @MainActor in
+                await onAnimationStart()
+                await onTransitionCompleted()
+                await completion()
+            }
             return
         }
         
         window.addSubview(snapshot)
         
-        let animationView = LOTAnimationView(model: composition, in: nil)
+        let animationView = LottieAnimationView(animation: composition)
         let currentAnimation = appSettings.currentFireButtonAnimation
         let speed = currentAnimation.speed
         animationView.contentMode = .scaleAspectFill
         animationView.animationSpeed = CGFloat(speed)
         animationView.frame = window.frame
         window.addSubview(animationView)
-        
-        let duration = Double(animationView.animationDuration) / speed
+
+        let duration = Double(composition.duration) / speed
         let delay = duration * currentAnimation.transition
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
             snapshot.removeFromSuperview()
-            onTransitionCompleted()
+            Task { @MainActor in
+                await onTransitionCompleted()
+            }
         }
         
-        animationView.play(fromFrame: 0, toFrame: currentAnimation.endFrame) { _ in
-            animationView.removeFromSuperview()
-            completion()
+        animationView.play(fromProgress: 0, toProgress: 1) { [weak animationView] _ in
+            animationView?.removeFromSuperview()
+            Task { @MainActor in
+                await completion()
+            }
         }
 
         DispatchQueue.main.async {
-            onAnimationStart()
+            Task { @MainActor in
+                await onAnimationStart()
+            }
         }
     }
     

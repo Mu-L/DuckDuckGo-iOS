@@ -18,12 +18,13 @@
 //
 
 import XCTest
+import BrowserServicesKit
 @testable import Core
 @testable import DuckDuckGo
 
 class ContentBlockerProtectionStoreTests: XCTestCase {
 
-    func testWhenCheckingDomainsAreProtected_ThenUsesPersistedUnprotectedDomainList() {
+    func testWhenCheckingDomainsAreProtected_ThenUsesPersistedUnprotectedDomainList() throws {
         let configFile =
         """
         {
@@ -35,16 +36,22 @@ class ContentBlockerProtectionStoreTests: XCTestCase {
             ]
         }
         """.data(using: .utf8)!
-        _ = FileStore().persist(configFile, forConfiguration: .privacyConfiguration)
-        XCTAssertEqual(PrivacyConfigurationManager.shared.embeddedConfigData.etag, PrivacyConfigurationManager.Constants.embeddedConfigETag)
-        XCTAssertEqual(PrivacyConfigurationManager.shared.reload(etag: "new etag"), .downloaded)
+        try FileStore().persist(configFile, for: .privacyConfiguration)
+        // swiftlint:disable:next force_cast
+        let privacyConfigurationManager = ContentBlocking.shared.privacyConfigurationManager as! PrivacyConfigurationManager
+        XCTAssertEqual(privacyConfigurationManager.embeddedConfigData.etag,
+                       AppPrivacyConfigurationDataProvider.Constants.embeddedDataETag)
+        XCTAssertEqual(privacyConfigurationManager.reload(etag: "new etag", data: configFile), .downloaded)
 
-        let newConfig = PrivacyConfigurationManager.shared.fetchedConfigData
+        let newConfig = privacyConfigurationManager.fetchedConfigData
         XCTAssertNotNil(newConfig)
 
         if let newConfig = newConfig {
             XCTAssertEqual(newConfig.etag, "new etag")
-            let config = AppPrivacyConfiguration(data: newConfig.data, identifier: "")
+            let config = AppPrivacyConfiguration(data: newConfig.data,
+                                                 identifier: "",
+                                                 localProtection: DomainsProtectionUserDefaultsStore(),
+                                                 internalUserDecider: DefaultInternalUserDecider())
 
             XCTAssertFalse(config.isTempUnprotected(domain: "main1.com"))
             XCTAssertFalse(config.isTempUnprotected(domain: "notdomain1.com"))

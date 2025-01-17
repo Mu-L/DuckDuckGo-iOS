@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bookmark.deleteFolderAlert.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Weet je zeker dat je deze deze map en %1$d item wilt verwijderen?</string>
+			<key>other</key>
+			<string>Weet je zeker dat je deze map en %1$d items wilt verwijderen?</string>
+		</dict>
+	</dict>
 	<key>dax.onboarding.browsing.multiple.trackers</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,17 +29,37 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>*%2$@, %3$@* en *1 andere* probeerden je hier te volgen.
+			<string>*%2$@, %3$@* en *1 andere* probeerden je hier te volgen. 
 
 Ik heb ze geblokkeerd!
 
-☝️ Check de URL-balk om te zien wie je probeert te volgen wanneer je een nieuwe site bezoekt.</string>
+☝️ Je kunt de URL-balk bekijken om te zien wie je probeert te volgen wanneer je een nieuwe site bezoekt.️</string>
 			<key>other</key>
-			<string>*%2$@, %3$@* en *%1$d andere* probeerden je hier te volgen.
+			<string>*%2$@, %3$@* en *%1$d anderen* probeerden je hier te volgen.
 
 Ik heb ze geblokkeerd!
 
-☝ Check de URL-balk bekijken om te zien wie je probeert te volgen wanneer je een nieuwe site bezoekt.</string>
+☝️ Je kunt de URL-balk bekijken om te zien wie je probeert te volgen wanneer je een nieuwe site bezoekt.️</string>
+		</dict>
+	</dict>
+	<key>contextual.onboarding.browsing.multiple.trackers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1#@count@</string>
+		<key>count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>*%2$@, %3$@* en nog *1 andere* probeerden je hier te volgen. Ik heb ze geblokkeerd!
+
+☝️ Tik op het schild voor meer informatie.</string>
+			<key>other</key>
+			<string>*%2$@, %3$@* en *%1$d anderen* probeerden je hier te volgen. Ik heb ze geblokkeerd!
+
+☝️ Tik op het schild voor meer informatie. </string>
 		</dict>
 	</dict>
 	<key>privacy.protection.major.trackers.found</key>
@@ -104,6 +140,108 @@ Ik heb ze geblokkeerd!
 			<string>%1$d privétabblad</string>
 			<key>other</key>
 			<string>%1$d privétabbladen</string>
+		</dict>
+	</dict>
+	<key>autofill.number.of.passwords</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d wachtwoord</string>
+			<key>other</key>
+			<string>%1$d wachtwoorden</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.title</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>one</key>
+			<string>Weet je zeker dat je %1$d wachtwoord wilt verwijderen?</string>
+			<key>other</key>
+			<string>Weet je zeker dat je %1$d wachtwoorden wilt verwijderen?</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Je wachtwoord wordt van dit apparaat verwijderd. Zorg ervoor dat je nog steeds toegang hebt tot je %2$#@accounts@.</string>
+			<key>other</key>
+			<string>Je wachtwoorden worden van dit apparaat verwijderd. Zorg ervoor dat je nog steeds toegang hebt tot je %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>account</string>
+			<key>other</key>
+			<string>accounts</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.sync.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Je wachtwoord wordt verwijderd van alle gesynchroniseerde apparaten. Zorg ervoor dat je nog steeds toegang hebt tot je %2$#@accounts@.</string>
+			<key>other</key>
+			<string>Je wachtwoorden worden verwijderd van alle gesynchroniseerde apparaten. Zorg ervoor dat je nog steeds toegang hebt tot je %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>account</string>
+			<key>other</key>
+			<string>accounts</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.completion</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d wachtwoord verwijderd</string>
+			<key>other</key>
+			<string>%1$d wachtwoorden verwijderd</string>
 		</dict>
 	</dict>
 </dict>

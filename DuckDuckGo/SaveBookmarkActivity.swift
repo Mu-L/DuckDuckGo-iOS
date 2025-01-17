@@ -19,16 +19,20 @@
 
 import UIKit
 import Core
+import Bookmarks
 
 class SaveBookmarkActivity: UIActivity {
 
-    private lazy var bookmarksManager: BookmarksManager = BookmarksManager()
-    private var bookmark: Link?
+    private let viewModel: MenuBookmarksViewModel
+    private var bookmarkURL: URL?
     
-    private weak var controller: UIViewController?
+    private weak var controller: TabViewController?
     private var isFavorite: Bool
+    
+    private var activityViewControllerAccessed = false
 
-    init(controller: UIViewController, isFavorite: Bool = false) {
+    init(controller: TabViewController, isFavorite: Bool = false, viewModel: MenuBookmarksViewModel) {
+        self.viewModel = viewModel
         self.controller = controller
         self.isFavorite = isFavorite
         super.init()
@@ -47,34 +51,18 @@ class SaveBookmarkActivity: UIActivity {
     }
 
     override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
-        return activityItems.contains(where: { $0 is Link })
+        return activityItems.contains(where: { $0 is URL })
     }
 
     override func prepare(withActivityItems activityItems: [Any]) {
-        bookmark = activityItems.first(where: { $0 is Link }) as? Link
+        bookmarkURL = activityItems.first(where: { $0 is URL }) as? URL
     }
 
     override var activityViewController: UIViewController? {
-        defer {
-            activityDidFinish(true)
-        }
-
-        guard let bookmark = bookmark else {
-            return nil
-        }
-
-        if bookmarksManager.contains(url: bookmark.url) {
-            ActionMessageView.present(message: UserText.webBookmarkAlreadySaved)
-            return nil
-        }
-
-        if isFavorite {
-            bookmarksManager.save(favorite: bookmark)
-            ActionMessageView.present(message: UserText.webSaveFavoriteDone)
-        } else {
-            bookmarksManager.save(bookmark: bookmark)
-            ActionMessageView.present(message: UserText.webSaveBookmarkDone)
-        }
+        guard !activityViewControllerAccessed else { return nil }
+        activityViewControllerAccessed = true
+        controller?.saveAsBookmark(favorite: isFavorite, viewModel: viewModel)
+        activityDidFinish(true)
         return nil
     }
 }

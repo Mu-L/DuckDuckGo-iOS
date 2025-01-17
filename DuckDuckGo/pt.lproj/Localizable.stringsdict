@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bookmark.deleteFolderAlert.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Tem a certeza de que quer eliminar esta pasta e %1$d item?</string>
+			<key>other</key>
+			<string>Tem a certeza de que quer eliminar esta pasta e %1$d itens?</string>
+		</dict>
+	</dict>
 	<key>dax.onboarding.browsing.multiple.trackers</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,17 +29,37 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>*%2$@, %3$@* e *mais 1* estavam a tentar rastrear aqui.
+			<string>*%2$@, %3$@* e *1 outro* estavam a tentar rastreá-lo aqui.
 
-Eu bloqueei-os!
+Bloqueei-os!
 
-☝️ Pode verificar a barra de URL para ver quem está a tentar rastrear quando visita um novo site.</string>
+☝️ Pode consultar a barra de endereços para ver quem está a tentar localizá-lo quando visita um novo site.</string>
 			<key>other</key>
-			<string>*%2$@, %3$@* e *mais %1$d* estavam a tentar rastrear aqui.
+			<string>*%2$@, %3$@* e *%1$d outros* estavam a tentar rastreá-lo aqui.
 
-Eu bloqueei-os!
+Bloqueei-os!
 
-☝️ Pode verificar a barra de URL para ver quem está a tentar rastreá-lo quando visita um novo site.</string>
+☝️ Pode consultar a barra de endereços para ver quem está a tentar localizá-lo quando visita um novo site.</string>
+		</dict>
+	</dict>
+	<key>contextual.onboarding.browsing.multiple.trackers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1#@count@</string>
+		<key>count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>*%2$@, %3$@* e *mais 1* tentaram rastrear-te aqui. Bloqueei-os!
+
+☝️ Toca no escudo para obter mais informações.</string>
+			<key>other</key>
+			<string>*%2$@, %3$@* e *mais %1$d* tentaram rastrear-te aqui. Bloqueei-os!
+
+☝️ Toca no escudo para obter mais informações.</string>
 		</dict>
 	</dict>
 	<key>privacy.protection.major.trackers.found</key>
@@ -104,6 +140,108 @@ Eu bloqueei-os!
 			<string>%1$d Separador privado</string>
 			<key>other</key>
 			<string>%1$d Separadores privados</string>
+		</dict>
+	</dict>
+	<key>autofill.number.of.passwords</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d palavra-passe</string>
+			<key>other</key>
+			<string>%1$d palavras-passe</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.title</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Tens a certeza de que pretendes eliminar %1$d palavra-passe?</string>
+			<key>other</key>
+			<string>Tens a certeza de que pretendes eliminar %1$d palavras-passe?</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>A tua palavra-passe será eliminada deste dispositivo. Confirma que ainda tens uma forma de aceder à %2$#@accounts@.</string>
+			<key>other</key>
+			<string>As tuas palavras-passe serão eliminadas deste dispositivo. Confirma que ainda tens uma forma de aceder às %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>account</string>
+			<key>other</key>
+			<string>contas</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.sync.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>A tua palavra-passe será eliminada de todos os dispositivos sincronizados. Confirma que ainda tens uma forma de aceder à %2$#@accounts@.</string>
+			<key>other</key>
+			<string>As tuas palavras-passe serão eliminadas de todos os dispositivos sincronizados. Confirma que ainda tens uma forma de aceder às %2$#@accounts@.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>account</string>
+			<key>other</key>
+			<string>contas</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.completion</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d palavra-passe eliminada</string>
+			<key>other</key>
+			<string>%1$d palavras-passe eliminadas</string>
 		</dict>
 	</dict>
 </dict>

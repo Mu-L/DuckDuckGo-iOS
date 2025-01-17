@@ -18,18 +18,16 @@
 //
 
 import WebKit
-import BrowserServicesKit
+import UserScript
 
 public protocol FaviconUserScriptDelegate: NSObjectProtocol {
-    
-    func faviconUserScriptDidRequestCurrentHost(_ script: FaviconUserScript) -> String?
-    
-    func faviconUserScript(_ script: FaviconUserScript, didFinishLoadingFavicon image: UIImage)
-    
+
+    func faviconUserScript(_ script: FaviconUserScript, didRequestUpdateFaviconForHost host: String, withUrl url: URL?)
+
 }
 
 public class FaviconUserScript: NSObject, UserScript {
-    
+
     public var source: String = """
 
 (function() {
@@ -37,7 +35,7 @@ public class FaviconUserScript: NSObject, UserScript {
     function getFavicon() {
         return findFavicons()[0];
     };
-    
+
     function findFavicons() {
 
          var selectors = [
@@ -52,7 +50,7 @@ public class FaviconUserScript: NSObject, UserScript {
             var icons = document.head.querySelectorAll(selector);
             for (var i = 0; i < icons.length; i++) {
                 var href = icons[i].href;
-                
+
                 // Exclude SVGs since we can't handle them
                 if (href.indexOf("svg") >= 0 || (icons[i].type && icons[i].type.indexOf("svg") >= 0)) {
                     continue;
@@ -74,15 +72,15 @@ public class FaviconUserScript: NSObject, UserScript {
 }) ();
 
 """
-    
+
     public var injectionTime: WKUserScriptInjectionTime = .atDocumentEnd
-    
+
     public var forMainFrameOnly: Bool = true
-    
+
     public var messageNames: [String] = ["faviconFound"]
-    
+
     public weak var delegate: FaviconUserScriptDelegate?
-    
+
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
 
         let url: URL?
@@ -92,14 +90,8 @@ public class FaviconUserScript: NSObject, UserScript {
             url = nil
         }
 
-        // Always call this even if URL was nil, so that tabs cache is populated
-        let host = delegate?.faviconUserScriptDidRequestCurrentHost(self)
-        Favicons.shared.loadFavicon(forDomain: host, fromURL: url, intoCache: .tabs) { [weak self] image in
-            guard let self = self, let image = image else { return }
-            Favicons.shared.replaceBookmarksFavicon(forDomain: host, withImage: image)
-            self.delegate?.faviconUserScript(self, didFinishLoadingFavicon: image)
-        }
-
+        let host = message.messageHost
+        delegate?.faviconUserScript(self, didRequestUpdateFaviconForHost: host, withUrl: url)
     }
-        
+
 }

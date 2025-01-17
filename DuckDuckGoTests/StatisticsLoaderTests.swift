@@ -21,23 +21,131 @@ import XCTest
 import OHHTTPStubs
 import OHHTTPStubsSwift
 @testable import Core
+@testable import BrowserServicesKit
 
 class StatisticsLoaderTests: XCTestCase {
 
-    let appUrls = AppUrls()
     var mockStatisticsStore: StatisticsStore!
+    var mockUsageSegmentation: MockUsageSegmentation!
+    var mockPixelFiring: PixelFiringMock.Type!
     var testee: StatisticsLoader!
+    private var fireAppRetentionExperimentPixelsCalled = false
+    private var fireSearchExperimentPixelsCalled = false
 
-    override func setUp() {
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+
+        PixelFiringMock.tearDown()
+
+        mockPixelFiring = PixelFiringMock.self
         mockStatisticsStore = MockStatisticsStore()
-        testee = StatisticsLoader(statisticsStore: mockStatisticsStore)
+        mockUsageSegmentation = MockUsageSegmentation()
+        testee = StatisticsLoader(statisticsStore: mockStatisticsStore,
+                                  usageSegmentation: mockUsageSegmentation,
+                                  fireAppRetentionExperimentPixels: { self.fireAppRetentionExperimentPixelsCalled = true },
+                                  fireSearchExperimentPixels: { self.fireSearchExperimentPixelsCalled = true },
+                                  pixelFiring: mockPixelFiring)
     }
 
     override func tearDown() {
         HTTPStubs.removeAllStubs()
+        PixelFiringMock.tearDown()
         super.tearDown()
     }
 
+    func testWhenAppRefreshHappensButNotInstalledAndReturningUser_ThenRetentionSegmentationNotified() {
+        mockStatisticsStore.variant = "ru"
+        mockStatisticsStore.atb = "v101-1"
+        
+        loadSuccessfulExiStub()
+
+        let testExpectation = expectation(description: "refresh complete")
+        testee.refreshAppRetentionAtb {
+            testExpectation.fulfill()
+        }
+        wait(for: [testExpectation], timeout: 5.0)
+        XCTAssertTrue(mockUsageSegmentation.atbs[0].installAtb.isReturningUser)
+        XCTAssertTrue(fireAppRetentionExperimentPixelsCalled)
+    }
+
+    func testWhenReturnUser_ThenSegmentationIncludesCorrectVariant() {
+        mockStatisticsStore.variant = "ru"
+        mockStatisticsStore.atb = "v101-1"
+        mockStatisticsStore.searchRetentionAtb = "v101-2"
+        loadSuccessfulAtbStub()
+
+        let testExpectation = expectation(description: "refresh complete")
+        testee.refreshSearchRetentionAtb {
+            testExpectation.fulfill()
+        }
+        wait(for: [testExpectation], timeout: 5.0)
+        XCTAssertTrue(mockUsageSegmentation.atbs[0].installAtb.isReturningUser)
+        XCTAssertTrue(fireSearchExperimentPixelsCalled)
+    }
+
+    func testWhenSearchRefreshHappensButNotInstalled_ThenRetentionSegmentationNotified() {
+        loadSuccessfulExiStub()
+
+        let testExpectation = expectation(description: "refresh complete")
+        testee.refreshSearchRetentionAtb {
+            testExpectation.fulfill()
+        }
+        wait(for: [testExpectation], timeout: 5.0)
+        XCTAssertFalse(mockUsageSegmentation.atbs.isEmpty)
+        XCTAssertTrue(fireSearchExperimentPixelsCalled)
+    }
+
+    func testWhenAppRefreshHappensButNotInstalled_ThenRetentionSegmentationNotified() {
+        loadSuccessfulExiStub()
+
+        let testExpectation = expectation(description: "refresh complete")
+        testee.refreshAppRetentionAtb {
+            testExpectation.fulfill()
+        }
+        wait(for: [testExpectation], timeout: 5.0)
+        XCTAssertFalse(mockUsageSegmentation.atbs.isEmpty)
+        XCTAssertTrue(fireAppRetentionExperimentPixelsCalled)
+    }
+
+    func testWhenStatisticsInstalled_ThenRetentionSegmentationNotNotified() {
+        loadSuccessfulExiStub()
+
+        let testExpectation = expectation(description: "install complete")
+        testee.load {
+            testExpectation.fulfill()
+        }
+        wait(for: [testExpectation], timeout: 5.0)
+        XCTAssertTrue(mockUsageSegmentation.atbs.isEmpty)
+    }
+
+    func testWhenAppRefreshHappens_ThenRetentionSegmentationNotified() {
+        mockStatisticsStore.atb = "atb"
+        mockStatisticsStore.appRetentionAtb = "retentionatb"
+        loadSuccessfulAtbStub()
+
+        let testExpectation = expectation(description: "refresh complete")
+        testee.refreshAppRetentionAtb {
+            testExpectation.fulfill()
+        }
+        wait(for: [testExpectation], timeout: 5.0)
+        XCTAssertFalse(mockUsageSegmentation.atbs.isEmpty)
+        XCTAssertTrue(fireAppRetentionExperimentPixelsCalled)
+    }
+
+    func testWhenSearchRetentionRefreshHappens_ThenRetentionSegmentationNotified() {
+        mockStatisticsStore.atb = "atb"
+        mockStatisticsStore.searchRetentionAtb = "retentionatb"
+        loadSuccessfulAtbStub()
+
+        let testExpectation = expectation(description: "refresh complete")
+        testee.refreshSearchRetentionAtb {
+            testExpectation.fulfill()
+        }
+        wait(for: [testExpectation], timeout: 5.0)
+        XCTAssertFalse(mockUsageSegmentation.atbs.isEmpty)
+        XCTAssertTrue(self.fireSearchExperimentPixelsCalled)
+    }
+    
     func testWhenSearchRefreshHasSuccessfulUpdateAtbRequestThenSearchRetentionAtbUpdated() {
 
         mockStatisticsStore.atb = "atb"
@@ -51,7 +159,8 @@ class StatisticsLoaderTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertTrue(self.fireSearchExperimentPixelsCalled)
     }
 
     func testWhenAppRefreshHasSuccessfulUpdateAtbRequestThenAppRetentionAtbUpdated() {
@@ -67,7 +176,8 @@ class StatisticsLoaderTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertTrue(self.fireAppRetentionExperimentPixelsCalled)
     }
 
     func testWhenLoadHasSuccessfulAtbAndExtiRequestsThenStoreUpdatedWithVariant() {
@@ -82,7 +192,7 @@ class StatisticsLoaderTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     func testWhenLoadHasUnsuccessfulAtbThenStoreNotUpdated() {
@@ -97,7 +207,7 @@ class StatisticsLoaderTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     func testWhenLoadHasUnsuccessfulExtiThenStoreNotUpdated() {
@@ -112,7 +222,7 @@ class StatisticsLoaderTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     func testWhenSearchRefreshHasSuccessfulAtbRequestThenSearchRetentionAtbUpdated() {
@@ -128,7 +238,7 @@ class StatisticsLoaderTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testWhenAppRefreshHasSuccessfulAtbRequestThenAppRetentionAtbUpdated() {
@@ -144,7 +254,7 @@ class StatisticsLoaderTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     func testWhenSearchRefreshHasUnsuccessfulAtbRequestThenSearchRetentionAtbNotUpdated() {
@@ -159,7 +269,7 @@ class StatisticsLoaderTests: XCTestCase {
             expect.fulfill()
         }
 
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testWhenAppRefreshHasUnsuccessfulAtbRequestThenSearchRetentionAtbNotUpdated() {
@@ -174,39 +284,52 @@ class StatisticsLoaderTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+
+    func testWhenInstallStatisticsRequestedThenInstallPixelIsFired() {
+        loadSuccessfulExiStub()
+
+        let testExpectation = expectation(description: "refresh complete")
+        testee.refreshAppRetentionAtb {
+            Thread.sleep(forTimeInterval: .seconds(0.1))
+            testExpectation.fulfill()
+        }
+
+        wait(for: [testExpectation], timeout: 5.0)
+        XCTAssertEqual(mockPixelFiring.lastPixelName, Pixel.Event.appInstall.name)
     }
 
     func loadSuccessfulAtbStub() {
-        stub(condition: isHost(appUrls.initialAtb.host!)) { _ in
+        stub(condition: isHost(URL.atb.host!)) { _ in
             let path = OHPathForFile("MockFiles/atb.json", type(of: self))!
             return fixture(filePath: path, status: 200, headers: nil)
         }
     }
 
     func loadSuccessfulUpdateAtbStub() {
-        stub(condition: isHost(appUrls.initialAtb.host!)) { _ in
+        stub(condition: isHost(URL.atb.host!)) { _ in
             let path = OHPathForFile("MockFiles/atb-with-update.json", type(of: self))!
             return fixture(filePath: path, status: 200, headers: nil)
         }
     }
 
     func loadUnsuccessfulAtbStub() {
-        stub(condition: isHost(appUrls.initialAtb.host!)) { _ in
+        stub(condition: isHost(URL.atb.host!)) { _ in
             let path = OHPathForFile("MockFiles/invalid.json", type(of: self))!
             return fixture(filePath: path, status: 400, headers: nil)
         }
     }
 
     func loadSuccessfulExiStub() {
-        stub(condition: isPath(appUrls.exti(forAtb: "").path)) { _ -> HTTPStubsResponse in
+        stub(condition: isPath(URL.makeExtiURL(atb: "").path)) { _ -> HTTPStubsResponse in
             let path = OHPathForFile("MockFiles/empty", type(of: self))!
             return fixture(filePath: path, status: 200, headers: nil)
         }
     }
 
     func loadUnsuccessfulExiStub() {
-        stub(condition: isPath(appUrls.exti(forAtb: "").path)) { _ -> HTTPStubsResponse in
+        stub(condition: isPath(URL.makeExtiURL(atb: "").path)) { _ -> HTTPStubsResponse in
             let path = OHPathForFile("MockFiles/empty", type(of: self))!
             return fixture(filePath: path, status: 400, headers: nil)
         }

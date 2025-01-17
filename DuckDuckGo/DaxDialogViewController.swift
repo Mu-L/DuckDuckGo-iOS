@@ -42,7 +42,7 @@ class DaxDialogViewController: UIViewController {
             initCTA()
         }
     }
-    
+
     func calculateHeight() -> CGFloat {
         guard let text = message ?? cta, !text.isEmpty else { return 370.0 }
         
@@ -59,13 +59,8 @@ class DaxDialogViewController: UIViewController {
         let bottomMargin: CGFloat = 24.0
         return iconHeight + topMargin + size.height + buttonHeight + bottomMargin
     }
-    
+
     var onTapCta: (() -> Void)?
-    var theme: Theme? {
-        didSet {
-            applyTheme(theme ?? ThemeManager.shared.currentTheme)
-        }
-    }
     
     private var position: Int = 0
     private var chars = [Character]()
@@ -79,8 +74,8 @@ class DaxDialogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        applyTheme(theme ?? ThemeManager.shared.currentTheme)
-        
+        decorate()
+
         initLabel()
         initCTA()
         
@@ -150,7 +145,7 @@ class DaxDialogViewController: UIViewController {
     }
     
     private func updateMessage() {
-        let theme = self.theme ?? ThemeManager.shared.currentTheme
+        let theme = ThemeManager.shared.currentTheme
         
         guard let message = message else { return }
         let baseText = attributedString(from: String(Array(message)[0 ..< position]), color: theme.daxDialogTextColor)
@@ -175,16 +170,32 @@ class DaxDialogViewController: UIViewController {
     private func attributedString(from string: String, color: UIColor) -> NSAttributedString {
         return string.attributedStringFromMarkdown(color: color, fontSize: isSmall ? 16 : 18)
     }
-     
 }
 
-extension DaxDialogViewController: Themable {
+extension DaxDialogViewController {
 
-    func decorate(with theme: Theme) {
-        let themeToUse = self.theme ?? theme
-        textArea.backgroundColor = themeToUse.daxDialogBackgroundColor
-        pointer.backgroundColor = themeToUse.daxDialogBackgroundColor
-        finish() // skip animation if user changes theme, this forces update
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
+        textArea.backgroundColor = theme.daxDialogBackgroundColor
+        pointer.backgroundColor = theme.daxDialogBackgroundColor
     }
-    
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            finish()
+        }
+    }
+}
+
+extension DaxDialogViewController {
+    static func loadFromStoryboard() -> DaxDialogViewController {
+        let storyboard = UIStoryboard(name: "DaxOnboarding", bundle: Bundle.main)
+        guard let controller = storyboard.instantiateViewController(identifier: "DaxDialog") as? DaxDialogViewController else {
+            fatalError("Failed to instantiate DaxDialogViewController from storyboard")
+        }
+
+        return controller
+    }
 }

@@ -28,7 +28,7 @@ protocol TabViewCellDelegate: AnyObject {
     
 }
 
-class TabViewCell: UICollectionViewCell, Themable {
+class TabViewCell: UICollectionViewCell {
     
     struct Constants {
         static let swipeToDeleteAlpha: CGFloat = 0.5
@@ -123,12 +123,13 @@ class TabViewCell: UICollectionViewCell, Themable {
     }
 
     private func startRemoveAnimation() {
+        self.isDeleting = true
+        Pixel.fire(pixel: .tabSwitcherSwipeCloseTab)
+        self.deleteTab()
         UIView.animate(withDuration: 0.2, animations: {
             self.transform = CGAffineTransform.identity.translatedBy(x: -self.frame.width, y: 0)
         }, completion: { _ in
             self.isHidden = true
-            self.isDeleting = true
-            self.deleteTab()
         })
     }
 
@@ -142,12 +143,22 @@ class TabViewCell: UICollectionViewCell, Themable {
                 preview: UIImage?,
                 reorderRecognizer: UIGestureRecognizer?) {}
     
-    @IBAction func deleteTab() {
+    func closeTab() {
         guard let tab = tab else { return }
+        guard isNotReordering(with: collectionReorderRecognizer) else { return }
         self.delegate?.deleteTab(tab: tab)
     }
-    
-    func decorate(with theme: Theme) {}
+
+    @IBAction func deleteTab() {
+        Pixel.fire(pixel: .tabSwitcherClickCloseTab)
+        closeTab()
+    }
+
+    private func isNotReordering(with gestureRecognizer: UIGestureRecognizer?) -> Bool {
+        guard let gestureRecognizer = gestureRecognizer else { return true }
+        let inactiveStates: [UIGestureRecognizer.State] = [.possible, .failed, .cancelled, .ended]
+        return inactiveStates.contains(gestureRecognizer.state)
+    }
 }
 
 extension TabViewCell: UIGestureRecognizerDelegate {

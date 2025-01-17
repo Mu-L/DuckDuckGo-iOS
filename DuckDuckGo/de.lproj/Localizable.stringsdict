@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bookmark.deleteFolderAlert.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Möchtest du diesen Ordner mit %1$d Element wirklich löschen?</string>
+			<key>other</key>
+			<string>Möchtest du diesen Ordner mit %1$d Elementen wirklich löschen?</string>
+		</dict>
+	</dict>
 	<key>dax.onboarding.browsing.multiple.trackers</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,17 +29,37 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>*%2$@, %3$@* und * 1 anderes Tracker-Netzwerk* haben versucht, dich hier zu tracken.
+			<string>*%2$@, %3$@* und *1 weiteres Tracker-Netzwerk* haben versucht, dich hier zu tracken. 
 
 Ich habe sie blockiert!
 
- ☝️Du kannst in der URL-Leiste überprüfen, wer versucht, dich zu tracken, wenn du eine neue Website besuchst.</string>
+ ☝️Du kannst in der Adressleiste sehen, wer dich beim Besuch einer neuen Website tracken will.</string>
 			<key>other</key>
-			<string>*%2$@, %3$@* und *%1$d andere Tracker-Netzwerke* haben versucht, dich hier zu tracken.
+			<string>*%2$@, %3$@* and *%1$d weitere Tracker-Netzwerke* haben versucht, dich hier zu tracken. 
 
 Ich habe sie blockiert!
 
- ☝️Du kannst in der URL-Leiste überprüfen, wer versucht, dich zu tracken, wenn du eine neue Website besuchst.</string>
+ ☝️Du kannst in der Adressleiste sehen, wer dich beim Besuch einer neuen Website tracken will.</string>
+		</dict>
+	</dict>
+	<key>contextual.onboarding.browsing.multiple.trackers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1#@count@</string>
+		<key>count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>*%2$@, %3$@* und *1 weiteres* haben versucht, dich hier zu tracken. Ich hab sie blockiert!
+
+☝️ Tippe auf das Schild, um weitere Informationen zu erhalten.</string>
+			<key>other</key>
+			<string>*%2$@, %3$@* und *%1$d weitere* haben versucht, dich hier zu tracken. Ich hab sie blockiert!
+
+☝️ Tippe auf das Schild, um weitere Informationen zu erhalten.</string>
 		</dict>
 	</dict>
 	<key>privacy.protection.major.trackers.found</key>
@@ -104,6 +140,108 @@ Ich habe sie blockiert!
 			<string>%1$d privater Tab</string>
 			<key>other</key>
 			<string>%1$d private Tabs</string>
+		</dict>
+	</dict>
+	<key>autofill.number.of.passwords</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d Passwort</string>
+			<key>other</key>
+			<string>%1$d Passwörter</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.title</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Möchtest du dieses %1$d Passwort wirklich löschen?</string>
+			<key>other</key>
+			<string>Möchtest du diese %1$d Passwörter wirklich löschen?</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Dein Passwort wird von diesem Gerät gelöscht. Stelle sicher, dass du immer noch eine Möglichkeit hast, auf dein %2$#@accounts@ zuzugreifen.</string>
+			<key>other</key>
+			<string>Deine Passwörter werden von diesem Gerät gelöscht. Stelle sicher, dass du immer noch eine Möglichkeit hast, auf deine %2$#@accounts@ zuzugreifen.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Konto</string>
+			<key>other</key>
+			<string>Konten</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.sync.confirmation.body</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Dein Passwort wird von allen synchronisierten Geräten gelöscht. Vergewissere dich, dass du weiterhin eine Möglichkeit hast, auf deine %2$#@accounts@ zuzugreifen.</string>
+			<key>other</key>
+			<string>Deine Passwörter werden von allen synchronisierten Geräten gelöscht. Vergewissere dich, dass du weiterhin eine Möglichkeit hast, auf deine %2$#@accounts@ zuzugreifen.</string>
+		</dict>
+		<key>accounts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Konto</string>
+			<key>other</key>
+			<string>Konten</string>
+		</dict>
+	</dict>
+	<key>autofill.delete.all.passwords.completion</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@passwords@</string>
+		<key>passwords</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%1$d Passwort gelöscht</string>
+			<key>other</key>
+			<string>%1$d Passwörter gelöscht</string>
 		</dict>
 	</dict>
 </dict>

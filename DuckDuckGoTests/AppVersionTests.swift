@@ -19,6 +19,7 @@
 
 import XCTest
 @testable import Core
+@testable import BrowserServicesKit
 
 class AppVersionTests: XCTestCase {
 
@@ -33,6 +34,8 @@ class AppVersionTests: XCTestCase {
     private var testee: AppVersion!
 
     override func setUp() {
+        super.setUp()
+        
         mockBundle = MockBundle()
         testee = AppVersion(bundle: mockBundle)
     }

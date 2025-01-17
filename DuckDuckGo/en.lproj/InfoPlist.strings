@@ -14,11 +14,14 @@
 "NSLocationWhenInUseUsageDescription" = "Allows you to share your location";
 
 /* Privacy - Microphone Usage Description */
-"NSMicrophoneUsageDescription" = "Allows you to share recordings";
+"NSMicrophoneUsageDescription" = "This is required to use voice features. DuckDuckGo never records what you say.";
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "Allows you to save images to your device";
 
 /* (No Comment) */
 "Paste from clipboard" = "Paste from clipboard";
+
+/* (No Comment) */
+"Search Passwords" = "Search Passwords";
 

@@ -1,5 +1,44 @@
-/* No comment provided by engineer. */
-"Label" = "Címke";
+/* Description shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.description" = "Új privát Duck-cím azonnali létrehozása.";
+
+/* Title shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.title" = "E-mail védelem";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.favorites.description" = "Kedvenc webhelyek gyors megnyitása egyetlen érintéssel.";
+
+/* Title shown to the user when adding the favorites lock screen widget */
+"lock.screen.widget.favorites.title" = "Kedvencek";
+
+/* Description shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.description" = "Böngészési előzmények azonnali törlése, és új privát DuckDuckGo-keresés indítása.";
+
+/* Title shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.title" = "Tűz gomb";
+
+/* Description shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.description" = "Gyorsan kereshetsz a DuckDuckGo mentett jelszavai között.";
+
+/* Title shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.title" = "Jelszavak keresése";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.description" = "Privát DuckDuckGo-keresés azonnali indítása.";
+
+/* Title shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.title" = "privát keresés";
+
+/* Description shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.description" = "Új privát hangalapú DuckDuckGo-keresés azonnali indítása.";
+
+/* Title shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.title" = "Beszédhangalapú keresés";
+
+/* Description of search passwords widget in widget gallery */
+"widget.gallery.passwords.description" = "Gyorsan kereshetsz a DuckDuckGo mentett jelszavai között.";
+
+/* Display name for search passwords widget in widget gallery */
+"widget.gallery.passwords.display.name" = "Jelszavak keresése";
 
 /* Description of search and favorites widget in widget gallery */
 "widget.gallery.search.and.favorites.description" = "Látogasd meg a kedvenc weboldalaidat és keress rajtuk privát módon, mindössze egyetlen koppintással.";
@@ -13,12 +52,54 @@
 /* Display name for search only widget in widget gallery */
 "widget.gallery.search.display.name" = "Keresés";
 
+/* Description of VPN widget in widget gallery */
+"widget.gallery.vpn.description" = "Tekintsd meg, és kezeld a VPN-kapcsolatod. Privacy Pro-előfizetés szükséges.";
+
+/* Display name for VPN widget in widget gallery */
+"widget.gallery.vpn.display.name" = "VPN";
+
 /* CTA shown in the favorites widget empty state. */
 "widget.no.favorites.cta" = "Kedvencek hozzáadása";
 
 /* Message shown in the favorites widget empty state. */
 "widget.no.favorites.message" = "Gyorsan látogass el a kedvenc webhelyeidre.";
 
+/* Text in passwords widget */
+"widget.passwords" = "Jelszavak keresése";
+
 /* Placeholder text in search field on the search and favorites widget */
 "widget.search.duckduckgo" = "DuckDuckGo keresés";
+
+/* VPN connect button text */
+"widget.vpn.button.connect" = "Csatlakozás";
+
+/* VPN disconnect button text */
+"widget.vpn.button.disconnect" = "Leválasztás";
+
+/* Label for the snooze end date, e.g. 'Until 9:51 AM' */
+"widget.vpn.label.snoozing-until" = "%@-ig";
+
+/* VPN Live Activity dismiss button text */
+"widget.vpn.live-activity.button.dismiss" = "Elutasítás";
+
+/* VPN Live Activity wake up button text */
+"widget.vpn.live-activity.button.wake-up" = "Ébredj fel";
+
+/* VPN Live Activity active label text */
+"widget.vpn.live-activity.label.active" = "VPN csatlakoztatva";
+
+/* VPN Live Activity snoozing label text */
+"widget.vpn.live-activity.label.snoozing" = "VPN szüneteltetése";
+
+/* Message describing VPN connected status */
+"widget.vpn.status.connected" = "VPN csatlakoztatva";
+
+/* Message describing VPN disconnected status */
+"widget.vpn.status.disconnected" = "VPN kikapcsolva";
+
+/* Message describing VPN snoozing status */
+"widget.vpn.status.snoozed" = "A VPN szüneteltetve van";
+
+/* Subtitle describing VPN disconnected status */
+"widget.vpn.subtitle.disconnected" = "Nincs csatlakoztatva";
 

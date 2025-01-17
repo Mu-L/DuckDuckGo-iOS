@@ -20,6 +20,7 @@
 import UIKit
 import MessageUI
 import Core
+import SwiftUI
 
 class AutoClearSettingsViewController: UITableViewController {
     
@@ -32,8 +33,18 @@ class AutoClearSettingsViewController: UITableViewController {
     @IBOutlet weak var clearDataToggle: UISwitch!
     @IBOutlet var labels: [UILabel]!
     
-    private lazy var appSettings = AppDependencyProvider.shared.appSettings
+    private var appSettings: AppSettings
     private var clearDataSettings: AutoClearSettingsModel?
+
+    init?(appSettings: AppSettings, coder: NSCoder) {
+        self.appSettings = appSettings
+        super.init(coder: coder)
+    }
+
+    @available(*, unavailable, renamed: "init(appSettings:coder:)")
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +52,15 @@ class AutoClearSettingsViewController: UITableViewController {
         clearDataSettings = loadClearDataSettings()
         configureClearDataToggle()
         tableView.reloadData()
-        
-        applyTheme(ThemeManager.shared.currentTheme)
+
+        decorate()
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Pixel.fire(pixel: .settingsDataClearingClearDataOpen)
+    }
+
     private func loadClearDataSettings() -> AutoClearSettingsModel? {
         return AutoClearSettingsModel(settings: appSettings)
     }
@@ -55,7 +71,10 @@ class AutoClearSettingsViewController: UITableViewController {
     
     override func willMove(toParent parent: UIViewController?) {
         guard parent == nil else { return }
-        
+        storeSettingsIfChanged()
+    }
+    
+    private func storeSettingsIfChanged() {
         let oldSettings = loadClearDataSettings()
         if oldSettings != clearDataSettings {
             store()
@@ -102,6 +121,8 @@ class AutoClearSettingsViewController: UITableViewController {
         } else if indexPath.section == Sections.timing.rawValue {
             clearDataSettings?.timing = AutoClearSettingsModel.Timing(rawValue: indexPath.row) ?? .termination
         }
+        
+        storeSettingsIfChanged()
         tableView.reloadData()
     }
     
@@ -109,7 +130,6 @@ class AutoClearSettingsViewController: UITableViewController {
         
         let theme = ThemeManager.shared.currentTheme
         cell.backgroundColor = theme.tableCellBackgroundColor
-        cell.setHighlightedStateBackgroundColor(theme.tableCellHighlightedBackgroundColor)
         
         // Checkmark color
         cell.tintColor = theme.buttonTintColor
@@ -137,6 +157,8 @@ class AutoClearSettingsViewController: UITableViewController {
     }
     
     @IBAction func onClearDataToggled(_ sender: UISwitch) {
+        Pixel.fire(pixel: sender.isOn ? .settingsAutomaticallyClearDataOn : .settingsAutomaticallyClearDataOff)
+
         if sender.isOn {
             clearDataSettings = AutoClearSettingsModel()
             tableView.insertSections(.init(integersIn: Sections.action.rawValue...Sections.timing.rawValue), with: .fade)
@@ -144,12 +166,15 @@ class AutoClearSettingsViewController: UITableViewController {
             clearDataSettings = nil
             tableView.deleteSections(.init(integersIn: Sections.action.rawValue...Sections.timing.rawValue), with: .fade)
         }
+        
+        storeSettingsIfChanged()
     }
 }
 
-extension AutoClearSettingsViewController: Themable {
+extension AutoClearSettingsViewController {
     
-    func decorate(with theme: Theme) {
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
         
         for label in labels {
             label.textColor = theme.tableCellTextColor

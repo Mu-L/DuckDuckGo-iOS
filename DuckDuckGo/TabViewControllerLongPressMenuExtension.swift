@@ -21,6 +21,9 @@ import UIKit
 import Core
 import SafariServices
 import WebKit
+import History
+import Common
+import Combine
 
 extension TabViewController {
 
@@ -40,51 +43,23 @@ extension TabViewController {
         })
         items.append(UIAction(title: UserText.actionShare,
                               image: UIImage(systemName: "square.and.arrow.up")) { [weak self] _ in
-            self?.onShareAction(forUrl: url, atPoint: nil)
+            guard let webView = self?.webView else { return }
+            let shareSheetOrigin = Point(x: Int(webView.bounds.midX), y: Int(0))
+            self?.onShareAction(forUrl: url, atPoint: shareSheetOrigin)
         })
 
-        return UIMenu(title: url.host?.dropPrefix(prefix: "www.") ?? "", children: items + providedElements)
+        return UIMenu(title: url.host?.droppingWwwPrefix() ?? "", children: items + providedElements)
     }
-    
-    func buildLongPressMenu(atPoint point: Point, forUrl url: URL) -> UIAlertController {
-        let alert = UIAlertController(title: nil, message: makeMessage(from: url), preferredStyle: .actionSheet)
-        alert.overrideUserInterfaceStyle()
-        alert.addAction(title: UserText.actionNewTabForUrl) { [weak self] in
-            self?.onNewTabAction(url: url)
-        }
-        alert.addAction(title: UserText.actionNewBackgroundTabForUrl) { [weak self] in
-            self?.onBackgroundTabAction(url: url)
-        }
-        alert.addAction(title: UserText.actionOpen) { [weak self] in
-            self?.onOpenAction(forUrl: url)
-        }
-        alert.addAction(title: UserText.actionCopy) { [weak self] in
-            self?.onCopyAction(forUrl: url)
-        }
-        alert.addAction(title: UserText.actionShare) { [weak self] in
-            self?.onShareAction(forUrl: url, atPoint: point)
-        }
-        alert.addAction(title: UserText.actionCancel, style: .cancel)
-        return alert
-    }
-    
-    private func makeMessage(from url: URL) -> String {
-        if var components = URLComponents(url: url, resolvingAgainstBaseURL: true) {
-            components.query = nil
-            if let newUrl = components.url {
-                return newUrl.absoluteString
-            }
-        }
-        
-        return url.absoluteString
-    }
-    
+
     private func onNewTabAction(url: URL) {
-        delegate?.tab(self, didRequestNewTabForUrl: url, openedByPage: false)
+        delegate?.tab(self,
+                      didRequestNewTabForUrl: url,
+                      openedByPage: false,
+                      inheritingAttribution: adClickAttributionLogic.state)
     }
     
     private func onBackgroundTabAction(url: URL) {
-        delegate?.tab(self, didRequestNewBackgroundTabForUrl: url)
+        delegate?.tab(self, didRequestNewBackgroundTabForUrl: url, inheritingAttribution: adClickAttributionLogic.state)
     }
     
     private func onOpenAction(forUrl url: URL) {
@@ -127,9 +102,23 @@ extension TabViewController {
 
     fileprivate func buildOpenLinkPreview(for url: URL) -> UIViewController? {
         let tab = Tab(link: Link(title: nil, url: url))
-        let tabController = TabViewController.loadFromStoryboard(model: tab)
+        let tabController = TabViewController.loadFromStoryboard(
+            model: tab,
+            bookmarksDatabase: bookmarksDatabase,
+            historyManager: historyManager,
+            syncService: syncService,
+            duckPlayer: duckPlayer,
+            privacyProDataReporter: privacyProDataReporter,
+            contextualOnboardingPresenter: contextualOnboardingPresenter,
+            contextualOnboardingLogic: contextualOnboardingLogic,
+            onboardingPixelReporter: onboardingPixelReporter,
+            featureFlagger: featureFlagger,
+            subscriptionCookieManager: subscriptionCookieManager,
+            textZoomCoordinator: textZoomCoordinator,
+            websiteDataManager: websiteDataManager,
+            fireproofing: fireproofing)
+
         tabController.isLinkPreview = true
-        tabController.decorate(with: ThemeManager.shared.currentTheme)
         let configuration = WKWebViewConfiguration.nonPersistent()
         tabController.attachWebView(configuration: configuration, andLoadRequest: URLRequest.userInitiated(url), consumeCookies: false)
         tabController.loadViewIfNeeded()

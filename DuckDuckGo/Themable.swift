@@ -18,64 +18,31 @@
 //
 import UIKit
 
-/// Protocol representing UI element that can be decorated with Theme.
-protocol Themable {
-    /// Implement to customize based on Theme
-    func decorate(with theme: Theme)
-}
+extension UIViewController {
 
-extension Themable where Self: UIViewController {
-    
-    func decorate(with theme: Theme) {
-        decorateNavigationBar(with: theme)
-        overrideSystemTheme(with: theme)
-    }
-    
-    func decorateNavigationBar(with theme: Theme) {
+    func decorateNavigationBar(with theme: Theme = ThemeManager.shared.currentTheme) {
         navigationController?.navigationBar.barTintColor = theme.barBackgroundColor
-        navigationController?.navigationBar.backgroundColor = theme.barBackgroundColor
         navigationController?.navigationBar.tintColor = theme.navigationBarTintColor
         
         var titleAttrs = navigationController?.navigationBar.titleTextAttributes ?? [:]
         titleAttrs[NSAttributedString.Key.foregroundColor] = theme.navigationBarTitleColor
         navigationController?.navigationBar.titleTextAttributes = titleAttrs
-    }
-    
-    func overrideSystemTheme(with theme: Theme) {
-        if theme.currentImageSet == .dark {
-            overrideUserInterfaceStyle = .dark
-        } else {
-            overrideUserInterfaceStyle = .light
-        }
-    }
-}
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.shadowColor = .clear
+        appearance.backgroundColor = theme.backgroundColor
+        appearance.titleTextAttributes = titleAttrs
 
-/// This extension acts as part of a Theme-change propagation mechanism.
-///
-/// ThemeManager calls 'applyTheme(with:)' on main window's rootViewController.
-/// This call is then propagated to every child/presented ViewController. If view
-/// controller implements Themable protocol, 'decorate(with:)' method is also invoked.
-extension UIViewController {
-    
-    /// Call to propagate theme change across related controllers.
-    ///
-    /// Note: if view controller implements 'Themable' protocol, 'decorate(with:)'
-    /// method is called to customise it.
-    func applyTheme(_ theme: Theme) {
-        if let themable = self as? Themable {
-            themable.decorate(with: theme)
-        }
-        
-        decorateNestedControllers(with: theme)
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
-    private func decorateNestedControllers(with theme: Theme) {
-        for controller in children {
-            controller.applyTheme(theme)
-        }
+    func decorateToolbar(with theme: Theme = ThemeManager.shared.currentTheme) {
+        navigationController?.toolbar.barTintColor = theme.barBackgroundColor
+        navigationController?.toolbar.backgroundColor = theme.barBackgroundColor
+        navigationController?.toolbar.tintColor = theme.barTintColor
         
-        if let controller = presentedViewController {
-            controller.applyTheme(theme)
-        }
+        let appearance = navigationController?.toolbar.standardAppearance
+        navigationController?.toolbar.scrollEdgeAppearance = appearance
     }
 }

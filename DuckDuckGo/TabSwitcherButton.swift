@@ -48,7 +48,7 @@ class TabSwitcherButton: UIView {
 
     var workItem: DispatchWorkItem?
 
-    let anim = LOTAnimationView(name: "new_tab")
+    let anim = LottieAnimationView(name: "new_tab")
     let label = UILabel()
     let pointerView: UIView = UIView(frame: CGRect(x: 0,
                                                    y: 0,
@@ -73,7 +73,7 @@ class TabSwitcherButton: UIView {
     
     var hasUnread: Bool = false {
         didSet {
-            anim.animationProgress = hasUnread ? 1.0 : 0.0
+            anim.currentProgress = hasUnread ? 1.0 : 0.0
         }
     }
     
@@ -85,14 +85,13 @@ class TabSwitcherButton: UIView {
         label.isUserInteractionEnabled = false
         
         addSubview(pointerView)
-        addSubview(anim)
         addSubview(label)
-        
+        addSubview(anim)
         configureAnimationView()
-        
-        if #available(iOS 13.4, *) {
-            addInteraction(UIPointerInteraction(delegate: self))
-        }
+
+        decorate()
+
+        addInteraction(UIPointerInteraction(delegate: self))
     }
 
     override func layoutSubviews() {
@@ -110,6 +109,10 @@ class TabSwitcherButton: UIView {
         anim.isUserInteractionEnabled = false
         
         anim.center = CGPoint(x: bounds.midX, y: bounds.midY)
+        anim.layer.zPosition = -0.1
+
+        // Animation is not rendering properly when going back from background, hence the change here
+        anim.configuration = LottieConfiguration(renderingEngine: .mainThread)
     }
         
     override var tintColor: UIColor! {
@@ -195,24 +198,33 @@ class TabSwitcherButton: UIView {
     }
 }
 
-extension TabSwitcherButton: Themable {
+extension TabSwitcherButton {
     
-    func decorate(with theme: Theme) {
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
+        
         tintColor = theme.barTintColor
+        label.textColor = theme.barTintColor
 
-        switch theme.currentImageSet {
-        case .light:
-            anim.setAnimation(named: "new_tab_dark")
-        case .dark:
-            anim.setAnimation(named: "new_tab")
+        updateAnimationColor()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateAnimationColor()
         }
+    }
 
-        addSubview(anim)
-        configureAnimationView()
+    private func updateAnimationColor() {
+        switch traitCollection.userInterfaceStyle {
+        case .dark:
+            anim.animation = LottieAnimation.named("new_tab")
+        default:
+            anim.animation = LottieAnimation.named("new_tab_dark")
+        }
     }
 }
 
-@available(iOS 13.4, *)
 extension TabSwitcherButton: UIPointerInteractionDelegate {
     
     func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {

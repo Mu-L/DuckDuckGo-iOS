@@ -17,41 +17,18 @@
 //  limitations under the License.
 //
 
-import Core
+import BrowserServicesKit
 
-public class HomeMessageStorage {
+struct HomeMessageStorage {
     
-    struct Constants {
-
-        static let homeRowReminderTimeInDays = 3.0
-
+    private let variantManager: VariantManager?
+    
+    init(variantManager: VariantManager? = nil) {
+        self.variantManager = variantManager
     }
     
-    @UserDefaultsWrapper(key: .homeDefaultBrowserMessageDateDismissed, defaultValue: nil)
-    var homeDefaultBrowserMessageDateDismissed: Date?
-    
-    func homeMessagesThatShouldBeShown() -> [HomeMessageModel] {
-        var messages = [HomeMessageModel]()
-        if shouldShowDefaultBrowserMessage() {
-            messages.append(HomeMessageModel.homeMessageModel(forHomeMessage: .defaultBrowserPrompt))
-        }
-        
+    var messagesToBeShown: [HomeMessage] {
+        let messages: [HomeMessage] = []
         return messages
     }
-    
-    func hasExpiredForHomeRow() -> Bool {
-        guard let date = homeDefaultBrowserMessageDateDismissed else {
-            return false
-        }
-        let days = abs(date.timeIntervalSinceNow / 24 / 60 / 60)
-        return days > Constants.homeRowReminderTimeInDays
-    }
-    
-    private func shouldShowDefaultBrowserMessage() -> Bool {
-        if #available(iOS 14, *), homeDefaultBrowserMessageDateDismissed == nil {
-            return true
-        }
-        return false
-    }
-
 }

@@ -23,7 +23,7 @@ extension MainViewController {
     
     override var keyCommands: [UIKeyCommand]? {
         
-        let alwaysAvailable = [
+        let alwaysAvailable: [UIKeyCommand] = [
             UIKeyCommand(title: "", action: #selector(keyboardFire), input: UIKeyCommand.inputBackspace,
                          modifierFlags: [ .control, .alternate ], discoverabilityTitle: UserText.keyCommandFire)
         ]
@@ -33,7 +33,7 @@ extension MainViewController {
         }
         
         var browsingCommands = [UIKeyCommand]()
-        if homeController == nil {
+        if newTabPageViewController == nil {
             browsingCommands = [
                 UIKeyCommand(title: "", action: #selector(keyboardFind), input: "f", modifierFlags: [.command],
                              discoverabilityTitle: UserText.keyCommandFind),
@@ -71,14 +71,14 @@ extension MainViewController {
         }
         
         var arrowKeys = [UIKeyCommand]()
-        if omniBar.textField.isFirstResponder {
+        if viewCoordinator.omniBar.textField.isFirstResponder {
             arrowKeys = [
                 UIKeyCommand(title: "", action: #selector(keyboardMoveSelectionUp), input: UIKeyCommand.inputUpArrow, modifierFlags: []),
                 UIKeyCommand(title: "", action: #selector(keyboardMoveSelectionDown), input: UIKeyCommand.inputDownArrow, modifierFlags: [])
             ]
         }
-        
-        return alwaysAvailable + browsingCommands + findInPageCommands + arrowKeys + [
+
+        let other: [UIKeyCommand] = [
             UIKeyCommand(title: "", action: #selector(keyboardCloseTab), input: "w", modifierFlags: .command,
                          discoverabilityTitle: UserText.keyCommandCloseTab),
             UIKeyCommand(title: "", action: #selector(keyboardNewTab), input: "t", modifierFlags: .command,
@@ -105,10 +105,16 @@ extension MainViewController {
                          discoverabilityTitle: UserText.keyCommandNextTab),
             UIKeyCommand(title: "", action: #selector(keyboardPreviousTab), input: UIKeyCommand.inputTab, modifierFlags: [.control, .shift],
                          discoverabilityTitle: UserText.keyCommandPreviousTab),
-            
+
             // No discoverability as these should be intuitive
             UIKeyCommand(title: "", action: #selector(keyboardEscape), input: UIKeyCommand.inputEscape, modifierFlags: [])
         ]
+
+        let commands = [alwaysAvailable, browsingCommands, findInPageCommands, arrowKeys, other].flatMap { $0 }
+        commands.forEach {
+            $0.wantsPriorityOverSystemBehavior = true
+        }
+        return commands
     }
 
     @objc func keyboardMoveSelectionUp() {
@@ -134,11 +140,11 @@ extension MainViewController {
     @objc func keyboardLocation() {
         guard tabSwitcherController == nil else { return }
 
-        if let controller = homeController {
+        if let controller = newTabPageViewController {
             controller.launchNewSearch()
         } else {
             showBars()
-            omniBar.becomeFirstResponder()
+            viewCoordinator.omniBar.becomeFirstResponder()
         }
     }
 
@@ -154,7 +160,7 @@ extension MainViewController {
         guard tabSwitcherController == nil else { return }
         findInPageView.done()
         hideSuggestionTray()
-        onCancelPressed()
+        performCancel()
     }
     
     @objc func keyboardNewTab() {
@@ -180,7 +186,7 @@ extension MainViewController {
         guard let tab = currentTab else { return }
         guard let index = tabManager.model.indexOf(tab: tab.tabModel) else { return }
         let targetTabIndex = index + 1 >= tabManager.model.count ? 0 : index + 1
-        onCancelPressed()
+        performCancel()
         select(tabAt: targetTabIndex)
     }
     
@@ -190,14 +196,14 @@ extension MainViewController {
         guard let tab = currentTab else { return }
         guard let index = tabManager.model.indexOf(tab: tab.tabModel) else { return }
         let targetTabIndex = index - 1 < 0 ? tabManager.model.count - 1 : index - 1
-        onCancelPressed()
+        performCancel()
         select(tabAt: targetTabIndex)
     }
     
     @objc func keyboardShowAllTabs() {
         guard tabSwitcherController == nil else { return }
         
-        onCancelPressed()
+        performCancel()
         showTabSwitcher()
     }
     
@@ -218,13 +224,17 @@ extension MainViewController {
     }
 
     @objc func keyboardAddBookmark() {
-        currentTab?.saveAsBookmark(favorite: false)
+        saveBookmark(favorite: false)
     }
 
     @objc func keyboardAddFavorite() {
-        currentTab?.saveAsBookmark(favorite: true)
+        saveBookmark(favorite: true)
     }
     
     @objc func keyboardNoOperation() { }
-    
+
+    private func saveBookmark(favorite: Bool) {
+        currentTab?.saveAsBookmark(favorite: favorite, viewModel: menuBookmarksViewModel)
+    }
+
 }

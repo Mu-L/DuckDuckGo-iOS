@@ -1,14 +1,41 @@
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"%@ " = "%@ ";
+
 /* Buton label for Edit action */
 "action.generic.edit" = "Επεξεργασία";
+
+/* Button label for a generic show action */
+"action.generic.show" = "Εμφάνιση";
 
 /* Button label for Undo action */
 "action.generic.undo" = "Αναίρεση";
 
+/* Button label for managing favorites */
+"action.manage.favorites" = "Διαχείριση";
+
+/* Button label for OK action */
+"action.ok" = "Εντάξει";
+
+/* Title for text zoom menu item.  %d%% is replaced with percent, e.g. 56% so do not change that please. */
+"action.text-zoom-menu-item" = "Ζουμ (%d%%)";
+
+/* Text zoom menu item */
+"action.text-zoom-sheet-menu-item" = "Ζουμ";
+
+/* Title for text zoom sheet view.  %d%% is replaced with percent, e.g. 56% so do not change that please. */
+"action.text-zoom-sheet-title" = "Ζουμ κειμένου (%d%%)";
+
 /* Add action - button shown in alert */
 "action.title.add" = "Προσθήκη";
 
-/* Confirmation of Bookmark action in add to bookmark alert */
-"action.title.bookmark" = "Σελιδοδείκτης";
+/* Autofill Logins menu item opening the login list */
+"action.title.autofill.logins" = "Κωδικός πρόσβασης";
+
+/* Confirmation of Add to Bookmarks action in Add All Open Tabs to Bookmarks alert */
+"action.title.bookmark" = "Προσθήκη στους Σελιδοδείκτες";
 
 /* Button: Open bookmarks list */
 "action.title.bookmarks" = "Σελιδοδείκτες";
@@ -22,8 +49,14 @@
 /* Floating message indicating URL has been copied */
 "action.title.copy.message" = "Η διεύθυνση URL αντιγράφτηκε";
 
+/* Delete action - button shown in alert */
+"action.title.delete" = "Διαγραφή";
+
 /* Disable protection action */
 "action.title.disable.protection" = "Απενεργοποίηση Προστασίας προσωπικών δεδομένων";
+
+/* Downloads menu item opening the downlods list */
+"action.title.downloads" = "Λήψεις";
 
 /* Edit Bookmark action */
 "action.title.edit.bookmark" = "Επεξεργασία σελιδοδείκτη";
@@ -74,10 +107,10 @@
 "action.title.save" = "Αποθήκευση";
 
 /* Add to Bookmarks action */
-"action.title.save.bookmark" = "Προσθήκη σελιδοδείκτη σε αυτή τη σελίδα";
+"action.title.save.bookmark" = "Προσθήκη σελιδοδείκτη";
 
 /* Add to Favorites action */
-"action.title.save.favorite" = "Προσθήκη της σελίδας αυτής στα αγαπημένα";
+"action.title.save.favorite" = "Προσθήκη Αγαπημένου";
 
 /* Settings action */
 "action.title.settings" = "Ρυθμίσεις";
@@ -85,8 +118,77 @@
 /* Share action */
 "action.title.share" = "Κοινή χρήση";
 
+/* Settings label for bottom position for the address bar */
+"address.bar.bottom" = "Κάτω μέρος";
+
+/* Settings label for top position for the address bar */
+"address.bar.top" = "Κορυφή";
+
+/* No comment provided by engineer. */
+"addWidget.button" = "Προσθήκη γραφικού στοιχείου";
+
+/* No comment provided by engineer. */
+"addWidget.description" = "Αποκτήστε γρήγορη πρόσβαση σε μια ιδιωτική αναζήτηση και στους ιστότοπους που αγαπάτε.";
+
+/* No comment provided by engineer. */
+"addWidget.settings.firstParagraph" = "Πατήστε παρατεταμένα στην αρχική οθόνη για να εισέλθετε σε λειτουργία αναδιάταξης.";
+
+/* Replacement string is a plus button icon. */
+"addWidget.settings.secondParagraph.%@" = "Πατήστε το κουμπί συν %@.";
+
+/* No comment provided by engineer. */
+"addWidget.settings.title" = "Εύρεση και επιλογή του DuckDuckGo. Έπειτα, επιλέξτε τη μικροεφαρμογή.";
+
+/* No comment provided by engineer. */
+"addWidget.title" = "Ένα μόνο πάτημα προς τους αγαπημένους ιστότοπούς σας.";
+
 /* No comment provided by engineer. */
 "alert.message.bookmarkAll" = "Οι υπάρχοντες σελιδοδείκτες δεν θα αναπαραχθούν.";
+
+/* Description for alert shown when sync error occurs because of bad bookmarks data */
+"alert.sync-bookmarks-bad-data-error-description" = "Ορισμένοι σελιδοδείκτες δεν έχουν μορφοποιηθεί σωστά ή είναι πολύ μεγάλοι και δεν συγχρονίστηκαν.";
+
+/* Description for alert shown when sync bookmarks paused for too many items */
+"alert.sync-bookmarks-paused-description" = "Έχετε φτάσει στον μέγιστο αριθμό σελιδοδεικτών. Διαγράψτε ορισμένους σελιδοδείκτες για να συνεχίσετε τον συγχρονισμό.";
+
+/* Title for alert shown when sync bookmarks paused for too many items */
+"alert.sync-bookmarks-paused-title" = "Ο συγχρονισμός σελιδοδεικτών έχει τεθεί σε παύση";
+
+/* Description for alert shown when sync error occurs because of bad credentials data */
+"alert.sync-credentials-bad-data-error-description" = "Ορισμένοι κωδικοί πρόσβασης δεν έχουν μορφοποιηθεί σωστά ή είναι πολύ μεγάλοι και δεν συγχρονίστηκαν.";
+
+/* Description for alert shown when sync credentials paused for too many items */
+"alert.sync-credentials-paused-description" = "Έχετε φτάσει στον μέγιστο αριθμό κωδικών πρόσβασης. Διαγράψτε ορισμένους κωδικούς πρόσβασης για να συνεχίσετε τον συγχρονισμό.";
+
+/* Title for alert shown when sync credentials paused for too many items */
+"alert.sync-credentials-paused-title" = "Ο συγχρονισμός κωδικών πρόσβασης έχει τεθεί σε παύση";
+
+/* Title for sync error alert */
+"alert.sync-error" = "Σφάλμα συγχρονισμού και δημιουργίας αντιγράφων ασφαλείας";
+
+/* Sync error alert action button title, takes the user to the sync settings page. */
+"alert.sync-error-action" = "Ρυθμίσεις συγχρονισμού";
+
+/* Description for alert shown when user logged off from sync */
+"alert.sync-invalid-login-error-description" = "Ο συγχρονισμός έχει τεθεί σε παύση. Αν θέλετε να συνεχίσετε με τον συγχρονισμό της συσκευής αυτής, συνδεθείτε ξανά χρησιμοποιώντας άλλη συσκευή ή τον κωδικό ανάκτησής σας.";
+
+/* Learn more button in alert */
+"alert.sync-paused-alert-learn-more-button" = "Μάθετε περισσότερα";
+
+/* Confirmation button in alert */
+"alert.sync-paused-alert-ok-button" = "Εντάξει";
+
+/* Title for alert shown when sync paused for an error */
+"alert.sync-paused-title" = "Ο συγχρονισμός έχει τεθεί σε παύση";
+
+/* Description for alert shown when sync error occurs because of too many requests */
+"alert.sync-too-many-requests-error-description" = "Το Sync & Backup είναι προσωρινά μη διαθέσιμο.";
+
+/* Title of the warning message that tells the user that there was an error with the sync feature. */
+"alert.sync.warning.sync-error" = "Σφάλμα συγχρονισμού";
+
+/* Title of the warning message */
+"alert.sync.warning.sync-paused" = "Η λειτουργία Συγχρονισμός και δημιουργία αντιγράφων ασφαλείας είναι σε παύση";
 
 /* Question from confirmation dialog */
 "alert.title.bookmarkAll" = "Προσθήκη σελιδοδείκτη για όλες τις καρτέλες;";
@@ -102,6 +204,30 @@
 
 /* Save Favorite action */
 "alert.title.save.favorite" = "Αποθήκευση αγαπημένου";
+
+/* Description for unable to create recovery pdf error */
+"alert.unable-to-create-recovery-pdf-description" = "Αδυναμία δημιουργίας του PDF ανάκτησης.";
+
+/* Description for unable to delete data error */
+"alert.unable-to-delete-data-description" = "Δεν είναι δυνατή η διαγραφή δεδομένων στον διακομιστή.";
+
+/* Description for unable to merge two accounts error */
+"alert.unable-to-merge-two-accounts-description" = "Για να αντιστοιχίσετε τις συσκευές αυτές, απενεργοποιήστε τη λειτουργία Συγχρονισμός και δημιουργία αντιγράφων ασφαλείας στη μία συσκευή και έπειτα πατήστε «Συγχρονισμός με άλλη συσκευή» στην άλλη συσκευή.";
+
+/* Description for unable to remove device error */
+"alert.unable-to-remove-device-description" = "Δεν είναι δυνατή η κατάργηση αυτής της συσκευής από τη λειτουργία Συγχρονισμός και δημιουργία αντιγράφων ασφαλείας.";
+
+/* Description for unable to sync to server error */
+"alert.unable-to-sync-to-server-description" = "Δεν είναι δυνατή η σύνδεση με τον διακομιστή.";
+
+/* Description for unable to sync with another device error */
+"alert.unable-to-sync-with-other-device-description" = "Δεν είναι δυνατός ο συγχρονισμός με άλλη συσκευή.";
+
+/* Description for unable to turn sync off error */
+"alert.unable-to-turn-sync-off-description" = "Δεν είναι δυνατή η απενεργοποίηση της λειτουργίας Συγχρονισμός και δημιουργία αντιγράφων ασφαλείας.";
+
+/* Description for unable to update device name error */
+"alert.unable-to-update-device-name-description" = "Δεν είναι δυνατή η ενημέρωση του ονόματος της συσκευής.";
 
 /* Shown on authentication screen */
 "app.authentication.unlock" = "Ξεκλείδωμα DuckDuckGo.";
@@ -130,11 +256,468 @@
 /* No comment provided by engineer. */
 "autoclear.on" = "Ενεργό";
 
+/* Subtitle for search history items */
+"autocomplete.history.search.duckduckgo" = "Αναζήτηση DuckDuckGo";
+
+/* The message text shown in suggestions */
+"autocomplete.history.warning.message" = "Οι προτάσεις αναζήτησης περιλαμβάνουν πλέον τους ιστότοπους που επισκεφθήκατε πρόσφατα. Απενεργοποιήστε τη λειτουργία από τις Ρυθμίσεις ή καταργήστε την οποιαδήποτε στιγμή με το κουμπί 🔥 Fire Button.";
+
+/* Title for message show in suggestions */
+"autocomplete.history.warning.title" = "Ίδιο απόρρητο.\nΚαλύτερες προτάσεις αναζήτησης!";
+
+/* Switch to tab hint */
+"autocomplete.switch.to.tab" = "Αλλαγή στην Καρτέλα";
+
+/* Autoconsent for Cookie Management Setting state */
+"autoconsent.disabled" = "Απενεργοποιήθηκε";
+
+/* Autoconsent for Cookie Management Setting state */
+"autoconsent.enabled" = "Ενεργοποιήθηκε";
+
+/* No comment provided by engineer. */
+"autoconsent.info.header" = "Όταν το DuckDuckGo εντοπίζει αναδυόμενα παράθυρα συναίνεσης για cookies σε ιστότοπους που επισκέπτεστε, μπορούμε να προσπαθήσουμε να ρυθμίσουμε αυτόματα τις προτιμήσεις σας για τα cookies ώστε να ελαχιστοποιήσετε τα cookies και να μεγιστοποιήσετε το απόρρητο. Έπειτα μπορείτε να κλείσετε τα αναδυόμενα παράθυρα. Ορισμένοι ιστότοποι δεν παρέχουν επιλογή για διαχείριση των προτιμήσεων cookies, οπότε μπορούμε μόνο να αποκρύψουμε αναδυόμενα παράθυρα όπως αυτά.";
+
+/* Do not translate - stringsdict entry */
+"autofill.delete.all.passwords.completion" = "autofill.delete.all.passwords.completion";
+
+/* Do not translate - stringsdict entry */
+"autofill.delete.all.passwords.confirmation.body" = "autofill.delete.all.passwords.confirmation.body";
+
+/* Do not translate - stringsdict entry */
+"autofill.delete.all.passwords.confirmation.title" = "autofill.delete.all.passwords.confirmation.title";
+
+/* Do not translate - stringsdict entry */
+"autofill.delete.all.passwords.sync.confirmation.body" = "autofill.delete.all.passwords.sync.confirmation.body";
+
+/* Open Settings action for disabling autofill in Settings */
+"autofill.disable.prompt.action.open-settings" = "Άνοιγμα ρυθμίσεων";
+
+/* Message for informing user that they can disable autofill in Settings */
+"autofill.disable.prompt.message" = "Μπορείτε να απενεργοποιήσετε την αποθήκευση κωδικού πρόσβασης οποιαδήποτε στιγμή.";
+
+/* Text link to email protection website */
+"autofill.enable.email.protection" = "Ενεργοποίηση Email Protection";
+
+/* Accessibility title for a Hide Password button replacing displayed password with ***** */
+"autofill.hide-password" = "Απόκρυψη κωδικού πρόσβασης";
+
+/* Button label to get link to download the desktop browser */
+"autofill.import.passwords.get-browser-button" = "Αποκτήστε το πρόγραμμα περιήγησης για υπολογιστές";
+
+/* Step 1 for instructions to import passwords */
+"autofill.import.passwords.instructions.step1" = "Ανοίξτε το DuckDuckGo σε Mac ή Windows";
+
+/* Step 2 for instructions to import passwords. This reads as 'Go to Settings > Passwords' */
+"autofill.import.passwords.instructions.step2" = "Μεταβείτε στις επιλογές %1$@ > %2$@";
+
+/* second parameter for autofill.import.passwords.instructions.step2 */
+"autofill.import.passwords.instructions.step2.passwords" = "Κωδικός πρόσβασης";
+
+/* first parameter for autofill.import.passwords.instructions.step2 */
+"autofill.import.passwords.instructions.step2.settings" = "Ρυθμίσεις";
+
+/* Step 3 for instructions to import passwords. This reads as 'Select Import Passwords and follow the steps' */
+"autofill.import.passwords.instructions.step3" = "Επιλέξτε %@ και ακολουθήστε τα βήματα για εισαγωγή";
+
+/* Parameter for autofill.import.passwords.instructions.step3 */
+"autofill.import.passwords.instructions.step3.import" = "Εισαγωγή κωδικών πρόσβασης...";
+
+/* Step 4 for instructions to import passwords: Once imported on your computer you can set up sync on this iPhone|iPad|device */
+"autofill.import.passwords.instructions.step4" = "Μόλις εισαχθεί στον υπολογιστή σας, μπορείτε να ρυθμίσετε το συγχρονισμό σε %@";
+
+/* Title for section with instructions to import passwords */
+"autofill.import.passwords.instructions.title" = "Εισαγωγή από το πρόγραμμα περιήγησης για υπολογιστές:";
+
+/* Subtitle for screen to import passwords */
+"autofill.import.passwords.subtitle" = "Εισαγάγετε κωδικούς πρόσβασης στην έκδοση του προγράμματος περιήγησης DuckDuckGo για υπολογιστές και έπειτα συγχρονίστε τους σε όλες τις συσκευές.";
+
+/* Button label to sync passwords with desktop browser */
+"autofill.import.passwords.sync-button" = "Συγχρονισμός με υπολογιστή";
+
+/* Title for screen to import passwords */
+"autofill.import.passwords.title" = "Τρόπος εισαγωγής κωδικών πρόσβασης";
+
+/* Disable action for alert when asking the user if they want to keep using autofill */
+"autofill.keep-enabled.alert.disable" = "Απενεργοποίηση";
+
+/* A link that takes the user to the DuckDuckGo help pages explaining password managers */
+"autofill.learn.more.link.title" = "Μάθετε περισσότερα";
+
+/* Button displayed after saving/updating an autofill login that takes the user to the saved login */
+"autofill.login-save-action-button.toast" = "Προβολή";
+
+/* Message displayed after saving an autofill login */
+"autofill.login-saved.toast" = "Αποθηκευμένος κωδικός πρόσβασης";
+
+/* Message displayed after updating an autofill login */
+"autofill.login-updated.toast" = "Ο κωδικός πρόσβασης ενημερώθηκε";
+
+/* Menu item text for copying autofill login details */
+"autofill.logins.copy-prompt" = "Αντιγραφή %@";
+
+/* Title for toast when copying address */
+"autofill.logins.copy-toast.address-copied" = "Η διεύθυνση αντιγράφηκε";
+
+/* Title for toast when copying notes */
+"autofill.logins.copy-toast.notes-copied" = "Οι σημειώσεις αντιγράφηκαν";
+
+/* Title for toast when copying password */
+"autofill.logins.copy-toast.password-copied" = "Ο κωδικός πρόσβασης αντιγράφηκε";
+
+/* Title for toast when copying username */
+"autofill.logins.copy-toast.username-copied" = "Το όνομα χρήστη αντιγράφηκε";
+
+/* Title of button in prompt requiring authentication before all passwords are deleted */
+"autofill.logins.delete.all.authentication.prompt.button" = "Έλεγχος ταυτότητας τώρα";
+
+/* Title of prompt requiring authentication before all passwords are deleted */
+"autofill.logins.delete.all.authentication.prompt.title" = "Έλεγχος ταυτότητας για διαγραφή όλων των κωδικών πρόσβασης";
+
+/* Reason for authentication when deleting all logins */
+"autofill.logins.delete.all.authentication.reason" = "Επαληθεύστε την ταυτότητά σας για να επιβεβαιώσετε ότι θέλετε να διαγράψετε όλους τους κωδικούς πρόσβασης";
+
+/* Address label for login details on autofill */
+"autofill.logins.details.address" = "Διεύθυνση URL ιστότοπου";
+
+/* Title for autofill login details */
+"autofill.logins.details.default-title" = "Κωδικός πρόσβασης";
+
+/* Delete button when deleting an autofill login */
+"autofill.logins.details.delete" = "Διαγραφή κωδικού πρόσβασης";
+
+/* Autofill alert button confirming delete autofill login */
+"autofill.logins.details.delete-confirmation.button" = "Διαγραφή κωδικού πρόσβασης";
+
+/* Title when editing autofill login details */
+"autofill.logins.details.edit-title" = "Επεξεργασία κωδικού πρόσβασης";
+
+/* Placeholder for password field on autofill login details */
+"autofill.logins.details.edit.password-placeholder" = "Κωδικός πρόσβασης";
+
+/* Placeholder for title field on autofill login details */
+"autofill.logins.details.edit.title-placeholder" = "Τίτλος";
+
+/* Placeholder for url field on autofill login details */
+"autofill.logins.details.edit.url-placeholder" = "example.com";
+
+/* Placeholder for userbane field on autofill login details */
+"autofill.logins.details.edit.username-placeholder" = "username@example.com";
+
+/* Message displaying when the login was last updated */
+"autofill.logins.details.last-updated" = "Τελευταία ενημέρωση %@";
+
+/* Login name label for login details on autofill */
+"autofill.logins.details.login-name" = "Τίτλος";
+
+/* Title when adding new autofill login */
+"autofill.logins.details.new-title" = "Προσθήκη κωδικού πρόσβασης";
+
+/* Notes label for login details on autofill */
+"autofill.logins.details.notes" = "Σημειώσεις";
+
+/* Menu item title for option to open website from selected url */
+"autofill.logins.details.open-website-prompt.title" = "Άνοιγμα ιστότοπου";
+
+/* Password label for login details on autofill */
+"autofill.logins.details.password" = "Κωδικός πρόσβασης";
+
+/* Action text for alert when attempting to save a duplicate login */
+"autofill.logins.details.save-duplicate-alert.action" = "Εντάξει";
+
+/* Message for alert when attempting to save a duplicate login */
+"autofill.logins.details.save-duplicate-alert.message" = "Έχετε ήδη αποθηκεύσει έναν κωδικό πρόσβασης γι' αυτό το όνομα χρήστη και τον ιστότοπο.";
+
+/* Title for alert when attempting to save a duplicate login */
+"autofill.logins.details.save-duplicate-alert.title" = "Διπλός κωδικός πρόσβασης";
+
+/* Username label for login details on autofill */
+"autofill.logins.details.username" = "Όνομα χρήστη";
+
+/* Title for button to Import Passwords when autofill has no items */
+"autofill.logins.empty-view.button.title" = "Εισαγωγή κωδικών πρόσβασης";
+
+/* Subtitle for view displayed when no autofill passwords have been saved */
+"autofill.logins.empty-view.subtitle.first.paragraph" = "Μπορείτε να εισαγάγετε αποθηκευμένους κωδικούς πρόσβασης από άλλο πρόγραμμα περιήγησης στο DuckDuckGo.";
+
+/* Title for view displayed when autofill has no items */
+"autofill.logins.empty-view.title" = "Δεν έχουν αποθηκευτεί ακόμα κωδικοί πρόσβασης";
+
+/* Cancel button for auth when opening login list */
+"autofill.logins.list.auth.cancel" = "Ακύρωση";
+
+/* Reason for auth when opening login list */
+"autofill.logins.list.auth.reason" = "Ξεκλειδώστε τη συσκευή για πρόσβαση σε κωδικούς πρόσβασης";
+
+/* Title for close navigation button */
+"autofill.logins.list.close-title" = "Κλείσιμο";
+
+/* Title for button to delete all saved autofill passwords */
+"autofill.logins.list.delete.all" = "Διαγραφή όλων";
+
+/* Title for a toggle that enables autofill */
+"autofill.logins.list.enable" = "Αποθήκευση και αυτόματη συμπλήρωση κωδικών πρόσβασης";
+
+/* Footer label displayed below table section with option to enable autofill */
+"autofill.logins.list.enable.footer" = "Οι κωδικοί πρόσβασης αποθηκεύονται με ασφάλεια στη συσκευή σας.";
+
+/* Toast message when a login item is deleted */
+"autofill.logins.list.login-deleted-message" = "Ο κωδικός πρόσβασης για το %@ διαγράφηκε";
+
+/* Toast message when a login item without a title is deleted */
+"autofill.logins.list.login-deleted-message-no-title" = "Διαγραφή κωδικού πρόσβασης";
+
+/* Title for a button that allows a user to reset their list of never saved sites */
+"autofill.logins.list.never.saved" = "Επαναφορά αποκλεισμένων ιστότοπων";
+
+/* Cancel button for resetting list of never saved sites */
+"autofill.logins.list.never.saved.reset.action.cancel" = "Ακύρωση";
+
+/* Confirm button to reset list of never saved sites */
+"autofill.logins.list.never.saved.reset.action.confirm" = "Επαναφορά αποκλεισμένων ιστότοπων";
+
+/* Alert title */
+"autofill.logins.list.never.saved.reset.action.title" = "Εάν κάνετε επαναφορά των αποκλεισμένων ιστότοπων, θα σας ζητηθεί να αποθηκεύσετε τον κωδικό πρόσβασής σας την επόμενη φορά που θα συνδεθείτε σε οποιονδήποτε από τους ιστότοπους αυτούς.";
+
+/* Placeholder for search field on autofill login listing */
+"autofill.logins.list.search-placeholder" = "Αναζήτηση κωδικών πρόσβασης";
+
+/* Subtext under Autofill Settings briefly explaining security to alleviate user concerns. */
+"autofill.logins.list.settings.footer.fallback" = "Οι κωδικοί πρόσβασης είναι κρυπτογραφημένοι. Κανείς άλλος εκτός από εσάς δεν μπορεί να τους βλέπει, ούτε καν εμείς.";
+
+/* Subtext under Autofill Settings briefly explaining security to alleviate user concerns. Has a URL link by clicking Learn More. */
+"autofill.logins.list.settings.footer.markdown" = "Οι κωδικοί πρόσβασης είναι κρυπτογραφημένοι. Κανείς άλλος εκτός από εσάς δεν μπορεί να τους βλέπει, ούτε καν εμείς. [Μάθετε περισσότερα](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/sync-and-backup/password-manager-security/)";
+
+/* Section title for group of suggested saved logins */
+"autofill.logins.list.suggested" = "Προτεινόμενο";
+
+/* Title for screen listing autofill logins */
+"autofill.logins.list.title" = "Κωδικοί πρόσβασης";
+
+/* Title for view displayed when autofill is locked on devices where a passcode has not been set */
+"autofill.logins.no-auth.subtitle" = "Απαιτείται κωδικός πρόσβασης για προστασία των κωδικών πρόσβασής σας.";
+
+/* Title for view displayed when autofill is locked on devices where a passcode has not been set */
+"autofill.logins.no-auth.title" = "Ασφαλίστε τη συσκευή σας για αποθήκευση κωδικών πρόσβασης";
+
+/* Cancel button for auth during login prompt */
+"autofill.logins.prompt.auth.cancel" = "Ακύρωση";
+
+/* Reason for auth during login prompt */
+"autofill.logins.prompt.auth.reason" = "Ξεκλειδώστε τη συσκευή για να χρησιμοποιήσετε τον αποθηκευμένο κωδικό πρόσβασης";
+
+/* Title for section of autofill logins that are an exact match to the current website */
+"autofill.logins.prompt.exact.match.title" = "Από αυτόν τον ιστότοπο";
+
+/* Button title for autofill login prompt if more options are available */
+"autofill.logins.prompt.more-options" = "Περισσότερες επιλογές";
+
+/* Title for section of autofill logins that are an approximate match to the current website */
+"autofill.logins.prompt.partial.match.title" = "Από %@";
+
+/* Title of button for autofill login prompt to use a saved password for a website */
+"autofill.logins.prompt.password.button.title" = "Κωδικός πρόσβασης για %@";
+
+/* Title for autofill login prompt */
+"autofill.logins.prompt.title" = "Χρήση αποθηκευμένου κωδικού πρόσβασης;";
+
+/* Subtitle displayed when there are no results on Autofill search, example : No Result (Title) for Duck (Subtitle) */
+"autofill.logins.search.no-results.subtitle" = "για '%@'";
+
+/* Title displayed when there are no results on Autofill search */
+"autofill.logins.search.no-results.title" = "Κανένα αποτέλεσμα";
+
+/* Do not translate - stringsdict entry */
+"autofill.number.of.passwords" = "autofill.number.of.passwords";
+
+/* Description of autofill onboarding prompt's secure storage feature
+   Description of autofill onboarding prompt's secure storage feature with a string describing the available biometry + passcode as a parameter */
+"autofill.onboarding.key-features.secure-storage.description" = "Οι κωδικοί πρόσβασης κρυπτογραφούνται, αποθηκεύονται στη συσκευή και κλειδώνονται με %@.";
+
+/* Parameter for the description of autofill onboarding prompt's secure storage feature describing Face ID biometry + passcode */
+"autofill.onboarding.key-features.secure-storage.description.parameter.face-id" = "Face ID ή κωδικός πρόσβασης";
+
+/* Parameter for the description of autofill onboarding prompt's secure storage feature describing passcode only if no biometry are available */
+"autofill.onboarding.key-features.secure-storage.description.parameter.passcode" = "κωδικός πρόσβασης";
+
+/* Parameter for the description of autofill onboarding prompt's secure storage feature describing Touch ID biometry + passcode */
+"autofill.onboarding.key-features.secure-storage.description.parameter.touch-id" = "Touch ID ή κωδικός πρόσβασης";
+
+/* Title of autofill onboarding prompt's secure storage feature */
+"autofill.onboarding.key-features.secure-storage.title" = "Ασφαλής αποθήκευση";
+
+/* Description of autofill onboarding prompt's sign-in feature */
+"autofill.onboarding.key-features.sign-ins.description" = "Δεν χρειάζεται να θυμάστε τα στοιχεία σύνδεσης.";
+
+/* Title of autofill onboarding prompt's sign-in feature */
+"autofill.onboarding.key-features.sign-ins.title" = "Απρόσκοπτες συνδέσεις";
+
+/* Description of autofill onboarding prompt's sync feature */
+"autofill.onboarding.key-features.sync.description" = "Κρυπτογραφημένο από άκρο σε άκρο και εύκολο στη ρύθμιση, όταν είστε έτοιμοι.";
+
+/* Title of autofill onboarding prompt's sync feature */
+"autofill.onboarding.key-features.sync.title" = "Συγχρονισμός μεταξύ συσκευών";
+
+/* Title of autofill onboarding prompt's features list */
+"autofill.onboarding.key-features.title" = "Βασικά χαρακτηριστικά";
+
+/* Subtitle for prompt to use suggested strong password for creating a login */
+"autofill.password-generation-prompt.subtitle" = "Οι κωδικοί πρόσβασης αποθηκεύονται με ασφάλεια στη συσκευή σας.";
+
+/* Title for prompt to use suggested strong password for creating a login */
+"autofill.password-generation-prompt.title" = "Χρησιμοποιείτε ισχυρό κωδικό πρόσβασης από το DuckDuckGo;";
+
+/* Button title choosing to use the suggested generated password for creating a login */
+"autofill.password-generation-prompt.use-generated-password.cta" = "Χρησιμοποιήστε ισχυρό κωδικό πρόσβασης";
+
+/* Button title choosing to use own password for creating a login */
+"autofill.password-generation-prompt.use-own-password.cta" = "Δημιουργία δικού μου";
+
+/* Text for the confirmation message displayed when a user tries activate a Private Email Address */
+"autofill.private.email.mesage.activate.confirm.content" = "Τα email που αποστέλλονται στο %@ θα προωθούνται ξανά στα εισερχόμενά σας.";
+
+/* Title for the confirmation message  displayed when a user tries activate a Private Email Address */
+"autofill.private.email.mesage.activate.confirm.title" = "Εκ νέου ενεργοποίηση της ιδιωτικής Duck Address;";
+
+/* Mesasage displayed when a private email address is active */
+"autofill.private.email.mesage.active" = "Ενεργό";
+
+/* Text for the confirmation message displayed when a user tries deactivate a Private Email Address */
+"autofill.private.email.mesage.deactivate.confirm.content" = "Τα email που αποστέλλονται στο %@ δεν θα προωθούνται πλέον στα εισερχόμενά σας.";
+
+/* Title for the confirmation message displayed when a user tries deactivate a Private Email Address */
+"autofill.private.email.mesage.deactivate.confirm.title" = "Απενεργοποίηση της ιδιωτικής Duck Address;";
+
+/* Mesasage displayed when a user tries to manage a private email address but the service is not available, returns an error or network is down */
+"autofill.private.email.mesage.error" = "Η διαχείριση της διεύθυνσης αυτής δεν είναι διαθέσιμη προσωρινά";
+
+/* Mesasage displayed when a private email address is inactive */
+"autofill.private.email.mesage.inactive" = "Απενεργοποιήθηκε";
+
+/* Button text for the alert dialog telling the user an updated username is no longer a private email address */
+"autofill.removed.duck.address.button" = "Κατάλαβα";
+
+/* Content for the alert dialog telling the user an updated username is no longer a private email address */
+"autofill.removed.duck.address.content" = "Μπορείτε ακόμα να διαχειρίζεστε αυτήν τη διεύθυνση Duck Address από τα email που λαμβάνετε από αυτήν στα προσωπικά εισερχόμενά σας.";
+
+/* Title for the alert dialog telling the user an updated username is no longer a private email address */
+"autofill.removed.duck.address.title" = "Το ιδιωτικό όνομα χρήστη Duck Address καταργήθηκε";
+
+/* CTA displayed on modal asking if the user never wants to be prompted to save a login for this website agin */
+"autofill.save-login.never-prompt.CTA" = "Μην ζητάτε ποτέ αυτόν τον ιστότοπο";
+
+/* Title displayed on modal asking for the user to save the login for the first time */
+"autofill.save-login.new-user.title" = "Αποθήκευση αυτού του κωδικού πρόσβασης;";
+
+/* CTA displayed on modal asking if the user wants to dismiss the save login action for now */
+"autofill.save-login.no-thanks.CTA" = "Όχι, ευχαριστώ";
+
+/* Message displayed on modal asking for the user to save the login for the first time */
+"autofill.save-login.security.message" = "Αποθηκεύστε με ασφάλεια τον κωδικό πρόσβασής σας στη συσκευή με τη λειτουργία DuckDuckGo κωδικοί πρόσβασης και αυτόματη συμπλήρωση.";
+
+/* Title displayed on modal asking for the user to save the login */
+"autofill.save-login.title" = "Αποθήκευση κωδικού πρόσβασης;";
+
+/* Confirm CTA displayed on modal asking for the user to save the password */
+"autofill.save-password.save.CTA" = "Αποθήκευση κωδικού πρόσβασης";
+
+/* Title for the button to report that autofill is not working on a site in autofill settings */
+"autofill.settings.report.not.working.button.title" = "Αναφέρετε ένα πρόβλημα με την Αυτόματη συμπλήρωση";
+
+/* Button title for the confirmation prompt when reporting autofill is not working for a website */
+"autofill.settings.report.not.working.confirmation.button" = "Αποστολή Αναφοράς";
+
+/* Message for the confirmation prompt when reporting autofill is not working for a website */
+"autofill.settings.report.not.working.confirmation.message" = "Οι αναφορές που αποστέλλονται στο DuckDuckGo είναι ανώνυμες και δεν περιλαμβάνουν το όνομα χρήστη, τον κωδικό πρόσβασής σας ή οποιαδήποτε άλλη πληροφορία που μπορεί να σας ταυτοποιήσει.\n\nΗ αναφορά περιλαμβάνει μόνο τη διεύθυνση URL του ιστότοπου και την κατάσταση ορισμένων ρυθμίσεων αυτόματης συμπλήρωσης.";
+
+/* Title for the confirmation prompt when reporting autofill is not working for a website */
+"autofill.settings.report.not.working.confirmation.title" = "Θέλετε να αναφέρετε ότι η αυτόματη συμπλήρωση δεν λειτουργεί στο %@;";
+
+/* Message shown to user when they submit a report that autofill is not working for a website */
+"autofill.settings.report.not.working.sent.confirmation" = "Σε ευχαριστούμε! Η αναφορά σας θα μας βοηθήσει ώστε να γίνει το DuckDuckGo καλύτερο για όλους.";
+
+/* Subtitle for the row to report that autofill is not working on a site in autofill settings */
+"autofill.settings.report.not.working.subtitle" = "Αναφέρετε ανώνυμα ότι η αυτόματη συμπλήρωση δεν λειτουργεί σε αυτόν τον ιστότοπο. Οι κωδικοί πρόσβασης δεν κοινοποιούνται ποτέ.";
+
+/* Title for the row to report that autofill is not working on a site in autofill settings */
+"autofill.settings.report.not.working.title" = "Δεν λειτουργεί η αυτόματη συμπλήρωση;";
+
+/* Accessibility title for a Show Password button displaying actial password instead of ***** */
+"autofill.show-password" = "Εμφάνιση κωδικού πρόσβασης";
+
+/* Message displayed to the user when they are logged out of Email protection. */
+"autofill.signin.to.manage" = "%@ για διαχείριση των διευθύνσεών σας Duck Address σε αυτήν τη συσκευή.";
+
+/* Message displayed on modal asking for the user to update the password */
+"autofill.update-password.message" = "Το DuckDuckGo θα ενημερώσει αυτόν τον αποθηκευμένο κωδικό πρόσβασης στη συσκευή σας.";
+
+/* Confirm CTA displayed on modal asking for the user to update the password */
+"autofill.update-password.save.CTA" = "Ενημέρωση κωδικού πρόσβασης";
+
+/* Title displayed on modal asking for the user to update the password */
+"autofill.update-password.title" = "Ενημέρωση κωδικού πρόσβασης για\n%@;";
+
+/* Confirm CTA displayed on modal asking for the user to update the login */
+"autofill.update-username.save.CTA" = "Ενημέρωση ονόματος χρήστη";
+
+/* Title displayed on modal asking for the user to update the username */
+"autofill.update-usernamr.title" = "Ενημέρωση ονόματος χρήστη;";
+
+/* Add bookmark screen title */
+"bookmark.addBookmark.title" = "Προσθήκη σελιδοδείκτη";
+
+/* Add favorite screen title */
+"bookmark.addFavorite.title" = "Προσθήκη Αγαπημένου";
+
+/* Add folder screen title */
+"bookmark.addFolder.title" = "Προσθήκη φακέλου";
+
+/* Add bookmark folder button text */
+"bookmark.addFolderButton" = "Προσθήκη φακέλου";
+
 /* Placeholder in the add bookmark form */
 "bookmark.address.placeholder" = "www.example.com";
 
+/* Delete bookmark alert message */
+"bookmark.delete.alert.message" = "Η ενέργεια αυτή θα διαγράψει τον σελιδοδείκτη σας για «%@»";
+
+/* Delete bookmark alert title */
+"bookmark.delete.alert.title" = "Διαγραφή;";
+
+/* The message shown after a bookmark has been deleted */
+"bookmark.deleted.toast" = "Ο σελιδοδείκτης διαγράφηκε";
+
+/* Delete bookmark folder alert delete button */
+"bookmark.deleteFolderAlert.deleteButton" = "Διαγραφή";
+
+/* Do not translate - stringsdict entry */
+"bookmark.deleteFolderAlert.message" = "bookmark.deleteFolderAlert.message";
+
+/* Delete bookmark folder alert title */
+"bookmark.deleteFolderAlert.title" = "Διαγραφή %@;";
+
+/* Edit bookmark screen title */
+"bookmark.editBookmark.title" = "Επεξεργασία σελιδοδείκτη";
+
+/* Edit favorite screen title */
+"bookmark.editFavorite.title" = "Επεξεργασία αγαπημένων";
+
+/* Edit folder screen title */
+"bookmark.editFolder.title" = "Επεξεργασία φακέλου";
+
+/* Header for folder selection for bookmarks */
+"bookmark.folderSelect.title" = "Τοποθεσία";
+
+/* More options button text */
+"bookmark.moreButton" = "Περισσότερα";
+
+/* Placeholder in the bookmarks search bar */
+"bookmark.searchbar.placeholder" = "Αναζήτηση";
+
 /* Placeholder in the add bookmark form */
 "bookmark.title.placeholder" = "Τίτλος ιστότοπου";
+
+/* Top level bookmarks folder title */
+"bookmark.topLevelFolder.title" = "Σελιδοδείκτες";
 
 /* Info message after selecting Bookmark All button */
 "bookmarkAll.tabs.failed" = "Προστέθηκαν νέοι σελιδοδείκτες για όλες τις καρτέλες";
@@ -145,35 +728,185 @@
 /* No comment provided by engineer. */
 "bookmarks.button.hint" = "Σελιδοδείκτες";
 
-/* Broken Site Category */
-"brokensite.category.comments" = "Τα σχόλια δεν φορτώθηκαν";
+/* Failure message when bookmarks failed to export */
+"bookmarks.export.failed.message" = "Δεν καταφέραμε να κάνουμε εξαγωγή των σελιδοδεικτών σας. Προσπαθήστε ξανά.";
 
-/* Broken Site Category */
-"brokensite.category.content" = "Το περιεχόμενο λείπει";
+/* Confirmation message that bookmarks have been exported to the file system */
+"bookmarks.export.files.success.message" = "Η εξαγωγή των σελιδοδεικτών σας έχει πραγματοποιηθεί.";
 
-/* Broken Site Category */
-"brokensite.category.images" = "Οι εικόνες δεν φορτώθηκαν";
+/* Confirmation message that bookmarks have been shared successfully to another app */
+"bookmarks.export.share.success.message" = "Η κοινοποίηση των σελιδοδεικτών σας έχει πραγματοποιηθεί.";
 
-/* Broken Site Category */
-"brokensite.category.links" = "Οι σύνδεσμοι ή τα κουμπιά δεν λειτουργούν";
+/* Title of option to export HTML */
+"bookmarks.exportAction.title" = "Εξαγωγή αρχείου HTML";
 
-/* Broken Site Category */
-"brokensite.category.login" = "Δεν μπορώ να συνδεθώ";
+/* Failure message when bookmarks failed to import */
+"bookmarks.import.failed.message" = "Δυστυχώς, δεν μπορούμε να κάνουμε εισαγωγή αυτού του αρχείου.";
 
-/* Broken Site Category */
-"brokensite.category.other" = "Κάτι άλλο";
+/* Confirmation message that bookmarks have been imported */
+"bookmarks.import.success.message" = "Η εισαγωγή των σελιδοδεικτών σας έχει πραγματοποιηθεί.";
 
-/* Broken Site Category */
-"brokensite.category.paywall" = "Ο ιστότοπος μου ζήτησε να απενεργοποιήσω";
+/* Title of option to import HTML */
+"bookmarks.importAction.title" = "Εισαγωγή αρχείου HTML";
 
-/* Broken Site Category */
-"brokensite.category.unsupported" = "Το πρόγραμμα περιήγησης είναι ασύμβατο";
+/* Import bookmark file button text */
+"bookmarks.importExport.footer.button.title" = "Εισαγωγή αρχείου με σελιδοδείκτες από άλλο πρόγραμμα περιήγησης";
 
-/* Broken Site Category */
-"brokensite.category.videos" = "Το βίντεο δεν αναπαράχθηκε";
+/* Title of prompt for users where they can choose to import or export an HTML file containing webpage bookmarks */
+"bookmarks.importExport.title" = "Κάντε εισαγωγή ενός αρχείου HTML με σελιδοδείκτες από άλλο πρόγραμμα περιήγησης, ή κάντε εξαγωγή των σελιδοδεικτών που διαθέτετε ήδη.";
 
-/* Broken Site Section Title */
-"brokensite.sectionTitle" = "ΠΕΡΙΓΡΑΨΤΕ ΤΙ ΣΥΝΕΒΗ";
+/* Button to open report form */
+"broken.site.report.menu.title" = "Αναφορά προβλήματος με αυτόν τον ιστότοπο";
+
+/* Acknowledge button */
+"broken.site.report.missing.description.alert.button" = "Το κατάλαβα";
+
+/* It appears as an alert after user tries to send a report without submitting any details */
+"broken.site.report.missing.description.alert.description" = "Περιγράψτε το πρόβλημα που αντιμετωπίσατε σε αυτόν τον ιστότοπο, ώστε να κατανοήσουμε καλύτερα το πώς μπορούμε να το διορθώσουμε.";
+
+/* It appears as an alert after user tries to send a report without submitting any details */
+"broken.site.report.missing.description.alert.title" = "Κείμενο περιγραφής";
+
+/* Message that appears after submitting report */
+"broken.site.report.success.toast" = "Η αναφορά σας βοηθάει ώστε να γίνει το DuckDuckGo καλύτερο για όλους!";
+
+/* Button to answer question 'Did turning off protections resolve the issue on this site?' */
+"broken.site.report.toggle.alert.no.button" = "Όχι";
+
+/* An alert that appears after user turns off the privacy protection */
+"broken.site.report.toggle.alert.title" = "Η απενεργοποίηση της Προστασίας προσωπικών δεδομένων επέλυσε το πρόβλημα σε αυτόν τον ιστότοπο;";
+
+/* Button to answer question 'Did turning off protections resolve the issue on this site?' */
+"broken.site.report.toggle.alert.yes.button" = "Ναί";
+
+/* Button to continue the onboarding process */
+"contextual.onboarding.addToDock.buttons.skip" = "Παράλειψη";
+
+/* Button on the last screen of the onboarding, it will dismiss the onboarding screen. */
+"contextual.onboarding.addToDock.buttons.startBrowsing" = "Έναρξη περιήγησης";
+
+/* Button of the onboarding dialog. On click it shows a dialog with a tutorial video about how to add the DDG browser icon to the device dock. */
+"contextual.onboarding.addToDock.buttons.tutorial" = "Δείξε μου πώς";
+
+/* Message of the last screen of the onboarding that promotes adding the DDG browser icon to the dock. */
+"contextual.onboarding.addToDock.promo.contextual.message" = "Να θυμάστε: κάθε φορά που περιηγείστε μαζί μου, μια ανατριχιαστική διαφήμιση χάνει τη δύναμή της!\n\nΓι' αυτό, διατηρήστε με στο Dock σας για καθημερινή περιήγηση.";
+
+/* The message of the onboarding dialog popup that promotes adding the DDG browser icon to the dock. */
+"contextual.onboarding.addToDock.promo.intro.message" = "Θα απολαμβάνω έτσι εύκολη πρόσβαση για όλη την καθημερινή περιήγησή σας.";
+
+/* The title of the onboarding dialog popup that promotes adding the DDG browser icon to the dock. */
+"contextual.onboarding.addToDock.promo.title" = "Προσθέστε με στο Dock σας!";
+
+/* The message of the onboarding dialog popup that explains how to add the DDG browser icon to the dock. */
+"contextual.onboarding.addToDock.tutorial.message" = "Βρείτε το εικονίδιο DuckDuckGo στην Αρχική οθόνη σας. Στη συνέχεια, πατήστε και μεταφέρετέ το στη θέση του. Αυτό είναι!";
+
+/* The title of the onboarding dialog popup that explains how to add the DDG browser icon to the dock. */
+"contextual.onboarding.addToDock.tutorial.title" = "Η προσθήκη μου στο Dock σας είναι εύκολη.";
+
+/* First parameter is a count of additional trackers, second and third are names of the tracker networks (strings) */
+"contextual.onboarding.browsing.multiple.trackers" = "contextual.onboarding.browsing.multiple.trackers";
+
+/* Parameter is domain name (string) */
+"contextual.onboarding.browsing.one.tracker" = "Το *%1$@* προσπαθούσε να σας παρακολουθήσει εδώ. Τους εμπόδισα!\n\n☝️ Πατήστε την ασπίδα για περισσότερες πληροφορίες.";
+
+/* Button on the last screen of the onboarding, it will dismiss the onboarding screen. */
+"contextual.onboarding.final-screen.button" = "Κόλλα πέντε!";
+
+/* Message of the last screen of the onboarding to the browser app. */
+"contextual.onboarding.final-screen.message" = "Να θυμάστε: κάθε φορά που περιηγείστε μαζί μου, μια ανατριχιαστική διαφήμιση χάνει τη δύναμή της! 👌";
+
+/* Title of the last screen of the onboarding to the browser app */
+"contextual.onboarding.final-screen.title" = "Το έχετε!";
+
+/* After the user performs their first search using the browser, this dialog explains the advantages of using DuckDuckGo */
+"contextual.onboarding.first-search-done.message" = "Αυτό είναι το DuckDuckGo Search. Ιδιωτικά. Γρήγορα. Λιγότερες διαφημίσεις.";
+
+/* During onboarding steps this button is shown and takes either to the next steps or closes the onboarding. */
+"contextual.onboarding.got-it.button" = "Το κατάλαβα!";
+
+/* Message of the last screen of the onboarding to the browser app. */
+"contextual.onboarding.highlights.final-screen.message" = "Να θυμάστε: κάθε φορά που περιηγείστε μαζί μου, μια ανατριχιαστική διαφήμιση χάνει τη δύναμή της!";
+
+/* After the user performs their first search using the browser, this dialog explains the advantages of using DuckDuckGo */
+"contextual.onboarding.highlights.first-search-done.message" = "Αυτό είναι το DuckDuckGo Search! Ιδιωτικά. Γρήγορα. Λιγότερες διαφημίσεις.";
+
+/* Message of a popover on the browser that invites the user to try a search explaining that their searches are private */
+"contextual.onboarding.highlights.try-a-search.message" = "Οι αναζητήσεις σας στο DuckDuckGo είναι πάντα ιδιωτικές.";
+
+/* Browser Search query for baby ducklings */
+"contextual.onboarding.highlights.try-search.surprise-me" = "παπάκια";
+
+/* Title of a popover on the new tab page browser that invites the user to try a visiting a website */
+"contextual.onboarding.ntp.try-a-site.title" = "Δοκιμάστε να επισκεφτείτε έναν ιστότοπο!";
+
+/* Message of a popover on the browser that invites the user to try a search explaining that their searches are anonymous */
+"contextual.onboarding.try-a-search.message" = "Οι αναζητήσεις σας στο DuckDuckGo είναι πάντα ανώνυμες.";
+
+/* Title of a popover on the browser that invites the user to try a search */
+"contextual.onboarding.try-a-search.title" = "Έτοιμοι να αρχίσετε;\nΔοκίμασε μια αναζήτηση!";
+
+/* Message of a popover on the browser that invites the user to try visiting a website to explain that we block trackers */
+"contextual.onboarding.try-a-site.message" = "Θα εμποδίσω τις εφαρμογές παρακολούθησης ώστε να μην μπορούν να σας κατασκοπεύουν.";
+
+/* Title of a popover on the browser that invites the user to try a visiting a website */
+"contextual.onboarding.try-a-site.title" = "Στη συνέχεια, δοκιμάστε να επισκεφτείτε έναν ιστότοπο!";
+
+/* Message of a popover on the browser that invites the user to try visiting the browser Fire Button. Please leave the line break */
+"contextual.onboarding.try-fire-button.message" = "Διαγράψτε άμεσα τη δραστηριότητα περιήγησής σας με το Fire Button.<br/><br/>Δοκιμάστε το! 🔥";
+
+/* Browser Search query for how to say duck in english */
+"contextual.onboarding.try-search.option1-English" = "πώς μπορείτε να πείτε «duck» στα ισπανικά";
+
+/* Browser Search query for how to say duck in english */
+"contextual.onboarding.try-search.option1international" = "πώς να πείτε «πάπια» στα αγγλικά";
+
+/* Search query for the cast of Mighty Ducks */
+"contextual.onboarding.try-search.option2-english" = "Mighty Ducks Cast";
+
+/* Search query for the cast of Avatar */
+"contextual.onboarding.try-search.option2-international" = "οι ηθοποιοί του avatar";
+
+/* Browser Search query for local weather */
+"contextual.onboarding.try-search.option3" = "τοπικός καιρός";
+
+/* Browser Search query for chocolate chip cookie recipes */
+"contextual.onboarding.try-search.surprise-me-english" = "συνταγές για μπισκότα με κομματάκια σοκολάτας";
+
+/* Browser Search query for dinner recipes */
+"contextual.onboarding.try-search.surprise-me-international" = "συνταγές για δείπνο";
+
+/* Title for a button that triggers an unknown search query for the user. */
+"contextual.onboarding.try-search.surprise-me-title" = "Κάνε μου έκπληξη!";
+
+/* Crash Report always send button title */
+"crash.report.dialog.always.send" = "Να αποστέλλονται πάντα αναφορές σφαλμάτων";
+
+/* Crash Report hide details button title */
+"crash.report.dialog.hide.details" = "Απόκρυψη";
+
+/* Crash Report dialog message */
+"crash.report.dialog.message" = "Οι αναφορές σφαλμάτων βοηθούν το DuckDuckGo να πραγματοποιεί διάγνωση προβλημάτων και να βελτιώνει τα προϊόντα μας. Δεν περιέχουν προσωπικά στοιχεία ταυτοποίησης.";
+
+/* Crash Report never send button title */
+"crash.report.dialog.never.send" = "Να μην αποστέλλεται ποτέ";
+
+/* Crash Report show details button title */
+"crash.report.dialog.show.details" = "Δείτε τι έχει αποσταλεί";
+
+/* Crash Report dialog title */
+"crash.report.dialog.title" = "Αυτόματη αποστολή αναφορών σφαλμάτων;";
+
+/* Title for a section containing only items from past month */
+"date.range.past-month" = "Προηγούμενος μήνας";
+
+/* Title for a section containing only items from past week */
+"date.range.past-week" = "Προηγούμενη εβδομάδα";
+
+/* Title for a section containing only items from today */
+"date.range.today" = "Σήμερα";
+
+/* Title for a section containing only items from yesterday */
+"date.range.yesterday" = "Χθες";
 
 /* No comment provided by engineer. */
 "dax.hide.button" = "Απόκρυψη συμβουλών για πάντα";
@@ -188,7 +921,7 @@
 "dax.hide.title" = "Απόκρυψη συμβουλών που απομένουν;";
 
 /* No comment provided by engineer. */
-"dax.onboarding.browsing.after.search" = "Οι αναζητήσεις σας στο DuckDuckGo είναι ανώνυμες και ποτέ δεν αποθηκεύω το ιστορικό αναζήτησης. Ποτέ. 🙌";
+"dax.onboarding.browsing.after.search" = "Οι αναζητήσεις σας στο DuckDuckGo είναι ανώνυμες. Πάντα. 🙌";
 
 /* No comment provided by engineer. */
 "dax.onboarding.browsing.after.search.cta" = "Φιου!";
@@ -245,7 +978,16 @@
 "dax.onboarding.home.subsequent" = "Το έχετε!\n\nΝα θυμάστε: κάθε φορά που περιηγείστε μαζί μου μια ανατριχιαστική διαφήμιση χάνει τα φτερά της. 👍";
 
 /* No comment provided by engineer. */
-"dax.onboarding.message" = "Το Διαδίκτυο μπορεί να είναι κάπως ανατριχιαστικό.\n\nΜην ανησυχείτε! Το να πραγματοποιείτε αναζήτηση και περιήγηση ιδιωτικά είναι πιο εύκολο απ' όσο νομίζετε.";
+"Debug" = "Επανόρθωση σφαλμάτων";
+
+/* Default string used if users device is not iPhone or iPad */
+"device.type.default" = "συσκευή";
+
+/* Device type is iPhone */
+"device.type.iphone" = "iPhone";
+
+/* Device type is iPad */
+"device.type.pad" = "iPad";
 
 /* GPC Setting state */
 "donotsell.disabled" = "Απενεργοποιήθηκε";
@@ -259,11 +1001,131 @@
 /* No comment provided by engineer. */
 "donotsell.info.headertext" = "Το DuckDuckGo αποκλείει αυτόματα πολλές εφαρμογές παρακολούθησης. Με τον Παγκόσμιο έλεγχο απορρήτου (GPC), μπορείτε επίσης να ζητήσετε από τους ιστότοπους που συμμετέχουν να περιορίσουν την πώληση ή την κοινοποίηση των προσωπικών δεδομένων σας σε άλλες εταιρείες.";
 
+/* Alert action for starting a file dowload */
+"downloads.alert.action.save-to-downloads" = "Αποθήκευση στις λήψεις";
+
+/* Cancel download action for downloads */
+"downloads.cancel-download.alert.cancel" = "Ακύρωση";
+
+/* Message for alert when trying to cancel the file download */
+"downloads.cancel-download.alert.message" = "Θέλετε σίγουρα να ακυρώσετε τη λήψη αυτή;";
+
+/* Confirm action for alert when trying to cancel the file download */
+"downloads.cancel-download.alert.no" = "Όχι";
+
+/* Title for alert when trying to cancel the file download */
+"downloads.cancel-download.alert.title" = "Ακύρωση λήψης;";
+
+/* Confirm action for for alert when trying to cancel the file download */
+"downloads.cancel-download.alert.yes" = "Ναί";
+
+/* Button for deleting all items on downloads list */
+"downloads.downloads-list.delete-all" = "Διαγραφή όλων";
+
+/* Empty downloads list placholder */
+"downloads.downloads-list.empty" = "Δεν έχει γίνει ακόμα λήψη αρχείων";
+
+/* Label displaying file download progress. Both parameters are formatted data size measurements e.g. 5MB. First parameter is data size currently downloaded. Second parameter is total expected data size of the file. */
+"downloads.downloads-list.row.downloading" = "Λήψη - %1$@ από %2$@";
+
+/* Label displaying file download progress. The parameter is formatted data size measurements currently downloaded e.g. 5MB. */
+"downloads.downloads-list.row.downloadingUnknownTotalSize" = "Λήψη - %@";
+
+/* Downloads list screen title */
+"downloads.downloads-list.title" = "Λήψεις";
+
+/* Additional alert message shown when there are active downloads when using the fire button */
+"downloads.fire-button.alert.message" = "Αυτό θα ακυρώσει επίσης τις λήψεις που βρίσκονται σε εξέλιξη";
+
+/* Message confirming that all files on the downloads list have been deleted */
+"downloads.message.all-files-deleted" = "Διαγράφηκαν όλα τα αρχεία";
+
+/* Message confirming that the download process has completed. Parameter is downloaded file's filename */
+"downloads.message.download-complete" = "Η λήψη ολοκληρώθηκε για το αρχείο %@";
+
+/* Message confirming the file was deleted. Parameter is file's filename */
+"downloads.message.download-deleted" = "Το αρχείο %@ διαγράφηκε";
+
+/* Message informing that the download has failed due to connection issues */
+"downloads.message.download-failed" = "Αποτυχία λήψης. Ελέγξτε τη σύνδεση στο διαδίκτυο.";
+
+/* Message confirming that the download process has started. Parameter is downloaded file's filename */
+"downloads.message.download-started" = "Άρχισε η λήψη για το αρχείο %@";
+
+/* No comment provided by engineer. */
+"Duck Address" = "Duck Address";
+
+/* Title for message explaining to the user that Duck Player is not available */
+"duck-player.contingency-title" = "Το Duck Player δεν είναι διαθέσιμο";
+
+/* Button for the message explaining to the user that Duck Player is not available so the user can learn more */
+"duck-player.video-contingency-cta" = "Μάθετε περισσότερα";
+
+/* Message explaining to the user that Duck Player is not available */
+"duck-player.video-contingency-message" = "Η λειτουργία του Duck Player έχει επηρεαστεί από τις πρόσφατες αλλαγές στο YouTube. Προσπαθούμε να διορθώσουμε αυτά τα προβλήματα και εκτιμούμε την κατανόησή σας.";
+
+/* No comment provided by engineer. */
+"DuckDuckGo for iOS" = "DuckDuckGo για iOS";
+
+/* Text displayed when DuckPlayer is always enabled */
+"duckPlayer.alwaysEnabled.label" = "Πάντα";
+
+/* Text displayed when DuckPlayer is in 'Ask' mode. */
+"duckPlayer.ask.label" = "Να γίνεται ερώτηση κάθε φορά";
+
+/* Text displayed when DuckPlayer is in off. */
+"duckPlayer.never.label" = "Ποτέ";
+
+/* Body text for the modal feature explanation */
+"duckplayer.presentation.modal.body" = "Το Duck Player σάς επιτρέπει να παρακολουθείτε YouTube χωρίς στοχευμένες διαφημίσεις στο DuckDuckGo, ενώ το περιεχόμενο που παρακολουθείτε δεν θα επηρεάσει τις συστάσεις που θα λαμβάνετε.";
+
+/* Button that will dismiss the modal */
+"duckplayer.presentation.modal.dismiss-button" = "Το κατάλαβα!";
+
+/* Two line title (separated by \n) for the feature explanation */
+"duckplayer.presentation.modal.title" = "Πνίγεστε από τις διαφημίσεις στο YouTube; Δοκιμάστε το Duck Player!";
+
+/* Two line title (separated by \n) for the feature explanation */
+"duckplayer.presentation.modal.title.youtube" = "Πνίγεστε από τις διαφημίσεις στο YouTube; Όχι με το Duck Player!";
+
+/* Footer label in the settings screen for Duck Player */
+"duckplayer.settings.footer" = "Το DuckDuckGo παρέχει όλα τα Privacy Essentials που χρειάζεστε για να προστατευτείτε καθώς περιηγείστε στον ιστό.";
+
+/* Text explaining what Duck Player is in the settings screen. */
+"duckplayer.settings.info-text" = "Το Duck Player σάς επιτρέπει να παρακολουθείτε YouTube χωρίς στοχευμένες διαφημίσεις στο DuckDuckGo, ενώ το περιεχόμενο που παρακολουθείτε δεν θα επηρεάσει τις συστάσεις που θα λαμβάνετε.";
+
+/* Button that takes the user to learn more about Duck Player. */
+"duckplayer.settings.learn-more" = "Μάθετε περισσότερα";
+
+/* Settings screen cell text for DuckPlayer settings to open in new tab */
+"duckplayer.settings.open-new-tab-label" = "Ανοίξτε το Duck Player σε νέα καρτέλα";
+
+/* Settings screen cell text for DuckPlayer settings */
+"duckplayer.settings.open-videos-in" = "Ανοίξτε τα βίντεο του YouTube στο Duck Player";
+
+/* Settings screen cell text for DuckPlayer settings */
+"duckplayer.settings.title" = "Duck Player";
+
+/* Email protection service offered by DuckDuckGo */
+"email-protection" = "Προστασία email";
+
 /* Cancel option for the email alias alert */
 "email.aliasAlert.decline" = "Ακύρωση";
 
 /* Option for generating a private email address */
-"email.aliasAlert.generatePrivateAddress" = "Δημιουργία ιδιωτικής διεύθυνσης";
+"email.aliasAlert.generatePrivateAddress" = "Δημιουργήστε ιδιωτική Duck Address";
+
+/* Option for generating a private email address */
+"email.aliasAlert.prompt.generatePrivateAddress" = "Δημιουργήστε ιδιωτική Duck Address";
+
+/* Subtitle for generating a private email address */
+"email.aliasAlert.prompt.generatePrivateAddress.subtitle" = "Αποκλεισμός εφαρμογών παρακολούθησης email και απόκρυψη διεύθυνσης";
+
+/* Title for the email alias selection prompt */
+"email.aliasAlert.prompt.title" = "Επιλογή διεύθυνσης email";
+
+/* Subtitle for choosing primary user email address */
+"email.aliasAlert.prompt.useUserAddress.subtitle" = "Αποκλεισμός εφαρμογών παρακολούθησης email";
 
 /* Title for the email alias selection alert */
 "email.aliasAlert.title" = "Αποκλείστε εφαρμογές παρακολούθησης email με μια Διεύθυνση Duck";
@@ -275,7 +1137,7 @@
 "email.browsingMenu.alert" = "Έγινε αντιγραφή νέας διεύθυνσης στο πρόχειρό σας";
 
 /* Email option title in the browsing menu */
-"email.browsingMenu.useNewDuckAddress" = "Δημιουργήστε Διεύθυνση Duck";
+"email.browsingMenu.useNewDuckAddress" = "Δημιουργήστε ιδιωτική Duck Address";
 
 /* Signed in state for the email feature */
 "email.settings.enabled" = "Ενεργοποιήθηκε";
@@ -286,92 +1148,86 @@
 /* Signed out state for the email feature */
 "email.settings.off" = "Κλειστό";
 
-/* Cancel option for the email sign out alert */
-"email.signOutAlert.cancel" = "Ακύρωση";
+/* Subtitle for the email settings cell */
+"email.settings.subtitle" = "Αποκλείστε εφαρμογές παρακολούθησης email και αποκρύψτε τη διεύθυνσή σας";
 
-/* Description for the email sign out alert */
-"email.signOutAlert.description" = "Σημείωση: Η αφαίρεση της προστασίας email από τη συσκευή αυτή δεν θα διαγράψει τη Διεύθυνση Duck που διαθέτετε.";
+/* Option to continue the Email Protection signup */
+"email.signup-prompt.alert.continue" = "Συνέχιση εγκατάστασης";
 
-/* Remove option for the email sign out alert */
-"email.signOutAlert.remove" = "Αφαίρεση";
+/* Option to exit the Email Protection signup */
+"email.signup-prompt.alert.exit" = "Έξοδος από την εγκατάσταση";
 
-/* Title for the email sign out alert */
-"email.signOutAlert.title" = "Αφαίρεση προστασίας email;";
+/* Title for exiting the Email Protection signup early alert */
+"email.signup-prompt.alert.title" = "Εάν εξέλθετε τώρα, η Duck Address δεν θα αποθηκευτεί!";
 
-/* Error text when failing to join the waitlist */
-"email.waitlist.error-joining" = "Προέκυψε σφάλμα κατά την εγγραφή στη Λίστα αναμονής. Ξαναπροσπαθήστε αργότερα.";
+/* Button title choosing not to sign up for email protection and not to be prompted again */
+"email.signup-prompt.do-not-signup-button.cta" = "Να μην εμφανιστεί ξανά";
 
-/* Action button text for the email waitlist */
-"email.waitlist.get-started" = "Ξεκινήστε";
+/* Button title choosing to sign up for email protection */
+"email.signup-prompt.signup-button.cta" = "Προστασία του email μου";
 
-/* Invite code button text for the email waitlist */
-"email.waitlist.have-invite-code" = "Διαθέτω Κωδικό πρόσκλησης";
+/* Subtitle for prompt to sign up for email protection */
+"email.signup-prompt.subtitle" = "Δημιουργήστε μια μοναδική, τυχαία διεύθυνση η οποία αφαιρεί επίσης κρυφές εφαρμογές παρακολούθησης και προωθεί email στα εισερχόμενά σας.";
 
-/* Header text for the email waitlist */
-"email.waitlist.invited" = "Έχετε προσκληθεί!";
-
-/* Action button text for the email waitlist */
-"email.waitlist.join" = "Εγγραφείτε στην Ιδιωτική λίστα αναμονής";
-
-/* Header text for the email waitlist */
-"email.waitlist.joined" = "Βρίσκεστε στη λίστα αναμονής!";
-
-/* First parameter is 'get a notification', second is 'Learn more'. */
-"email.waitlist.joined.no-notification" = "Η πρόσκλησή σας θα εμφανιστεί εδώ όταν θα είναι έτοιμη για εσάς. Θέλετε να %1$@ μόλις φτάσει; %2$@ σχετικά με την Προστασία email.";
-
-/* Notification text for the email waitlist */
-"email.waitlist.joined.no-notification.get-notification" = "λάβετε ειδοποίηση";
-
-/* Description text for the email waitlist. Parameter is 'Learn more.' */
-"email.waitlist.joined.notification" = "Θα σας στείλουμε ειδοποίηση όταν θα είναι έτοιμη για σας η Προστασία<br/>email. %@.";
-
-/* Footer text for the email waitlist */
-"email.waitlist.learn-more" = "Μάθετε περισσότερα";
-
-/* Body text for the permission notification for the email waitlist */
-"email.waitlist.notification-permission.body" = "Θα σας στείλουμε ειδοποίηση όταν θα μπορείτε να αρχίσετε να χρησιμοποιείτε την Προστασία email.";
-
-/* Title for the permission notification for the email waitlist */
-"email.waitlist.notification-permission.title" = "Θα θέλατε να σας ειδοποιήσουμε για το πότε θα είναι η σειρά σας;";
-
-/* Body text for the email waitlist notification */
-"email.waitlist.notification.body" = "Εγγραφήκατε στη λίστα αναμονής και μας ζητήσατε να σας ενημερώσουμε για το πότε θα είναι η σειρά σας να δοκιμάσετε την Προστασία email.";
-
-/* Decline option for the permission notification for the email waitlist */
-"email.waitlist.notification.no-thanks" = "Όχι, ευχαριστώ";
-
-/* Accept option for the permission notification for the email waitlist */
-"email.waitlist.notification.notify-me" = "ΝΑ ΕΙΔΟΠΟΙΗΘΩ";
-
-/* Title for the email waitlist notification */
-"email.waitlist.notification.title" = "Η πρόσκλησή σας για προστασία των email είναι εδώ!";
-
-/* Footer text for the email waitlist. Parameter is 'Learn more'. */
-"email.waitlist.privacy-guarantee" = "Δεν αποθηκεύουμε τα email σας. %@.";
-
-/* Header text for the email waitlist */
-"email.waitlist.privacy-simplified" = "Ιδιωτικότητα email, απλοποιημένη.";
-
-/* Description text for the email waitlist. Parameter is 'Learn more'. */
-"email.waitlist.summary" = "Αποκλείστε εφαρμογές παρακολούθησης email και αποκρύψτε τη διεύθυνσή σας,<br/>χωρίς να αλλάξετε πάροχο email. %@.";
+/* Title for prompt to sign up for email protection */
+"email.signup-prompt.title" = "Απόκρυψη του email σας και \n αποκλεισμός εφαρμογών παρακολούθησης";
 
 /* Empty list state placholder */
 "empty.bookmarks" = "Δεν προστέθηκαν σελιδοδείκτες ακόμα";
 
-/* Empty list state placholder */
-"empty.favorites" = "Δεν έχουν προστεθεί ακόμα αγαπημένα";
-
 /* Empty search placeholder on bookmarks search */
 "empty.search" = "Δεν βρέθηκαν αντιστοιχίες";
+
+/* Button title to Sign In */
+"error.email-protection-sign-in.action" = "Είσοδος";
+
+/* Alert message */
+"error.email-protection-sign-in.body" = "Ζητούμε συγγνώμη. Συνδεθείτε ξανά για να ενεργοποιήσετε εκ νέου τις λειτουργίες του Email Protection σε αυτό το πρόγραμμα περιήγησης.";
+
+/* Alert title */
+"error.email-protection-sign-in.title" = "Σφάλμα προστασίας Email Protection";
+
+/* Button title to open device settings */
+"error.insufficient-disk-space.action" = "Άνοιγμα ρυθμίσεων";
+
+/* Alert message */
+"error.insufficient-disk-space.body" = "Φαίνεται ότι ο χώρος αποθήκευσης της συσκευής σας έχει εξαντληθεί. Απελευθερώστε χώρο για να συνεχίσετε.";
+
+/* Alert title */
+"error.insufficient-disk-space.title" = "Δεν υπάρχει αρκετός χώρος αποθήκευσης";
+
+/* Button title that is shutting down the app */
+"error.preemptive-crash.action" = "Κλείστε την εφαρμογή";
+
+/* Alert message */
+"error.preemptive-crash.body" = "Φαίνεται ότι υπάρχει κάποιο πρόβλημα με την εφαρμογή και χρειάζεται να κλείσει. Ανοίξτε τη ξανά για να συνεχίσετε.";
+
+/* Alert title */
+"error.preemptive-crash.title" = "Ανιχνεύθηκε πρόβλημα με την εφαρμογή";
+
+/* Generic error message on a dialog for when the cause is not known. */
+"error.unknown.try.again" = "Έχει προκύψει κάποιο άγνωστο σφάλμα";
 
 /* No comment provided by engineer. */
 "favorite" = "Αγαπημένο";
 
 /* No comment provided by engineer. */
-"favorite.menu.delete" = "Διαγραφή";
+"favorite.menu.edit" = "Επεξεργασία";
 
 /* No comment provided by engineer. */
-"favorite.menu.edit" = "Επεξεργασία";
+"favorite.menu.remove" = "Αφαίρεση";
+
+/* Display Mode for favorites */
+"favorites.settings.all-devices" = "Αγαπημένα όλων των συσκευών";
+
+/* Footer of the favorites settings table */
+"favorites.settings.footer" = "Επιλέξτε ποια αγαπημένα θα εμφανίζονται σε μια νέα καρτέλα με βάση την προέλευσή τους.";
+
+/* Header of the favorites settings table */
+"favorites.settings.header" = "Προτιμήσεις προβολής";
+
+/* Display Mode for favorites */
+"favorites.settings.mobile-only" = "Αγαπημένα μόνο για κινητά";
 
 /* No comment provided by engineer. */
 "feedback.browserFeatures.ads" = "Αποκλεισμός διαφημίσεων και αναδυόμενων παραθύρων";
@@ -466,6 +1322,39 @@
 /* Confirmation button */
 "feedback.form.submit" = "Υποβολή";
 
+/* Title of the feedback form */
+"feedback.form.title" = "Βοηθήστε να βελτιώσουμε το Privacy Pro";
+
+/* Category for Identity Theft Restoration feedback */
+"feedback.general.category.itr" = "Identity Theft Restoration";
+
+/* Category for Personal Info Removal feedback */
+"feedback.general.category.pir" = "Αφαίρεση προσωπικών πληροφοριών";
+
+/* Category for subscription and payments feedback */
+"feedback.general.category.ppro" = "Συνδρομές και πληρωμές";
+
+/* Prompt to select a category for general feedback */
+"feedback.general.category.select" = "ΕΠΙΛΕΞΤΕ ΚΑΤΗΓΟΡΙΑ";
+
+/* Category for VPN feedback */
+"feedback.general.category.vpn" = "VPN";
+
+/* Category for access code issues */
+"feedback.itr.category.access-code" = "Πρόβλημα με τον κωδικό πρόσβασης";
+
+/* Category for issues contacting an advisor */
+"feedback.itr.category.cant-contact-advisor" = "Αδυναμία επικοινωνίας με τον σύμβουλο";
+
+/* Prompt to select a category for Identity Theft Restoration feedback */
+"feedback.itr.category.select" = "ΕΠΙΛΕΞΤΕ ΚΑΤΗΓΟΡΙΑ";
+
+/* Category for other Identity Theft Restoration issues */
+"feedback.itr.category.something-else" = "Κάτι άλλο";
+
+/* Category for unhelpful advisor calls */
+"feedback.itr.category.unhelpful" = "Η κλήση στον Σύμβουλο δεν βοήθησε";
+
 /* No comment provided by engineer. */
 "feedback.negative.form.genericPlaceholder" = "Να είστε όσο το δυνατόν πιο συγκεκριμένοι";
 
@@ -505,6 +1394,24 @@
 /* No comment provided by engineer. */
 "feedback.performance.slowLoading" = "Οι ιστοσελίδες ή τα αποτελέσματα αναζήτησης φορτώνουν αργά";
 
+/* Category for when scan finds incorrect records */
+"feedback.pir.category.not-me" = "Η σάρωση βρήκε εγγραφές που δεν με αφορούν";
+
+/* Category for when scan doesn't find info on a specific site */
+"feedback.pir.category.nothing-on-site" = "Η σάρωση δεν βρήκε τις πληροφορίες μου σε έναν συγκεκριμένο ιστότοπο";
+
+/* Category for other Personal Info Removal issues */
+"feedback.pir.category.other" = "Κάτι άλλο";
+
+/* Category for when the removal process is stuck */
+"feedback.pir.category.removal-stuck" = "Η διαδικασία αφαίρεσης έχει κολλήσει";
+
+/* Category for when the scan is stuck */
+"feedback.pir.category.scan-stuck" = "Η σάρωση για εγγραφές έχει κολλήσει";
+
+/* Prompt to select a category for Personal Info Removal feedback */
+"feedback.pir.category.select" = "ΕΠΙΛΕΞΤΕ ΚΑΤΗΓΟΡΙΑ";
+
 /* Header above input field */
 "feedback.positive.form.header" = "Μοιραστείτε τις λεπτομέρειες";
 
@@ -522,6 +1429,15 @@
 
 /* Button encouraging uses to share details aboout their feedback */
 "feedback.positive.submit" = "Μοιραστείτε τις λεπτομέρειες";
+
+/* Category for other Privacy Pro issues */
+"feedback.ppro.category.other" = "Κάτι άλλο";
+
+/* Category for one-time password issues */
+"feedback.ppro.category.otp" = "Πρόβλημα με τον κωδικό πρόσβασης μίας χρήσης";
+
+/* Prompt to select a category for Privacy Pro feedback */
+"feedback.ppro.category.select" = "ΕΠΙΛΕΞΤΕ ΚΑΤΗΓΟΡΙΑ";
 
 /* No comment provided by engineer. */
 "feedback.start.footer" = "Τα ανώνυμα σχόλιά σας είναι σημαντικά για εμάς.";
@@ -568,17 +1484,20 @@
 /* No comment provided by engineer. */
 "fireButtonAnimation.waterSwirl.name" = "Δίνη νερού";
 
-/* No comment provided by engineer. */
-"home.message.buttonText" = "Ορισμός ως προεπιλεγμένο πρόγραμμα περιήγησης";
+/* Description text above the Share Link button */
+"get.browser.on-your-desktop-go-to" = "Στον υπολογιστή σας, μεταβείτε στη διεύθυνση:";
 
-/* No comment provided by engineer. */
-"home.message.header" = "Ορίστε το DuckDuckGo ως το προεπιλεγμένο πρόγραμμα περιήγησής σας.";
+/* Title for the Share Download Link button */
+"get.browser.share-link" = "Κοινή χρήση συνδέσμου λήψης";
 
-/* No comment provided by engineer. */
-"home.message.subheader" = "Ανοίξτε συνδέσμους με ηρεμία και ασφάλεια, κάθε φορά.";
+/* Message displayed in the share action when sharing via email */
+"get.browser.share-link.message" = "Αναζητήστε ιδιωτικά και αποκλείστε εφαρμογές παρακολούθησης με το πρόγραμμα περιήγησης DuckDuckGo για υπολογιστές. Επισκεφτείτε αυτόν τον σύνδεσμο στον υπολογιστή σας για να πραγματοποιήσετε λήψη σήμερα.";
 
-/* No comment provided by engineer. */
-"home.message.topText" = "ΝΕΑ ΣΤΟ IOS 14";
+/* Title displayed in the share action */
+"get.browser.share-link.title" = "Αποκτήστε το πρόγραμμα περιήγησης DuckDuckGo για Mac ή Windows";
+
+/* Title for the get desktop browser feature */
+"get.browser.title" = "Αποκτήστε το DuckDuckGo για Mac ή Windows";
 
 /* No comment provided by engineer. */
 "home.row.onboarding.header" = "Προσθήκη του DuckDuckGo στην αρχική οθόνη σας!";
@@ -594,6 +1513,21 @@
 
 /* Home tab title */
 "homeTab.title" = "Αρχική σελίδα";
+
+/* No comment provided by engineer. */
+"ID: %@ | %@ | %@" = "Αναγνωριστικό: %1$@ | %2$@ | %3$@";
+
+/* OK title for invite screen alert dismissal button */
+"invite.alert.ok.button" = "OK";
+
+/* Continue button on an invite dialog */
+"invite.dialog.continue.button" = "Continue";
+
+/* Get Started button on an invite dialog */
+"invite.dialog.get.started.button" = "Get Started";
+
+/* Message to show after user enters an unrecognized invite code */
+"invite.dialog.unrecognized.code.message" = "We didn’t recognize this Invite Code.";
 
 /* No comment provided by engineer. */
 "keyCommandAddBookmark" = "Προσθήκη σελιδοδείκτη";
@@ -655,17 +1589,407 @@
 /* No comment provided by engineer. */
 "keyCommandShowAllTabs" = "Προβολή όλων των καρτελών";
 
-/* Please preserve newline character */
-"launchscreenWelcomeMessage" = "Καλώς ορίσατε στο\nDuckDuckGo!";
+/* Summary text for the macOS browser waitlist */
+"mac-browser.waitlist.summary" = "Το DuckDuckGo για Mac έχει την ταχύτητα που χρειάζεστε, τις λειτουργίες περιήγησης που αναμένετε και περιλαμβάνει τις καλύτερες δυνατότητες απορρήτου στην κατηγορία μας.";
+
+/* Title for the macOS waitlist notification */
+"mac-waitlist.available.notification.title" = "Το DuckDuckGo για Mac είναι έτοιμο!";
+
+/* Title for the copy action */
+"mac-waitlist.copy" = "Αντιγραφή";
+
+/* Description text above the Share Link button */
+"mac-waitlist.join-waitlist-screen.on-your-computer-go-to" = "Στον υπολογιστή σας με Windows, μεταβείτε στη διεύθυνση:";
+
+/* Description text above the Share Link button */
+"mac-waitlist.join-waitlist-screen.on-your-mac-go-to" = "Στον Mac σας, μεταβείτε στη διεύθυνση:";
+
+/* Title for the Share Link button */
+"mac-waitlist.join-waitlist-screen.share-link" = "Κοινή χρήση συνδέσμου";
+
+/* Title for the Join Waitlist screen */
+"mac-waitlist.join-waitlist-screen.try-duckduckgo-for-mac" = "Αποκτήστε το DuckDuckGo για Mac!";
+
+/* Title for the macOS waitlist button redirecting to Windows waitlist */
+"mac-waitlist.join-waitlist-screen.windows-waitlist" = "Αναζητάτε την έκδοση των Windows;";
+
+/* Title for the settings subtitle */
+"mac-waitlist.settings.browse-privately" = "Περιηγηθείτε ιδιωτικά με την εφαρμογή μας για Mac";
+
+/* Message used when sharing to iMessage */
+"mac-waitlist.share-sheet.message" = "Έτοιμοι να αρχίσετε μια ιδιωτική περιήγηση σε Mac; \n\nΕπισκεφτείτε αυτήν τη διεύθυνση URL στον Mac σας για να κάνετε λήψη:\nhttps://duckduckgo.com/mac";
+
+/* Title for the share sheet entry */
+"mac-waitlist.share-sheet.title" = "DuckDuckGo για Mac";
+
+/* Title for the Mac Waitlist feature */
+"mac-waitlist.title" = "Εφαρμογή DuckDuckGo για Mac";
 
 /* No comment provided by engineer. */
 "menu.button.hint" = "Μενού περιήγησης";
 
+/* Title for back button in navigation bar */
+"navbar.back-button.title" = "Πίσω";
+
+/* Title for next button in navigation bar to progress forward */
+"navbar.next-button.title" = "Επόμενο";
+
+/* Finish editing bookmarks button */
+"navigation.title.done" = "Ολοκληρώθηκε";
+
 /* Edit button */
 "navigation.title.edit" = "Επεξεργασία";
 
+/* String indicating NetP is snoozing when viewed from the settings screen */
+"netP.cell.snoozing" = "Αναβολή";
+
+/* Title for the DuckDuckGo VPN feature */
+"netP.title" = "DuckDuckGo VPN";
+
+/* Button title for tooltip about adding VPN widget */
+"network.protection.addwidget.tip.action" = "Προσθήκη γραφικού στοιχείου";
+
+/* Message for tooltip about adding VPN widget */
+"network.protection.addwidget.tip.message" = "Ενεργοποιήστε και απενεργοποιήστε το VPN απευθείας από την Αρχική οθόνη.";
+
+/* Title for tooltip about adding VPN widget */
+"network.protection.addwidget.tip.title" = "Προσθήκη μικροεφαρμογής VPN";
+
+/* The body of the notification when Privacy Pro subscription expired */
+"network.protection.entitlement.expired.notification.body" = "Το VPN αποσυνδέθηκε λόγω λήξης της συνδρομής. Εγγραφείτε στο Privacy Pro για να συνδέσετε εκ νέου το DuckDuckGo VPN.";
+
+/* The body of the notification shown when VPN fails to reconnect */
+"network.protection.failure.notification.body" = "Η σύνδεση του DuckDuckGo VPN απέτυχε. Ξαναδοκιμάστε αργότερα.";
+
+/* Title for the VPN FAQ screen. */
+"network.protection.faq.title" = "Συχνές ερωτήσεις DuckDuckGo VPN";
+
+/* Message for tooltip about geoswitching */
+"network.protection.geoswitching.tip.message" = "Μπορείτε να προσαρμόσετε την τοποθεσία VPN σας μέσω σύνδεσης σε οποιονδήποτε από τους διακομιστές μας παγκοσμίως.";
+
+/* Title for tooltip about geoswitching */
+"network.protection.geoswitching.tip.title" = "Αλλαγή της τοποθεσίας σας";
+
+/* The body of the notification shown when VPN connection is interrupted */
+"network.protection.interrupted.notification.body" = "Το DuckDuckGo VPN διακόπηκε. Γίνεται προσπάθεια επανασύνδεσης τώρα...";
+
+/* Message for the network protection invite dialog */
+"network.protection.invite.dialog.message" = "Εισαγάγετε τον κωδικό πρόσκλησής σου για να αρχίσετε.";
+
+/* Title for the network protection invite screen */
+"network.protection.invite.dialog.title" = "Έχετε προσκληθεί να δοκιμάσετε το DuckDuckGo VPN";
+
+/* Prompt for the network protection invite code text field */
+"network.protection.invite.field.prompt" = "Κωδικός πρόσκλησης";
+
+/* Message for the network protection invite success view */
+"network.protection.invite.success.message" = "Κρύψτε την τοποθεσία σας από ιστότοπους και αποκρύψτε τη διαδικτυακή δραστηριότητά σας από τους παρόχους Internet και άλλους χρήστες του δικτύου σας.";
+
+/* Title for the network protection invite success view */
+"network.protection.invite.success.title" = "Τέλεια! Τα καταφέρατε.";
+
+/* The title of the notifications shown from VPN */
+"network.protection.notification.title" = "DuckDuckGo";
+
+/* Title text for an iOS quick action that opens VPN settings */
+"network.protection.quick-action.open-vpn" = "Ανοικτό VPN";
+
+/* Button title for tooltip about VPN snooze mode */
+"network.protection.snooze.tip.action" = "Μάθετε περισσότερα";
+
+/* Message for tooltip about VPN snooze mode */
+"network.protection.snooze.tip.message" = "Μπορείτε να χρησιμοποιήσετε ιστότοπους ή εφαρμογές που εμποδίζουν την κυκλοφορία VPN, αποκλείοντας τη σύνδεση VPN.";
+
+/* Title for tooltip about VPN snooze mode */
+"network.protection.snooze.tip.title" = "Αποφυγή διενέξεων VPN";
+
+/* The body of the notification when the VPN is snoozed, with a duration string as parameter (e.g, 30 minutes) */
+"network.protection.snoozed.notification.body" = "Το VPN τέθηκε σε αναστολή για %@";
+
+/* The label for when NetP VPN is connected plus the length of time connected as a formatter HH:MM:SS string */
+"network.protection.status.connected.format" = "Συνδέθηκε · %@";
+
+/* The label for the NetP VPN when connecting */
+"network.protection.status.connecting" = "Σύνδεση...";
+
+/* The label for the NetP VPN when disconnected */
+"network.protection.status.disconnected" = "Δεν έχει συνδεθεί";
+
+/* The label for the NetP VPN when disconnecting */
+"network.protection.status.disconnecting" = "Αποσύνδεση...";
+
+/* Message label text for the status view when VPN is disconnected */
+"network.protection.status.header.message.off" = "Συνδεθείτε για να διασφαλίσετε όλη την επισκεψιμότητά σας στο διαδίκτυο\nαπό τη συσκευή σας.";
+
+/* Message label text for the status view when VPN is disconnected */
+"network.protection.status.header.message.on" = "Όλη η επισκεψιμότητα στο διαδίκτυο από τη συσκευή διασφαλίζεται\n μέσω του VPN.";
+
+/* Header title label text for the status view when VPN is disconnected */
+"network.protection.status.header.title.off" = "Το DuckDuckGo VPN είναι απενεργοποιημένο";
+
+/* Header title label text for the status view when VPN is connected */
+"network.protection.status.header.title.on" = "Το DuckDuckGo VPN είναι ενεργοποιημένο";
+
+/* Header title label text for the status view when VPN is snoozing */
+"network.protection.status.header.title.snoozed" = "Το DuckDuckGo VPN βρίσκεται σε κατάσταση αναστολής λειτουργίας";
+
+/* The status view 'Share Feedback' button which is shown inline on the status view after the temporary free use footer text */
+"network.protection.status.menu.share.feedback" = "Κοινοποίηση σχολίου";
+
+/* The label for the NetP VPN when paused */
+"network.protection.status.paused" = "Σε παύση";
+
+/* The label for when NetP VPN is snoozing plus the length of time remaining formatted as '0:00' */
+"network.protection.status.snoozing.format" = "Σε αναβολή, απομένει %@";
+
+/* Snooze button title shown in NetworkProtection's status view. */
+"network.protection.status.view.action.snooze" = "Αναβολή για 20 λεπτά";
+
+/* Wake Up button title shown in NetworkProtection's status view. */
+"network.protection.status.view.action.wake-up" = "Αφύπνιση";
+
+/* Connection details label shown in NetworkProtection's status view. */
+"network.protection.status.view.connection.details" = "Λεπτομέρειες σύνδεσης";
+
+/* Custom DNS label shown in NetworkProtection's status view. */
+"network.protection.status.view.custom.dns" = "Διακομιστής DNS";
+
+/* Generic connection failed error message shown in NetworkProtection's status view. */
+"network.protection.status.view.error.connection.failed.message" = "Ξαναδοκιμάστε αργότερα.";
+
+/* Generic connection failed error title shown in NetworkProtection's status view. */
+"network.protection.status.view.error.connection.failed.title" = "Αποτυχία σύνδεσης.";
+
+/* IP Address label shown in NetworkProtection's status view. */
+"network.protection.status.view.ip.address" = "Διεύθυνση IP";
+
+/* Location label shown in NetworkProtection's status view. */
+"network.protection.status.view.location" = "Τοποθεσία";
+
+/* Label shown on the title of the settings section in NetworkProtection's status view. */
+"network.protection.status.view.settings.section.title" = "Διαχείριση";
+
+/* Title label text for the status view when netP is disconnected */
+"network.protection.status.view.title" = "VPN";
+
+/* The body of the notification shown when VPN reconnects successfully */
+"network.protection.success.notification.body" = "Το DuckDuckGo VPN είναι ενεργοποιημένο. Η τοποθεσία και η διαδικτυακή δραστηριότητά σας προστατεύονται.";
+
+/* The body of the notification shown when VPN connects successfully with the city + state/country as formatted parameter */
+"network.protection.success.notification.subtitle.including.serverLocation" = "Δρομολόγηση κυκλοφορίας της συσκευής μέσω %@.";
+
+/* The body of the notification shown when VPN connects successfully with the city + state/country as formatted parameter */
+"network.protection.success.notification.subtitle.snooze.ended.including.serverLocation" = "Η αναστολή του VPN έχει τελειώσει. Δρομολόγηση κυκλοφορίας της συσκευής μέσω %@.";
+
+/* Title for the button to link to the iOS app settings and enable notifications app-wide. */
+"network.protection.turn.on.notifications.button.title" = "Ενεργοποίηση ειδοποιήσεων";
+
+/* Footer text under the button to link to the iOS app settings and enable notifications app-wide. */
+"network.protection.turn.on.notifications.section.footer" = "Επιτρέψτε στο DuckDuckGo να σας ειδοποιεί εάν η ισχύς της σύνδεσή σας μειωθεί ή αλλάξει η κατάσταση του VPN.";
+
+/* Title of the About section in the VPN status screen */
+"network.protection.vpn.about" = "Σχετικά";
+
+/* Section header for the toggle for VPN notifications. */
+"network.protection.vpn.alerts.section.header" = "Ειδοποιήσεις";
+
+/* List section footer for the toggle for VPN alerts. */
+"network.protection.vpn.alerts.toggle.section.footer" = "Ειδοποιηθείτε εάν η ισχύς της σύνδεσής σας μειωθεί ή αλλάξει η κατάσταση του VPN.";
+
+/* Title for the toggle for VPN notifications. */
+"network.protection.vpn.alerts.toggle.title" = "Ειδοποιήσεις VPN";
+
+/* Title for the data volume section in the VPN status screen */
+"network.protection.vpn.data-volume" = "Όγκος δεδομένων";
+
+/* Footer text for the Exclude Local Networks setting item. */
+"network.protection.vpn.exclude.local.networks.setting.footer" = "Επιτρέψτε στην τοπική κυκλοφορία να παρακάμψει το VPN και να συνδεθεί σε συσκευές του τοπικού δικτύου σας, όπως ένας εκτυπωτής.";
+
+/* Header text for the Exclude Local Networks setting item. */
+"network.protection.vpn.exclude.local.networks.setting.header" = "Γενικά";
+
+/* Title for the Exclude Local Networks setting item. */
+"network.protection.vpn.exclude.local.networks.setting.title" = "Εξαίρεση τοπικών δικτύων";
+
+/* Title for the VPN Location screen's All Countries section. */
+"network.protection.vpn.location.all.countries.section.title" = "Όλες οι χώρες";
+
+/* Description of the location type in the VPN status screen */
+"network.protection.vpn.location.connected" = "Συνδεδεμένη τοποθεσία";
+
+/* Subtitle of countries item when there are multiple cities, example : */
+"network.protection.vpn.location.country.item.formatted.cities.count" = "%d πόλεις";
+
+/* Description of the location type in the VPN status screen */
+"network.protection.vpn.location.nearest" = "(Πλησιέστερο)";
+
+/* Footer describing the VPN Location screen's Recommended section which just has Nearest Available. */
+"network.protection.vpn.location.recommended.section.footer" = "Αυτόματη σύνδεση στον εγγύτερο διακομιστή που μπορούμε να βρούμε.";
+
+/* Title for the VPN Location screen's Recommended section. */
+"network.protection.vpn.location.recommended.section.title" = "Προτείνεται";
+
+/* Description of the location type in the VPN status screen */
+"network.protection.vpn.location.selected" = "Επιλεγμένη τοποθεσία";
+
+/* Subtitle for the preferred location item that formats a city and country. E.g Chicago, United States */
+"network.protection.vpn.location.subtitle.formatted.city.and.country" = "%1$@, %2$@";
+
+/* Title for the VPN Location screen. */
+"network.protection.vpn.location.title" = "Τοποθεσία VPN";
+
+/* Title for the VPN Notifications management screen. */
+"network.protection.vpn.notifications.title" = "Ειδοποιήσεις VPN";
+
+/* Label for the Preferred Location VPN Settings item when the nearest available location is selected. */
+"network.protection.vpn.preferred.location.nearest" = "Πλησιέστερη τοποθεσία";
+
+/* Title for the Preferred Location VPN Settings item. */
+"network.protection.vpn.preferred.location.title" = "Προτιμώμενη τοποθεσία";
+
+/* Footer text for the DNS server setting item. */
+"network.protection.vpn.secure.dns.setting.footer" = "Το DuckDuckGo δρομολογεί τα ερωτήματα DNS μέσω των διακομιστών DNS μας, ώστε ο πάροχος διαδικτύου σας να μην μπορεί να δει ποιους ιστότοπους επισκέπτεστε.";
+
+/* Title for the FAQ row in the VPN status screen. */
+"network.protection.vpn.settings.faq" = "Συχνές ερωτήσεις και υποστήριξη";
+
+/* Title for the feedback row in the VPN status screen. */
+"network.protection.vpn.settings.share-feedback" = "Κοινοποίηση σχολίου VPN";
+
+/* Title for the VPN Settings screen. */
+"network.protection.vpn.settings.title" = "Ρυθμίσεις VPN";
+
+/* Information message about New Tab Page redesign */
+"new.tab.page.intro.message.body" = "Προσαρμόστε τα Αγαπημένα και τις λειτουργίες μετάβασης. Αναδιατάξτε στοιχεία ή αποκρύψτε τα για να τη διατηρείτε καθαρή.";
+
+/* Title of information message about New Tab Page redesign */
+"new.tab.page.intro.message.title" = "Η σελίδα σας για τη Νέα καρτέλα είναι... Νέα!";
+
+/* Name of favorites section setting */
+"new.tab.page.settings.section.name.favorites" = "Αγαπημένα";
+
+/* Name of shortcuts section setting */
+"new.tab.page.settings.section.name.shortcuts" = "Συντομευσεις";
+
+/* Footer of the group allowing for setting up new tab page sections */
+"new.tab.page.settings.sections.description" = "Εμφάνιση, απόκρυψη και αναδιάταξη ενοτήτων στη σελίδα της νέας καρτέλας";
+
+/* Header title of the group allowing for setting up new tab page sections */
+"new.tab.page.settings.sections.header.title" = "ΕΝΟΤΗΤΕΣ";
+
+/* Header title of the shortcuts in New Tab Page preferences. */
+"new.tab.page.settings.shortcuts.header.title" = "ΣΥΝΤΟΜΕΥΣΕΙΣ";
+
+/* Title of New Tab Page preferences page. */
+"new.tab.page.settings.title" = "Προσαρμογή σελίδας νέας καρτέλας";
+
+/* Shortcut title leading to AI Chat */
+"new.tab.page.shortcut.ai.chat" = "Συνομιλία με ΤΝ";
+
+/* Shortcut title leading to Bookmarks */
+"new.tab.page.shortcut.bookmarks" = "Σελιδοδείκτες";
+
+/* Shortcut title leading to Downloads */
+"new.tab.page.shortcut.downloads" = "Λήψεις";
+
+/* Shortcut title leading to Passwords */
+"new.tab.page.shortcut.passwords" = "Κωδικός πρόσβασης";
+
+/* Shortcut title leading to app settings */
+"new.tab.page.shortcut.settings" = "Ρυθμίσεις";
+
+/* Text shown on the favorites info tooltip */
+"new.tab.page.tooltip.body" = "Σε οποιονδήποτε ιστότοπο, ανοίξτε το μενού ••• και επιλέξτε **Προσθήκη αγαπημένου** για προσθήκη στη σελίδα νέας καρτέλας σας.";
+
 /* Do not translate - stringsdict entry */
 "number.of.tabs" = "number.of.tabs";
+
+/* Text displayed on notification appearing in the address bar when the browser  dismissed the cookie popup automatically rejecting it */
+"omnibar.notification.cookies-managed" = "Διαχειριζόμενα cookies";
+
+/* Text displayed on notification appearing in the address bar when the browser  hides a cookie popup */
+"omnibar.notification.popup-hidden" = "Κρυφό αναδυόμενο παράθυρο";
+
+/* Button on the Add to Dock tutorial screen of the onboarding, it will proceed to the next step of the onboarding. */
+"onboarding.addToDock.buttons.gotIt" = "Το κατάλαβα";
+
+/* Button to change the default browser */
+"onboarding.browsers.cta" = "Επιλέξτε το πρόγραμμα περιήγησής σας";
+
+/* Message to highlight how the browser allows you to block cookie pop-ups */
+"onboarding.browsers.features.cookiePopups.title" = "Αποκλεισμός αναδυόμενων παραθύρων cookie";
+
+/* Message to highlight browser capability of blocking creepy ads */
+"onboarding.browsers.features.creepyAds.title" = "Αποκλεισμός στοχευμένων διαφημίσεων";
+
+/* Message to highlight browser capability of swiftly erase browsing data */
+"onboarding.browsers.features.eraseBrowsingData.title" = "Γρήγορη διαγραφή δεδομένων περιήγησης";
+
+/* Message to highlight browser capability of private searches */
+"onboarding.browsers.features.privateSearch.title" = "Ιδιωτική αναζήτηση βάσει προεπιλογής";
+
+/* Message to highlight browser capability ofblocking 3rd party trackers */
+"onboarding.browsers.features.trackerBlocker.title" = "Αποκλείστε εφαρμογές παρακολούθησης τρίτων";
+
+/* The title of the dialog to show the privacy features that DuckDuckGo offers */
+"onboarding.browsers.title" = "H προστασία προσωπικών δεδομένων energopoi;huhke!";
+
+/* The message of the option to set the address bar to the bottom. */
+"onboarding.highlights.addressBarPosition.bottom.message" = "Εύκολη πρόσβαση";
+
+/* The title of the option to set the address bar to the bottom. */
+"onboarding.highlights.addressBarPosition.bottom.title" = "Κάτω μέρος";
+
+/* The title of the CTA to progress to the next onboarding screen. */
+"onboarding.highlights.addressBarPosition.cta" = "Επόμενο";
+
+/* Indicates what address bar option (Top/Bottom) is the default one. E.g. Top (Default) */
+"onboarding.highlights.addressBarPosition.default" = "(προεπιλογή)";
+
+/* The title of the onboarding dialog popup to select the preferred address bar position. */
+"onboarding.highlights.addressBarPosition.title" = "Πού πρέπει να τοποθετήσω τη γραμμή διευθύνσεών σας;";
+
+/* The message of the option to set the address bar to the top. */
+"onboarding.highlights.addressBarPosition.top.message" = "Ευδιάκριτο";
+
+/* The title of the option to set the address bar to the top. */
+"onboarding.highlights.addressBarPosition.top.title" = "Κορυφή";
+
+/* The title of the CTA to progress to the next onboarding screen. */
+"onboarding.highlights.appIconSelection.cta" = "Επόμενο";
+
+/* The subheader of the onboarding dialog popup to select the preferred App icon. */
+"onboarding.highlights.appIconSelection.message" = "Επιλέξτε το εικονίδιο της εφαρμογής σας:";
+
+/* The title of the onboarding dialog popup to select the preferred App icon. */
+"onboarding.highlights.appIconSelection.title" = "Ποιο χρώμα μου ταιριάζει καλύτερα;";
+
+/* Message to highlight how the browser allows you to block cookie pop-ups */
+"onboarding.highlights.browsers.features.cookiePopups.title" = "Αποκλεισμός αιτημάτων και αναδυόμενων παραθύρων για cookie";
+
+/* Message to highlight browser capability of blocking creepy ads */
+"onboarding.highlights.browsers.features.creepyAds.title" = "Αποκλεισμός στοχευμένων διαφημίσεων";
+
+/* Message to highlight browser capability of swiftly erase browsing data */
+"onboarding.highlights.browsers.features.eraseBrowsingData.title" = "Γρήγορη διαγραφή δεδομένων περιήγησης";
+
+/* Message to highlight browser capability ofblocking 3rd party trackers */
+"onboarding.highlights.browsers.features.trackerBlocker.title" = "Αποκλείστε εφαρμογές παρακολούθησης τρίτων";
+
+/* The title of the dialog to show the privacy features that DuckDuckGo offers */
+"onboarding.highlights.browsers.title" = "Η προστασία ενεργοποιήθηκε!";
+
+/* The title of the fire button CTA to skip erasing the data. */
+"onboarding.highlights.fireDialog.cta.skip" = "Παράλειψη";
+
+/* The title of the onboarding dialog popup */
+"onboarding.highlights.intro.title" = "Γεια σας.\n\nΕίστε έτοιμοι για ένα ταχύτερο πρόγραμμα περιήγησης που σας διατηρεί προστατευμένους;";
+
+/* Button to continue the onboarding process */
+"onboarding.intro.cta" = "Ας το δοκιμάσουμε!";
+
+/* The title of the onboarding dialog popup */
+"onboarding.intro.title" = "Γεια σας.\n\nΈτοιμοι για ένα καλύτερο και πιο ιδιωτικό διαδίκτυο;";
 
 /* No comment provided by engineer. */
 "onboarding.widgets.continueButton" = "Προσθήκη γραφικού στοιχείου";
@@ -700,17 +2024,109 @@
 /* ’Link’ is link on a website */
 "open.externally.failed" = "Δεν είναι δυνατή η εύρεση της εφαρμογής που απαιτείται για άνοιγμα αυτού του συνδέσμου";
 
+/* Activate button */
+"pm.activate" = "Ενεργοποίηση";
+
+/* Cancel button */
+"pm.cancel" = "Ακύρωση";
+
+/* Deactivate button */
+"pm.deactivate" = "Απενεργοποίηση";
+
+/* Label for the email form in the Privacy Pro feedback form */
+"ppro.feedback-form.email.label" = "Email (προαιρετικό)";
+
+/* Placeholder for the email form in the Privacy Pro feedback form */
+"ppro.feedback-form.email.placeholder" = "name@email.com";
+
+/* Placeholder for the General Feedback step in the Privacy Pro feedback form */
+"ppro.feedback-form.general-feedback.placeholder" = "Στείλτε μας τα σχόλιά σας...";
+
+/* Title for the General Feedback step in the Privacy Pro feedback form */
+"ppro.feedback-form.general-feedback.title" = "Γενικά σχόλια";
+
+/* Title for the ITR category in the Privacy Pro feedback form */
+"ppro.feedback-form.report-itr-problem.title" = "Identity Theft Restoration";
+
+/* Title for the PIR category in the Privacy Pro feedback form */
+"ppro.feedback-form.report-pir-problem.title" = "Personal Information Removal";
+
+/* Title for the Subscriptions and Payments category in the Privacy Pro feedback form */
+"ppro.feedback-form.report-ppro-problem.title" = "Συνδρομές και πληρωμές";
+
+/* Placeholder for the Report a Problem step in the Privacy Pro feedback form */
+"ppro.feedback-form.report-problem.placeholder" = "Πείτε μας τι συμβαίνει...";
+
+/* Title for the Report a Problem step in the Privacy Pro feedback form */
+"ppro.feedback-form.report-problem.title" = "Αναφέρετε ένα πρόβλημα";
+
+/* Title for the VPN category in the Privacy Pro feedback form */
+"ppro.feedback-form.report-vpn-problem.title" = "VPN";
+
+/* Placeholder for the Feature Request step in the Privacy Pro feedback form */
+"ppro.feedback-form.request-feature.placeholder" = "Ποιες λειτουργίες θα θέλατε να δείτε;";
+
+/* Title for the Feature Request step in the Privacy Pro feedback form */
+"ppro.feedback-form.request-feature.title" = "Αίτημα για λειτουργία";
+
+/* Title for the category selection section in the Privacy Pro feedback form */
+"ppro.feedback-form.select-category.title" = "ΕΠΙΛΕΞΤΕ ΚΑΤΗΓΟΡΙΑ";
+
+/* Text for the body of the PPro feedback form */
+"ppro.feedback-form.text-1" = "Βρήκατε ένα πρόβλημα που δεν καλύπτεται στο [κέντρο βοήθειας](duck://); Θέλουμε σίγουρα να μάθουμε γι' αυτό.Παρέχετε ένα email αν θέλετε να επικοινωνήσουμε μαζί σας για το θέμα αυτό (ίσως δεν είμαστε σε θέση να απαντήσουμε σε όλα τα θέματα):";
+
+/* Text for the body of the PPro feedback form */
+"ppro.feedback-form.text-2" = "Εκτός από τις λεπτομέρειες που καταχωρήθηκαν παραπάνω, στέλνουμε κάποιες ανώνυμες πληροφορίες με τα σχόλιά σας:";
+
+/* Bullet text for the body of the PPro feedback form */
+"ppro.feedback-form.text-3" = "• Εάν κάποιες λειτουργίες του προγράμματος περιήγησης είναι ενεργές";
+
+/* Bullet text for the body of the PPro feedback form */
+"ppro.feedback-form.text-4" = "• Συγκεντρωτικά διαγνωστικά εφαρμογών (π.χ. κωδικοί σφαλμάτων)";
+
+/* Text for the body of the PPro feedback form */
+"ppro.feedback-form.text-5" = "Πατώντας «Υποβολή» συμφωνείτε ότι το DuckDuckGo μπορεί να χρησιμοποιήσει τις πληροφορίες που υποβάλλονται για βελτίωση της εφαρμογής.";
+
+/* Title for the text box in the Privacy Pro feedback form */
+"ppro.feedback-form.text-box.title" = "Σχόλια";
+
+/* Title for the Privacy Pro feedback form */
+"ppro.feedback-form.title" = "Αποστολή σχολίου";
+
+/* Button title for sync bookmarks limits exceeded warning to go to manage bookmarks */
+"prefrences.sync.bookmarks-limit-exceeded-action" = "Διαχείριση σελιδοδεικτών";
+
+/* Description for sync bookmarks limits exceeded warning */
+"prefrences.sync.bookmarks-limit-exceeded-description" = "Έχετε φτάσει στον μέγιστο αριθμό σελιδοδεικτών. Διαγράψτε ορισμένους για να συνεχίσετε τον συγχρονισμό.";
+
+/* Button title for sync credentials limits exceeded warning to go to manage passwords */
+"prefrences.sync.credentials-limit-exceeded-action" = "Διαχείριση κωδικών πρόσβασης…";
+
+/* Description for sync credentials limits exceeded warning */
+"prefrences.sync.credentials-limit-exceeded-description" = "Έχετε φτάσει στον μέγιστο αριθμό κωδικών πρόσβασης. Διαγράψτε ορισμένους για να συνεχίσετε τον συγχρονισμό.";
+
+/* Description invalid credentials error when syncing.
+   Description of incorrectly formatted data error when syncing.
+   Description of too many requests error when syncing. */
+"prefrences.sync.invalid-login-description" = "Ο συγχρονισμός αντιμετώπισε σφάλμα. Δοκιμάστε να απενεργοποιήσετε τον συγχρονισμό στη συσκευή αυτή και έπειτα συνδεθείτε ξανά χρησιμοποιώντας άλλη συσκευή ή τον κωδικό ανάκτησής σας.";
+
+/* Title for sync limits exceeded warning */
+"prefrences.sync.limit-exceeded-title" = "Παύση συγχρονισμού";
+
 /* No comment provided by engineer. */
 "preserveLogins.domain.list.footer" = "Οι ιστότοποι βασίζονται σε cookies για να σας διατηρούν συνδεδεμένους. Όταν ενεργοποιείτε τη διαγραφή δραστηριότητας για έναν ιστότοπο, τα cookies δεν διαγράφονται και παραμένετε συνδεδεμένοι, ακόμα και μετά τη χρήση του Κουμπιού διαγραφής δραστηριότητας. Εξακολουθούμε να αποκλείουμε εφαρμογές παρακολούθησης από τρίτους που υπάρχουν σε ιστότοπους με διαγραφή δραστηριότητας.";
 
-/* Section header above Fireproffed websites list */
-"preserveLogins.domain.list.title" = "Ιστότοποι";
+/* Section header above Fireproofed websites list */
+"preserveLogins.domain.list.title" = "Ασφαλείς ιστότοποι";
 
-/* Paramter is a string - domain name */
-"preserveLogins.fireproof.message" = "Θα θέλατε να ενεργοποιήσετε τη διαγραφή δραστηριότητας για το %@;";
+/* Alert message explaining to users that the benefit of fireproofing a site is that they will be kept signed in */
+"preserveLogins.fireproof.message" = "Ενεργοποιώντας τη διαγραφή δραστηριότητας για αυτόν τον ιστότοπο, θα παραμείνετε συνδεδεμένοι μετά τη χρήση του Κουμπιού διαγραφής δραστηριότητας.";
+
+/* Parameter is a string - domain name. Alert title prompting user to fireproof a site so they can stay signed in */
+"preserveLogins.fireproof.title" = "Διαγραφή δραστηριότητας στο %@ για να παραμείνετε συνδεδεμένοι;";
 
 /* Confirm fireproofing action */
-"preserveLogins.menu.confirm" = "Ασφαλής ιστότοπος";
+"preserveLogins.menu.confirm" = "Διαγραφή δραστηριότητας";
 
 /* Parameter is a website URL. Messege confirms that given website has been fireproofed. */
 "preserveLogins.menu.confirm.message" = "Έχει γίνει πλέον διαγραφή δραστηριότητας για το %@";
@@ -733,173 +2149,17 @@
 /* Confirmation button in alert */
 "preserveLogins.remove.all.ok" = "Εντάξει";
 
-/* Ask to Fireproof Sites */
-"preserveLogins.switch.title" = "Ζητήστε διαγραφή δραστηριότητας για ιστότοπους";
-
-/* Part of certificate info */
-"privacy.protection.encryption.algorithm" = "Αλγόριθμος";
-
-/* Certificate Key size info - number (integer) of bits */
-"privacy.protection.encryption.bits" = "% d bit";
-
 /* No comment provided by engineer. */
-"privacy.protection.encryption.cert.error" = "Σφάλμα κατά την εξαγωγή πιστοποιητικού";
+"Privacy Protections" = "Προστασία προσωπικών δεδομένων";
 
-/* Part of certificate info */
-"privacy.protection.encryption.common.name" = "Κοινό όνομα";
+/* Privacy Icon accessibility title */
+"privacy.icon.dax" = "Λογότυπο DuckDuckGo";
 
-/* Part of certificate info */
-"privacy.protection.encryption.effective.size" = "Μέγεθος ισχύος";
+/* Privacy Icon accessibility hint */
+"privacy.icon.hint" = "Πατήστε για να ανοίξετε την οθόνη Πίνακας εργαλείων ιδιωτικότητας";
 
-/* Part of certificate info */
-"privacy.protection.encryption.email" = "ηλεκτρονικό ταχυδρομείο";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.encrypted.heading" = "Κρυπτογραφημένη σύνδεση";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.forced.heading" = "Αναγκαστική κρυπτογράφηση";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.forced.message" = "Έχουμε αναγκάσει τον συγκεκριμένο ιστότοπο να χρησιμοποιεί κρυπτογραφημένη σύνδεση, αποτρέποντας την υποκλοπή τυχόν προσωπικών πληροφοριών που στέλνετε σε αυτόν.";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.header" = "Μια κρυπτογραφημένη σύνδεση αποτρέπει την υποκλοπή προσωπικών πληροφοριών που στέλνετε σε έναν ιστότοπο.";
-
-/* Part of certificate info */
-"privacy.protection.encryption.id" = "Αναγνωριστικό κλειδιού θέματος";
-
-/* Part of certificate info */
-"privacy.protection.encryption.issuer" = "Εκδότης";
-
-/* Part of certificate info */
-"privacy.protection.encryption.key" = "Δημόσιο κλειδί";
-
-/* Part of certificate info */
-"privacy.protection.encryption.key.size" = "Μέγεθος κλειδιού";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.mixed.heading" = "Μικτή κρυπτογράφηση";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.mixed.message" = "Ο ιστότοπος αυτός έχει μικτή κρυπτογράφηση επειδή κάποιο περιεχόμενο διατίθεται μέσω μη κρυπτογραφημένων συνδέσεων.";
-
-/* Info that certificate is not permanent */
-"privacy.protection.encryption.no" = "Όχι";
-
-/* Part of certificate info - Permanent in this context means that certificate is stored on the device (so it’s not temporary one). */
-"privacy.protection.encryption.permanent" = "Μόνιμο";
-
-/* Public Key of a certficate */
-"privacy.protection.encryption.public.key" = "Δημόσιο κλειδί";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.standard.message" = "Μια κρυπτογραφημένη σύνδεση αποτρέπει την υποκλοπή προσωπικών πληροφοριών που στέλνετε σε έναν ιστότοπο.";
-
-/* Header of a section that provides infomration about certificate issuer */
-"privacy.protection.encryption.subject.name" = "Όνομα θέματος";
-
-/* Part of certificate info */
-"privacy.protection.encryption.summary" = "Περίληψη";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.unencrypted" = "Να είστε προσεκτικοί κατά την εισαγωγή προσωπικών στοιχείων σε αυτόν τον ιστότοπο.";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.unencrypted.heading" = "Μη κρυπτογραφημένη σύνδεση";
-
-/* No comment provided by engineer. */
-"privacy.protection.encryption.unknown" = "Άγνωστο";
-
-/* Part of certificate info */
-"privacy.protection.encryption.usage" = "Χρήση";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.decrypt" = "Αποκρυπτογράφηση";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.derive" = "Παραγωγή";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.encrypt" = "Κρυπτογράφηση";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.sign" = "Υπογραφή";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.unwrap" = "Χωρίς αναδίπλωση";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.verify" = "Επαλήθευση";
-
-/* Usage of a certificate */
-"privacy.protection.encryption.usage.wrap" = "Αναδίπλωση";
-
-/* Confirmation that certificate is permanent */
-"privacy.protection.encryption.yes" = "Ναί";
-
-/* No comment provided by engineer. */
-"privacy.protection.main.disabled" = "ΑΠΕΝΕΡΓΟΠΟΊΗΣΗ ΤΗΣ ΠΡΟΣΤΑΣΙΑΣ ΤΟΥ ΙΣΤΟΤΟΠΟΥ";
-
-/* $1 and $2 are grades - letters. Example: Enhanced from D to B */
-"privacy.protection.main.enhanced" = "ΒΕΛΤΙΩΘΗΚΕ ΑΠΟ $1 ΣΕ $2";
-
-/* No comment provided by engineer. */
-"privacy.protection.main.grade" = "ΒΑΘΜΟΣ ΠΡΟΣΤΑΣΙΑΣ ΠΡΟΣΩΠΙΚΩΝ ΔΕΔΟΜΕΝΩΝ";
-
-/* Major trackers blocked */
-"privacy.protection.major.trackers.blocked" = "privacy.protection.major.trackers.blocked";
-
-/* Major trackers found */
-"privacy.protection.major.trackers.found" = "privacy.protection.major.trackers.found";
-
-/* First parameter (%@) is a number (percent), %% is a percent sign, second %@ is a date */
-"privacy.protection.network.leaderboard" = "Τα δίκτυα εφαρμογών παρακολούθησης βρέθηκαν στο %1$@%% των ιστότοπων που έχετε επισκεφτεί από %2$@.";
-
-/* No comment provided by engineer. */
-"privacy.protection.network.leaderboard.gathering" = "Εξακολουθούμε να συλλέγουμε δεδομένα για να δείξουμε\nπόσες εφαρμογές παρακολούθησης έχουμε αποκλείσει.";
-
-/* ToS;DR is an organization */
-"privacy.protection.practices.footer.info" = "Αποτελέσματα πρακτικών ιδιωτικότητας από ToS;DR.";
-
-/* No comment provided by engineer. */
-"privacy.protection.practices.header.info" = "Οι πρακτικές ιδιωτικότητας υποδεικνύουν τον βαθμό προστασίας των προσωπικών πληροφοριών που μοιράζεστε με έναν ιστότοπο.";
-
-/* No comment provided by engineer. */
-"privacy.protection.practices.reviewed.info" = "Αυτός ο ιστότοπος θα σας ειδοποιήσει πριν τη μεταφορά των πληροφοριών σας, σε περίπτωση συγχώνευσης ή εξαγοράς";
-
-/* No comment provided by engineer. */
-"privacy.protection.practices.unknown.info" = "Οι πρακτικές προστασίας προσωπικών δεδομένων αυτού του ιστότοπου δεν έχουν ελεγχθεί.";
-
-/* Replacement string is a single letter: A/B/C/D */
-"privacy.protection.site.grade" = "Βαθμός προστασίας προσωπικών δεδομένων %@";
-
-/* No comment provided by engineer. */
-"privacy.protection.site.hint" = "Πατήστε για να ανοίξετε την οθόνη Προστασίας προσωπικών δεδομένων";
-
-/* No comment provided by engineer. */
-"privacy.protection.top.offenders.info" = "Αυτά τα στατιστικά αποθηκεύονται μόνο στη συσκευή σας και δεν αποστέλλονται πουθενά. Ποτέ.";
-
-/* No comment provided by engineer. */
-"privacy.protection.tos.good" = "Ορθές πρακτικές ιδιωτικότητας";
-
-/* No comment provided by engineer. */
-"privacy.protection.tos.mixed" = "Μεικτές πρακτικές ιδιωτικότητας";
-
-/* No comment provided by engineer. */
-"privacy.protection.tos.poor" = "Ακατάλληλες πρακτικές ιδιωτικότητας";
-
-/* No comment provided by engineer. */
-"privacy.protection.tos.unknown" = "Άγνωστες πρακτικές ιδιωτικότητας";
-
-/* No comment provided by engineer. */
-"privacy.protection.tracker.networks.info" = "Τα δίκτυα παρακολούθησης συγκεντρώνουν το ιστορικό διαδικτύου σας σε ένα προφίλ δεδομένων για εσάς. Τα κύρια δίκτυα παρακολούθησης είναι πιο επιβλαβή, καθώς μπορούν να σας παρακολουθούν και να σας στοχοποιούν σε όλο το διαδίκτυο.";
-
-/* Do not translate - stringsdict entry */
-"privacy.protection.trackers.blocked" = "privacy.protection.trackers.blocked";
-
-/* Do not translate - stringsdict entry */
-"privacy.protection.trackers.found" = "privacy.protection.trackers.found";
+/* Privacy Icon accessibility title */
+"privacy.icon.shield" = "Εικονίδιο απορρήτου";
 
 /* Deny action */
 "prompt.custom.url.scheme.dontopen" = "Ακύρωση";
@@ -914,9 +2174,6 @@
 "prompt.custom.url.scheme.title" = "Άνοιγμα σε άλλη εφαρμογή;";
 
 /* No comment provided by engineer. */
-"report.brokensite.header" = "Η υποβολή μιας ανώνυμης αναφοράς για σπασμένους συνδεσμους μασ βοηθά να πραγματοποιήσουμε επανόρθωση των εντοπισμένων σφαλμάτων και προβλημάτων αυτών των ζητημάτων και να βελτιώσουμε την εφαρμογή.";
-
-/* No comment provided by engineer. */
 "search.hint.duckduckgo" = "Αναζήτηση ή εισαγωγή διεύθυνσης";
 
 /* No comment provided by engineer. */
@@ -925,8 +2182,289 @@
 /* No comment provided by engineer. */
 "section.title.favorites" = "Αγαπημένα";
 
-/* No comment provided by engineer. */
-"settings.about.text" = "Στην DuckDuckGo, θέτουμε τα νέα πρότυπα σε ό,τι αφορά την αξιοπιστία του διαδικτύου.\n\nΤο πρόγραμμα περιήγησης Προστασίας προσωπικών δεδομένων DuckDuckGo παρέχει όλα όσα χρειάζεστε για να προστατεύετε τον εαυτό σας όταν πραγματοποιείτε αναζήτηση και περιήγηση στο διαδίκτυο, συμπεριλαμβανομένου του αποκλεισμού παρακολούθησης, πιο έξυπνης κρυπτογράφησης και ιδιωτικής αναζήτησης DuckDuckGo.\n\nΆλλωστε, στο διαδίκτυο δεν θα πρέπει να αισθάνεστε άβολα, ενώ το να απολαμβάνετε την ιδιωτικότητα που σας αξίζει στο διαδίκτυο θα πρέπει να είναι τόσο απλό όσο το κλείσιμο μιας πόρτας.";
+/* Name of the option the user can chose to give general browser feedback */
+"send.browser.feedback.general-feedback" = "Γενικά σχόλια";
+
+/* Name of the option the user can chose to give browser feedback about a problem they enountered */
+"send.browser.feedback.report-problem" = "Αναφέρετε ένα πρόβλημα";
+
+/* Name of the option the user can chose to give browser feedback about a feature they would like */
+"send.browser.feedback.request-feature" = "Αιτηθείτε μια λειτουργία";
+
+/* Title of the picker where the user can chose the category of the feedback they want ot send. */
+"send.browser.feedback.select-category" = "ΕΠΙΛΕΞΤΕ ΚΑΤΗΓΟΡΙΑ";
+
+/* Settings cell for About DDG */
+"settings.about.ddg" = "Σχετικά με το DuckDuckGo";
+
+/* Settings section title for About DuckDuckGo */
+"settings.about.section" = "Σχετικά";
+
+/* about page */
+"settings.about.text" = "Το DuckDuckGo αποτελεί την ανεξάρτητη εταιρεία προστασίας προσωπικών δεδομένων στο διαδίκτυο που ιδρύθηκε το 2008 για όσους έχουν βαρεθεί να παρακολουθούνται στο διαδίκτυο και επιθυμούν μια εύκολη λύση. Αποτελούμε τρανή απόδειξη ότι μπορείτε να αποκτήσετε πραγματική προστασία του απορρήτου σας στο διαδίκτυο χωρίς συμβιβασμούς.\n\nο πρόγραμμα περιήγησης DuckDuckGo διαθέτει τις λειτουργίες που περιμένετε από ένα πρόγραμμα περιήγησης, όπως σελιδοδείκτες, καρτέλες, κωδικούς πρόσβασης και πολλά άλλα, καθώς και πάνω από [δώδεκα ισχυρές λειτουργίες προστασίες απορρήτου](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/privacy/web-tracking-protections/) που δεν προσφέρονται από τα περισσότερα δημοφιλή προγράμματα περιήγησης βάσει προεπιλογής. Αυτό το μοναδικά ολοκληρωμένο σύνολο προστασίας του απορρήτου συμβάλλει στην προστασία των διαδικτυακών δραστηριοτήτων σας, από αναζήτηση έως περιήγηση, αποστολή email και πολλά άλλα.\n\nΗ προστασία απορρήτου μας λειτουργεί χωρίς να χρειάζεται να γνωρίζετε τις τεχνικές λεπτομέρειες ή να ασχολείστε με περίπλοκες ρυθμίσεις. Το μόνο που έχετε να κάνετε είναι να αλλάξετε το πρόγραμμα περιήγησής σας σε DuckDuckGo σε όλες τις συσκευές σας και θα έχετε ιδιωτικότητα βάσει προεπιλογής.\n\nΑλλά αν *θέλετε* να ρίξετε μια αναλυτική ματιά, μπορείτε να βρείτε περισσότερες πληροφορίες σχετικά με το πώς λειτουργούν οι προστασίες απορρήτου του DuckDuckGo στις [σελίδες της ενότητας Βοήθεια](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/).";
+
+/* Settings screen accessibility section title */
+"settings.accessibility" = "Προσβασιμότητα";
+
+/* Settings screen cell text for adding the app to the dock */
+"settings.add.to.dock" = "Προσθήκη εφαρμογής στο Dock σας";
+
+/* Settings screen cell text for add widget to the home screen */
+"settings.add.widget" = "Προσθήκη μικροεφαρμογής στην Αρχική οθόνη";
+
+/* Name of the settings subsection related to the address bar
+   Settings screen cell text for addess bar position */
+"settings.address.bar" = "Γραμμή διευθύνσεων";
+
+/* Settings screen cell title for toggling full URL visibility in address bar */
+"settings.address.full.url" = "Εμφάνιση πλήρους διεύθυνσης ιστότοπου";
+
+/* Label describing a feature which is turned on always */
+"settings.always.on" = "Πάντα σε λειτουργία";
+
+/* Settings screen appearance section title */
+"settings.appearance" = "Εμφάνιση";
+
+/* Settings screen cell for opening links in associated apps */
+"settings.associated.apps" = "Ανοίξτε τους συνδέσμους στις σχετικές εφαρμογές";
+
+/* Description for associated apps description */
+"settings.associated.apps.description" = "Απενεργοποιήστε για να αποτρέψετε το αυτόματο άνοιγμα συνδέσμων σε άλλες εγκατεστημένες εφαρμογές.";
+
+/* Settings screen cell for autocomplete */
+"settings.autocomplete" = "Προτάσεις αναζήτησης";
+
+/* Settings label for enabling or disabling recently visited sites */
+"settings.autocomplete.recentlyvisited" = "Πρόσφατα επισκεφθέντες ιστότοποι";
+
+/* Settings label for enabling or disabling recently visited sites */
+"settings.autocomplete.recentlyvisited.subtitle" = "Προβολή ιστότοπων που επισκεφθήκατε πρόσφατα σε προτάσεις αναζήτησης. Οι ιστότοποι που επισκεφθήκατε πρόσφατα είναι ιδιωτικοί, αποθηκεύονται μόνο στη συσκευή σας και μπορούν να διαγραφούν με το κουμπί Fire Button.";
+
+/* Subtitle for Search Suggestions setting */
+"settings.autocomplete.subtitle" = "Προβολή προτάσεων αναζήτησης καθώς πληκτρολογείτε, συμπεριλαμβανομένων των σελιδοδεικτών σας. Όλες οι αναζητήσεις είναι ιδιωτικές.";
+
+/* Settings screen cell text for Application Lock */
+"settings.autolock" = "Κλείδωμα εφαρμογής";
+
+/* Section footer Autolock description */
+"settings.autolock.description" = "Εάν έχει ενεργοποιηθεί το Touch ID, το Face ID ή ο κωδικός πρόσβασης συστήματος, θα σας ζητηθεί να ξεκλειδώσετε την εφαρμογή κατά το άνοιγμά της.";
+
+/* Settings cell for Browser Feedback */
+"settings.browser.feedback" = "Σχόλια για το πρόγραμμα περιήγησης";
+
+/* Settings screen cell text for Automatically Clearing Data */
+"settings.clear.data" = "Αυτόματη απαλοιφή δεδομένων";
+
+/* The name of Settings category in Privacy Features related to configuration of the privacy feature related to cookie pop-ups */
+"settings.cookie.pop-up-protection.protection" = "Προστασία αναδυόμενων παραθύρων για cookies";
+
+/* Explanation in Settings how the cookie pop up protection feature works */
+"settings.cookie.pop.up.protection.explanation" = "Το DuckDuckGo θα προσπαθήσει να επιλέξει τις πιο ιδιωτικές ρυθμίσεις που υπάρχουν διαθέσιμες και να αποκρύψει αυτά τα αναδυόμενα παράθυρα για εσάς.\n[Μάθετε περισσότερα](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/privacy/web-tracking-protections/#cookie-pop-up-management)";
+
+/* Settings screen cell text for Cookie popups */
+"settings.cookie.popups" = "Διαχείριση αναδυόμενων παραθύρων cookies";
+
+/* Settings title for the customize section */
+"settings.customize" = "Προσαρμογή";
+
+/* The name of a settings subsection related to the data clearing */
+"settings.data.clearing" = "Διαγραφή δεδομένων";
+
+/* Settings screen cell text for setting the app as default browser
+   The name of Settings category in Privacy Features related to configuration of the default browser */
+"settings.default.browser" = "Προεπιλεγμένο πρόγραμμα περιήγησης";
+
+/* Label of a button disabling email protection */
+"settings.disable.email.protection.autofill" = "Απενεργοποίηση αυτόματης συμπλήρωσης Email Protection";
+
+/* Settings cell to link users to other products by DuckDuckGo */
+"settings.duckduckgo.on.other.platforms" = "Το DuckDuckGo σε άλλες πλατφόρμες";
+
+/* Explanation in Settings how the email protection feature works */
+"settings.email.protection.explanation" = "Αποκλείστε εφαρμογές παρακολούθησης email και αποκρύψτε τη διεύθυνσή σας, χωρίς να αλλάξετε πάροχο email.\n[Μάθετε περισσότερα](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/email-protection/what-is-duckduckgo-email-protection/)";
+
+/* Alert presented to user after clicking on 'Sign out' in Email Protection Settings */
+"settings.email.protection.signing.out.alert" = "Η αποσύνδεση από τον λογαριασμό Email Protection θα απενεργοποιήσει την αυτόματη συμπλήρωση της Duck Address σε αυτό το πρόγραμμα περιήγησης. Μπορείτε να συνεχίσετε να χρησιμοποιείτε αυτές τις διευθύνσεις και να λαμβάνετε προωθούμενα email, όπως συνήθως.";
+
+/* Settings cell for Email Protection */
+"settings.emailProtection.description" = "Αποκλείστε εφαρμογές παρακολούθησης email και αποκρύψτε τη διεύθυνσή σας";
+
+/* Label of a button enabling the email protection feature */
+"settings.enable.email.protection" = "Ενεργοποίηση Email Protection";
+
+/* Settings screen cell text for enabling voice search */
+"settings.enable.voice.search" = "Ενεργοποίηση φωνητικής αναζήτησης";
+
+/* Settings cell for Feedback */
+"settings.feedback" = "Κοινοποίηση σχολίου";
+
+/* Settings screen cell text for fire button animation */
+"settings.firebutton" = "Κινούμενο κουμπί φωτιάς";
+
+/* Settings screen cell text for Fireproof Sites */
+"settings.fireproof.sites" = "Ασφαλείς ιστότοποι";
+
+/* The name of the settings subsection containing general settings */
+"settings.general" = "Γενικά";
+
+/* Settings screen cell text for GPC */
+"settings.gpc" = "Παγκόσμιος έλεγχος απορρήτου (GPC)";
+
+/* Settings screen cell text for app icon selection */
+"settings.icon" = "Εικονίδιο Εφαρμογής";
+
+/* Settings screen cell for Keyboard */
+"settings.keyboard" = "Πληκτρολόγιο";
+
+/* Switch button label. */
+"settings.let.duckduckgo.manage.cookie.consent.popups" = "Επιτρέψτε στο DuckDuckGo να διαχειρίζεται τα αναδυόμενα παράθυρα συναίνεσης για cookies";
+
+/* Settings screen cell text for passwords */
+"settings.logins" = "Κωδικός πρόσβασης";
+
+/* The name of the settings section containing main settings */
+"settings.main.settings" = "Κύριες ρυθμίσεις";
+
+/* Label of a button managing email protection account */
+"settings.manage.account" = "Διαχείριση λογαριασμού";
+
+/* Settings title for the 'More' section */
+"settings.more" = "Περισσότερα από το DuckDuckGo";
+
+/* Button navigating to other settings related to search */
+"settings.more.search.settings" = "Περισσότερες ρυθμίσεις αναζήτησης";
+
+/* Subtitle of the 'More Search Settings' button */
+"settings.more.search.settings.explanation" = "Προσαρμόστε τη γλώσσα σας, την περιοχή και πολλά άλλα";
+
+/* The name of a settings category listing next steps */
+"settings.next.steps" = "Επόμενα βήματα";
+
+/* Label describing a feature which is turned off */
+"settings.off" = "Κλειστό";
+
+/* Label describing a feature which is turned on */
+"settings.on" = "Ενεργό";
+
+/* Product name for the subscription bundle */
+"settings.ppro" = "Privacy Pro";
+
+/* Title for Link in the Footer of Privacy Pro section */
+"settings.ppro.footer" = "Πολιτική απορρήτου και Όροι χρήσης υπηρεσιών";
+
+/* Settings screen cell for long press previews */
+"settings.previews" = "Προεπισκοπήσεις με παρατεταμένο πάτημα";
+
+/* Settings title for the privacy section */
+"settings.privacy" = "Ιδιωτικότητα";
+
+/* The name of Settings category in Privacy Features related to configuration of the search */
+"settings.private.search" = "ιδιωτική αναζήτηση";
+
+/* Explanation in Settings how the private search feature works */
+"settings.private.search.explanation" = "Το DuckDuckGo Private Search αποτελεί την προεπιλεγμένη μηχανή αναζήτησης, ώστε να μπορείτε να πραγματοποιείτε αναζήτηση στο διαδίκτυο χωρίς να σας παρακολουθούν.";
+
+/* Header of settings related to search */
+"settings.search.settings" = "Ρυθμίσεις αναζήτησης";
+
+/* Settings cell for Send Crash Reports */
+"settings.send.crash.reports" = "Αποστολή αναφορών σφαλμάτων";
+
+/* Explanation of Send Crash Reports settings option */
+"settings.send.crash.reports.description" = "Αυτόματη αποστολή αναφορών σφάλματος στο DuckDuckGo.";
+
+/* Settings screen cell text for setting address bar position */
+"settings.set.your.address.bar.position" = "Ορίστε τη θέση της γραμμής διευθύνσεών σας";
+
+/* Privacy pro description subtitle in settings when the is activating */
+"settings.subscription.activating" = "Ενεργοποίηση";
+
+/* Subscription activation pending description */
+"settings.subscription.activation.pending.description" = "Αυτό παίρνει περισσότερο χρόνο από το συνηθισμένο. Ελέγξτε πάλι αργότερα.";
+
+/* Data Broker protection cell subtitle for privacy pro */
+"settings.subscription.DBP.subtitle" = "Αφαιρέστε τις πληροφορίες σας από ιστότοπους που τις πωλούν";
+
+/* Data Broker protection cell title for privacy pro */
+"settings.subscription.DBP.title" = "Personal Information Removal";
+
+/* I have a Subscription button text for privacy pro */
+"settings.subscription.existing.subscription" = "Έχω συνδρομή";
+
+/* Subscription expired description */
+"settings.subscription.expired.comment" = "Εγγραφείτε ξανά για να συνεχίσετε να χρησιμοποιείτε το Privacy Pro";
+
+/* Subscription expired tittle message */
+"settings.subscription.expired.title" = "Η συνδρομή σας στο Privacy Pro έληξε";
+
+/* Identity theft restoration cell subtitle for privacy pro */
+"settings.subscription.ITR.subtitle" = "Αν κλαπεί η ταυτότητά σας, θα σας βοηθήσουμε να την αποκαταστήσετε";
+
+/* Identity theft restoration cell title for privacy pro */
+"settings.subscription.ITR.title" = "Identity Theft Restoration";
+
+/* Get Privacy Pro button text for privacy pro */
+"settings.subscription.learn.more" = "Απόκτησε το Privacy Pro";
+
+/* Subscription Settings button text for privacy pro */
+"settings.subscription.manage" = "Ρυθμίσεις συνδρομής";
+
+/* Privacy Pro description subtitle in settings */
+"settings.subscription.row.description" = "Περιλαμβάνει το VPN μας και τo Identity Theft Restoration.";
+
+/* Call to action title for Privacy Pro settings */
+"settings.subscription.subscribe" = "Προστατέψτε τη σύνδεση και την ταυτότητά σας με το Privacy Pro";
+
+/* Privacy pro description subtitle in settings */
+"settings.subscription.us.description" = "Περιλαμβάνει το VPN μας και τα Personal Information Removal και Identity Theft Restoration.";
+
+/* VPN cell title for privacy pro */
+"settings.subscription.VPN.title" = "VPN";
+
+/* Label of a button navigating to the Support page */
+"settings.support" = "Υποστήριξη";
+
+/* Settings screen cell text for sync and backup */
+"settings.sync" = "Συγχρονισμός και δημιουργία αντιγράφων ασφαλείας";
+
+/* Settings screen cell text for text size */
+"settings.text.size" = "Προεπιλεγμένο ζουμ κειμένου";
+
+/* Settings screen cell text for theme */
+"settings.theme" = "Θέμα";
+
+/* Title for the Settings View */
+"settings.title" = "Ρυθμίσεις";
+
+/* Settings screen cell text for Unprotected Sites */
+"settings.unprotected.sites" = "Μη προστατευόμενοι ιστότοποι";
+
+/* Settings cell for Version */
+"settings.version" = "Έκδοση";
+
+/* Settings screen cell for voice search */
+"settings.voice.search" = "Ιδιωτική φωνητική αναζήτηση";
+
+/* The name of Settings category in Privacy Features related to configuration of the web tracking protection feature */
+"settings.web.tracking.protection" = "Προστασία παρακολούθησης ιστού";
+
+/* Explanation in Settings how the web tracking protection feature works */
+"settings.web.tracking.protection.explanation" = "Το DuckDuckGo αποκλείει αυτόματα κρυφές εφαρμογές παρακολούθησης καθώς περιηγείστε στο διαδίκτυο.\n[Μάθετε περισσότερα](ddgQuickLink://duckduckgo.com/duckduckgo-help-pages/privacy/web-tracking-protections/)";
+
+/* Description on a report broken site page. */
+"site.not.working.description" = "Επιλέξτε αυτό που περιγράφει καλύτερα το πρόβλημα που αντιμετωπίσατε.";
+
+/* Dismiss button */
+"site.not.working.dismiss" = "Απόρριψη";
+
+/* Button that triggers flow to report broken site */
+"site.not.working.report.broken.site" = "Αναφορά ιστότοπου που δεν λειτουργεί";
+
+/* Prompt asking user to send report to us if we suspect site may be broken */
+"site.not.working.subtitle" = "Αυτό μας βοηθά να βελτιώνουμε το πρόγραμμα περιήγησης.";
+
+/* Prompt asking user to send report to us if we suspect site may be broken */
+"site.not.working.title" = "Ο ιστότοπος δεν λειτουργεί; Ενημερώστε σχετικά το DuckDuckGo.";
 
 /* Report a Broken Site screen confirmation button */
 "siteFeedback.buttonText" = "Υποβολή αναφοράς";
@@ -946,6 +2484,291 @@
 /* No comment provided by engineer. */
 "siteFeedback.urlPlaceholder" = "Ποιος ιστότοπος είναι κατεστραμμένος;";
 
+/* Subscription Activation Info */
+"subscription.activate..header.description" = "Αποκτήστε πρόσβαση στη συνδρομή σας Privacy Pro σε αυτήν τη συσκευή μέσω Apple ID ή διεύθυνσης email.";
+
+/* Button for adding email address to subscription */
+"subscription.activate.add.email.button" = "Προσθήκη email";
+
+/* Apple ID option for activation */
+"subscription.activate.appleid" = "Apple ID";
+
+/* Button text for restoring purchase via Apple ID */
+"subscription.activate.appleid.button" = "Επαναφορά αγοράς";
+
+/* Description for Apple ID activation */
+"subscription.activate.appleid.description" = "Κάντε επαναφορά της αγοράς σας για να ενεργοποιήσετε τη συνδρομή σας σε αυτήν τη συσκευή.";
+
+/* Subscription Activation Info */
+"subscription.activate.description" = "Η συνδρομή σας είναι αυτόματα διαθέσιμη στο DuckDuckGo σε οποιαδήποτε συσκευή είναι συνδεδεμένη στον λογαριασμό σας στο Apple ID.";
+
+/* Button for editing email address added to subscription */
+"subscription.activate.edit.email.button" = "Επεξεργασία email";
+
+/* View Title for editing your email account */
+"subscription.activate.edit.email.title" = "Επεξεργασία email";
+
+/* Email option for activation */
+"subscription.activate.email" = "ηλεκτρονικό ταχυδρομείο";
+
+/* Restore button title for Email */
+"subscription.activate.email.button" = "Εισαγωγή email";
+
+/* Description for Email activation */
+"subscription.activate.email.description" = "Χρησιμοποιήστε το email σας για να ενεργοποιήσετε τη συνδρομή σας στη συσκευή αυτή.";
+
+/* Activate subscription title */
+"subscription.activate.email.title" = "Ενεργοποίηση συνδρομής";
+
+/* Button title for cancelling email deletion */
+"subscription.activate.manage.email.cancel" = "Ακύρωση";
+
+/* Button title for confirming email deletion */
+"subscription.activate.manage.email.OK" = "Εντάξει";
+
+/* Restore button title for AppleID */
+"subscription.activate.restore.apple" = "Επαναφορά αγοράς";
+
+/* Subscription Activation Title */
+"subscription.activate.title" = "Ενεργοποιήστε τη συνδρομή σας σε αυτήν τη συσκευή";
+
+/* Resend activation instructions button */
+"subscription.add.device.resend.instructions" = "Εκ νέου αποστολή οδηγιών";
+
+/* Add email to an existing subscription */
+"subscription.add.email" = "Πρόσθεσε μια διεύθυνση email για να ενεργοποιήσετε τη συνδρομή σας στις άλλες συσκευές σας. Θα χρησιμοποιήσουμε αυτήν τη διεύθυνση μόνο για να επαληθεύσουμε τη συνδρομή σας.";
+
+/* View title for adding email to subscription */
+"subscription.add.email.title" = "Προσθήκη email";
+
+/* Subscription availability message on Apple devices */
+"subscription.available.apple" = "Το Privacy Pro είναι διαθέσιμο σε οποιαδήποτε συσκευή που είναι συνδεδεμένη στο ίδιο Apple ID.";
+
+/* Text for the manage billing page */
+"subscription.billing.google.text" = "Η συνδρομή σας αγοράστηκε μέσω του Google Play Store. Για να ανανεώσετε τη συνδρομή σας, ανοίξτε τις ρυθμίσεις συνδρομής στο Google Play Store σε συσκευή που είναι συνδεδεμένη στον ίδιο λογαριασμό Google που χρησιμοποιήθηκε για την αρχική αγορά της συνδρομής σας.";
+
+/* Title for the manage billing page */
+"subscription.billing.google.title" = "Προγράμματα συνδρομής";
+
+/* Subscription Removal confirmation message */
+"subscription.cancel.message" = "Η συνδρομή σας έχει αφαιρεθεί από αυτήν τη συσκευή.";
+
+/* Change plan or cancel title */
+"subscription.change.plan" = "Ενημέρωση προγράμματος ή ακύρωση";
+
+/* Navigation Button for closing subscription view */
+"subscription.close" = "Κλείσιμο";
+
+/* Title for Confirm messages */
+"subscription.confirm.title" = "Είστε σίγουροι;";
+
+/* Header for section for activating subscription on other devices */
+"subscription.devices.header" = "Ενεργοποίηση σε άλλες συσκευές";
+
+/* Footer for section for activating subscription on other devices when email was not yet added */
+"subscription.devices.no.email.footer" = "Προσθέστε ένα προαιρετικό email στη συνδρομή σας για να αποκτήσετε πρόσβαση στο Privacy Pro από άλλες συσκευές. **[Μάθετε περισσότερα](https://duckduckgo.com/duckduckgo-help-pages/privacy-pro/adding-email/)**";
+
+/* Footer for section for activating subscription on other devices when email is added */
+"subscription.devices.with.email.footer" = "Χρησιμοποιήστε αυτό το email για να ενεργοποιήσετε τη συνδρομή σας στις Ρυθμίσεις > Privacy Pro στην εφαρμογή DuckDuckGo στις άλλες συσκευές σας. **[Μάθε περισσότερα](https://duckduckgo.com/duckduckgo-help-pages/privacy-pro/adding-email/)**";
+
+/* Alert content for not found subscription */
+"subscription.email.inactive.alert.message" = "Η συνδρομή που συνδέεται με αυτό το email δεν είναι πλέον ενεργή.";
+
+/* Alert title for not found subscription */
+"subscription.email.inactive.alert.title" = "Η συνδρομή δεν βρέθηκε";
+
+/* Alert content for not found subscription */
+"subscription.expired.alert.message" = "Η συνδρομή που συνδέεται με αυτό το Apple ID δεν είναι πλέον ενεργή.";
+
+/* FAQ Button */
+"subscription.faq" = "Συχνές ερωτήσεις και υποστήριξη";
+
+/* FAQ Description */
+"subscription.faq.description" = "Πάρτε απαντήσεις σε συχνές ερωτήσεις ή επικοινωνήστε με την υποστήριξη του Privacy Pro από τις σελίδες βοήθειας που διαθέτουμε.";
+
+/* Send Feedback Button */
+"subscription.feedback" = "Αποστολή σχολίου";
+
+/* Cancel action for the existing subscription dialog */
+"subscription.found.cancel" = "Ακύρωση";
+
+/* Restore action for the existing subscription dialog */
+"subscription.found.restore" = "Επαναφορά";
+
+/* Message for the existing subscription dialog */
+"subscription.found.text" = "Βρήκαμε μια συνδρομή που σχετίζεται με αυτό το Apple ID.";
+
+/* Title for the existing subscription dialog */
+"subscription.found.title" = "Βρέθηκε συνδρομή";
+
+/* Help and support Section header */
+"subscription.help" = "Βοήθεια και υποστήριξη";
+
+/* Manage Plan header */
+"subscription.manage.plan" = "Διαχείριση προγράμματος";
+
+/* Header for the subscription section */
+"subscription.manage.title" = "Συνδρομή";
+
+/* Alert content for not found subscription */
+"subscription.notFound.alert.message" = "Δεν υπάρχει συνδρομή που να συνδέεται με αυτό το Apple ID.";
+
+/* Alert title for not found subscription */
+"subscription.notFound.alert.title" = "Η συνδρομή δεν βρέθηκε";
+
+/* View plans button text */
+"subscription.notFound.view.plans" = "Προβολή προγραμμάτων";
+
+/* Hero Text for Personal information removal */
+"subscription.pir.hero" = "Ενεργοποιήστε το Privacy Pro στην επιφάνεια εργασίας για να ρυθμίσετε το Personal Information Removal";
+
+/* Description on how to use Personal information removal in desktop. The first placeholder references a location in the Desktop application. <i.e: Settings > Privacy Pro>, and the second, the menu entry. i.e. <I have a Subscription> */
+"subscription.pir.heroText" = "Στο πρόγραμμα περιήγησης DuckDuckGo για επιτραπέζιους υπολογιστές, μεταβείτε στο %1$@ και κάντε κλικ στο %2$@ για να αρχίσετε.";
+
+/* Settings references a menu in the Desktop app, Privacy Pro, references our product name */
+"subscription.pir.heroTextLocation" = "Ρυθμίσεις > Privacy Pro";
+
+/* Menu item for enabling Personal Information Removal on Desktop */
+"subscription.pir.heroTextMenyEntry" = "Έχω συνδρομή";
+
+/* Text for the 'macOS' button */
+"subscription.pir.macos" = "Mac";
+
+/* Text for the 'Windows' button */
+"subscription.pir.windows" = "Windows";
+
+/* Progress view title when completing the purchase */
+"subscription.progress.view.completing.purchase" = "Ολοκλήρωση της αγοράς...";
+
+/* Progress view title when starting the purchase */
+"subscription.progress.view.purchasing.subscription" = "Αγορά σε εξέλιξη...";
+
+/* Progress view title when restoring past subscription purchase */
+"subscription.progress.view.restoring.subscription" = "Επαναφορά συνδρομής...";
+
+/* Remove from this device button */
+"subscription.remove.from.device.button" = "Αφαίρεση από αυτήν τη συσκευή";
+
+/* Remove from device confirmation dialog text */
+"subscription.remove.from.device.text" = "Δεν θα μπορείτε πλέον να έχετε πρόσβαση στη συνδρομή Privacy Pro σε αυτήν τη συσκευή. Αυτό δεν θα ακυρώσει τη συνδρομή σας και θα παραμείνει ενεργή στις υπόλοιπες συσκευές σας.";
+
+/* Remove from device confirmation dialog title */
+"subscription.remove.from.device.title" = "Αφαίρεση από αυτήν τη συσκευή;";
+
+/* Remove subscription button text */
+"subscription.remove.subscription" = "Αφαίρεση συνδρομής";
+
+/* Remove subscription cancel button text */
+"subscription.remove.subscription.cancel" = "Ακύρωση";
+
+/* Button text for general error message */
+"subscription.restore.backend.error.button" = "Επιστροφή στις Ρυθμίσεις";
+
+/* Alert for general error message */
+"subscription.restore.backend.error.message" = "Αντιμετωπίζουμε κάποιο πρόβλημα σύνδεσης. Ξαναδοκιμάστε αργότερα.";
+
+/* Alert for general error title */
+"subscription.restore.backend.error.title" = "Κάτι πήγε λάθος";
+
+/* Alert for general error message */
+"subscription.restore.general.error.message" = "Το App Store δεν μπόρεσε να επεξεργαστεί την αγορά σας. Ξαναδοκιμάστε αργότερα.";
+
+/* Alert for general error title */
+"subscription.restore.general.error.title" = "Κάτι πήγε λάθος";
+
+/* Alert button text for restored purchase alert */
+"subscription.restore.success.alert.button" = "Εντάξει";
+
+/* Alert message for restored purchase */
+"subscription.restore.success.alert.message" = "Οι αγορές σας έχουν αποκατασταθεί.";
+
+/* Alert title for restored purchase */
+"subscription.restore.success.alert.title" = "Είστε πανέτοιμοι.";
+
+/* Subtitle in header when subscribed */
+"subscription.subscribed" = "Έχει γίνει εγγραφή";
+
+/* Subscription Expired Data. This reads as 'Your subscription expired on (date)' */
+"subscription.subscription.expired.caption" = "Η συνδρομή σας έληξε %@";
+
+/* Monthly subscription expiration info where parameter is expiration date. This reads as 'Your monthly subscription expires on (date)' */
+"subscription.subscription.expiring.monthly.caption" = "Η μηνιαία συνδρομή σας λήγει %@.";
+
+/* Unknown period subscription expiration info where parameter is expiration date. This reads as 'Your subscription expires on (date)' */
+"subscription.subscription.expiring.unknown.caption" = "Η συνδρομή σας λήγει %@.";
+
+/* Annual subscription expiration info where parameter is expiration date. This reads as 'Your annual subscription expires on (date)' */
+"subscription.subscription.expiring.yearly.caption" = "Η ετήσια συνδρομή σας λήγει %@.";
+
+/* Monthly subscription renewal info where parameter is renewal date. This reads as 'Your monthly subscription renews on (date)' */
+"subscription.subscription.renewing.monthly.caption" = "Η μηνιαία συνδρομή σας ανανεώνεται %@.";
+
+/* Unknown period subscription renewal info where parameter is renewal date. This reads as 'Your subscription renews on (date)' */
+"subscription.subscription.renewing.unknown.caption" = "Η συνδρομή σας ανανεώνεται %@.";
+
+/* Annual subscription renewal info where parameter is renewal date. This reads as 'Your annual subscription renews on (date)' */
+"subscription.subscription.renewing.yearly.caption" = "Η ετήσια συνδρομή σας ανανεώνεται %@.";
+
+/* Navigation bar Title for subscriptions */
+"subscription.title" = "Privacy Pro";
+
+/* Message confirming that recovery code was copied to clipboard */
+"sync.code.copied" = "Ο κωδικός ανάκτησης αντιγράφηκε στο πρόχειρο";
+
+/* Caption for a button to delete Sync server data */
+"sync.delete.all.confirm.action" = "Διαγραφή δεδομένων διακομιστή";
+
+/* Message for the dialog to confirm deleting Sync server data */
+"sync.delete.all.confirm.message" = "Όλες οι συσκευές θα αποσυνδεθούν και τα συγχρονισμένα δεδομένα σας θα διαγραφούν από τον διακομιστή.";
+
+/* Title of the dialog to confirm deleting Sync server data */
+"sync.delete.all.confirm.title" = "Διαγραφή δεδομένων διακομιστή;";
+
+/* Message for the Sync Promotion banner when user has bookmarks that can be synced */
+"sync.promo.bookmarks.message" = "Δεν απαιτείται λογαριασμός. Η κρυπτογράφηση από άκρο σε άκρο σημαίνει ότι κανείς άλλος εκτός από εσάς δεν θα μπορεί να βλέπει τους σελιδοδείκτες σας, ούτε καν εμείς.";
+
+/* Title for the Sync Promotion banner */
+"sync.promo.bookmarks.title" = "Συγχρονισμός και δημιουργία αντιγράφων ασφαλείας των σελιδοδεικτών σας";
+
+/* Title for a button in the Sync Promotion banner to set up Sync */
+"sync.promo.confirm.action" = "Ρύθμιση συγχρονισμού";
+
+/* Title for a button in the Sync Promotion banner to dismiss Sync promotion banner */
+"sync.promo.dismiss.action" = "Όχι, ευχαριστώ";
+
+/* Message for the Sync Promotion banner when user has passwords that can be synced */
+"sync.promo.passwords.message" = "Δεν απαιτείται λογαριασμός. Η κρυπτογράφηση από άκρο σε άκρο σημαίνει ότι κανείς άλλος εκτός από εσάς δεν θα μπορεί να βλέπει τους κωδικούς πρόσβασής σας, ούτε καν εμείς.";
+
+/* Title for the Sync Promotion banner */
+"sync.promo.passwords.title" = "Συγχρονισμός και δημιουργία αντιγράφων ασφαλείας των κωδικών πρόσβασής σας";
+
+/* Caption for a button to remove device from Sync */
+"sync.remove-device.action" = "Αφαίρεση";
+
+/* No comment provided by engineer. */
+"sync.remove-device.message" = "Το «%@» δεν θα μπορεί πλέον να έχει πρόσβαση στα συγχρονισμένα δεδομένα σας.";
+
+/* Title of the dialog to remove device from Sync */
+"sync.remove-device.title" = "Αφαίρεση συσκευής;";
+
+/* Caption for a button to remove current device from Sync */
+"sync.turn.off.confirm.action" = "Αφαίρεση";
+
+/* Message for the dialog to confirm turning off Sync */
+"sync.turn.off.confirm.message" = "Αυτή η Συσκευή δεν θα μπορεί πλέον να έχει πρόσβαση στα συγχρονισμένα δεδομένα σας.";
+
+/* Title of the dialog to confirm turning off Sync */
+"sync.turn.off.confirm.title" = "Απενεργοποίηση συγχρονισμού;";
+
+/* Reason for auth when setting up Sync */
+"sync.user.auth.reason" = "Ξεκλειδώστε τη συσκευή για να ρυθμίσετε τη λειτουργία Sync & Backup";
+
+/* Data syncing unavailable warning message */
+"sync.warning.data.syncing.disabled" = "Δυστυχώς, η λειτουργία Συγχρονισμός και δημιουργία αντιγράφων ασφαλείας δεν είναι διαθέσιμη προς το παρόν. Ξαναδοκιμάστε αργότερα.";
+
+/* Data syncing unavailable warning message */
+"sync.warning.data.syncing.disabled.upgrade.required" = "Δυστυχώς, η λειτουργία Συγχρονισμός και δημιουργία αντιγράφων ασφαλείας δεν είναι διαθέσιμη πλέον σε αυτήν την έκδοση της εφαρμογής. Ενημερώστε το DuckDuckGo στην πιο πρόσφατη έκδοση για να συνεχίσετε.";
+
 /* Accessibility label on remove button */
 "tab.close.home" = "Κλείσιμο αρχικής καρτέλας";
 
@@ -962,7 +2785,7 @@
 "tab.switcher.accessibility.label" = "Εναλλαγή καρτελών";
 
 /* Description text for the text size adjustment setting */
-"textSize.description" = "Επιλέξτε το προτιμώμενο μέγεθος κειμένου. Οι ιστότοποι που βλέπετε στο DuckDuckGo θα προσαρμοστούν σε αυτό.";
+"textSize.description" = "Αυξήστε ή μειώστε το μέγεθος του κειμένου σε όλους τους ιστότοπους.";
 
 /* Replacement string is a current percent value e.g. '120%' */
 "textSize.footer" = "Μέγεθος κειμένου - %@";
@@ -985,14 +2808,215 @@
 /* Light Theme entry */
 "theme.name.light" = "Φωτεινό";
 
+/* No comment provided by engineer. */
+"This list contains messages that have been shown plus at most 1 message that is scheduled for showing. There may be more messages in the config that will be presented, but they haven't been processed yet." = "Η λίστα αυτή περιέχει μηνύματα που έχουν εμφανιστεί συν το πολύ 1 μήνυμα που έχει προγραμματιστεί προς εμφάνιση. Ενδέχεται να υπάρχουν και άλλα μηνύματα στη διαμόρφωση που θα παρουσιαστούν, ωστόσο δεν έχουν ακόμη υποβληθεί σε επεξεργασία.";
+
 /* Confirmation of an action - populated with a domain name */
 "toast.protection.disabled" = "Η Προστασία προσωπικών δεδομένων απενεργοποιήθηκε για το %@";
 
 /* Confirmation of an action - populated with a domain name */
+"toast.protection.disabled.and.toggle.report.sent" = "Η Προστασία προσωπικών δεδομένων απενεργοποιήθηκε για τον τομέα %@ και η αναφορά στάλθηκε.";
+
+/* Confirmation of an action - populated with a domain name */
 "toast.protection.enabled" = "Η Προστασία προσωπικών δεδομένων ενεργοποιήθηκε για το %@";
 
-/* No comment provided by engineer. */
-"unknown.error.occurred" = "Προέκυψε άγνωστο σφάλμα.";
+/* Autocomplete selected suggestion into the Address Bar button accessibility label */
+"voiceover.action.suggestion.autocomplete" = "Πρόταση αυτόματης συμπλήρωσης";
+
+/* Voice-over title for a Bookmark suggestion. Noun */
+"voiceover.suggestion.type.bookmark" = "Σελιδοδείκτης";
+
+/* Search for suggestion action accessibility title */
+"voiceover.suggestion.type.search" = "Αναζήτηση στο DuckDuckGo";
+
+/* Open suggested website action accessibility title */
+"voiceover.suggestion.type.website" = "Άνοιγμα ιστότοπου";
+
+/* No microphone permission alert action button to open the settings app */
+"voiceSearch.alert.no-permission.action.settings" = "Ρυθμίσεις";
+
+/* Message for alert warning the user about missing microphone permission */
+"voiceSearch.alert.no-permission.message" = "Επιτρέψτε πρόσβαση στο Μικρόφωνο από τις Ρυθμίσεις συστήματος iOS για να κάνει το DuckDuckGo χρήση των φωνητικών λειτουργιών.";
+
+/* OK button alert warning the user about missing microphone permission */
+"voiceSearch.alert.no-permission.ok" = "Εντάξει";
+
+/* Title for alert warning the user about missing microphone permission */
+"voiceSearch.alert.no-permission.title" = "Απαιτείται πρόσβαση στο μικρόφωνο";
+
+/* Cancel button for voice search */
+"voiceSearch.cancel" = "Ακύρωση";
+
+/* Voice-search footer note with on-device privacy warning */
+"voiceSearch.footer.note" = "Προσθήκη της επιλογής Ιδιωτική φωνητική αναζήτηση στη γραμμή διευθύνσεων. Ο ήχος δεν αποθηκεύεται ούτε κοινοποιείται σε οποιονδήποτε, συμπεριλαμβανομένου του DuckDuckGo.";
+
+/* Voice-search footer note with on-device privacy warning */
+"voiceSearch.footer.note.old" = "Η επεξεργασία του ήχου πραγματοποιείται στη συσκευή. Δεν αποθηκεύεται ούτε κοινοποιείται σε οποιονδήποτε, συμπεριλαμβανομένου του DuckDuckGo.";
+
+/* Cancel action for the alert when the subscription expires */
+"vpn.access-revoked.alert.action.cancel" = "Απόρριψη";
+
+/* Primary action for the alert when the subscription expires */
+"vpn.access-revoked.alert.action.subscribe" = "Εγγραφείτε";
+
+/* Alert message for the alert when the Privacy Pro subscription expiress */
+"vpn.access-revoked.alert.message" = "Εγγραφείτε στο Privacy Pro για να συνδέσετε εκ νέου το DuckDuckGo VPN.";
+
+/* Alert title for the alert when the Privacy Pro subscription expires */
+"vpn.access-revoked.alert.title" = "Το VPN αποσυνδέθηκε λόγω λήξης της συνδρομής";
+
+/* Title for the VPN widget onboarding screen */
+"vpn.addWidget.settings.title" = "Εύρεση και επιλογή του DuckDuckGo. Στη συνέχεια, σύρετε προς το VPN και επιλέξτε Προσθήκη μικροεφαρμογής.";
+
+/* Title for the Cancel button of the VPN feedback form */
+"vpn.feedback-form.button.cancel" = "Ακύρωση";
+
+/* Title for the Done button of the VPN feedback form */
+"vpn.feedback-form.button.done" = "Ολοκληρώθηκε";
+
+/* Title for the Submit button of the VPN feedback form */
+"vpn.feedback-form.button.submit" = "Υποβολή";
+
+/* Title for the Submitting state of the VPN feedback form */
+"vpn.feedback-form.button.submitting" = "Υποβολή...";
+
+/* Title for the browser crash/freeze category of the VPN feedback form */
+"vpn.feedback-form.category.browser-crash-or-freeze" = "Το VPN προκαλεί σφάλματα ή παγώνει το πρόγραμμα περιήγησης";
+
+/* Title for the 'VPN fails to connect' category of the VPN feedback form */
+"vpn.feedback-form.category.fails-to-connect" = "Το VPN δεν μπορεί να συνδεθεί";
+
+/* Title for the 'VPN feature request' category of the VPN feedback form */
+"vpn.feedback-form.category.feature-request" = "Αίτημα για λειτουργία VPN";
+
+/* Title for the category 'VPN causes issues with other apps or websites' category of the VPN feedback form */
+"vpn.feedback-form.category.issues-with-apps" = "Το VPN προκαλεί προβλήματα με άλλες εφαρμογές ή ιστότοπους";
+
+/* Title for the local device connectivity category of the VPN feedback form */
+"vpn.feedback-form.category.local-device-connectivity" = "Το VPN δε με αφήνει να συνδεθώ σε τοπική συσκευή";
+
+/* Title for the 'other VPN feedback' category of the VPN feedback form */
+"vpn.feedback-form.category.other" = "Άλλα σχόλια για το VPN";
+
+/* Title for the category selection state of the VPN feedback form */
+"vpn.feedback-form.category.select-category" = "ΕΠΙΛΕΞΤΕ ΚΑΤΗΓΟΡΙΑ";
+
+/* Title for the 'VPN is too slow' category of the VPN feedback form */
+"vpn.feedback-form.category.too-slow" = "Η σύνδεση του VPN είναι πολύ αργή";
+
+/* Title for the 'unable to install' category of the VPN feedback form */
+"vpn.feedback-form.category.unable-to-install" = "Δεν είναι δυνατή η εγκατάσταση του VPN";
+
+/* Title for the feedback sent view description of the VPN feedback form */
+"vpn.feedback-form.sending-confirmation.description" = "Τα σχόλιά σου θα μας βοηθήσουν να βελτιώσουμε το\n DuckDuckGo VPN.";
+
+/* Title for the feedback sending error text of the VPN feedback form */
+"vpn.feedback-form.sending-confirmation.error" = "Δεν μπορέσαμε να στείλουμε τα σχόλιά σας αυτήν τη στιγμή, προσπάθησε ξανά.";
+
+/* Title for the feedback sent view title of the VPN feedback form */
+"vpn.feedback-form.sending-confirmation.title" = "Σε ευχαριστούμε!";
+
+/* Toast message when the VPN feedback form is submitted successfully */
+"vpn.feedback-form.submitted.message" = "Σας ευχαριστούμε! Το σχόλιο υποβλήθηκε.";
+
+/* Text for the body of the VPN feedback form */
+"vpn.feedback-form.text-1" = "Περιγράψτε τι συμβαίνει, τι περιμένατε να συμβεί και ποια ήταν τα βήματα που οδήγησαν στο πρόβλημα:";
+
+/* Text for the body of the VPN feedback form */
+"vpn.feedback-form.text-2" = "Εκτός από τα στοιχεία που καταχωρήσατε στη φόρμα αυτή, η αναφορά προβλήματος της εφαρμογής σας θα περιέχει:";
+
+/* Bullet text for the body of the VPN feedback form */
+"vpn.feedback-form.text-3" = "• Εάν είναι ενεργοποιημένες συγκεκριμένες λειτουργίες του DuckDuckGo";
+
+/* Bullet text for the body of the VPN feedback form */
+"vpn.feedback-form.text-4" = "• Συγκεντρωτικά διαγνωστικά εφαρμογών DuckDuckGo";
+
+/* Text for the body of the VPN feedback form */
+"vpn.feedback-form.text-5" = "Πατώντας «Υποβολή» συμφωνώ ότι το DuckDuckGo μπορεί να χρησιμοποιήσει τις πληροφορίες της αναφοράς αυτής για σκοπούς βελτίωσης των λειτουργιών της εφαρμογής.";
+
+/* Title for each screen of the VPN feedback form */
+"vpn.feedback-form.title" = "Βοηθήστε μας να βελτιώσουμε το DuckDuckGo VPN";
+
+/* VPN settings screen cell text for adding the VPN widget to the home screen */
+"vpn.settings.add.widget" = "Προσθήκη μικροεφαρμογής VPN στην Αρχική οθόνη";
+
+/* Disclaimer for the DNS Server section on the DNS Server screen */
+"vpn.settings.dns.section-disclaimer" = "Η χρήση ενός προσαρμοσμένου διακομιστή DNS μπορεί να επηρεάσει τις ταχύτητες περιήγησης και να εκθέσει τη δραστηριότητά σας σε τρίτους, αν ο διακομιστής δεν είναι ασφαλής ή αξιόπιστος.";
+
+/* Header text for the DNS section on the VPN Settings screen */
+"vpn.settings.dns.section-header" = "DNS";
+
+/* Title for the Apply button on the DNS Server setting screen */
+"vpn.settings.dns.server.apply.button.title" = "Εφαρμογή";
+
+/* Default value for the DNS Server row on the VPN Settings screen */
+"vpn.settings.dns.server.default.value" = "DuckDuckGo";
+
+/* Title for the IPv4 Address setting */
+"vpn.settings.dns.server.ipv4.title" = "Διεύθυνση IPv4";
+
+/* Custom option for the DNS Server setting */
+"vpn.settings.dns.server.option.custom" = "Προσαρμογή";
+
+/* Recommended option for the DNS Server setting */
+"vpn.settings.dns.server.option.default" = "DuckDuckGo (Συνιστάται)";
+
+/* Title for the DNS Server setting screen */
+"vpn.settings.dns.server.screen.title" = "Διακομιστής DNS";
+
+/* Title for the DNS Server row on the VPN Settings screen */
+"vpn.settings.dns.server.title" = "Διακομιστής DNS";
+
+/* Title for the button to enable push notifications in system settings */
+"waitlist.allow-notifications" = "Επιτρέψτε ειδοποιήσεις";
+
+/* Body text for the waitlist notification */
+"waitlist.available.notification.body" = "Ανοίξτε την πρόσκλησή σας";
+
+/* Title for the copy action */
+"waitlist.copy" = "Αντιγραφή";
+
+/* Label text for the invite code */
+"waitlist.invite-code" = "Κωδικός πρόσκλησης";
+
+/* Step title on the invite screen */
+"waitlist.invite-screen.step.title" = "Βήμα %d";
+
+/* Title for the invite code screen */
+"waitlist.invite-screen.youre-invited" = "Έχετε προσκληθεί!";
+
+/* Title for the Join Waitlist screen */
+"waitlist.join-waitlist-screen.join" = "Εγγραφείτε στην Ιδιωτική λίστα αναμονής";
+
+/* Temporary status text for the Join Waitlist screen */
+"waitlist.join-waitlist-screen.joining" = "Εγγραφή στη λίστα αναμονής...";
+
+/* Title for the Share Link button */
+"waitlist.join-waitlist-screen.share-link" = "Κοινή χρήση συνδέσμου";
+
+/* Notification text for the waitlist */
+"waitlist.joined.no-notification.get-notification" = "ΝΑ ΕΙΔΟΠΟΙΗΘΩ";
+
+/* Title for the alert to confirm enabling notifications */
+"waitlist.joined.no-notification.get-notification-confirmation-title" = "Θα θέλατε να λάβετε ειδοποίηση όταν έρθει η σειρά σας;";
+
+/* Cancel button in the alert to confirm enabling notifications */
+"waitlist.joined.no-notification.no-thanks" = "Όχι, ευχαριστώ";
+
+/* Text used for the Notifications Disabled state */
+"waitlist.notification.disabled" = "Μπορούμε να σας ειδοποιήσουμε όταν έρθει η σειρά σας, ωστόσο οι ειδοποιήσεις είναι προς το παρόν απενεργοποιημένες για το DuckDuckGo.";
+
+/* Privacy disclaimer for the Waitlist feature */
+"waitlist.privacy-disclaimer" = "Δεν θα χρειαστεί να κοινοποιήσετε προσωπικά στοιχεία για εγγραφή στη λίστα αναμονής. Θα εξασφαλίσετε τη θέση σας στη λίστα αναμονής βάσει χρονικής σήμανσης που υπάρχει αποκλειστικά στη συσκευή σας, ώστε να μπορούμε να σας ειδοποιήσουμε μόλις έρθει η σειρά σας.";
+
+/* Title for the queue screen */
+"waitlist.queue-screen.on-the-list" = "Βρίσκεστε στη λίστα!";
+
+/* Title for the settings subtitle */
+"waitlist.settings.download-available" = "Διαθέσιμη λήψη";
+
+/* Title for the share sheet entry */
+"waitlist.share-sheet.title" = "Έχετε προσκληθεί!";
 
 /* Confirmation message */
 "web.url.remove.favorite.done" = "Το Αγαπημένο αφαιρέθηκε";
@@ -1014,4 +3038,28 @@
 
 /* OK button for JavaScript alerts */
 "webJSAlert.OK.button" = "Εντάξει";
+
+/* Alert title explaining the message is shown by a website */
+"webJSAlert.website-message.format" = "Μήνυμα από %@:";
+
+/* No comment provided by engineer. */
+"Welcome to the Duck Side!" = "Καλωσορίσατε στην πλευρά της Πάπιας!";
+
+/* Title for the Windows waitlist button redirecting to Mac waitlist */
+"windows-waitlist.join-waitlist-screen.mac-waitlist" = "Αναζητάτε την έκδοση των Mac;";
+
+/* Title for the settings subtitle */
+"windows-waitlist.settings.browse-privately" = "Περιηγηθείτε ιδιωτικά με την εφαρμογή μας για Windows";
+
+/* Message used when sharing to iMessage */
+"windows-waitlist.share-sheet.message" = "Είστε έτοιμοι να αρχίσετε μια ιδιωτική περιήγηση σε Windows;\n\nΕπισκεφθείτε αυτήν τη διεύθυνση URL στον υπολογιστή σας για να πραγματοποιήσετε λήψη:\nhttps://duckduckgo.com/windows";
+
+/* Summary text for the Windows browser waitlist */
+"windows-waitlist.summary" = "Το DuckDuckGo για Windows έχει ό,τι χρειάζεστε για να περιηγηθείτε με περισσότερη ιδιωτικότητα — ιδιωτική αναζήτηση, αποκλεισμός εφαρμογών παρακολούθησης, αναγκαστική κρυπτογράφηση και αποκλεισμός αναδυόμενων παραθύρων για cookie, ενώ έρχονται σύντομα και περισσότερες κορυφαίες προστασίες στην κατηγορία τους.";
+
+/* Title for the Windows Waitlist feature */
+"windows-waitlist.title" = "Εφαρμογή DuckDuckGo για Windows";
+
+/* Title for the Windows browser download link page */
+"windows-waitlist.waitlist-download-screen.try-duckduckgo-for-windows" = "Αποκτήστε το DuckDuckGo για Windows!";
 

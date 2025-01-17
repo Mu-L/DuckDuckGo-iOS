@@ -19,12 +19,13 @@
 
 import Core
 import WebKit
-import BrowserServicesKit
+import UserScript
+import FindInPageIOSJSSupport
 
 public class FindInPageUserScript: NSObject, UserScript {
 
     public lazy var source: String = {
-        return Self.loadJS("findinpage", from: Bundle.core)
+        return Self.loadJS("findinpage", from: FindInPageIOSJSSupport.bundle)
     }()
     
     public var injectionTime: WKUserScriptInjectionTime = .atDocumentStart
@@ -40,5 +41,5 @@ public class FindInPageUserScript: NSObject, UserScript {
         let currentResult = dict["currentResult"] as? Int
         let totalResults = dict["totalResults"] as? Int
         findInPage?.update(currentResult: currentResult, totalResults: totalResults)
-    } 
+    }
 }

@@ -1,0 +1,84 @@
+# favorites.yaml
+appId: com.duckduckgo.mobile.ios
+tags:
+    - release
+
+---
+
+# Set up 
+- runFlow: 
+    file: ../shared/setup.yaml
+
+# Load Site
+- assertVisible:
+    id: "searchEntry"
+- tapOn: 
+    id: "searchEntry"
+- inputText: "https://privacy-test-pages.site"
+- pressKey: Enter
+
+# Add site to favorites from menu
+- assertVisible: "Browsing menu"
+- tapOn: "Browsing menu"
+- assertVisible: "Add Favorite"
+- tapOn: "Add Favorite"
+
+# Remove site from favorites
+- assertVisible: "Browsing menu"
+- tapOn: "Browsing menu"
+- assertVisible: "Remove Favorite"
+- tapOn: "Remove Favorite"
+
+# Re-add site to favorites from menu
+- assertVisible: "Browsing menu"
+- tapOn: "Browsing menu"
+- assertVisible: "Add Favorite"
+- tapOn: "Add Favorite"
+
+# Check favourites on new tab page
+- tapOn: "Tab Switcher"
+- tapOn: "New Tab"
+- assertVisible: "Privacy Test Pages - Home"
+- tapOn: "Privacy Test Pages - Home"
+- assertVisible: "privacy-test-pages.site"
+- tapOn: 
+    id: "searchEntry"
+- inputText: "pri"
+- assertVisible: "Bookmark-Fav-24"
+- tapOn: "Cancel"
+
+# Check favorites from bookmarks screen
+- assertVisible: "Browsing menu"
+- tapOn: "Browsing menu"
+- assertVisible: "Bookmarks"
+- tapOn: "Bookmarks"
+- assertVisible: "Privacy Test Pages - Home"
+- assertVisible: "Favorites"
+- tapOn: "Favorites"
+- assertVisible: "Privacy Test Pages - Home"
+
+# Remove favorites from bookmarks screen
+- assertVisible: "Manage"
+- tapOn: "Manage"
+- tapOn:
+    text: " "
+    index: 0
+    rightOf: "Privacy Test Pages - Home"
+- assertVisible: "No favorites added yet"
+
+# Remove bookmark from bookmarks screen
+- assertVisible: "Bookmarks"
+- tapOn: "Bookmarks"
+- assertVisible: "Privacy Test Pages - Home"
+- assertVisible: "Remove Privacy Test Pages - Home"
+- tapOn: "Remove Privacy Test Pages - Home"
+- assertVisible: 
+    text: "Delete"
+    index: 0
+- tapOn: 
+    text: "Delete"
+    index: 0
+
+# Verify site has been removed from bookmarks
+- assertNotVisible: "Privacy Test Pages - Home"
+- assertVisible: "No bookmarks added yet"

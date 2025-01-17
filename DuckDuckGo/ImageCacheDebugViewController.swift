@@ -19,27 +19,58 @@
 
 import UIKit
 import Core
+import WidgetKit
+import Bookmarks
+import CoreData
+import Persistence
+import BrowserServicesKit
+import Common
+import Kingfisher
+import os.log
 
 class ImageCacheDebugViewController: UITableViewController {
 
     private let titles = [
-        Sections.favorites: "Favorites (Bookmark Cache)",
-        Sections.bookmarks: "Bookmarks (Bookmark Cache)",
+        Sections.fireproof: "Fireproof (Fireproof Cache)",
         Sections.tabs: "Tabs (Tabs Cache)"
     ]
 
-    enum Sections: Int, CaseIterable {
-
-        case favorites
-        case bookmarks
+    private enum Sections: Int, CaseIterable {
+        case fireproof
         case tabs
-
     }
 
-    let imageNotFound = UIImage(systemName: "exclamationmark.circle")
-    let imageError = UIImage(systemName: "exclamationmark.triangle")
-    let bookmarksManager = BookmarksManager()
-    let tabsModel = TabsModel.get() ?? TabsModel(desktop: false)
+    private enum Constants {
+        static let cellIdentifier = "ImageCacheDebugCell"
+        static let fireproofCachePath = "com.onevcat.Kingfisher.ImageCache.fireproof"
+        static let tabsCachePath = "com.onevcat.Kingfisher.ImageCache.tabs"
+    }
+
+    private let tabsModel = TabsModel.get() ?? TabsModel(desktop: false)
+
+    private let bookmarksContext: NSManagedObjectContext
+    private let fireproofing: Fireproofing
+
+    private var fireproofFavicons = [String: UIImage]()
+    private var tabFavicons = [String: UIImage]()
+
+    private var bookmarks = [String: String]()
+    private var logins = [String: String]()
+    private var fireproofSites = [String: String]()
+    private var tabs = [String: String]()
+
+    init?(coder: NSCoder,
+          bookmarksDatabase: CoreDataDatabase,
+          fireproofing: Fireproofing) {
+
+        bookmarksContext = bookmarksDatabase.makeContext(concurrencyType: .mainQueueConcurrencyType)
+        self.fireproofing = fireproofing
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("Not implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +81,83 @@ class ImageCacheDebugViewController: UITableViewController {
                                              action: #selector(presentClearCachePrompt(_:)))
         clearCacheItem.tintColor = .systemRed
         navigationItem.rightBarButtonItem = clearCacheItem
+
+        loadAllFireproofFavicons()
+        loadAllTabFavicons()
+
+        loadAllBookmarks()
+        loadAllLogins()
+        loadAllFireproofSites()
+        loadAllTabs()
+    }
+
+    private func loadAllFireproofFavicons() {
+        guard let cacheUrl = FaviconsCacheType.fireproof.cacheLocation() else { return }
+        let fireproofCacheUrl = cacheUrl.appendingPathComponent(Constants.fireproofCachePath)
+        fireproofFavicons = loadFaviconImages(from: fireproofCacheUrl)
+    }
+
+    private func loadAllTabFavicons() {
+        guard let cacheUrl = FaviconsCacheType.tabs.cacheLocation() else { return }
+        let tabCacheUrl = cacheUrl.appendingPathComponent(Constants.tabsCachePath)
+        tabFavicons = loadFaviconImages(from: tabCacheUrl)
+    }
+
+    private func loadFaviconImages(from cacheUrl: URL) -> [String: UIImage] {
+        let contents = try? FileManager.default.contentsOfDirectory(at: cacheUrl, includingPropertiesForKeys: nil, options: [])
+
+        var favicons = [String: UIImage]()
+        for imageUrl in contents ?? [] {
+            if let data = (try? Data(contentsOf: imageUrl)) {
+                favicons[imageUrl.lastPathComponent] = UIImage(data: data)
+            }
+        }
+        return favicons
+    }
+
+    // Access core data directly because this is just a debug view
+    private func loadAllBookmarks() {
+        let request = BookmarkEntity.fetchRequest()
+        request.sortDescriptors = [ .init(keyPath: \BookmarkEntity.title, ascending: true) ]
+        request.predicate = .init(format: "isFolder == false")
+        request.returnsObjectsAsFaults = false
+        let bookmarksAndFavorites = (try? bookmarksContext.fetch(request)) ?? []
+        for bookmark in bookmarksAndFavorites {
+            if let url = bookmark.urlObject, let imageResource = Favicons.shared.defaultResource(forDomain: url.host) {
+                bookmarks[imageResource.cacheKey] = url.host
+            }
+        }
+    }
+
+    private func loadAllLogins() {
+        do {
+            let secureVault = try AutofillSecureVaultFactory.makeVault(reporter: SecureVaultReporter())
+            let accounts = try secureVault.accounts()
+            for account in accounts {
+                if let imageResource = Favicons.shared.defaultResource(forDomain: account.domain) {
+                    logins[imageResource.cacheKey] = account.domain
+                }
+            }
+        } catch {
+            Logger.general.error("Failed to fetch accounts: \(error.localizedDescription)")
+        }
+    }
+
+    private func loadAllFireproofSites() {
+        let allowedDomains = fireproofing.allowedDomains
+        for site in allowedDomains {
+            if let imageResource = Favicons.shared.defaultResource(forDomain: site) {
+                fireproofSites[imageResource.cacheKey] = site
+            }
+        }
+    }
+
+    private func loadAllTabs() {
+        for tab in tabsModel.tabs {
+            if let link = tab.link?.url.host, let imageResource = Favicons.shared.defaultResource(forDomain: link) {
+                tabs[imageResource.cacheKey] = link
+            }
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -62,34 +170,51 @@ class ImageCacheDebugViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ImageDebugFaviconTableViewCell.reuseIdentifier,
+                                                       for: indexPath) as? ImageDebugFaviconTableViewCell else {
+            fatalError("Could not dequeue cell")
+        }
+
+        var detailText: String = ""
+
         switch Sections(rawValue: indexPath.section) {
 
-        case .favorites:
-            cell.textLabel?.text = bookmarksManager.favorite(atIndex: indexPath.row)?.url.host
-            cell.imageView?.loadFavicon(forDomain: bookmarksManager.favorite(atIndex: indexPath.row)?.url.host, usingCache: .bookmarks) {
-                cell.imageView?.image = $1 ? self.imageNotFound : $0 ?? self.imageError
-                cell.detailTextLabel?.text = self.describe($1 ? nil : $0)
+        case .fireproof:
+            let fireproofFaviconKey = fireproofFavicons.keys.sorted()[indexPath.row]
+            cell.faviconImageView.image = fireproofFavicons[fireproofFaviconKey]
+            cell.cacheKey.text = "Cache key: \(fireproofFaviconKey)"
+
+            if let bookmark = bookmarks[fireproofFaviconKey] {
+                detailText = "*Bookmark:* \(bookmark)\n"
+            }
+            if let login = logins[fireproofFaviconKey] {
+                detailText.append("*Login:* \(login)\n")
+            }
+            if let fireproofSite = fireproofSites[fireproofFaviconKey] {
+                detailText.append("*Fireproof:* \(fireproofSite)\n")
             }
 
-        case .bookmarks:
-            cell.textLabel?.text = bookmarksManager.bookmark(atIndex: indexPath.row)?.url.host
-            cell.imageView?.loadFavicon(forDomain: bookmarksManager.bookmark(atIndex: indexPath.row)?.url.host, usingCache: .bookmarks) {
-                cell.imageView?.image = $1 ? self.imageNotFound : $0 ?? self.imageError
-                cell.detailTextLabel?.text = self.describe($1 ? nil : $0)
-            }
-
-        case .tabs:
-            if let link = tabsModel.get(tabAt: indexPath.row).link {
-                cell.textLabel?.text = link.url.host
-                cell.imageView?.loadFavicon(forDomain: tabsModel.get(tabAt: indexPath.row).link?.url.host, usingCache: .tabs) {
-                    cell.imageView?.image = $1 ? self.imageNotFound : $0 ?? self.imageError
-                    cell.detailTextLabel?.text = self.describe($1 ? nil : $0)
-                }
+            if detailText.isEmpty {
+                detailText = "‼️ Orphaned fireproof favicon\n"
+                detailText.append(describe(fireproofFavicons[fireproofFaviconKey]))
+                cell.details.attributedText = detailText.attributedStringFromMarkdown(color: .red, lineHeightMultiple: 1.1, fontSize: 14.0)
             } else {
-                cell.imageView?.image = UIImage(named: "Logo")
-                cell.textLabel?.text = "<Home Screen>"
-                cell.detailTextLabel?.text = ""
+                detailText.append(describe(fireproofFavicons[fireproofFaviconKey]))
+                cell.details.attributedText = detailText.attributedStringFromMarkdown(color: .label, lineHeightMultiple: 1.1, fontSize: 14.0)
+            }
+        case .tabs:
+            let tabFaviconKey = tabFavicons.keys.sorted()[indexPath.row]
+            cell.faviconImageView.image = tabFavicons[tabFaviconKey]
+            cell.cacheKey.text = "Cache key: \(tabFaviconKey)"
+
+            if let tab = tabs[tabFaviconKey] {
+                detailText = "*Tab:* \(tab)\n"
+                detailText.append(describe(tabFavicons[tabFaviconKey]))
+                cell.details.attributedText = detailText.attributedStringFromMarkdown(color: .label, lineHeightMultiple: 1.1, fontSize: 14.0)
+            } else {
+                detailText = "‼️ Orphaned tab favicon\n"
+                detailText.append(describe(tabFavicons[tabFaviconKey]))
+                cell.details.attributedText = detailText.attributedStringFromMarkdown(color: .red, lineHeightMultiple: 1.1, fontSize: 14.0)
             }
 
         default: break
@@ -100,31 +225,22 @@ class ImageCacheDebugViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Sections(rawValue: section) {
-        case .favorites: return bookmarksManager.favoritesCount
-        case .bookmarks: return bookmarksManager.bookmarksCount
-        case .tabs: return tabsModel.count
+        case .fireproof: return fireproofFavicons.count
+        case .tabs: return tabFavicons.count
         default: return 0
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        let host: String?
-        switch Sections(rawValue: indexPath.section) {
-        case .favorites: host = bookmarksManager.favorite(atIndex: indexPath.row)?.url.host
-        case .bookmarks: host = bookmarksManager.bookmark(atIndex: indexPath.row)?.url.host
-        case .tabs: host = tabsModel.get(tabAt: indexPath.row).link?.url.host
-        default: host = nil
-        }
-        guard let domain = host, let cell = tableView.cellForRow(at: indexPath) else { return }
-        share(image: cell.imageView?.image, forDomain: domain, fromView: cell)
         tableView.deselectRow(at: indexPath, animated: true)
+        guard let cell = tableView.cellForRow(at: indexPath) as? ImageDebugFaviconTableViewCell else { return }
+        share(image: cell.faviconImageView.image, withDetails: cell.details.text ?? "", fromView: cell)
     }
 
-    private func share(image: UIImage?, forDomain domain: String, fromView view: UIView) {
+    private func share(image: UIImage?, withDetails details: String, fromView view: UIView) {
         guard let image = image else { return }
         let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        controller.title = domain
+        controller.title = details
         if let popover = controller.popoverPresentationController {
             popover.sourceView = view
         }
@@ -143,6 +259,7 @@ class ImageCacheDebugViewController: UITableViewController {
 
         alert.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { _ in
             self.clearCacheAndReload()
+            WidgetCenter.shared.reloadAllTimelines()
         }))
 
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -158,9 +275,22 @@ class ImageCacheDebugViewController: UITableViewController {
             $0.clearDiskCache()
         }
 
+        loadAllFireproofFavicons()
+        loadAllTabFavicons()
+
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
+
+}
+
+class ImageDebugFaviconTableViewCell: UITableViewCell {
+
+    static let reuseIdentifier = "ImageDebugFaviconTableViewCell"
+
+    @IBOutlet weak var faviconImageView: UIImageView!
+    @IBOutlet weak var details: UILabel!
+    @IBOutlet weak var cacheKey: UILabel!
 
 }

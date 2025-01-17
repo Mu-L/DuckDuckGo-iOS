@@ -1,24 +1,86 @@
+allow_zero_lintable_files: true
 
 disabled_rules:
-  - trailing_whitespace
+  - discarded_notification_center_observer
+  - notification_center_detachment
+  - orphaned_doc_comment
+  - todo
+  - unused_capture_list
+  - trailing_comma
+  - line_length
+  - function_parameter_count
+  - function_body_length
+  - file_length
+  - type_body_length
+  - non_optional_string_data_conversion
+  - static_over_final_class
+
+opt_in_rules:
+  - closure_end_indentation
+  - closure_spacing
+  - colon
+  - overridden_super_call
+  - fatal_error_message
+  - file_header
+
+analyzer_rules:
+  - unused_import
 
 # Rule Config
-line_length:
-  warning: 150
-  ignores_comments: true
+cyclomatic_complexity:
+  ignores_case_statements: true
+force_cast: warning
+force_try: warning
+legacy_hashing: error
 identifier_name:
   min_length: 1
-  max_length:
-    warning: 40
-    error: 60
+  max_length: 1000
+  excluded:
+    - i
+    - id
+    - x
+    - y
+    - z
+vertical_whitespace:
+  max_empty_lines: 2
+trailing_whitespace:
+  ignores_empty_lines: true
+  ignores_comments: true
+private_over_fileprivate:
+  validate_extensions: true
 type_name:
-  min_length: 3
-  max_length:
-    warning: 80
-    error: 100
+ min_length: 3
+ max_length:
+   warning: 80
+   error: 100
+file_header:
+  required_pattern: |
+                    \/\/
+                    \/\/  SWIFTLINT_CURRENT_FILENAME
+                    \/\/  .*?
+                    \/\/
+                    \/\/  Copyright © \d{4} DuckDuckGo\. All rights reserved\.
+                    \/\/
+                    \/\/  Licensed under the Apache License, Version 2\.0 \(the \"License\"\);
+                    \/\/  you may not use this file except in compliance with the License\.
+                    \/\/  You may obtain a copy of the License at
+                    \/\/
+                    \/\/  http:\/\/www\.apache\.org\/licenses\/LICENSE-2\.0
+                    \/\/
+                    \/\/  Unless required by applicable law or agreed to in writing, software
+                    \/\/  distributed under the License is distributed on an \"AS IS\" BASIS,
+                    \/\/  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied\.
+                    \/\/  See the License for the specific language governing permissions and
+                    \/\/  limitations under the License\.
+                    \/\/
 
 # General Config
 excluded:
   - Carthage
+  - DerivedData
   - DuckDuckGo/UserText.swift
-
+  - fastlane/SnapshotHelper.swift
+  - vendor
+  - LocalPackages/*/Package.swift
+  - PacketTunnelProvider/ProxyServer
+  - .ruby-lsp

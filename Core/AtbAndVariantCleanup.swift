@@ -19,19 +19,20 @@
 
 import Foundation
 import Core
+import BrowserServicesKit
 
 public class AtbAndVariantCleanup {
 
     static func cleanup(statisticsStorage: StatisticsStore = StatisticsUserDefaults(),
                         variantManager: VariantManager = DefaultVariantManager()) {
-        
+
         guard let variant = statisticsStorage.variant else { return }
 
         // clean up ATB
         if let atb = statisticsStorage.atb, atb.hasSuffix(variant) {
             statisticsStorage.atb = String(atb.dropLast(variant.count))
         }
-        
+
         // remove existing variant if not in an active experiment
         if variantManager.currentVariant == nil {
             statisticsStorage.variant = nil

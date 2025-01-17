@@ -1,5 +1,44 @@
-/* No comment provided by engineer. */
-"Label" = "Label";
+/* Description shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.description" = "Hemen yeni bir özel Duck Address oluşturun.";
+
+/* Title shown to the user when adding the Email Protection lock screen widget */
+"lock.screen.widget.email.title" = "E-posta Koruması";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.favorites.description" = "Bir dokunuşla favori web sitelerinizi hızla açın.";
+
+/* Title shown to the user when adding the favorites lock screen widget */
+"lock.screen.widget.favorites.title" = "Favoriler";
+
+/* Description shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.description" = "Tarama geçmişinizi hemen silin ve DuckDuckGo'da yeni bir özel arama yapın.";
+
+/* Title shown to the user when adding the Fire Button lock screen widget */
+"lock.screen.widget.fire.title" = "Fire Button";
+
+/* Description shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.description" = "Kayıtlı DuckDuckGo şifrelerinizi hızlıca arayın.";
+
+/* Title shown to the user when adding the Search Passwords lock screen widget */
+"lock.screen.widget.passwords.title" = "Şifreleri ara";
+
+/* Description shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.description" = "DuckDuckGo'da hemen özel bir arama yapın.";
+
+/* Title shown to the user when adding the Search lock screen widget */
+"lock.screen.widget.search.title" = "Gizli Arama";
+
+/* Description shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.description" = "DuckDuckGo'da hemen yeni bir özel sesli arama yapın.";
+
+/* Title shown to the user when adding the Voice Search lock screen widget */
+"lock.screen.widget.voice.title" = "Sesli Arama";
+
+/* Description of search passwords widget in widget gallery */
+"widget.gallery.passwords.description" = "Kayıtlı DuckDuckGo şifrelerinizi hızlıca arayın.";
+
+/* Display name for search passwords widget in widget gallery */
+"widget.gallery.passwords.display.name" = "Şifreleri ara";
 
 /* Description of search and favorites widget in widget gallery */
 "widget.gallery.search.and.favorites.description" = "Tek bir dokunuşla favori sitelerinizi gizlice arayın veya ziyaret edin.";
@@ -13,12 +52,54 @@
 /* Display name for search only widget in widget gallery */
 "widget.gallery.search.display.name" = "Ara";
 
+/* Description of VPN widget in widget gallery */
+"widget.gallery.vpn.description" = "VPN bağlantınızı görüntüleyin ve yönetin. Privacy Pro aboneliği gerektirir.";
+
+/* Display name for VPN widget in widget gallery */
+"widget.gallery.vpn.display.name" = "VPN";
+
 /* CTA shown in the favorites widget empty state. */
 "widget.no.favorites.cta" = "Favorilere Ekle";
 
 /* Message shown in the favorites widget empty state. */
 "widget.no.favorites.message" = "En sevdiğiniz siteleri hızlıca ziyaret edin.";
 
+/* Text in passwords widget */
+"widget.passwords" = "Şifreleri ara";
+
 /* Placeholder text in search field on the search and favorites widget */
 "widget.search.duckduckgo" = "DuckDuckGo'da Ara";
+
+/* VPN connect button text */
+"widget.vpn.button.connect" = "Bağlan";
+
+/* VPN disconnect button text */
+"widget.vpn.button.disconnect" = "Bağlantıyı Kes";
+
+/* Label for the snooze end date, e.g. 'Until 9:51 AM' */
+"widget.vpn.label.snoozing-until" = "Uyku modu sonu: %@";
+
+/* VPN Live Activity dismiss button text */
+"widget.vpn.live-activity.button.dismiss" = "Reddet";
+
+/* VPN Live Activity wake up button text */
+"widget.vpn.live-activity.button.wake-up" = "Uyandır";
+
+/* VPN Live Activity active label text */
+"widget.vpn.live-activity.label.active" = "VPN Açık";
+
+/* VPN Live Activity snoozing label text */
+"widget.vpn.live-activity.label.snoozing" = "VPN Uyku Moduna Alma";
+
+/* Message describing VPN connected status */
+"widget.vpn.status.connected" = "VPN Açık";
+
+/* Message describing VPN disconnected status */
+"widget.vpn.status.disconnected" = "VPN Kapalı";
+
+/* Message describing VPN snoozing status */
+"widget.vpn.status.snoozed" = "VPN uyku modunda";
+
+/* Subtitle describing VPN disconnected status */
+"widget.vpn.subtitle.disconnected" = "Bağlı değil";
 

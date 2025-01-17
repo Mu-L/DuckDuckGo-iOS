@@ -27,19 +27,16 @@ We use Swift Package Manager for dependency management, which shouldn't require 
 ### SwiftLint
 We use [SwifLint](https://github.com/realm/SwiftLint) for enforcing Swift style and conventions, so you'll need to [install it](https://github.com/realm/SwiftLint#installation).
 
-### Fonts
-We use Proxima Nova fonts which are proprietary and cannot be committed to source control, see [fonts](https://github.com/duckduckgo/iOS/tree/develop/fonts/licensed). 
-
 ## Debugging
 
 ### Instruments
 
-We have Custom Instruments tool to help visualize and track events that happen during runtime.
+We have a Custom Instruments tool to help visualize and track events that happen during runtime.
 
 In order to run it:
-1. Build a Debug version and install it on Simulator/Device.
-2. Select Instruments target and run it on a Mac.  A New instance of Instruments app will be run that has a grayed out icon indicating that it works in debug mode with custom instruments attached.
-3. Select 'DDG Trace' template or set up a custom one by importing 'DDG Timeline' instrument from Library.
+1. Build a debug version and install it on a simulator or device.
+2. Select the Instruments target and run it on a Mac. A new instance of the Instruments app will run. It will have a grayed out icon indicating that it works in debug mode with custom instruments attached.
+3. Select the 'DDG Trace' template or set up a custom one by importing the 'DDG Timeline' instrument from Library.
 4. Start recording.
 
 See [Instruments Developer Help](https://help.apple.com/instruments/developer/mac/current/) for reference how to create custom instruments.

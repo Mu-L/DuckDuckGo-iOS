@@ -20,7 +20,7 @@
 import Foundation
 
 public class Link: NSObject, NSCoding {
-    
+
     struct Constants {
         static let ddgSuffix = " at DuckDuckGo"
     }
@@ -28,45 +28,48 @@ public class Link: NSObject, NSCoding {
     private struct NSCodingKeys {
         static let title = "title"
         static let url = "url"
+        static let localPath = "localPath"
     }
-    
-    static let appUrls = AppUrls()
 
     public let title: String?
     public let url: URL
-    
-    public var displayTitle: String? {
-        let host = url.host?.dropPrefix(prefix: "www.") ?? url.absoluteString
-        
+    public let localFileURL: URL?
+
+    public var displayTitle: String {
+        let host = url.host?.droppingWwwPrefix() ?? url.absoluteString
+
         var displayTitle = (title?.isEmpty ?? true) ? host : title
-        
-        if Self.appUrls.isDuckDuckGo(url: url),
+
+        if url.isDuckDuckGo,
             let title = displayTitle, title.hasSuffix(Constants.ddgSuffix) {
             displayTitle = String(title.dropLast(Constants.ddgSuffix.count))
         }
-        
-        return displayTitle
+
+        return displayTitle ?? url.absoluteString
     }
 
-    public required init(title: String?, url: URL) {
+    public required init(title: String?, url: URL, localPath: URL? = nil) {
         self.title = title
         self.url = url
+        self.localFileURL = localPath
     }
 
     public convenience required init?(coder decoder: NSCoder) {
         guard let url = decoder.decodeObject(forKey: NSCodingKeys.url) as? URL else { return nil }
         let title = decoder.decodeObject(forKey: NSCodingKeys.title) as? String
-        self.init(title: title, url: url)
+        let localPath = decoder.decodeObject(forKey: NSCodingKeys.localPath) as? URL
+        self.init(title: title, url: url, localPath: localPath)
     }
 
     public func encode(with coder: NSCoder) {
         coder.encode(title, forKey: NSCodingKeys.title)
         coder.encode(url, forKey: NSCodingKeys.url)
+        coder.encode(localFileURL, forKey: NSCodingKeys.localPath)
     }
 
     public override func isEqual(_ other: Any?) -> Bool {
         guard let other = other as? Link else { return false }
-        return title == other.title && url == other.url
+        return title == other.title && url == other.url && localFileURL == other.localFileURL
     }
 
     /**

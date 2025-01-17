@@ -1,0 +1,31 @@
+appId: com.duckduckgo.mobile.ios
+tags:
+    - sync
+name: 03_recover_account
+
+---
+
+# Set up 
+- runFlow: 
+    file: ../shared/setup.yaml
+
+# Set Internal User
+- tapOn: Settings
+- runFlow:
+    file: ../shared/set_internal_user_from_settings.yaml
+
+# Create account
+- runFlow:
+    file: ../shared/sync_create.yaml
+
+# Log Out
+- runFlow:
+    file: ../shared/sync_logout.yaml
+
+# Recover Data
+- runFlow:
+    file: ../shared/sync_recover_data.yaml
+
+# Clean up
+- runFlow:
+    file: ../shared/sync_delete.yaml

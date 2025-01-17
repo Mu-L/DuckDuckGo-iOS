@@ -18,25 +18,33 @@
 //
 
 import WebKit
+import Persistence
 
 extension WKWebViewConfiguration {
-        
-    public static func persistent() -> WKWebViewConfiguration {
-        return configuration(persistsData: true)
+
+    @MainActor
+    public static func persistent(idManager: DataStoreIDManaging = DataStoreIDManager.shared) -> WKWebViewConfiguration {
+        let config = configuration(persistsData: true)
+
+        // Only use a container if there's an id.  We no longer allocate ids so this should not happen.
+        if #available(iOS 17, *), let containerId = idManager.currentID {
+            config.websiteDataStore = WKWebsiteDataStore(forIdentifier: containerId)
+        }
+        return config
     }
 
     public static func nonPersistent() -> WKWebViewConfiguration {
         return configuration(persistsData: false)
     }
-    
+
     private static func configuration(persistsData: Bool) -> WKWebViewConfiguration {
         let configuration = WKWebViewConfiguration()
         if !persistsData {
             configuration.websiteDataStore = WKWebsiteDataStore.nonPersistent()
         }
-        configuration.dataDetectorTypes = [.phoneNumber]
 
-        configuration.installContentBlockingRules()
+        // Telephone numbers can be still be interacted with by selecting on them and using the popover menu
+        configuration.dataDetectorTypes = []
 
         configuration.allowsAirPlayForMediaPlayback = true
         configuration.allowsInlineMediaPlayback = true
@@ -46,21 +54,5 @@ extension WKWebViewConfiguration {
 
         return configuration
     }
-    
-    private func installContentBlockingRules() {
-        func addRulesToController(rules: WKContentRuleList) {
-            self.userContentController.add(rules)
-        }
-        
-        if let rules = ContentBlockerRulesManager.shared.currentRules,
-           PrivacyConfigurationManager.shared.privacyConfig.isEnabled(featureKey: .contentBlocking) {
-            addRulesToController(rules: rules.rulesList)
-        }
-    }
-    
-    public func installContentRules(trackerProtection: Bool) {
-        if trackerProtection {
-            self.installContentBlockingRules()
-        }
-    }
+
 }

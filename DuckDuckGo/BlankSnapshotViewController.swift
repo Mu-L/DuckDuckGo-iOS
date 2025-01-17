@@ -19,64 +19,80 @@
 
 import UIKit
 import Core
+import Suggestions
 
 protocol BlankSnapshotViewRecoveringDelegate: AnyObject {
     
     func recoverFromPresenting(controller: BlankSnapshotViewController)
 }
 
+// Still some logic here that should be de-duplicated from MainViewController
 class BlankSnapshotViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return ThemeManager.shared.currentTheme.statusBarStyle
     }
     
-    @IBOutlet weak var customNavigationBar: UIView!
-    @IBOutlet weak var tabsButton: UIBarButtonItem!
     let menuButton = MenuButton()
-    @IBOutlet weak var lastButton: UIBarButtonItem!
-    @IBOutlet weak var toolbar: UIToolbar!
-    
-    @IBOutlet weak var statusBarBackground: UIView!
-    @IBOutlet weak var navigationBarTop: NSLayoutConstraint!
-    
-    var omniBar: OmniBar!
-    let tabSwitcherButton = TabSwitcherButton()
-    
-    weak var delegate: BlankSnapshotViewRecoveringDelegate?
-    
-    static func loadFromStoryboard() -> BlankSnapshotViewController {
-        let storyboard = UIStoryboard(name: "BlankSnapshot", bundle: nil)
-        guard let controller = storyboard.instantiateInitialViewController() as? BlankSnapshotViewController else {
-            fatalError("Failed to instantiate correct Blank Snapshot view controller")
-        }
-        return controller
-    }
 
+    var tabSwitcherButton: TabSwitcherButton!
+    let addressBarPosition: AddressBarPosition
+    let voiceSearchHelper: VoiceSearchHelperProtocol
+
+    var viewCoordinator: MainViewCoordinator!
+
+    weak var delegate: BlankSnapshotViewRecoveringDelegate?
+
+    init(addressBarPosition: AddressBarPosition, voiceSearchHelper: VoiceSearchHelperProtocol) {
+        self.addressBarPosition = addressBarPosition
+        self.voiceSearchHelper = voiceSearchHelper
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureOmniBar()
+        tabSwitcherButton = TabSwitcherButton()
 
-        if AppWidthObserver.shared.isLargeWidth {
-            toolbar.isHidden = true
-            navigationBarTop.constant = 40
-            configureTabBar()
-        } else {
-            tabsButton.customView = tabSwitcherButton
-            tabSwitcherButton.delegate = self
-            
-            menuButton.setState(.menuImage, animated: false)
-            lastButton.customView = menuButton
+        viewCoordinator = MainViewFactory.createViewHierarchy(view, voiceSearchHelper: voiceSearchHelper)
+        if addressBarPosition.isBottom {
+            viewCoordinator.moveAddressBarToPosition(.bottom)
+            viewCoordinator.hideToolbarSeparator()
         }
 
-        applyTheme(ThemeManager.shared.currentTheme)
+        configureOmniBar()
+        configureToolbarButtons()
+
+        if AppWidthObserver.shared.isLargeWidth {
+            viewCoordinator.toolbar.isHidden = true
+            viewCoordinator.constraints.navigationBarContainerTop.constant = 40
+            configureTabBar()
+        } else {
+            viewCoordinator.toolbarTabSwitcherButton.customView = tabSwitcherButton
+            tabSwitcherButton.delegate = self
+            
+            viewCoordinator.lastToolbarButton.customView = menuButton
+            menuButton.setState(.menuImage, animated: false)
+            viewCoordinator.lastToolbarButton.customView = menuButton
+        }
+
+        decorate()
     }
 
     // Need to do this at this phase to support split screen on iPad
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        toolbar.isHidden = AppWidthObserver.shared.isLargeWidth
+        viewCoordinator.toolbar.isHidden = AppWidthObserver.shared.isLargeWidth
+    }
+
+    private func configureToolbarButtons() {
+        viewCoordinator.toolbarFireButton.action = #selector(buttonPressed(sender:))
+        viewCoordinator.toolbarFireButton.action = #selector(buttonPressed(sender:))
+        viewCoordinator.lastToolbarButton.action = #selector(buttonPressed(sender:))
     }
 
     private func configureTabBar() {
@@ -99,15 +115,21 @@ class BlankSnapshotViewController: UIViewController {
     }
     
     private func configureOmniBar() {
-        omniBar = OmniBar.loadFromXib()
-        omniBar.frame = customNavigationBar.bounds
-        customNavigationBar.addSubview(omniBar)
+        viewCoordinator.navigationBarCollectionView.register(OmniBarCell.self, forCellWithReuseIdentifier: "omnibar")
+        viewCoordinator.navigationBarCollectionView.isPagingEnabled = true
 
+        let layout = viewCoordinator.navigationBarCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.scrollDirection = .horizontal
+        layout?.itemSize = CGSize(width: viewCoordinator.superview.frame.size.width, height: viewCoordinator.omniBar.frame.height)
+        layout?.minimumLineSpacing = 0
+        layout?.minimumInteritemSpacing = 0
+        layout?.scrollDirection = .horizontal
+
+        viewCoordinator.navigationBarCollectionView.dataSource = self
         if AppWidthObserver.shared.isLargeWidth {
-            omniBar.enterPadState()
+            viewCoordinator.omniBar.enterPadState()
         }
-        
-        omniBar.omniDelegate = self
+        viewCoordinator.omniBar.omniDelegate = self
     }
     
     @objc func buttonPressed(sender: Any) {
@@ -120,7 +142,34 @@ class BlankSnapshotViewController: UIViewController {
     }
 }
 
+extension BlankSnapshotViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "omnibar", for: indexPath) as? OmniBarCell else {
+            fatalError("Not \(OmniBarCell.self)")
+        }
+        cell.omniBar = viewCoordinator.omniBar
+        return cell
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+}
+
 extension BlankSnapshotViewController: OmniBarDelegate {
+
+    func onVoiceSearchPressed() {
+       // No-op
+    }
+
+    func onEditingEnd() -> OmniBarEditingEndResult {
+        .dismissed
+    }
 
     func selectedSuggestion() -> Suggestion? {
         return nil
@@ -133,10 +182,14 @@ extension BlankSnapshotViewController: OmniBarDelegate {
     func onSettingsPressed() {
         userInteractionDetected()
     }
-    
+
+    func onTextFieldWillBeginEditing(_ omniBar: OmniBar, tapped: Bool) {
+        // No-op
+    }
+
     func onTextFieldDidBeginEditing(_ omniBar: OmniBar) -> Bool {
         DispatchQueue.main.async {
-            self.omniBar.resignFirstResponder()
+            self.viewCoordinator.omniBar.resignFirstResponder()
             self.userInteractionDetected()
         }
         return false
@@ -144,6 +197,14 @@ extension BlankSnapshotViewController: OmniBarDelegate {
     
     func onEnterPressed() {
         userInteractionDetected()
+    }
+
+    func onClearPressed() {
+        // No-op
+    }
+
+    func onAbortPressed() {
+        // no-op
     }
 }
 
@@ -159,30 +220,44 @@ extension BlankSnapshotViewController: TabSwitcherButtonDelegate {
     
 }
 
-extension BlankSnapshotViewController: Themable {
+extension BlankSnapshotViewController {
     
-    func decorate(with theme: Theme) {
-        setNeedsStatusBarAppearanceUpdate()
-        
-        view.backgroundColor = theme.backgroundColor
-        
-        if AppWidthObserver.shared.isLargeWidth {
-            statusBarBackground.backgroundColor = theme.tabsBarBackgroundColor
-        } else {
-            statusBarBackground.backgroundColor = theme.barBackgroundColor
-        }
-        customNavigationBar?.backgroundColor = theme.barBackgroundColor
-        customNavigationBar?.tintColor = theme.barTintColor
-        
-        omniBar?.decorate(with: theme)
-        
-        toolbar?.barTintColor = theme.barBackgroundColor
-        toolbar?.tintColor = theme.barTintColor
-        
-        tabSwitcherButton.decorate(with: theme)
-        tabsButton.tintColor = theme.barTintColor
-        
-        menuButton.decorate(with: theme)
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        updateStatusBarBackgroundColor()
     }
+
+    private func updateStatusBarBackgroundColor() {
+        let theme = ThemeManager.shared.currentTheme
+
+        if addressBarPosition == .bottom {
+            viewCoordinator.statusBackground.backgroundColor = theme.backgroundColor
+        } else {
+            if AppWidthObserver.shared.isPad && traitCollection.horizontalSizeClass == .regular {
+                viewCoordinator.statusBackground.backgroundColor = theme.tabsBarBackgroundColor
+            } else {
+                viewCoordinator.statusBackground.backgroundColor = theme.omniBarBackgroundColor
+            }
+        }
+    }
+
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
+
+        setNeedsStatusBarAppearanceUpdate()
+
+        view.backgroundColor = theme.mainViewBackgroundColor
+
+        viewCoordinator.navigationBarContainer.backgroundColor = theme.barBackgroundColor
+        viewCoordinator.navigationBarContainer.tintColor = theme.barTintColor
+
+        viewCoordinator.toolbar.barTintColor = theme.barBackgroundColor
+        viewCoordinator.toolbar.tintColor = theme.barTintColor
+
+        viewCoordinator.toolbarTabSwitcherButton.tintColor = theme.barTintColor
+
+        viewCoordinator.logoText.tintColor = theme.ddgTextTintColor
+     }
     
 }

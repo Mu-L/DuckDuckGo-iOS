@@ -18,12 +18,10 @@
 //
 
 import Foundation
-import Core
+import Bookmarks
 
 protocol BookmarksDelegate: AnyObject {
 
-    func bookmarksDidSelect(link: Link)
-    
-    func bookmarksUpdated()
+    func bookmarksDidSelect(url: URL)
     
 }

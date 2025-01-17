@@ -23,19 +23,31 @@ class ForgetDataAlert {
     
     static func buildAlert(cancelHandler: (() -> Void)? = nil, forgetTabsAndDataHandler: @escaping () -> Void) -> UIAlertController {
         
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.overrideUserInterfaceStyle()
+        let additionalDescription = ongoingDownloadsInProgress() ? UserText.fireButtonInterruptingDownloadsAlertDescription : nil
+        
+        let alert = UIAlertController(title: additionalDescription, message: nil, preferredStyle: .actionSheet)
 
         let forgetTabsAndDataAction = UIAlertAction(title: UserText.actionForgetAll, style: .destructive) { _ in
             forgetTabsAndDataHandler()
         }
-        
+
+        forgetTabsAndDataAction.accessibilityIdentifier = "alert.forget-data.confirm"
+
         let cancelAction = UIAlertAction(title: UserText.actionCancel, style: .cancel) { _ in
             cancelHandler?()
         }
 
+        cancelAction.accessibilityIdentifier = "alert.forget-data.cancel"
+
         alert.addAction(forgetTabsAndDataAction)
         alert.addAction(cancelAction)
+
         return alert
+    }
+    
+    static private func ongoingDownloadsInProgress() -> Bool {
+        let allDownloads = AppDependencyProvider.shared.downloadManager.downloadList
+        let ongoingDownloads = allDownloads.filter { $0.isRunning && !$0.temporary }
+        return !ongoingDownloads.isEmpty
     }
 }

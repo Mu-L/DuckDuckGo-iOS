@@ -27,6 +27,7 @@ protocol FindInPageViewDelegate: NSObjectProtocol {
 
 class FindInPageView: UIView {
 
+    @IBOutlet weak var container: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var searchLoupe: UIImageView!
@@ -40,18 +41,23 @@ class FindInPageView: UIView {
     weak var findInPage: FindInPage?
 
     override func awakeFromNib() {
+        super.awakeFromNib()
+        
         layer.shadowRadius = 1
         layer.shadowOffset = CGSize(width: 0, height: -1.0 / UIScreen.main.scale)
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.12
         layer.masksToBounds = false
-
-        if #available(iOS 13.4, *) {
-            nextButton.isPointerInteractionEnabled = true
-            previousButton.isPointerInteractionEnabled = true
-            doneButton.isPointerInteractionEnabled = true
-        }
         
+        nextButton.isPointerInteractionEnabled = true
+        nextButton.accessibilityLabel = UserText.keyCommandFindNext
+        previousButton.isPointerInteractionEnabled = true
+        previousButton.accessibilityLabel = UserText.keyCommandFindPrevious
+        doneButton.isPointerInteractionEnabled = true
+
+        inputText.accessibilityLabel = UserText.findInPage
+
+        decorate()
     }
     
     override func resignFirstResponder() -> Bool {
@@ -117,8 +123,9 @@ extension FindInPageView: UITextFieldDelegate {
     
 }
 
-extension FindInPageView: Themable {
-    func decorate(with theme: Theme) {
+extension FindInPageView {
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
         backgroundColor = theme.barBackgroundColor
         tintColor = theme.barTintColor
         nextButton.tintColor = theme.barTintColor
@@ -126,10 +133,16 @@ extension FindInPageView: Themable {
         counterLabel.textColor = theme.barTintColor
         searchBackground.backgroundColor = theme.searchBarBackgroundColor
         inputText.textColor = theme.searchBarTextColor
-        inputText.tintColor = theme.searchBarTextColor
+        inputText.tintColor = UIColor(designSystemColor: .accent)
         inputText.keyboardAppearance = theme.keyboardAppearance
-        searchLoupe.tintColor = theme.barTintColor
+        searchLoupe.tintColor = theme.barTintColor.withAlphaComponent(0.5)
         doneButton.setTitleColor(theme.barTintColor, for: .normal)
         activityView.style = theme.activityStyle
+    }
+}
+
+extension FindInPageView: NibLoading {
+    static func loadFromXib() -> FindInPageView {
+        return FindInPageView.load(nibName: "FindInPage")
     }
 }

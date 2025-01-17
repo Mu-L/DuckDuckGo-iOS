@@ -22,6 +22,11 @@ import UIKit
 extension ActionMessageView: NibLoading {}
 
 class ActionMessageView: UIView {
+
+    enum PresentationLocation {
+        case withBottomBar(andAddressBarBottom: Bool)
+        case withoutBottomBar
+    }
     
     private static var presentedMessages = [ActionMessageView]()
     
@@ -29,10 +34,35 @@ class ActionMessageView: UIView {
         static var maxWidth: CGFloat = 346
         static var minimumHorizontalPadding: CGFloat = 20
         static var cornerRadius: CGFloat = 10
-        static var windowBottomPadding: CGFloat = 70
         
         static var animationDuration: TimeInterval = 0.2
         static var duration: TimeInterval = 3.0
+        
+        static var windowBottomPaddingWithBottomBar: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone && !isPortrait {
+                return 40
+            }
+            
+            return 70
+        }
+
+        static var windowBottomPaddingWithAddressBar: CGFloat {
+            return windowBottomPaddingWithBottomBar + 52
+        }
+
+        static var windowBottomPaddingWithoutBottomBar: CGFloat {
+            return 0
+        }
+        
+    }
+    
+    private static func bottomPadding(for location: PresentationLocation) -> CGFloat {
+        switch location {
+        case .withBottomBar(let isAddressBarBottom):
+            return isAddressBarBottom ? Constants.windowBottomPaddingWithAddressBar : Constants.windowBottomPaddingWithBottomBar
+        case .withoutBottomBar:
+            return Constants.windowBottomPaddingWithoutBottomBar
+        }
     }
     
     @IBOutlet weak var message: UILabel!
@@ -42,6 +72,7 @@ class ActionMessageView: UIView {
     @IBOutlet var labelToTrailing: NSLayoutConstraint!
     
     private var action: () -> Void = {}
+    private var onDidDismiss: () -> Void = {}
     
     private var dismissWorkItem: DispatchWorkItem?
     
@@ -55,25 +86,66 @@ class ActionMessageView: UIView {
         layer.cornerRadius = Constants.cornerRadius
     }
     
-    static func present(message: String, actionTitle: String? = nil, onAction: @escaping () -> Void = {}) {
-        guard let window = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first else { return }
-        
-        dismissAllMessages()
-        
+    static func present(message: NSAttributedString,
+                        numberOfLines: Int = 0,
+                        actionTitle: String? = nil,
+                        presentationLocation: PresentationLocation = .withBottomBar(andAddressBarBottom: false),
+                        duration: TimeInterval = Constants.duration,
+                        onAction: @escaping () -> Void = {},
+                        onDidDismiss: @escaping () -> Void = {}) {
+        let messageView = loadFromXib()
+        messageView.message.attributedText = message
+        messageView.message.numberOfLines = numberOfLines
+        ActionMessageView.present(messageView: messageView,
+                                  message: message.string,
+                                  actionTitle: actionTitle,
+                                  presentationLocation: presentationLocation,
+                                  duration: duration,
+                                  onAction: onAction,
+                                  onDidDismiss: onDidDismiss)
+    }
+    
+    static func present(message: String,
+                        actionTitle: String? = nil,
+                        presentationLocation: PresentationLocation = .withBottomBar(andAddressBarBottom: false),
+                        duration: TimeInterval = Constants.duration,
+                        onAction: @escaping () -> Void = {},
+                        onDidDismiss: @escaping () -> Void = {}) {
         let messageView = loadFromXib()
         messageView.message.setAttributedTextString(message)
+        ActionMessageView.present(messageView: messageView,
+                                  message: message,
+                                  actionTitle: actionTitle,
+                                  presentationLocation: presentationLocation,
+                                  duration: duration,
+                                  onAction: onAction,
+                                  onDidDismiss: onDidDismiss)
+    }
+    
+    private static func present(messageView: ActionMessageView,
+                                message: String,
+                                actionTitle: String? = nil,
+                                presentationLocation: PresentationLocation = .withBottomBar(andAddressBarBottom: false),
+                                duration: TimeInterval = Constants.duration,
+                                onAction: @escaping () -> Void = {},
+                                onDidDismiss: @escaping () -> Void = {}) {
+        guard let window = UIApplication.shared.firstKeyWindow else { return }
         
+        dismissAllMessages()
+                
         if let actionTitle = actionTitle, let title = messageView.actionButton.attributedTitle(for: .normal) {
-            messageView.actionButton.setAttributedTitle(title.withText(actionTitle.uppercased()), for: .normal)
+            messageView.actionButton.setAttributedTitle(title.withText(actionTitle), for: .normal)
             messageView.action = onAction
         } else {
             messageView.labelToButton.isActive = false
             messageView.labelToTrailing.isActive = true
             messageView.actionButton.isHidden = true
         }
+        messageView.onDidDismiss = onDidDismiss
         
         window.addSubview(messageView)
-        window.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: messageView.bottomAnchor, constant: Constants.windowBottomPadding).isActive = true
+        window.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: messageView.bottomAnchor,
+                                                           constant: bottomPadding(for: presentationLocation)).isActive = true
         
         let messageViewWidth = window.frame.width <= Constants.maxWidth ? window.frame.width - Constants.minimumHorizontalPadding : Constants.maxWidth
         messageView.widthAnchor.constraint(equalToConstant: messageViewWidth).isActive = true
@@ -84,16 +156,18 @@ class ActionMessageView: UIView {
         messageView.alpha = 0
         UIView.animate(withDuration: Constants.animationDuration) {
             messageView.alpha = 1
+        } completion: { _ in
+            UIAccessibility.post(notification: .announcement, argument: message)
         }
         
         let workItem = DispatchWorkItem { [weak messageView] in
             messageView?.dismissAndFadeOut()
         }
         messageView.dismissWorkItem = workItem
-        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.duration, execute: workItem)
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration, execute: workItem)
         presentedMessages.append(messageView)
     }
-    
+
     static func dismissAllMessages() {
         presentedMessages.forEach { $0.dismissAndFadeOut() }
     }
@@ -109,10 +183,12 @@ class ActionMessageView: UIView {
             if let position = Self.presentedMessages.firstIndex(of: self) {
                 Self.presentedMessages.remove(at: position)
             }
+            self.onDidDismiss()
         })
     }
     
     @IBAction func onButtonTap() {
         action()
+        dismissAndFadeOut()
     }
 }

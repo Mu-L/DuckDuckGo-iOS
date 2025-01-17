@@ -18,55 +18,9 @@
 //
 
 import Foundation
+import BrowserServicesKit
 @testable import Core
-
-extension PrivacyPractices {
-    
-    public convenience init(termsOfServiceStore: TermsOfServiceStore) {
-        self.init(tld: TLD(),
-                  termsOfServiceStore: termsOfServiceStore,
-                  entityMapping: EntityMapping())
-    }
-    
-    public convenience init(entityMapping: EntityMapping) {
-        self.init(tld: TLD(),
-                  termsOfServiceStore: EmbeddedTermsOfServiceStore(),
-                  entityMapping: entityMapping)
-    }
-
-    public convenience init(termsOfServiceStore: TermsOfServiceStore,
-                            entityMapping: EntityMapping) {
-        self.init(tld: TLD(),
-                  termsOfServiceStore: termsOfServiceStore,
-                  entityMapping: entityMapping)
-    }
-
-}
-
-extension SiteRating {
-    
-    public convenience init(url: URL,
-                            httpsForced: Bool = false,
-                            entityMapping: EntityMapping = EntityMapping(),
-                            privacyPractices: PrivacyPractices? = nil) {
-        self.init(url: url,
-                  httpsForced: httpsForced,
-                  entityMapping: entityMapping,
-                  privacyPractices: privacyPractices ?? PrivacyPractices(entityMapping: entityMapping))
-    }
-    
-    public convenience init(url: URL,
-                            httpsForced: Bool = false,
-                            entityMapping: EntityMapping = EntityMapping()) {
-        
-        let privacyPractices = PrivacyPractices(entityMapping: entityMapping)
-        
-        self.init(url: url,
-                  httpsForced: httpsForced,
-                  entityMapping: entityMapping,
-                  privacyPractices: privacyPractices)
-    }
-}
+import Common
 
 extension HTTPCookie {
     
@@ -87,7 +41,6 @@ extension HTTPCookie {
             properties[HTTPCookiePropertyKey.sameSitePolicy] = policy
         }
         
-        return HTTPCookie(properties: properties)!        
-    }
+        return HTTPCookie(properties: properties)!    }
     
 }

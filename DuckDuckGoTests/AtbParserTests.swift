@@ -19,6 +19,8 @@
 
 import XCTest
 @testable import Core
+@testable import BrowserServicesKit
+import Common
 
 class AtbParserTests: XCTestCase {
 

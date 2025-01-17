@@ -1,5 +1,5 @@
 //
-//  SupportedExternalUrlSchemeTests.swift
+//  ExternalUrlSchemeTests.swift
 //  DuckDuckGo
 //
 //  Copyright © 2017 DuckDuckGo. All rights reserved.
@@ -60,7 +60,7 @@ class ExternalUrlSchemeTests: XCTestCase {
     
     func testThatAboutSchemesAreAllowed() {
         let url = URL(string: "about:blank")!
-        XCTAssertNotEqual(SchemeHandler.schemeType(for: url),
-                          SchemeHandler.SchemeType.navigational)
+        XCTAssertEqual(SchemeHandler.schemeType(for: url),
+                       SchemeHandler.SchemeType.navigational)
     }
 }

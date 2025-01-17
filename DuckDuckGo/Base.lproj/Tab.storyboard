@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="proximanova-regular.otf">
-            <string>ProximaNova-Regular</string>
-        </array>
-        <array key="proximanova-semibold.otf">
-            <string>ProximaNova-Semibold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--FullscreenDaxDialog-->
         <scene sceneID="nOU-yi-qgJ">
@@ -36,42 +28,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yc-Gh-Vqe">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wfg-yB-zj4">
+                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yc-Gh-Vqe">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                                        <edgeInsets key="layoutMargins" top="-50" left="0.0" bottom="0.0" right="0.0"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSI-9K-1Ti" userLabel="Alert Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <edgeInsets key="layoutMargins" top="-50" left="0.0" bottom="0.0" right="0.0"/>
-                            </view>
+                                <connections>
+                                    <segue destination="yf4-q9-yrl" kind="embed" destinationCreationSelector="createJSAlertControllerWithCoder:sender:segueIdentifier:" id="8qv-qm-wGG"/>
+                                </connections>
+                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypz-s2-KJB" userLabel="OtherVIew">
-                                <rect key="frame" x="0.0" y="-80" width="768" height="80"/>
+                                <rect key="frame" x="0.0" y="-60" width="768" height="80"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="xhL-Yb-2Uf"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kd4-Oi-JP2">
-                                <rect key="frame" x="0.0" y="336.5" width="768" height="351"/>
+                                <rect key="frame" x="0.0" y="341.5" width="768" height="361.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="09V-cw-B4O">
-                                        <rect key="frame" x="10" y="0.0" width="748" height="351"/>
+                                        <rect key="frame" x="10" y="0.0" width="748" height="361.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ErrorInfoDark" translatesAutoresizingMaskIntoConstraints="NO" id="TUO-E3-s7Q">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ErrorInfoUniversal" translatesAutoresizingMaskIntoConstraints="NO" id="TUO-E3-s7Q">
                                                 <rect key="frame" x="186.5" y="0.0" width="375" height="280"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="DZ8-qm-cwD">
-                                                <rect key="frame" x="174" y="288" width="400" height="63"/>
+                                                <rect key="frame" x="174" y="288" width="400" height="73.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DuckDuckGo can’t load this page." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6P7-7R-riV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="20"/>
-                                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This website has an invalid security certificate and might not be safe to visit." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Cjw-mk-QL3">
-                                                        <rect key="frame" x="0.0" y="31" width="400" height="32"/>
+                                                        <rect key="frame" x="0.0" y="35" width="400" height="38.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="400" id="H7S-WF-So0"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="textColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="default">
@@ -119,10 +121,18 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Kd4-Oi-JP2" firstAttribute="centerY" secondItem="t0t-53-xVf" secondAttribute="centerY" id="3qe-NM-ikO"/>
+                            <constraint firstItem="gSI-9K-1Ti" firstAttribute="leading" secondItem="Sgm-Wo-lho" secondAttribute="leading" id="4ZJ-81-h64"/>
+                            <constraint firstItem="gSI-9K-1Ti" firstAttribute="top" secondItem="Sgm-Wo-lho" secondAttribute="top" id="9Fd-Ru-MPw"/>
+                            <constraint firstItem="Wfg-yB-zj4" firstAttribute="leading" secondItem="Sgm-Wo-lho" secondAttribute="leading" id="DLc-Mq-QSc"/>
                             <constraint firstItem="t0t-53-xVf" firstAttribute="top" secondItem="ypz-s2-KJB" secondAttribute="top" constant="80" id="Hdu-Wc-sCB"/>
+                            <constraint firstAttribute="trailing" secondItem="gSI-9K-1Ti" secondAttribute="trailing" id="WIt-GE-l23"/>
                             <constraint firstItem="Kd4-Oi-JP2" firstAttribute="width" secondItem="Sgm-Wo-lho" secondAttribute="width" id="WgD-oO-Ds7"/>
+                            <constraint firstItem="Wfg-yB-zj4" firstAttribute="top" secondItem="t0t-53-xVf" secondAttribute="top" id="atL-ZI-N6g"/>
                             <constraint firstAttribute="trailing" secondItem="ypz-s2-KJB" secondAttribute="trailing" id="bXU-Fx-c7D"/>
+                            <constraint firstAttribute="trailing" secondItem="Wfg-yB-zj4" secondAttribute="trailing" id="bpw-ay-E03"/>
                             <constraint firstItem="Kd4-Oi-JP2" firstAttribute="centerX" secondItem="t0t-53-xVf" secondAttribute="centerX" id="oFL-Ft-NQV"/>
+                            <constraint firstItem="t0t-53-xVf" firstAttribute="bottom" secondItem="Wfg-yB-zj4" secondAttribute="bottom" id="reE-gN-ecB"/>
+                            <constraint firstAttribute="bottom" secondItem="gSI-9K-1Ti" secondAttribute="bottom" id="t3k-1K-dv4"/>
                             <constraint firstItem="ypz-s2-KJB" firstAttribute="leading" secondItem="Sgm-Wo-lho" secondAttribute="leading" id="ugB-DM-Oye"/>
                         </constraints>
                         <connections>
@@ -131,13 +141,14 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="containerStackView" destination="Wfg-yB-zj4" id="TDY-ap-WRj"/>
                         <outlet property="error" destination="Kd4-Oi-JP2" id="zBn-cG-pfQ"/>
                         <outlet property="errorHeader" destination="6P7-7R-riV" id="IkB-Tc-Eat"/>
                         <outlet property="errorInfoImage" destination="TUO-E3-s7Q" id="ngN-8S-PwR"/>
                         <outlet property="errorMessage" destination="Cjw-mk-QL3" id="b1N-1W-IGs"/>
                         <outlet property="showBarsTapGestureRecogniser" destination="Y72-bH-DMy" id="SAY-KX-OEJ"/>
                         <outlet property="webViewContainer" destination="3yc-Gh-Vqe" id="kNL-fm-49U"/>
-                        <segue destination="5Os-y0-IaV" kind="popoverPresentation" identifier="PrivacyProtection" popoverAnchorView="ypz-s2-KJB" id="nKl-8K-k03">
+                        <segue destination="5Os-y0-IaV" kind="popoverPresentation" identifier="PrivacyDashboard" destinationCreationSelector="makePrivacyDashboardViewControllerWithCoder:" popoverAnchorView="ypz-s2-KJB" id="nKl-8K-k03">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                         </segue>
                         <segue destination="fuG-ev-dKt" kind="presentation" identifier="DaxDialog" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="cG3-cw-u7d"/>
@@ -151,18 +162,26 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1181.5999999999999" y="445.72713643178412"/>
+            <point key="canvasLocation" x="1181.25" y="445.31249999999994"/>
         </scene>
-        <!--PrivacyProtection-->
+        <!--PrivacyDashboard-->
         <scene sceneID="L6K-iW-ae0">
             <objects>
-                <viewControllerPlaceholder storyboardName="PrivacyProtection" id="5Os-y0-IaV" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="PrivacyDashboard" id="5Os-y0-IaV" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UuK-nd-xhd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1771" y="445"/>
         </scene>
+        <!--JSAlertController-->
+        <scene sceneID="ysm-ED-Fzh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="JSAlertController" id="yf4-q9-yrl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UuK-nd-xhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1770.703125" y="620.80078125"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="ErrorInfoDark" width="375" height="280"/>
+        <image name="ErrorInfoUniversal" width="375" height="280"/>
     </resources>
 </document>

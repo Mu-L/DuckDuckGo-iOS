@@ -17,9 +17,11 @@
 //  limitations under the License.
 //
 
+import Common
 import UIKit
 import Social
 import Core
+import os.log
 
 class ShareViewController: SLComposeServiceViewController {
 
@@ -52,10 +54,8 @@ class ShareViewController: SLComposeServiceViewController {
 
         guard let attachments = item.attachments else { return nil }
 
-        for attachment in attachments {
-            if attachment.hasItemConformingToTypeIdentifier(identifier) {
-                return attachment
-            }
+        for attachment in attachments where attachment.hasItemConformingToTypeIdentifier(identifier) {
+            return attachment
         }
         return nil
     }
@@ -71,19 +71,29 @@ class ShareViewController: SLComposeServiceViewController {
     private func loadText(fromTextProvider textProvider: NSItemProvider) {
         textProvider.loadItem(forTypeIdentifier: Identifier.text, options: nil) { [weak self] (item, _) in
             guard let query = item as? String else { return }
-            self?.open(url: AppUrls().url(forQuery: query))
+            guard let url = URL.makeSearchURL(query: query) else {
+                Logger.lifecycle.error("Couldn‘t form URL for query “\(query, privacy: .public)”")
+                return
+            }
+            self?.open(url: url)
         }
     }
 
     private func open(url: URL) {
         let selector = sel_registerName(Constants.openURLSelector)
-        let deepLink = URL(string: "\(AppDeepLinks.quickLink)\(url)")!
-
+        let deepLink = URL(string: AppDeepLinkSchemes.quickLink.appending(url.absoluteString))!
         var responder = self as UIResponder?
         while responder != nil {
-            if responder!.responds(to: selector) {
-                _ = responder?.perform(selector, with: deepLink, with: {})
-                break
+            if #available(iOS 18.0, *) {
+                if let application = responder as? UIApplication {
+                    application.open(deepLink, options: [:], completionHandler: nil)
+                    break
+                }
+            } else {
+                if responder!.responds(to: selector) {
+                    _ = responder?.perform(selector, with: deepLink, with: {})
+                    break
+                }
             }
             responder = responder!.next
         }

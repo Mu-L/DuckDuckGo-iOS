@@ -19,6 +19,7 @@
 
 import UIKit
 import Core
+import BrowserServicesKit
 
 class UnprotectedSitesViewController: UITableViewController {
     
@@ -31,32 +32,39 @@ class UnprotectedSitesViewController: UITableViewController {
     
     private var hiddenNavBarItem: UIBarButtonItem?
     private var hiddenNavBarItems: [UIBarButtonItem]?
-    
-    private let protectionStore: DomainsProtectionStore = DomainsProtectionUserDefaultsStore()
-    
+
+    private let privacyConfig: PrivacyConfiguration = ContentBlocking.shared.privacyConfigurationManager.privacyConfig
+    private let rulesManager: ContentBlockerRulesManager = ContentBlocking.shared.contentBlockingManager
+
     var showBackButton = false
-    var enforceLightTheme = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyTheme(ThemeManager.shared.currentTheme)
-        
+        decorate()
+
         navigationController?.setToolbarHidden(false, animated: false)
         refreshToolbarItems(animated: false)
         
         configureBackButton()
         
-        let fontSize = SettingsViewController.fontSizeForHeaderView
+        let fontSize = FontSettings.fontSizeForHeaderView
         let text = NSAttributedString(string: infoText.text ?? "", attributes: [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)
         ])
         infoText.attributedText = text
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
         
-        navigationController?.setToolbarHidden(true, animated: false)
+        if parent == nil {
+            navigationController?.setToolbarHidden(true, animated: true)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setToolbarHidden(false, animated: true)
     }
     
     private func refreshToolbarItems(animated: Bool) {
@@ -66,7 +74,7 @@ class UnprotectedSitesViewController: UITableViewController {
             setToolbarItems([flexibleSpace, editButton], animated: animated)
         }
         
-        editButton.isEnabled = protectionStore.unprotectedDomains.count > 0
+        editButton.isEnabled = privacyConfig.userUnprotectedDomains.count > 0
     }
     
     private func configureBackButton() {
@@ -91,7 +99,7 @@ class UnprotectedSitesViewController: UITableViewController {
     // MARK: UITableView data source
 
     private var unprotectedDomains: [String] {
-        return protectionStore.unprotectedDomains.sorted()
+        return privacyConfig.userUnprotectedDomains.sorted()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -115,7 +123,8 @@ class UnprotectedSitesViewController: UITableViewController {
         guard editingStyle == .delete else { return }
 
         let domain = unprotectedDomains[indexPath.row]
-        protectionStore.enableProtection(forDomain: domain)
+        privacyConfig.userEnabledProtection(forDomain: domain)
+        rulesManager.scheduleCompilation()
 
         if unprotectedDomains.count == 0 {
             if tableView.isEditing {
@@ -126,9 +135,11 @@ class UnprotectedSitesViewController: UITableViewController {
             } else {
                 refreshToolbarItems(animated: true)
             }
+            
+            tableView.reloadData()
+        } else {
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-
-        tableView.reloadData()
     }
 
     // MARK: actions
@@ -145,7 +156,6 @@ class UnprotectedSitesViewController: UITableViewController {
         let cancel = UserText.actionCancel
 
         let addSiteBox = UIAlertController(title: title, message: "", preferredStyle: .alert)
-        addSiteBox.overrideUserInterfaceStyle()
         addSiteBox.addTextField { (textField) in
             textField.placeholder = placeholder
             textField.keyboardAppearance = ThemeManager.shared.currentTheme.keyboardAppearance
@@ -161,23 +171,26 @@ class UnprotectedSitesViewController: UITableViewController {
     }
     
     @IBAction func startEditing() {
-        // Fix glitch happening when there's cell that is already in the editing state (swiped to reveal delete button) and user presses 'Edit'.
-        tableView.isEditing = false
-        tableView.isEditing = true
-        tableView.reloadData()
-        refreshToolbarItems(animated: true)
-        
+        navigationItem.setHidesBackButton(true, animated: true)
         hiddenNavBarItems = navigationItem.rightBarButtonItems
         navigationItem.setRightBarButtonItems(nil, animated: true)
+        
+        // Fix glitch happening when there's cell that is already in the editing state (swiped to reveal delete button) and user presses 'Edit'.
+        tableView.setEditing(false, animated: true)
+        tableView.setEditing(true, animated: true)
+        
+        refreshToolbarItems(animated: true)
     }
     
     @IBAction func endEditing() {
-        tableView.isEditing = false
-        tableView.reloadData()
+        navigationItem.setHidesBackButton(false, animated: true)
+        if let hiddenNavBarItems = hiddenNavBarItems {
+            navigationItem.setRightBarButtonItems(hiddenNavBarItems, animated: true)
+        }
+        
+        tableView.setEditing(false, animated: true)
         
         refreshToolbarItems(animated: true)
-        
-        navigationItem.setRightBarButtonItems(hiddenNavBarItems, animated: true)
     }
 
     // MARK: private
@@ -185,14 +198,15 @@ class UnprotectedSitesViewController: UITableViewController {
     private func addSite(from controller: UIAlertController) {
         guard let field = controller.textFields?[0] else { return }
         guard let domain = domain(from: field) else { return }
-        protectionStore.disableProtection(forDomain: domain)
+        privacyConfig.userDisabledProtection(forDomain: domain)
+        rulesManager.scheduleCompilation()
         tableView.reloadData()
         refreshToolbarItems(animated: true)
     }
 
     private func domain(from field: UITextField) -> String? {
-        guard let domain = field.text?.trimWhitespace() else { return nil }
-        guard URL.isValidHostname(domain) || URL.isValidIpHost(domain) else { return nil }
+        guard let domain = field.text?.trimmingWhitespace() else { return nil }
+        guard domain.isValidHostname || domain.isValidIpHost else { return nil }
         return domain
     }
 
@@ -204,19 +218,18 @@ class UnprotectedSitesViewController: UITableViewController {
             cell = createAllProtectedCell(forRowAt: indexPath)
         }
         
-        let theme = enforceLightTheme ? LightTheme() : ThemeManager.shared.currentTheme
+        let theme = ThemeManager.shared.currentTheme
         cell.backgroundColor = theme.tableCellBackgroundColor
-        cell.setHighlightedStateBackgroundColor(theme.tableCellHighlightedBackgroundColor)
         
         return cell
     }
     
     private func createAllProtectedCell(forRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let allProtectedCell = tableView.dequeueReusableCell(withIdentifier: "AllProtectedCell") as? NoSuggestionsTableViewCell else {
-            fatalError("Failed to dequeue NoSuggestionsTableViewCell using 'AllProtectedCell'")
+        guard let allProtectedCell = tableView.dequeueReusableCell(withIdentifier: "AllProtectedCell") as? AllProtectedCell else {
+            fatalError("Failed to dequeue AllProtectedCell using 'AllProtectedCell'")
         }
         
-        let theme = enforceLightTheme ? LightTheme() : ThemeManager.shared.currentTheme
+        let theme = ThemeManager.shared.currentTheme
         allProtectedCell.label.textColor = theme.tableCellTextColor
         
         return allProtectedCell
@@ -229,7 +242,7 @@ class UnprotectedSitesViewController: UITableViewController {
         
         unprotectedItemCell.domain = unprotectedDomains[indexPath.row]
         
-        let theme = enforceLightTheme ? LightTheme() : ThemeManager.shared.currentTheme
+        let theme = ThemeManager.shared.currentTheme
         unprotectedItemCell.domainLabel.textColor = theme.tableCellTextColor
         
         return unprotectedItemCell
@@ -252,11 +265,10 @@ class UnprotectedSitesItemCell: UITableViewCell {
 
 }
 
-extension UnprotectedSitesViewController: Themable {
+extension UnprotectedSitesViewController {
     
-    func decorate(with theme: Theme) {
-        let theme = enforceLightTheme ? LightTheme() : theme
-        
+    private func decorate() {
+        let theme = ThemeManager.shared.currentTheme
         tableView.separatorColor = theme.tableCellSeparatorColor
         tableView.backgroundColor = theme.backgroundColor
         
